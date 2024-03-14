@@ -1,0 +1,15 @@
+pipelines:
+  branches:
+    dev:
+      - step:
+          name: Deploying Source Code To Dev Server
+          caches:
+            - composer
+          script:
+            - pipe: atlassian/ssh-run:0.2.6
+              variables:
+                SERVER: $DSERVER_IP
+                PORT: $DSERVER_PORT
+                SSH_USER: $DSERVER_USER
+                MODE: 'script'
+                COMMAND: 'ddeploy.sh'
