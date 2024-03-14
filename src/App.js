@@ -12,8 +12,9 @@ function App() {
 
      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Warranty />} />
-          <Route path="/warranty" element={<Warranty />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/testing" element={<HomePage />} />
+          <Route path="/test" element={<Warranty />} />
         </Routes>
       </BrowserRouter>
     </div>
