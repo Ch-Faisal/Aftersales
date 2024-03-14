@@ -1,3 +1,19 @@
+@font-face { font-family: CustomToyota; src: url('../public/assets/fonts/Toyota-Font/avenirltstd-black.otf'); }
+/* *{
+  font-family: 'CustomToyota';
+} */
+h2, h1 , h3 {
+  font-family: "CustomToyota";
+font-size: 2.25rem;
+font-style: normal;
+font-weight: 600; 
+}
+p{
+  font-family: "CustomToyota";
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 400; 
+}
 .App {
   text-align: center;
 }
@@ -115,4 +131,14 @@
   .logos img{
     width: 100px !important;
   }
+}
+
+.custom-bg-gray-dark{
+  background-color: #ECEDED;
+}
+.custom-bg-gray{
+  background-color: #F8F8F8;
+}
+.custom-list-style-number{
+  list-style: linear-gradient;
 }

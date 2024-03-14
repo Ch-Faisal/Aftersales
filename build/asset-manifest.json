@@ -2,7 +2,10 @@
   "files": {
     "main.css": "/static/css/main.d5913025.css",
     "main.js": "/static/js/main.0ad24caf.js",
+    "main.css": "/static/css/main.d16d6572.css",
+    "main.js": "/static/js/main.32f29bbe.js",
     "static/js/453.3e3d4d89.chunk.js": "/static/js/453.3e3d4d89.chunk.js",
+    "static/media/avenirltstd-black.otf": "/static/media/avenirltstd-black.7a7fe0dcd357073da4a6.otf",
     "index.html": "/index.html",
     "main.d5913025.css.map": "/static/css/main.d5913025.css.map",
     "main.0ad24caf.js.map": "/static/js/main.0ad24caf.js.map",
@@ -10,6 +13,13 @@
   },
   "entrypoints": [
     "static/css/main.d5913025.css",
-    "static/js/main.0ad24caf.js"
+    "static/js/main.0ad24caf.js",
+    "main.d16d6572.css.map": "/static/css/main.d16d6572.css.map",
+    "main.32f29bbe.js.map": "/static/js/main.32f29bbe.js.map",
+    "453.3e3d4d89.chunk.js.map": "/static/js/453.3e3d4d89.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d16d6572.css",
+    "static/js/main.32f29bbe.js"
   ]
 }
