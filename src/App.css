@@ -51,8 +51,50 @@
   .search-img{
     display: none;
   }
+  .section-3 h5{
+    font-size: 36px;
+  }
 }
-
+.list-unstyled.text-dark.text-start li {
+  white-space: nowrap;
+}
+.footer h5{
+  font-size: 13px !important;
+}
+.footer li{
+  font-size: 12px !important;
+}
+.footer p{
+  font-size:12px !important;
+}
+.btn-outline-dark{
+  border-radius: 35px !important;
+}
+.section-3 h5{
+  font-size: 36px;
+}
+.section-3 p{
+  font-size: 24px;
+}
+.section-2 .wrapper{
+  padding: 50px;
+  background-color: rgb(250, 250, 250);
+  border-radius: 20px;
+}
+.section-2-content .main-heading h2{
+  font-size: 36px;
+}
+.section-2-content p{
+  color: #282c34;
+  font-size: 16px;
+}
+.section-2-content{
+  background-color: rgb(250, 250, 250);
+  padding: 50px;
+}
+.wrapper .title h6{
+  font-size: 24px;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -60,5 +102,17 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 762px) {
+  .section-3 h5{
+    font-size: 28px;
+  }
+  .section-3 .card{
+    width: 90% !important;
+    margin-left: 10px;
+  }
+  .logos img{
+    width: 100px !important;
   }
 }
