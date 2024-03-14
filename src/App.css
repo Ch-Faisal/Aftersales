@@ -27,6 +27,30 @@
 .App-link {
   color: #61dafb;
 }
+.navbar{
+  background-color: black;
+}
+.navbar .nav-item .nav-link{
+  color: rgba(255, 255, 255, 1);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+}
+.nav-1 .nav-item .nav-link{
+  color: rgba(0, 0, 0, 1) !important;
+}
+.nav-1{
+  background-color: #fff;
+}
+.navbar-brand{
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+@media screen and (max-width: 992px) {
+  .search-img{
+    display: none;
+  }
+}
 
 @keyframes App-logo-spin {
   from {
