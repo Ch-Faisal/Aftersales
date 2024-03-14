@@ -13,8 +13,7 @@ function App() {
      <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/testing" element={<HomePage />} />
-          <Route path="/test" element={<Warranty />} />
+          <Route path="/warranty" element={<Warranty />} />
         </Routes>
       </BrowserRouter>
     </div>
