@@ -62,3 +62,12 @@
     transform: rotate(360deg);
   }
 }
+.custom-bg-gray-dark{
+  background-color: #ECEDED;
+}
+.custom-bg-gray{
+  background-color: #F8F8F8;
+}
+.custom-list-style-number{
+  list-style: linear-gradient;
+}
