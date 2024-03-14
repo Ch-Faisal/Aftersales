@@ -12,7 +12,7 @@ function App() {
 
      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Warranty />} />
           <Route path="/warranty" element={<Warranty />} />
         </Routes>
       </BrowserRouter>
