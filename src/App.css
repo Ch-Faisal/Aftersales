@@ -1,4 +1,4 @@
-@font-face { font-family: CustomToyota; src: url('../public/assets/fonts/Toyota-Font/avenirltstd-black.otf'); }
+@font-face { font-family: CustomToyota; src: url('../public/assets/fonts/Toyota-Font/Toyota Type.ttf'); }
 /* *{
   font-family: 'CustomToyota';
 } */
@@ -10,7 +10,7 @@ font-weight: 600;
 }
 p{
   font-family: "CustomToyota";
-font-size: 1.5rem;
+  font-size: 1.125rem; 
 font-style: normal;
 font-weight: 400; 
 }
