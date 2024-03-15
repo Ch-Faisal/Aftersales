@@ -83,7 +83,7 @@ function Warranty() {
                                     <tbody className='text-center'>
                                         <tr>
                                             <td className='fw-light'>Regular</td>
-                                            <td className=''>1 Tahun / 20.000 km*</td>
+                                            <td className='test'>1 Tahun / 20.000 km*</td>
                                         </tr>
                                         <tr>
                                             <td className='fw-light'>Hybrid</td>
