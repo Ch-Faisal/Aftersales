@@ -21,6 +21,7 @@ function Footer() {
             </ul>
         </div>
         <div class="col-6 col-md">
+      
             <h5 className='fw-bold text-start'>Beyond Experience</h5>
             <ul class="list-unstyled text-dark text-start">
                 <li class="mb-2"><a href="#" class="text-decoration-none text-dark">E-brochure</a></li>
