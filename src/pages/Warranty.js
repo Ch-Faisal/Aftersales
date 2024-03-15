@@ -16,7 +16,7 @@ function Warranty() {
                         <img src="assets/twocars.png" className='w-100' />
                     </div>
                     <div className='col-7 text-start'>
-                    <h2>Vehicle Warranty</h2>
+                    <h2>Vehicle Warranty testing</h2>
                     <b>36 bulan (3 tahun) / 100.000 km</b>
                     <p>
                     Tuntutan warranty akan dikabulkan dengan syarat pemilik kendaraan melakukan servis secara berkesinambungan di <span className='fw-bold'>Bengkel Resmi Toyota</span> mulai servis ke-1 (1 bulan atau 1.000 KM) hingga servis ke-11 (36 Bulan atau 100.000 KM)
