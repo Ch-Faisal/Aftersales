@@ -2,11 +2,12 @@ import React from 'react';
 
 function Footer() {
   return (
-        <div className="bg-white container footer">
+        <div className="bg-white container-fluid footer">
     <hr/>
     <div className='back-to-top'> <a href='#navbar'>Back to top </a> <span><img src='assets/SVG.png'  alt='arrow'/></span></div>
     <hr/>
-           <div class="row mt-5">
+    <div className='container list'>
+    <div class="row mt-5">
         <div class="col-6 col-md">
             <h5 className='fw-bold text-start'>Beyond Solution</h5>
             <ul class="list-unstyled text-dark text-start">
@@ -74,6 +75,8 @@ function Footer() {
             <div><div className='mt-3 text-start'><img src="assets/customer-care.png" alt='logo' /></div></div>
         </div>
             </div>
+    </div>
+          
           <hr/>
             <div className='container text-center mt-3'>
                 <p className='fw-bold'>©2023 Toyota Astra Motor</p>
