@@ -3,7 +3,7 @@ import React from 'react';
 function Header() {
   return (
     <div>
-          <nav className="nav-1 navbar navbar-expand-lg pt-3">
+          <nav className="nav-1 navbar navbar-expand-lg pt-3" id='navbar'>
       <div className="container">
         <a className="navbar-brand" href="#"><img src="assets/logo.png" alt='logo' /></a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

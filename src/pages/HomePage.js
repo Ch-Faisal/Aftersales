@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <div>
       <Header></Header>
-      <div className='section-1'>
+      <div className='section-1' id='section-1'>
         <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner">
             <div className="carousel-item active">
@@ -20,13 +20,18 @@ function HomePage() {
             </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
+                <span aria-hidden="true">
+                    <i class="fas fa-chevron-left"></i> 
+                </span>
+                <span className="visually-hidden">Previous</span>
             </button>
             <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
+                <span aria-hidden="true">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+                <span className="visually-hidden">Next</span>
             </button>
+
         </div>
       </div>
       <div className='section-2 mt-5'>
@@ -73,12 +78,22 @@ function HomePage() {
             </div>
         </div>
       </div>
+      <div className='container'>
+        <h4 className='terbaik'>Rekomendasi Terbaik untuk Kendaraanmu</h4>
+        <div className="row justify-content-center Terbaik ">
+            <div className="input-group mb-3 w-75 ">
+            <input type="text" className="form-control" placeholder="All New Alphard" aria-label="Recipient's username" aria-describedby="button-addon2" />
+            <button className="btn btn-outline-secondary" type="button" id="button-addon2"><span className='arrow'><img src='assets/SVG.png'  alt='arrow'/></span></button>
+            <button className='btn Servis px-3 mx-3'>Lihat Servis</button>
+            </div>
+        </div>
+        </div>
       <div className='section-3 mt-5'>
   <div className='container'>
     <h5 className='fw-bold'>Hanya Bengkel Resmi Toyota yang mengerti </h5>
     <h5 className='fw-bold'> kendaraan Toyota Anda  </h5>
     <p className='mb-5'>Telusuri penawaran terbaik di bengkel Resmi kami!</p>
-    <div className="row">
+    <div className="row mx-5">
       <div className="col-md-4">
         <div className="card" style={{width: "18rem"}}>
           <img src="assets/services.png" className="card-img-top" alt="..."/>
@@ -107,7 +122,7 @@ function HomePage() {
         </div>
       </div>
     </div>
-    <div className="row mt-5">
+    <div className="row mt-5 mx-5">
       <div className="col-md-4">
         <div className="card" style={{width: "18rem"}}>
           <img src="assets/T-care.png" className="card-img-top" alt="t-care-img"/>
@@ -147,7 +162,6 @@ function HomePage() {
         <img src="assets/tmo.png"  alt="t-care-img"/>
         </div>
     </div>
-    <hr/>
   </div>
 </div>
 

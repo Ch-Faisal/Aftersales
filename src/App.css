@@ -1,18 +1,59 @@
-@font-face { font-family: CustomToyota; src: url('../public/assets/fonts/Toyota-Font/avenirltstd-black.otf'); }
+@font-face { font-family: CustomToyota; src: url('../public/assets/fonts/Toyota-Font/Toyota Type.ttf'); }
 /* *{
   font-family: 'CustomToyota';
 } */
-h2, h1 , h3 {
+h1 {
   font-family: "CustomToyota";
-font-size: 2.25rem;
+font-size: 3rem !important;
 font-style: normal;
-font-weight: 600; 
+font-weight: 600 !important; 
+}
+b{
+  font-family: "CustomToyota";
+  font-size: 1.5rem !important;
+font-style: normal !important;
+font-weight: 600 !important; 
 }
 p{
   font-family: "CustomToyota";
-font-size: 1.5rem;
+  font-size: 1.125rem; 
 font-style: normal;
 font-weight: 400; 
+}
+.custom-font-light-one-rem{
+  font-family: "CustomToyota";
+font-size: 1rem;
+font-style: normal;
+font-weight: 300; 
+color: #161A1D; 
+}
+/* media query for font in mobile devices */
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-family: "CustomToyota";
+  font-size: 1.25rem !important;
+  font-style: normal;
+  font-weight: 600 !important; 
+  }
+  b{
+    font-family: "CustomToyota";
+    font-size: 0.875rem !important;
+  font-style: normal !important;
+  font-weight: 600 !important; 
+  }
+  p{
+    font-family: "CustomToyota";
+    font-size: 0.875rem; 
+  font-style: normal;
+  font-weight: 400; 
+  }
+  .custom-font-light-one-rem{
+    font-family: "CustomToyota";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 300; 
+  color: #161A1D; 
+  }
 }
 .App {
   text-align: center;
@@ -53,8 +94,18 @@ font-weight: 400;
   font-size: 12px;
   font-weight: 600;
 }
-.nav-1 .nav-item .nav-link{
+.navbar .nav-item .nav-link:hover{
+background-color: #fff;
+color: #000;
+cursor: pointer;
+}
+.nav-1 .nav-item .nav-link {
   color: rgba(0, 0, 0, 1) !important;
+  font-weight: lighter !important;
+}
+.nav-1 .nav-item .nav-link:hover {
+  color: rgba(0, 0, 0, 1) !important;
+  font-weight: 600 !important;
 }
 .nav-1{
   background-color: #fff;
@@ -141,4 +192,48 @@ font-weight: 400;
 }
 .custom-list-style-number{
   list-style: linear-gradient;
+}
+<<<<<<< HEAD
+.back-to-top{
+  cursor: pointer;
+}
+.back-to-top a{
+  text-decoration: none !important;
+  color: #282c34 !important;
+}
+.terbaik{
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 8% !important;
+  margin-bottom: 3% !important;
+  font-family: "CustomToyota";
+}
+.Servis{
+  color: #fff !important;
+  background-color: rgba(0, 0, 0, 1) !important;
+  border-radius: 12px !important;
+  font-size: 16px !important;
+  font-family: "CustomToyota";
+}
+.Terbaik input, .Terbaik #button-addon2 {
+  border: 1px solid rgba(0, 0, 0, 1);
+  border-radius: 4px;
+  box-shadow: none !important;
+  outline: none !important;
+  border: 1px solid rgba(0, 0, 0, 1) !important;
+  font-family: "CustomToyota";
+}
+.Terbaik input:focus{
+  border: 1px solid rgba(0, 0, 0, 1) !important;
+  font-family: "CustomToyota";
+}
+.fa-chevron-right,.fa-chevron-left{
+  color: #fff !important;
+  background-color: #000;
+  padding: 10px;
+  border-radius: 50%;
+}
+.carousel-inner .carousel-item img {
+  height: 600px; 
+  object-fit: cover; 
 }

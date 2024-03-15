@@ -3,6 +3,9 @@ import React from 'react';
 function Footer() {
   return (
         <div className="bg-white container footer">
+    <hr/>
+    <div className='back-to-top'> <a href='#navbar'>Back to top </a> <span><img src='assets/SVG.png'  alt='arrow'/></span></div>
+    <hr/>
            <div class="row mt-5">
         <div class="col-6 col-md">
             <h5 className='fw-bold text-start'>Beyond Solution</h5>
