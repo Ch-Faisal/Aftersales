@@ -136,57 +136,57 @@ selalu optimal</span></p>
       <i id="left" className="fa-solid fa-angle-left" onClick={handleLeftClick}></i>
       <ul className="carousel" ref={carouselRef}>
         <li className="card">
-          <div className="img"><img src="/assets/image.png" alt="img" draggable="false" /></div>
+          <div className="img"><img src="assets/image.png" alt="img" draggable="false" /></div>
           <div className='text-start'>
           <h3>Oil Filter</h3>
           <p>Oil Filter, didesain khusus dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 3 line up untuk model Old Kijang, Avanza, Rush, Agya, dan Calya.</p>
           <div className='mt-5'>
           <a href='#'>Keunggulan</a>
-          <img className='ps-2' src='/assets/CROSS.svg'/>
+          <img className='ps-2' src='assets/CROSS.svg'/>
           </div>
           </div>
         </li>
         <li className="card">
-          <div className="img"><img src="/assets/image-2.png" alt="img" draggable="false" /></div>
+          <div className="img"><img src="assets/image-2.png" alt="img" draggable="false" /></div>
           <div className='text-start'>
           <h3>Air Filter</h3>
           <p>Air Filter, didesain khusus dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 6 line up untuk model Old Kijang, Innova, Avanza, Agya dan Calya.</p>
           <div className='mt-5'>
           <a href='#'>Keunggulan</a>
-          <img className='ps-2' src='/assets/CROSS.svg'/>
+          <img className='ps-2' src='assets/CROSS.svg'/>
           </div>
           </div>
         </li>
         <li className="card">
-          <div className="img"><img src="/assets/image-3.png" alt="img" draggable="false" /></div>
+          <div className="img"><img src="assets/image-3.png" alt="img" draggable="false" /></div>
           <div className='text-start'>
           <h3>Brake Pad & Brake Shoe</h3>
           <p>Brake pad & brake shoe, didesain khusus dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 13 line up untuk model Old Kijang, Innova, Avanza, dan Calya.</p>
           <div className='mt-5'>
           <a href='#'>Keunggulan</a>
-          <img className='ps-2' src='/assets/CROSS.svg'/>
+          <img className='ps-2' src='assets/CROSS.svg'/>
           </div>
           </div>
         </li>
         <li className="card">
-          <div className="img"><img src="/assets/image.png" alt="img" draggable="false" /></div>
+          <div className="img"><img src="assets/image.png" alt="img" draggable="false" /></div>
           <div className='text-start'>
           <h3>Oil Filter</h3>
           <p>Oil Filter, didesain khusus dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 3 line up untuk model Old Kijang, Avanza, Rush, Agya, dan Calya.</p>
           <div className='mt-5'>
           <a href='#'>Keunggulan</a>
-          <img className='ps-2' src='/assets/CROSS.svg'/>
+          <img className='ps-2' src='assets/CROSS.svg'/>
           </div>
           </div>
         </li>
         <li className="card">
-          <div className="img"><img src="/assets/image-3.png" alt="img" draggable="false" /></div>
+          <div className="img"><img src="assets/image-3.png" alt="img" draggable="false" /></div>
           <div className='text-start'>
           <h3>Brake Pad & Brake Shoe</h3>
           <p>Brake pad & brake shoe, didesain khusus dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 13 line up untuk model Old Kijang, Innova, Avanza, dan Calya.</p>
           <div className='mt-5'>
           <a href='#'>Keunggulan</a>
-          <img className='ps-2' src='/assets/CROSS.svg'/>
+          <img className='ps-2' src='assets/CROSS.svg'/>
           </div>
           </div>
         </li>
