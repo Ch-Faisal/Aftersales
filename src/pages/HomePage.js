@@ -51,7 +51,7 @@ function HomePage() {
         <div className='container'>
         <div className='section-2-content px-5 mb-4'>
             <div className='main-heading text-center'>
-                    <h2 className='fw-bold'>Meningkatkan Kenyamanan Para Customer dengan Aftersales</h2>
+                    <h2 className='fw-bold'>Meningkatkan Kenyamanan Para Customer dengan Aftersales Test</h2>
                 </div>
                 <div className='section-text'>
                     <p>After Sales Service Toyota dengan kualitas servis terjamin karena kendaraan Anda akan ditangani oleh teknisi yang berpengalaman dan bersertifikat. Layanan di bengkel resmi Toyota menggunakan Toyota Genuine Parts yaitu suku cadang resmi dari Toyota dengan mengedepankan kualitas dan telah dirancang sesuai dengan spesifikasi dan kebutuhan kendaraan kesayangan Anda. Jaringan luas dengan 297 bengkel perawatan dan perbaikan serta 80 bengkel Body & Paint yang tersebar di seluruh penjuru Nusantara.</p>
