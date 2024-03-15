@@ -29,7 +29,7 @@
  {
     border-bottom: 2px solid #D8D8D8 !important;
  }
- .nav-fill .nav-item .nav-link,
+ .custom-nav-fill .nav-item .nav-link,
  .nav-justified .nav-item .nav-link {
    border: none !important;
    width: 100%;
@@ -51,11 +51,10 @@
     color: #fff;
     font-weight: 600;
   }
-  .nav-link {
+  /* .nav-link {
     height: 77px;
     font-size: 13px;
-    /* background-color: #fff; */
-  }
+  } */
   .nav-link:hover {
     border: none !important;
     border-bottom: 1px solid #D8D8D8 !important;

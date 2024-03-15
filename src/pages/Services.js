@@ -24,13 +24,13 @@ const Services = () => {
               <div className="col-md-12">
                 <div className="bg-white">
                   <ul
-                    className="nav nav-tabs nav-fill"
+                    className="nav nav-tabs custom-nav-tabs nav-fill custom-nav-fill"
                     id="myTab"
                     role="tablist"
                   >
-                    <li className="nav-item" role="presentation">
+                    <li className="nav-item custom-nav-item" role="presentation">
                       <button
-                        className="nav-link active"
+                        className="nav-link custom-nav-item active"
                         id="faq_tab_1-tab"
                         data-bs-toggle="tab"
                         data-bs-target="#faq_tab_1"
@@ -44,9 +44,9 @@ const Services = () => {
                         </div>
                       </button>
                     </li>
-                    <li className="nav-item" role="presentation">
+                    <li className="nav-item custom-nav-item" role="presentation">
                       <button
-                        className="nav-link"
+                        className="nav-link custom-nav-item"
                         id="faq_tab_2-tab"
                         data-bs-toggle="tab"
                         data-bs-target="#faq_tab_2"
@@ -60,9 +60,9 @@ const Services = () => {
                         </div>
                       </button>
                     </li>
-                    <li className="nav-item" role="presentation">
+                    <li className="nav-item custom-nav-item" role="presentation">
                       <button
-                        className="nav-link"
+                        className="nav-link custom-nav-item"
                         id="faq_tab_3-tab"
                         data-bs-toggle="tab"
                         data-bs-target="#faq_tab_3"
@@ -76,9 +76,9 @@ const Services = () => {
                         </div>
                       </button>
                     </li>
-                    <li className="nav-item" role="presentation">
+                    <li className="nav-item custom-nav-item" role="presentation">
                       <button
-                        className="nav-link"
+                        className="nav-link custom-nav-item"
                         id="faq_tab_4-tab"
                         data-bs-toggle="tab"
                         data-bs-target="#faq_tab_4"
@@ -217,215 +217,44 @@ const Services = () => {
                       role="tabpanel"
                       aria-labelledby="faq_tab_3-tab"
                     >
-                      <div class="accordions mt-5" id="accordionExample">
-              <div class="accordion-item back_color_set mb-2 text-white">
-                <h2 class="accordion-header">
-                  <button
-                    class="accordion-button back_color_set text-white"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseSix"
-                    aria-expanded="true"
-                    aria-controls="collapseSix"
-                  >
-                    Question: Do you just write blog posts?
-                  </button>
-                </h2>
-                <div
-                  id="collapseSix"
-                  class="accordion-collapse collapse show"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div class="accordion-body">
-                    <p class="iner_contect">
-                      Haha no, our goal is to rank you on the top of the first
-                      page of Google. Arbitrarily writing blog posts and rolling
-                      the dice on your content won’t achieve that.
-                      <br />
-                    </p>
-                    <ul class="list-group-numbered iner_contect">
-                      <li>
-                        We expertly research over 800 high demand low supply
-                        keywords to write about
-                      </li>
-                      <li>Provide 10 - 30 high quality backlinks</li>
-                      <li>
-                        Manually optimize each post for over 350 variables
-                      </li>
-                      <li>
-                        Do a competitor and SERP analysis on each keyword to
-                        further optimize your post
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2 back_color_set">
-                <h2 class="accordion-header back_color_set">
-                  <button
-                    class="accordion-button collapsed back_color_set text-white"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="false"
-                    aria-controls="collapseOne"
-                  >
-                    Question: Do I get all my blog posts at once?
-                  </button>
-                </h2>
-                <div
-                  id="collapseOne"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div class="accordion-body">
-                    <p class="iner_contect">
-                      We will get industry and company insights from you, and
-                      then send you a questionnaire. Once you fill that out:
-                      <br />
-                    </p>
-                    <ul class="list-group-numbered iner_contect">
-                      <li>
-                        We will get industry and company insights from you, and
-                        then send you a questionnaire. Once you fill that out:
-                      </li>
-                      <li>
-                        We’ll conduct keyword mapping to find high demand, low
-                        supply topics.
-                      </li>
-                      <li>
-                        Conduct a SERP (Search Engine Results Page) analysis per
-                        keyword we’re writing about. Basically a competitor
-                        analysis
-                      </li>
-                      <li>
-                        Use that competitor analysis to write a better piece of
-                        content than the top ranking articles.
-                      </li>
-                      <li>
-                        Publish your post and drive backlinks to your website
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2 back_color_set">
-                <h2 class="accordion-header back_color_set">
-                  <button
-                    class="accordion-button collapsed back_color_set text-white"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
-                  >
-                    Question: What do I have to do for each post?
-                  </button>
-                </h2>
-                <div
-                  id="collapseThree"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div class="accordion-body">
-                    <p class="iner_contect">
-                      Put your feet on your desk and relax. We’ll take care of
-                      everything. All you need to do is upload them, which we
-                      can handle too for a fee.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2 back_color_set">
-                <h2 class="accordion-header back_color_set">
-                  <button
-                    class="accordion-button collapsed back_color_set text-white"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseFour"
-                    aria-expanded="false"
-                    aria-controls="collapseFour"
-                  >
-                    Question: Do I get all my blog posts at once?
-                  </button>
-                </h2>
-                <div
-                  id="collapseFour"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div class="accordion-body">
-                    <p class="iner_contect">
-                      Yes, we don’t believe in slowly dripping out your
-                      solution. We will work at lightning speeds to get all your
-                      content to you ASAP.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2 back_color_set">
-                <h2 class="accordion-header back_color_set">
-                  <button
-                    class="accordion-button collapsed back_color_set text-white"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseFive"
-                    aria-expanded="false"
-                    aria-controls="collapseFive"
-                  >
-                    Question: How are you making sure the blog posts are
-                    relevant content?
-                  </button>
-                </h2>
-                <div
-                  id="collapseFive"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div class="accordion-body">
-                    <p class="iner_contect">
-                      The topics are derived directly from your closest
-                      competitors online. And before you say it, yes you do have
-                      competitors online otherwise you’d already be on the first
-                      page of Google for thousands of targeted keywords and not
-                      reading this page.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2 back_color_set">
-                <h2 class="accordion-header back_color_set">
-                  <button
-                    class="accordion-button collapsed back_color_set text-white"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo"
-                  >
-                    Question: How soon can we expect results?
-                  </button>
-                </h2>
-                <div
-                  id="collapseTwo"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div class="accordion-body">
-                    <p class="iner_contect">
-                      Clicks and impressions to your site generally start going
-                      up within a month of posting your content. Although it may
-                      take 3-6 months to mature completely.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+                      <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in felis dignissim, imperdiet nulla vitae, condimentum nulla. Ut scelerisque a nisl sit amet facilisis. Etiam blandit iaculis tellus, vitae condimentum leo congue a. Vivamus in vehicula massa. Pellentesque libero libero, commodo lacinia volutpat non, tincidunt at lectus. Maecenas ipsum turpis, viverra vitae lacus eu, fringilla ultricies erat. Aenean hendrerit maximus sodales.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Quisque sapien augue, ornare id leo a, tristique elementum justo. Praesent non nulla sagittis, sollicitudin justo id, varius erat. Nunc sed pharetra nisl. Cras et suscipit felis, in lacinia sapien. Integer venenatis sagittis massa, eu eleifend nibh venenatis in. Pellentesque a aliquet urna. Curabitur tortor metus, ultrices sed mi at, sagittis imperdiet turpis. Suspendisse nec luctus nunc. Fusce in arcu quis lacus mollis ultrices.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Praesent nec ipsum scelerisque dui condimentum pellentesque eu at lectus. Vivamus purus purus, bibendum in vestibulum ac, pharetra sit amet sapien. Nunc luctus, orci vel luctus cursus, nibh nisl ullamcorper ipsum, eu malesuada arcu augue id nisi. In auctor mi ac ante tincidunt tincidunt.
+      </div>
+    </div>
+  </div>
+</div>
                     </div>
                     <div
                       className="tab-pane fade"
