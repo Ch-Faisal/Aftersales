@@ -2,18 +2,59 @@
 /* *{
   font-family: 'CustomToyota';
 } */
-h2, h1 , h3 {
+h1 {
   font-family: "CustomToyota";
-font-size: 2.25rem;
+font-size: 3rem !important;
 font-style: normal;
-font-weight: 600; 
+font-weight: 600 !important; 
 }
-/* p{
+b{
+  font-family: "CustomToyota";
+  font-size: 1.5rem !important;
+font-style: normal !important;
+font-weight: 600 !important; 
+}
+p{
   font-family: "CustomToyota";
   font-size: 1.125rem; 
 font-style: normal;
 font-weight: 400; 
-} */
+}
+.custom-font-light-one-rem{
+  font-family: "CustomToyota";
+font-size: 1rem;
+font-style: normal;
+font-weight: 300; 
+color: #161A1D; 
+}
+/* media query for font in mobile devices */
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-family: "CustomToyota";
+  font-size: 1.25rem !important;
+  font-style: normal;
+  font-weight: 600 !important; 
+  }
+  b{
+    font-family: "CustomToyota";
+    font-size: 0.875rem !important;
+  font-style: normal !important;
+  font-weight: 600 !important; 
+  }
+  p{
+    font-family: "CustomToyota";
+    font-size: 0.875rem; 
+  font-style: normal;
+  font-weight: 400; 
+  }
+  .custom-font-light-one-rem{
+    font-family: "CustomToyota";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 300; 
+  color: #161A1D; 
+  }
+}
 .App {
   text-align: center;
 }
@@ -50,9 +91,8 @@ font-weight: 400;
 .navbar .nav-item .nav-link{
   color: rgba(255, 255, 255, 1);
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
-  font-family: "CustomToyota";
 }
 .navbar .nav-item .nav-link:hover{
 background-color: #fff;
@@ -72,8 +112,6 @@ cursor: pointer;
 }
 .navbar-brand{
   color: rgba(255, 255, 255, 1) !important;
-  font-size: 24px;
-  font-family: "CustomToyota";
 }
 
 @media screen and (max-width: 992px) {
@@ -89,28 +127,21 @@ cursor: pointer;
 }
 .footer h5{
   font-size: 13px !important;
-  font-family: "CustomToyota";
 }
 .footer li{
   font-size: 12px !important;
-  font-family: "CustomToyota";
 }
 .footer p{
   font-size:12px !important;
-  font-family: "CustomToyota";
 }
 .btn-outline-dark{
   border-radius: 35px !important;
 }
 .section-3 h5{
   font-size: 36px;
-  font-family: "CustomToyota";
 }
 .section-3 p{
-  font-size: 18px;
-  color: rgba(22, 26, 29, 1);
-  font-weight: 400;
-  font-family: "CustomToyota";
+  font-size: 24px;
 }
 .section-2 .wrapper{
   padding: 50px;
@@ -119,12 +150,10 @@ cursor: pointer;
 }
 .section-2-content .main-heading h2{
   font-size: 36px;
-  font-family: "CustomToyota";
 }
 .section-2-content p{
   color: #282c34;
   font-size: 16px;
-  font-family: "CustomToyota";
 }
 .section-2-content{
   background-color: rgb(250, 250, 250);
@@ -132,7 +161,6 @@ cursor: pointer;
 }
 .wrapper .title h6{
   font-size: 24px;
-  font-family: "CustomToyota";
 }
 
 @keyframes App-logo-spin {
@@ -165,6 +193,7 @@ cursor: pointer;
 .custom-list-style-number{
   list-style: linear-gradient;
 }
+<<<<<<< HEAD
 .back-to-top{
   cursor: pointer;
 }
@@ -208,4 +237,3 @@ cursor: pointer;
   height: 600px; 
   object-fit: cover; 
 }
-
