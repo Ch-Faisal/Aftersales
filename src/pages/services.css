@@ -1,0 +1,88 @@
+/* this for the servies page css */
+.btn.btn-dark {
+    border-radius: 13px;
+  }
+   .Banner_image
+   {
+   display: flex;
+   height: 519px;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;
+   background-image: url(/public/assets/Rectangle4.png);
+   background-position: center;
+   background-size: cover;
+   }
+   .paraTag
+   {
+    color: #161A1D;
+   text-align: center;
+   line-height: 120%; /* 28.8px */
+   }
+   .paraTag1
+   {
+     color: #D71921;
+   }
+   
+ /* //this for the Navs and Tabs  */
+ .nav-tabs
+ {
+    border-bottom: 2px solid #D8D8D8 !important;
+ }
+ .nav-fill .nav-item .nav-link,
+ .nav-justified .nav-item .nav-link {
+   border: none !important;
+   width: 100%;
+   color: #000;
+ }
+.nav-tabs .nav-link.active {
+    border: none !important;
+    /* background-color: #fff !important; */
+    color: #EB0A1E !important;
+    border-bottom: 4px solid #EB0A1E !important;
+  }
+  .nav-tabs .nav-link {
+    border-top-left-radius: 0rem !important;
+    border-top-right-radius: 0rem !important;
+  }
+  .nav-tabs .nav-link.active {
+    border-color: none !important ;
+    /* background-color: #60D0FF; */
+    color: #fff;
+    font-weight: 600;
+  }
+  .nav-link {
+    height: 77px;
+    font-size: 13px;
+    /* background-color: #fff; */
+  }
+  .nav-link:hover {
+    border: none !important;
+    border-bottom: 1px solid #D8D8D8 !important;
+  }
+  .nav-link:focus {
+    outline: none;
+  }
+  .tab-pane {
+    height: auto;
+  }
+  .form-control {
+    height: 45px;
+    position: relative;
+  }
+  .form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border: none !important;
+  }
+  .flight-where-from:after {
+    position: absolute;
+    content: '23';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  .scroll-y {
+    overflow-y: scroll;
+    height: 300px;
+  }
