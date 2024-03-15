@@ -142,3 +142,46 @@ font-weight: 400;
 .custom-list-style-number{
   list-style: linear-gradient;
 }
+.heading{
+  color: #161A1D;
+text-align: center;
+font-family: "Toyota Type";
+font-size: 36px;
+font-style: normal;
+font-weight: 600;
+line-height: 120%; /* 43.2px */ 
+}
+.inner-text{
+  color: #D71921; 
+}
+.title{
+  text-transform: uppercase; 
+  color: #D71921; 
+}
+#main-slider-container{
+  width: 100% !important;
+  height:auto !important;
+}
+.slider-card{
+  height: auto !important;
+  box-shadow: 0px 0px 0px 0px !important;
+  border-radius: 0px !important;
+}
+.slider-card-image{
+  background-color: white !important;
+  height:280px !important;
+  /* height: auto !important; */
+}
+.slider-card-title{
+  color: #262626;
+  text-align: left;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: 120%
+}
+.slider-card-description{
+  white-space: wrap !important;
+  opacity: 1 !important;
+  text-align: start !important;
+}
