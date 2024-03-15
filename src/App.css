@@ -131,9 +131,10 @@ border-radius: 30px !important;
 .footer h5{
   font-size: 13px !important;
 }
-.footer li{
-  font-size: 12px !important;
+.footer li a {
+  font-size: 10px !important;
 }
+
 .footer p{
   font-size:12px !important;
 }
