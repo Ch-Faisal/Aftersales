@@ -55,7 +55,7 @@
     height: 77px;
     font-size: 13px;
   } */
-  .nav-link:hover {
+  .custom-nav-link:hover {
     border: none !important;
     border-bottom: 1px solid #D8D8D8 !important;
   }
@@ -85,3 +85,33 @@
     overflow-y: scroll;
     height: 300px;
   }
+
+  .accordion-button::after {
+    font-weight: 900;
+    background-color: #000;
+    border-radius: 18px;
+    padding:5px 10px 5px 10px;
+    background-image: none !important;
+    content: "+";
+    font-size: 1rem;
+    color: white;
+    font-size: 1.5rem !important;
+    margin-bottom: 10px;
+}
+.accordion-button:not(.collapsed)::after {
+    font-weight: 600;
+    padding:2px 13px 5px 13px;
+    content: "-";
+    transform: none !important;
+}
+.back_color_set
+{
+  border-bottom:1px solid #D8D8D8 ;
+  padding: 10px;
+}
+.custom_font
+{
+    font-size: 36px; 
+    font-weight: 600;
+    padding-right: 10px;
+}
