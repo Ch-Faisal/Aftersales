@@ -98,14 +98,14 @@ color: #161A1D;
 background-color: #fff;
 color: #000;
 cursor: pointer;
+border-radius: 30px !important;
 }
 .nav-1 .nav-item .nav-link {
   color: rgba(0, 0, 0, 1) !important;
   font-weight: lighter !important;
 }
 .nav-1 .nav-item .nav-link:hover {
-  color: rgba(0, 0, 0, 1) !important;
-  font-weight: 600 !important;
+  color: red !important;
 }
 .nav-1{
   background-color: #fff;
@@ -121,6 +121,9 @@ cursor: pointer;
   .section-3 h5{
     font-size: 36px;
   }
+}
+.section-3 .title{
+  margin-top: 10% !important;
 }
 .list-unstyled.text-dark.text-start li {
   white-space: nowrap;
@@ -139,9 +142,12 @@ cursor: pointer;
 }
 .section-3 h5{
   font-size: 36px;
+  font-family: "CustomToyota";
 }
 .section-3 p{
   font-size: 24px;
+  font-family: "CustomToyota";
+  margin-bottom: 6% !important;
 }
 .section-2 .wrapper{
   padding: 50px;
@@ -193,7 +199,11 @@ cursor: pointer;
 .custom-list-style-number{
   list-style: linear-gradient;
 }
-<<<<<<< HEAD
+.card{
+  border-radius: 0% !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+}
 .back-to-top{
   cursor: pointer;
 }
@@ -213,9 +223,11 @@ cursor: pointer;
   background-color: rgba(0, 0, 0, 1) !important;
   border-radius: 12px !important;
   font-size: 16px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
   font-family: "CustomToyota";
 }
-.Terbaik input, .Terbaik #button-addon2 {
+.Terbaik select, .Terbaik #button-addon2 {
   border: 1px solid rgba(0, 0, 0, 1);
   border-radius: 4px;
   box-shadow: none !important;
@@ -223,17 +235,63 @@ cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 1) !important;
   font-family: "CustomToyota";
 }
+.carousel-indicators [data-bs-target] {
+  background-color: #fff;
+  border: 2px solid #fff; /* Border color */
+  border-radius: 50%; 
+  width: 10px !important;
+  height: 10px !important;
+}
+.carousel-indicators {
+  position: absolute;
+  bottom: 10% !important;
+  transform: translateY(-50%);
+  left: 50% !important; /* Adjust as needed */
+  list-style: none;
+  margin-left: 38% !important;
+  margin-right: 0 !important;
+}
+.carousel-control-next,.carousel-control-prev{
+  opacity: 1 !important;
+}
+
+
+.carousel-indicators li {
+  display: inline-block;
+  width: 10px; /* Diameter of the circle */
+  height: 10px;
+  margin: 0 5px; /* Adjust the spacing between circles */
+  cursor: pointer;
+  background-color: #000;
+  border: 2px solid #fff; /* Border color */
+  border-radius: 50%; /* Make it circular */
+}
+
+.carousel-indicators .active {
+  background-color: red !important; /* Active indicator color */
+}
 .Terbaik input:focus{
   border: 1px solid rgba(0, 0, 0, 1) !important;
   font-family: "CustomToyota";
 }
 .fa-chevron-right,.fa-chevron-left{
   color: #fff !important;
-  background-color: #000;
+  background-color: #000 !important;
   padding: 10px;
   border-radius: 50%;
+}
+.fa-chevron-right:hover,.fa-chevron-left:hover{
+  background-color: red !important;
 }
 .carousel-inner .carousel-item img {
   height: 600px; 
   object-fit: cover; 
+}
+.list{
+  margin-top: 5% !important;
+}
+.carousel-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

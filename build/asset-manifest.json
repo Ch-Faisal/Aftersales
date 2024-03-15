@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.4412c6c5.css",
-    "main.js": "/static/js/main.d47bffbc.js",
+    "main.css": "/static/css/main.88da7f18.css",
+    "main.js": "/static/js/main.3df9f473.js",
     "static/js/453.3e3d4d89.chunk.js": "/static/js/453.3e3d4d89.chunk.js",
     "static/media/Toyota Type.ttf": "/static/media/Toyota Type.4a1db136bdafd5b67699.ttf",
     "index.html": "/index.html",
-    "main.4412c6c5.css.map": "/static/css/main.4412c6c5.css.map",
-    "main.d47bffbc.js.map": "/static/js/main.d47bffbc.js.map",
+    "main.88da7f18.css.map": "/static/css/main.88da7f18.css.map",
+    "main.3df9f473.js.map": "/static/js/main.3df9f473.js.map",
     "453.3e3d4d89.chunk.js.map": "/static/js/453.3e3d4d89.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4412c6c5.css",
-    "static/js/main.d47bffbc.js"
+    "static/css/main.88da7f18.css",
+    "static/js/main.3df9f473.js"
   ]
 }
