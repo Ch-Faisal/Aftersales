@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
   return (
         <div className="bg-white container footer">
-            <hr/>
+    <hr/>
     <div className='back-to-top'> <a href='#navbar'>Back to top </a> <span><img src='assets/SVG.png'  alt='arrow'/></span></div>
     <hr/>
            <div class="row mt-5">

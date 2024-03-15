@@ -54,8 +54,18 @@ font-weight: 400;
   font-weight: 600;
   font-family: "CustomToyota";
 }
-.nav-1 .nav-item .nav-link{
+.navbar .nav-item .nav-link:hover{
+background-color: #fff;
+color: #000;
+cursor: pointer;
+}
+.nav-1 .nav-item .nav-link {
   color: rgba(0, 0, 0, 1) !important;
+  font-weight: lighter !important;
+}
+.nav-1 .nav-item .nav-link:hover {
+  color: rgba(0, 0, 0, 1) !important;
+  font-weight: 600 !important;
 }
 .nav-1{
   background-color: #fff;
@@ -188,3 +198,14 @@ font-weight: 400;
   border: 1px solid rgba(0, 0, 0, 1) !important;
   font-family: "CustomToyota";
 }
+.fa-chevron-right,.fa-chevron-left{
+  color: #fff !important;
+  background-color: #000;
+  padding: 10px;
+  border-radius: 50%;
+}
+.carousel-inner .carousel-item img {
+  height: 600px; 
+  object-fit: cover; 
+}
+
