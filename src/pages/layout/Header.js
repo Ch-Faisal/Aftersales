@@ -89,7 +89,7 @@ function Header() {
       <div className="container">
         <a className="navbar-brand" href="#">Toyota After Sales</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav2" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
+          <span><img src='assets/Down.png'/></span>
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav2">
           <ul className="navbar-nav">

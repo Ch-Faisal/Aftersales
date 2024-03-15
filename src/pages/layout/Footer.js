@@ -67,7 +67,7 @@ function Footer() {
             <div className='d-flex text-start'>
               <div className='mx-1'><img src="assets/whatsapp.png" alt='logo' /></div>
               <div className='mx-1'><img src="assets/Instagram.png" alt='logo' /></div>
-              <div className='mx-1'><img src="assets/facebook.png" alt='logo' /></div>
+              <div className='mx-1'><img src="assets/Facebook.png" alt='logo' /></div>
               <div className='mx-1'><img src="assets/Tiktok.png" alt='logo' /></div>
               <div className='mx-1'><img src="assets/YouTube.png" alt='logo' /></div>
               <div className='mx-1'><img src="assets/Twitter.png" alt='logo' /></div>

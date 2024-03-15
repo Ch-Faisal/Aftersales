@@ -6,8 +6,8 @@ function HomePage() {
   return (
     <div>
       <Header></Header>
-      <div className='section-1' id='section-1'>
-      <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
+      <div className='section-1 ' id='section-1'>
+      <div id="carouselExample" className="carousel slide d-none d-lg-block" data-bs-ride="carousel">
       <div className="carousel-inner">
         <div className="carousel-item active">
           <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 1" />
@@ -43,7 +43,9 @@ function HomePage() {
         <li data-bs-target="#carouselExample" data-bs-slide-to="3"></li>
       </ol>
     </div>
-
+    <div className='d-block d-lg-none'>
+        <img src='assets/showcase.png' alt='showcase' className='img-fluid w-100 '/>
+    </div>
       </div>
       <div className='section-2 mt-5'>
         <div className='container'>
@@ -110,9 +112,9 @@ function HomePage() {
     <h5 className='fw-bold title'>Hanya Bengkel Resmi Toyota yang mengerti </h5>
     <h5 className='fw-bold'> kendaraan Toyota Anda  </h5>
     <p className='mb-5'>Telusuri penawaran terbaik di bengkel Resmi kami!</p>
-    <div className="row mx-5">
-      <div className="col-md-4">
-        <div className="card" style={{width: "18rem"}}>
+    <div className="row">
+      <div className="col-sm-6 col-lg-4">
+        <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
           <img src="assets/services.png" className="card-img-top" alt="..."/>
           <div className="card-body">
             <h4 className="card-title fw-bold">Services</h4>
@@ -120,8 +122,8 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className="col-md-4">
-        <div className="card" style={{width: "18rem"}}>
+      <div className="col-sm-6 col-lg-4">
+        <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
           <img src="assets/products-img.png" className="card-img-top" alt="..."/>
           <div className="card-body">
             <h4 className="card-title fw-bold">Products</h4>
@@ -129,8 +131,8 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className="col-md-4">
-        <div className="card" style={{width: "18rem"}}>
+      <div className="col-sm-6 col-lg-4">
+        <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
           <img src="assets/warrenty-img.png" className="card-img-top" alt="..."/>
           <div className="card-body">
             <h4 className="card-title fw-bold">Warrenty</h4>
@@ -139,9 +141,9 @@ function HomePage() {
         </div>
       </div>
     </div>
-    <div className="row mt-5 mx-5">
-      <div className="col-md-4">
-        <div className="card" style={{width: "18rem"}}>
+    <div className="row mt-5">
+      <div className="col-sm-6 col-lg-4">
+        <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
           <img src="assets/T-care.png" className="card-img-top" alt="t-care-img"/>
           <div className="card-body">
             <h5 className="card-title fw-bold">T-Care</h5>
@@ -149,8 +151,8 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className="col-md-4">
-        <div className="card" style={{width: "18rem"}}>
+      <div className="col-sm-6 col-lg-4">
+        <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
           <img src="assets/News-event.png" className="card-img-top" alt="news-event-img"/>
           <div className="card-body">
             <h5 className="card-title fw-bold">News-Event</h5>
@@ -158,8 +160,8 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className="col-md-4">
-        <div className="card" style={{width: "18rem"}}>
+      <div className="col-sm-6 col-lg-4">
+        <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
           <img src="assets/faq.png" className="card-img-top" alt="faq-img"/>
           <div className="card-body">
             <h5 className="card-title fw-bold">FAQ</h5>

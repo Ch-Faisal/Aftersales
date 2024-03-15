@@ -188,6 +188,10 @@ border-radius: 30px !important;
   .logos img{
     width: 100px !important;
   }
+  .Terbaik select{
+    font-size: 13px !important;
+    margin-top: 8px !important;
+  }
 }
 
 .custom-bg-gray-dark{
