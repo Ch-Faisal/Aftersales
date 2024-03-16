@@ -1,4 +1,11 @@
 /* this for the servies page css */
+body {
+  margin: 0;
+  padding: 0;
+}
+.container-fluid {
+  overflow-x: hidden; /* Hides horizontal overflow */
+}
 .btn.btn-dark {
     border-radius: 13px;
   }
@@ -13,6 +20,23 @@
    background-position: center;
    background-size: cover;
    }
+   @media only screen and (min-width: 990px) {
+    .custom_height
+    {
+      height: 100% !important;
+    }
+   }
+   @media only screen and (max-width: 600px) {
+    .Banner_image
+    {height: 105.422px;
+      flex-shrink: 0;
+    }
+   }
+   @media (min-width: 600px) and (max-width: 800px) {
+    .Banner_image
+    {height: 305.422px;
+    }
+   }
    .paraTag
    {
     color: #161A1D;
@@ -22,6 +46,10 @@
    .paraTag1
    {
      color: #D71921;
+   }
+   .custom-bg-gray 
+   {
+    background-color: #F8F8F8 !important;
    }
    
  /* //this for the Navs and Tabs  */
@@ -115,3 +143,26 @@
     font-weight: 600;
     padding-right: 10px;
 }
+
+
+.custom-nav-tabs {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  flex-wrap: nowrap; /* Prevents wrapping */
+  scrollbar-width: none; /* Hides the scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hides the scrollbar for IE and Edge */
+}
+
+.custom-nav-tabs::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar for Webkit (Chrome, Safari, etc.) */
+}
+
+.custom-nav-item {
+  flex: 0 0 auto;
+}
+
+.custom-nav-link {
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
