@@ -13,7 +13,7 @@ function Warranty() {
                 <div className='container mt-5'>
                     <div className='d-block mx-auto d-lg-none mb-3'>
                         <h1>Vehicle Warranty</h1>
-                        <b>36 bulan (3 tahun) / 100.000 km </b>
+                        <b>36 bulan (3 tahun) / 100.000 km</b>
                     </div>
                     <div className='row align-items-center'>
                         <div className='col-12 col-md-5'>
