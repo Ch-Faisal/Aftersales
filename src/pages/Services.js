@@ -20,7 +20,7 @@ const Services = () => {
         <h1>Discover Our Service</h1>
         <div className="paraTag1">
           <p className="paraTag">
-            Layanan Servis berkualitas prima,
+            Layanan Servis berkualitas prima ,&nbsp;
             <span className="paraTag1">
               agar performa Toyota Anda selalu optimal
             </span>
@@ -31,24 +31,25 @@ const Services = () => {
         <div className="row d-flex justify-content-center">
           <div className="col-md-12 p-0">
             <div className="bg-white">
-              <div
-                className="container"
-                style={{ position: "relative" }}
-              >
+              <div className="container" style={{ position: "relative" }}>
                 <div className="scroll-buttons d-lg-none d-flex align-items-center">
                   <img
                     onClick={scrollRight}
                     className="ms-1 me-1 pe-2  mt-5 pt-2"
                     src="/assets/frameright.svg"
                     alt=""
-                    style={{position:"absolute", right:"10px", marginRight: "10px" }}
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      marginRight: "10px",
+                    }}
                   />
                   <img
-                  className="ms-2 me-1 mt-4"
+                    className="ms-2 me-1 mt-4"
                     onClick={scrollLeft}
                     src="/assets/frameleft.svg"
                     alt=""
-                    style={{position:"absolute", top:"0px", }}
+                    style={{ position: "absolute", top: "0px" }}
                   />
                 </div>
                 <ul
@@ -127,7 +128,7 @@ const Services = () => {
                 id="myTabContent"
               >
                 <div
-                  className="tab-pane fade active show"
+                  className="tab-pane fade active show px-3 px-lg-0"
                   id="faq_tab_1"
                   role="tabpanel"
                   aria-labelledby="faq_tab_1-tab"
@@ -139,8 +140,8 @@ const Services = () => {
                           toyota service - General Repair
                         </p>
                         <h1>
-                          Layanan Servis berkualitas prima, agar performa Toyota
-                          Anda selalu optimal
+                          Layanan Servis berkualitas prima, agar performa
+                          Toyota Anda selalu optimal
                         </h1>
                       </div>
                       <div className="col-lg-6 col-md-10 col-12">
@@ -177,7 +178,7 @@ const Services = () => {
                           dengan tepat dan akurat dengan jaminan hasil perbaikan
                           (warranty).
                         </p>
-                        <button type="button" class="btn btn-dark px-5 mt-4">
+                        <button type="button" class="btn custom-btn-dark px-5 mt-4" >
                           Temukan Dealer Terdekat
                         </button>
                       </div>
@@ -202,7 +203,7 @@ const Services = () => {
                   </div>
                 </div>
                 <div
-                  className="tab-pane fade"
+                  className="tab-pane fade px-3 px-lg-0"
                   id="faq_tab_2"
                   role="tabpanel"
                   aria-labelledby="faq_tab_2-tab"
@@ -322,7 +323,7 @@ const Services = () => {
                         </p>
                         <button
                           type="button"
-                          class="btn btn-dark px-5 mt-4 d-lg-block d-none"
+                          class="btn custom-btn-dark px-5 mt-4 d-lg-block d-none"
                         >
                           Temukan Dealer Terdekat
                         </button>
@@ -337,7 +338,7 @@ const Services = () => {
                           Anda memiliki asuransi, silahkan mengkonsultasikan
                           perbaikan pada call center dealer penjual Anda
                         </p>
-                        <button type="button" class="btn btn-dark px-5 mt-4">
+                        <button type="button" class="btn custom-btn-dark px-5 mt-4">
                           Temukan Dealer Terdekat
                         </button>
                       </div>
@@ -553,7 +554,7 @@ const Services = () => {
                   </div>
                 </div>
                 <div
-                  className="tab-pane fade"
+                  className="tab-pane fade px-3 px-lg-0"
                   id="faq_tab_3"
                   role="tabpanel"
                   aria-labelledby="faq_tab_3-tab"
@@ -603,7 +604,7 @@ const Services = () => {
                           pengerjaan TMS terjamin sama baiknya dengan pengerjaan
                           di bengkel Toyota tanpa adanya biaya tambahan.
                         </p>
-                        <button type="button" class="btn btn-dark px-5 mt-4">
+                        <button type="button" class="btn custom-btn-dark px-5 mt-4">
                           Temukan Dealer Terdekat
                         </button>
                       </div>
@@ -636,7 +637,7 @@ const Services = () => {
                   </div>
                 </div>
                 <div
-                  className="tab-pane fade"
+                  className="tab-pane fade px-3 px-lg-0"
                   id="faq_tab_4"
                   role="tabpanel"
                   aria-labelledby="faq_tab_4-tab"

@@ -1,7 +1,64 @@
 /* this for the servies page css */
+/* media query for font in mobile devices */
 body {
   margin: 0;
   padding: 0;
+}
+h1 {
+font-family: "CustomToyota";
+font-size: 2rem !important;
+font-style: normal;
+font-weight: 600 !important; 
+}
+b{
+  font-family: "CustomToyota";
+  font-size: 1.5rem !important;
+font-style: normal !important;
+font-weight: 400 !important; 
+}
+p{
+  font-family: "CustomToyota";
+  font-size: 1.125rem; 
+font-style: normal;
+font-weight: 300; 
+}
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-family: "CustomToyota";
+  font-size: 1.1rem !important;
+  font-style: normal;
+  font-weight: 600 !important; 
+  }
+  b{
+    font-family: "CustomToyota";
+    font-size: 0.875rem !important;
+  font-style: normal !important;
+  font-weight: 600 !important; 
+  }
+  p{
+    font-family: "CustomToyota";
+    font-size: 0.775rem; 
+  font-style: normal;
+  font-weight: 400; 
+  }
+  .custom-font-light-one-rem{
+    font-family: "CustomToyota";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 300; 
+  color: #161A1D; 
+  }
+}
+.custom-btn-dark
+{
+  background-color: #000 !important;
+  color: #fff !important;
+}
+.custom-btn-dark:hover
+{
+  background-color: #fff !important;
+  color: #000 !important;
+  border: 1px solid black;
 }
 .container-fluid {
   overflow-x: hidden; /* Hides horizontal overflow */
@@ -118,7 +175,7 @@ body {
     font-weight: 900;
     background-color: #000;
     border-radius: 18px;
-    padding:5px 10px 5px 10px;
+    padding:4px 10px 4px 10px;
     background-image: none !important;
     content: "+";
     font-size: 1rem;
@@ -128,7 +185,7 @@ body {
 }
 .accordion-button:not(.collapsed)::after {
     font-weight: 600;
-    padding:2px 13px 5px 13px;
+    padding:2px 13px 5px 14px;
     content: "-";
     transform: none !important;
 }
