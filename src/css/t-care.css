@@ -1,0 +1,96 @@
+.section-1{
+background-color: rgb(250, 250, 250);
+padding: 5%;
+}
+.section-1 .section-content p{
+color: rgba(0, 0, 0, 1);
+font-size: 14px;
+}
+.Check{
+   color:  rgba(0, 0, 0, 1);
+}
+.tabs.active {
+    background-color: rgba(223, 29, 29, 1) !important;
+    color: #fff !important;
+}
+.tabs{
+    color: #000 !important;
+    /* border-top-left-radius: 20px !important; */
+    border-top-left-radius: 20px !important;
+}
+
+.round-tabs .nav-link {
+    border-radius: 50%; /* Adjust the value as needed */
+}
+
+  .circle-tabs a {
+    position: relative; /* Add position relative to the anchor tag */
+    display: inline-block;
+    width: 50px; /* Adjust the width of each tab */
+    height: 50px; /* Adjust the height of each tab */
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%; /* Make the tabs circular */
+    background-color: #ccc; /* Default background color */
+    color: #333; /* Default text color */
+    text-decoration: none;
+  }
+  
+/* Add the line between circles */
+.circle-tabs a:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -27px; /* Adjust the position of the line */
+    width: 25px; /* Adjust the width of the line */
+    height: 2px; /* Adjust the height of the line */
+    background-color: #999; /* Color of the line */
+    z-index: -1; /* Send the line behind the circles */
+  }
+  .circle-tabs a.active {
+    background-color: rgba(223, 29, 29, 1); /* Active background color */
+    color: #fff; /* Active text color */
+  }
+  
+  .circle-tabs a:hover {
+    background-color: #999; /* Hover background color */
+    color: #fff; /* Hover text color */
+  }
+  .tabs-section{
+    background-color: rgb(250, 250, 250);
+    width: 100%;
+    height: 90%;
+    border: 1px solid rgba(183, 183, 183, 1);
+  }
+.tabs-section p{
+    font-size: 16px !important;
+    font-weight: 700;
+}
+.tab-content p{
+    color: rgba(0, 0, 0, 1) !important;
+    font-size: 18px !important;
+}
+.Lanjut{
+    background-color: rgba(223, 29, 29, 1) !important;
+    border: none;
+}
+.Masukkan{
+    background-color: #fff !important;
+    border-radius: 10px;
+}
+.Masukkan p{
+    font-size: 14px !important;
+}
+.section-2 .wrapper{
+    border: 1px solid #000;
+}
+
+@media only screen and (max-width: 768px) {
+    .section-2 .section-content{
+        text-align: center !important;
+        margin-bottom: 15px !important;
+    }
+    .express{
+        width: 100% !important;
+    }
+}

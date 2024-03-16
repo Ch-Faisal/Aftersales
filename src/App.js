@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import Warranty from './pages/Warranty';
 import Products from './pages/Products'
 import Services from './pages/Services';
+import TCare from './pages/TCare';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/warranty" element={<Warranty />} />
           <Route path="/products" element={<Products />} />
           <Route path="/Services" element={<Services />} />
+          <Route path="/t-care" element={<TCare />} />
         </Routes>
       </BrowserRouter>
     </div>
