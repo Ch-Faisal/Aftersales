@@ -12,7 +12,7 @@ function Header() {
         <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
           <ul className="navbar-nav">
           <li class="nav-item dropdown mx-2">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-dark hover-color" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Toyota Electrified
           </a>
           <ul class="dropdown-menu">
@@ -22,7 +22,7 @@ function Header() {
           </ul>
         </li>
         <li class="nav-item dropdown mx-2">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-dark hover-color" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Gazoo Racing
           </a>
           <ul class="dropdown-menu">
@@ -32,7 +32,7 @@ function Header() {
           </ul>
         </li>
         <li class="nav-item dropdown mx-2">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-dark hover-color" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Models
           </a>
           <ul class="dropdown-menu">
@@ -42,7 +42,7 @@ function Header() {
           </ul>
         </li>
         <li class="nav-item dropdown mx-2">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-dark hover-color" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Shopping Tools
           </a>
           <ul class="dropdown-menu">
@@ -52,7 +52,7 @@ function Header() {
           </ul>
         </li>
         <li class="nav-item dropdown mx-2">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-dark hover-color" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Promotion
           </a>
           <ul class="dropdown-menu">
@@ -62,7 +62,7 @@ function Header() {
           </ul>
         </li>
         <li class="nav-item dropdown mx-2">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-dark hover-color" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           More
           </a>
           <ul class="dropdown-menu">
@@ -94,22 +94,22 @@ function Header() {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav2">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">SERVICES</a>
+              <a className="nav-link active custom-border-radius" aria-current="page" href="#">SERVICES</a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" href="#">PRODUCTS</a>
+              <a className="nav-link custom-border-radius " href="#">PRODUCTS</a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" href="#">WARRANTY</a>
+              <a className="nav-link custom-border-radius" href="#">WARRANTY</a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" aria-disabled="true">T-CARE</a>
+              <a className="nav-link custom-border-radius" aria-disabled="true">T-CARE</a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" aria-disabled="true">NEWS & EVENT</a>
+              <a className="nav-link custom-border-radius" aria-disabled="true">NEWS & EVENT</a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link" aria-disabled="true">FAQ</a>
+              <a className="nav-link custom-border-radius" aria-disabled="true">FAQ</a>
             </li>
           </ul>
         </div>
