@@ -346,6 +346,7 @@ const Services = () => {
                   </div>
                   <div className="container p-lg-5">
                     <h1>Frequently Asked Question</h1>
+                    <div className="faq">
                     <div class="accordions mt-5" id="accordionExample">
                       <div class="accordion-item back_color_set mb-2">
                         <h2 class="accordion-header">
@@ -536,6 +537,7 @@ const Services = () => {
                           </div>
                         </div>
                       </div>
+                    </div>
                     </div>
                   </div>
                   <div className="logos d-flex justify-content-center mt-5 mb-4">

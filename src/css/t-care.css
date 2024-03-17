@@ -22,6 +22,9 @@ font-size: 14px;
 .round-tabs .nav-link {
     border-radius: 50%; /* Adjust the value as needed */
 }
+.circle-tabs {
+    position: relative;
+}
 
   .circle-tabs a {
     position: relative; /* Add position relative to the anchor tag */
@@ -34,6 +37,7 @@ font-size: 14px;
     background-color: #ccc; /* Default background color */
     color: #333; /* Default text color */
     text-decoration: none;
+    z-index: 10;
   }
   
 /* Add the line between circles */
@@ -41,9 +45,9 @@ font-size: 14px;
     content: '';
     position: absolute;
     top: 50%;
-    left: -27px; /* Adjust the position of the line */
-    width: 25px; /* Adjust the width of the line */
-    height: 2px; /* Adjust the height of the line */
+    left: -40px; /* Adjust the position of the line */
+    width: 45px; /* Adjust the width of the line */
+    height: 3px; /* Adjust the height of the line */
     background-color: #999; /* Color of the line */
     z-index: -1; /* Send the line behind the circles */
   }
@@ -84,8 +88,20 @@ font-size: 14px;
 .section-2 .wrapper{
     border: 1px solid #000;
 }
-
+.faq .accordion-button::after {
+    font-weight: 900;
+     background-color: #fff !important; 
+     border-radius: none; 
+     padding: 4px 10px 4px 10px; 
+     background-image: none !important;
+     content: " " !important; 
+    font-size: 1rem;
+    color: white;
+    font-size: 1.5rem !important;
+    margin-bottom: 10px;
+}
 @media only screen and (max-width: 768px) {
+
     .section-2 .section-content{
         text-align: center !important;
         margin-bottom: 15px !important;

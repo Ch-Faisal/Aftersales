@@ -94,22 +94,22 @@ function Header() {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav2">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active custom-border-radius" aria-current="page" href="#">SERVICES</a>
+              <a className="nav-link active custom-border-radius text-white" aria-current="page" href="#">SERVICES</a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link custom-border-radius " href="#">PRODUCTS</a>
+              <a className="nav-link custom-border-radius text-white " href="#">PRODUCTS</a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link custom-border-radius" href="#">WARRANTY</a>
+              <a className="nav-link custom-border-radius text-white" href="#">WARRANTY</a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link custom-border-radius" aria-disabled="true">T-CARE</a>
+              <a className="nav-link custom-border-radius text-white" aria-disabled="true">T-CARE</a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link custom-border-radius" aria-disabled="true">NEWS & EVENT</a>
+              <a className="nav-link custom-border-radius text-white" aria-disabled="true">NEWS & EVENT</a>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link custom-border-radius" aria-disabled="true">FAQ</a>
+              <a className="nav-link custom-border-radius text-white" aria-disabled="true">FAQ</a>
             </li>
           </ul>
         </div>

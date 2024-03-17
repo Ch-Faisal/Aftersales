@@ -143,14 +143,7 @@ border-radius: 30px !important;
   color: rgba(255, 255, 255, 1) !important;
 }
 
-@media screen and (max-width: 992px) {
-  .search-img{
-    display: none;
-  }
-  .section-3 h5{
-    font-size: 36px;
-  }
-}
+
 .section-3 .title-2{
   margin-top: 10% !important;
 }
@@ -194,6 +187,12 @@ border-radius: 30px !important;
 .section-2-content{
   background-color: rgb(250, 250, 250);
   padding: 50px;
+  width: 90%;
+  margin-left: 5%;
+}
+.section-2  .section-text{
+  margin-left: 5% !important;
+  margin-right: 5% !important;
 }
 .wrapper .title h6{
   font-size: 24px;
@@ -321,9 +320,17 @@ border-radius: 30px !important;
 .accordion-button:not(.collapsed){
   background-color: #fff !important;
 }
+.section-2-content .main-heading{
+  margin-left: 10% !important;
+  margin-right: 10% !important;
+}
 @media screen and (max-width: 762px) {
   .section-3 h5{
     font-size: 28px;
+  }
+  .section-2  .section-text{
+    margin-left: 2% !important;
+    margin-right: 2% !important;
   }
   .Servis{
     margin-top: 7px;
@@ -361,5 +368,17 @@ border-radius: 30px !important;
   }
   .section-2 .wrapper h4{
     font-size: 16px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .search-img{
+    display: none;
+  }
+  .section-3 h5{
+    font-size: 36px;
+  }
+  .section-2-content{
+    margin-left: 0% !important;
+    width: 100%;
   }
 }

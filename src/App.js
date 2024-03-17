@@ -8,6 +8,7 @@ import Products from './pages/Products'
 import Services from './pages/Services';
 import TCare from './pages/TCare';
 import NewsEvents from './pages/NewsEvents';
+import LatestNewsEvents from './pages/LatestNewsEvents';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/Services" element={<Services />} />
           <Route path="/t-care" element={<TCare />} />
           <Route path="/news-and-events" element={<NewsEvents />} />
+          <Route path="/latest-news-and-events" element={<LatestNewsEvents />} />
         </Routes>
       </BrowserRouter>
     </div>

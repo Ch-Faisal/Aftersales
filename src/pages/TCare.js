@@ -62,10 +62,11 @@ function TCare() {
                         </ul>
                      <div className='tabs-section' style={{ display: activeTab === 0 ? 'block' : 'none' }}>
                         <div class="circle-tabs pt-4">
-                        <a href="javascript:void(0)" className={`mx-2 mx-md-4 ${activeCircle === 0 ? 'active' : ''}`} onClick={() => handleCircleClick(0)}><img src="assets/mdi_car-side.png" alt='' /></a>
-                        <a href="javascript:void(0)" className={`mx-2 mx-md-4 ${activeCircle === 1 ? 'active' : ''}`} onClick={() => handleCircleClick(1)}><img src="assets/Frame 607.png" alt='' /></a>
-                        <a href="javascript:void(0)" className={`mx-2 mx-md-4 ${activeCircle === 2 ? 'active' : ''}`} onClick={() => handleCircleClick(2)}><img src="assets/Frame 608.png" alt='' /></a>
+                        <a href="javascript:void(0)" className={`mx-3 ${activeCircle === 0 ? 'active' : ''}`} onClick={() => handleCircleClick(0)}><img src="assets/mdi_car-side.png" alt='' /></a>
+                        <a href="javascript:void(0)" className={`mx-4  ${activeCircle === 1 ? 'active' : ''}`} onClick={() => handleCircleClick(1)}><img src="assets/Frame 607.png" alt='' /></a>
+                        <a href="javascript:void(0)" className={`mx-3  ${activeCircle === 2 ? 'active' : ''}`} onClick={() => handleCircleClick(2)}><img src="assets/Frame 608.png" alt='' /></a>
                         </div>
+                        <div style={{ display: activeCircle === 0 ? 'block' : 'none' }}>
                         <div className='d-flex justify-content-between mt-4 mx-2 mx-md-5'>
                         <p>Validasi Nomor Rangka</p>
                         <p className='text-danger'>Langkah 1 - 3</p>
@@ -77,12 +78,39 @@ function TCare() {
                             <p className='text-start pt-2'>Masukkan 17 Digit No. Rangka Kendaraan</p>
                         </div>
                         <button className='btn btn-primary Lanjut mt-4'>Lanjut</button>
+                        </div>
+                        <div style={{ display: activeCircle === 1 ? 'block' : 'none' }}>
+                        <div className='d-flex justify-content-between mt-4 mx-2 mx-md-5'>
+                        <p> Nomor Rangka</p>
+                        <p className='text-danger'>Langkah 1 - 3</p>
+                        </div>
+                        <div className='tab-content mx-2 mx-md-5 text-start'>
+                            <p>ditemukan pada STNK atau BPKB kendaraan Anda</p>
+                        </div>
+                        <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
+                            <p className='text-start pt-2'>Masukkan 17 Digit No. Rangka Kendaraan</p>
+                        </div>
+                        <button className='btn btn-primary Lanjut mt-4'>Lanjut</button>
+                        </div>
+                        <div style={{ display: activeCircle === 2 ? 'block' : 'none' }}>
+                        <div className='d-flex justify-content-between mt-4 mx-2 mx-md-5'>
+                        <p> Rangka</p>
+                        <p className='text-danger'>Langkah 1 - 3</p>
+                        </div>
+                        <div className='tab-content mx-2 mx-md-5 text-start'>
+                            <p>ditemukan pada STNK atau BPKB kendaraan Anda</p>
+                        </div>
+                        <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
+                            <p className='text-start pt-2'>Masukkan 17 Digit No. Rangka Kendaraan</p>
+                        </div>
+                        <button className='btn btn-primary Lanjut mt-4'>Lanjut</button>
+                        </div>
                      </div>
                      <div className='tabs-section' style={{ display: activeTab === 1 ? 'block' : 'none' }}>
                      <div className="circle-tabs pt-4">
-                        <a href="javascript:void(0)" className={`mx-2 mx-md-4  ${activeCircle === 0 ? 'active' : ''}`} onClick={() => handleCircleClick(0)}><img src="assets/mdi_car-side.png" alt='' /></a>
-                        <a href="javascript:void(0)" className={`mx-2 mx-md-4  ${activeCircle === 1 ? 'active' : ''}`} onClick={() => handleCircleClick(1)}><img src="assets/Frame 607.png" alt='' /></a>
-                        <a href="javascript:void(0)" className={`mx-2 mx-md-4 ${activeCircle === 2 ? 'active' : ''}`} onClick={() => handleCircleClick(2)}><img src="assets/Frame 608.png" alt='' /></a>
+                        <a href="javascript:void(0)" className={`mx-3  ${activeCircle === 0 ? 'active' : ''}`} onClick={() => handleCircleClick(0)}><img src="assets/mdi_car-side.png" alt='' /></a>
+                        <a href="javascript:void(0)" className={`mx-4  ${activeCircle === 1 ? 'active' : ''}`} onClick={() => handleCircleClick(1)}><img src="assets/Frame 607.png" alt='' /></a>
+                        <a href="javascript:void(0)" className={`mx-3 ${activeCircle === 2 ? 'active' : ''}`} onClick={() => handleCircleClick(2)}><img src="assets/Frame 608.png" alt='' /></a>
                     </div>
                         <div className='d-flex justify-content-between mt-4 mx-2 mx-md-5'>
                         <p>Test Validasi Nomor Rangka</p>
@@ -133,6 +161,7 @@ function TCare() {
                     </div>
                     <div className="container p-lg-5 mt-5 mt-md-3">
                       <h1>Frequently Asked Question</h1>
+                      <div className='faq'>
                       <div class="accordions mt-5" id="accordionExample">
                         <div class="accordion-item back_color_set mb-2">
                           <h2 class="accordion-header">
@@ -274,6 +303,7 @@ function TCare() {
                             </button>
                           </h2>
                         </div>
+                      </div>
                       </div>
                     </div>
                     <div className='container mt-4 mb-5'>

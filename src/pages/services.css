@@ -171,7 +171,7 @@ font-weight: 300;
     height: 300px;
   }
 
-  .accordion-button::after {
+  .faq .accordion-button::after {
     font-weight: 900;
     background-color: #000;
     border-radius: 18px;
@@ -183,7 +183,7 @@ font-weight: 300;
     font-size: 1.5rem !important;
     margin-bottom: 10px;
 }
-.accordion-button:not(.collapsed)::after {
+.faq .accordion-button:not(.collapsed)::after {
     font-weight: 600;
     padding:2px 13px 5px 14px;
     content: "-";
