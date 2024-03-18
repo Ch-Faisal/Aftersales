@@ -382,3 +382,56 @@ border-radius: 30px !important;
     width: 100%;
   }
 }
+.custom-select-container {
+  position: relative;
+}
+
+.custom-select-container select {
+  position: relative;
+  z-index: 1;
+}
+
+.custom-select-container::after {
+  content: '';
+  position: absolute;
+  top: 38%;
+  right: 21%;
+  transform: translateY(-50%);
+  height: 73%;
+  width: 1px;
+  background-color: black; 
+  z-index: 2;
+}
+@media screen and (max-width: 1134px) {
+  .custom-select-container::after {
+    top: 37%;
+      right: 25%;
+      height: 74%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .custom-select-container::after {
+    top: 36%;
+      right: 26%;
+      height: 72%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .custom-select-container::after {
+      right: 36%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .custom-select-container::after {
+    top: 35%;
+      right: 34%;
+      height: 70%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .custom-select-container::after {
+    top: 23%;
+      right: 17%;
+      height: 30%; 
+  }
+}

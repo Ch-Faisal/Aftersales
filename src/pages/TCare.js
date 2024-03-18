@@ -9,11 +9,17 @@ function TCare() {
     const handleTabClick = (index) => {
         console.log("Clicked tab index:", index); // Debugging statement
         setActiveTab(index); // Set the active tab
+        setActiveCircle(0);
       };
       const handleCircleClick = (index) => {
         console.log("Clicked circle index:", index); // Debugging statement
         setActiveCircle(index); // Set the active circle
     };
+    const handleLanjutClick = () => {
+      if (activeCircle < 2) {
+          setActiveCircle(activeCircle + 1);
+      }
+  };
     
     return (
         <div>
@@ -22,8 +28,8 @@ function TCare() {
             <div className='container-fluid px-0 pb-5'>
                 <img src="assets/Rectangle 3.png" className='w-100' alt='logo' />
             </div>
-            <div className='container-fluid'>
-                <div className='container px-5'>
+            <div className='container-fluid p-0 '>
+                <div className='container px-lg-5'>
                     <div className='section-1'>
                             <div className='row'>
                             <div class='col-md-5 d-flex'>
@@ -54,33 +60,36 @@ function TCare() {
                             <div className='col-md-6'>
                         <ul className="nav nav-pills nav-fill">
                             <li className="nav-item">
-                                <a className={`tabs nav-link py-3 ${activeTab === 0 ? 'active' : ''}`} href="javascript:void(0)" onClick={() => handleTabClick(0)}>Sertifikat Elektronik</a>
+                                <a className={`tabs sertifikat nav-link py-3 ${activeTab === 0 ? 'active' : ''}`} href="javascript:void(0)" onClick={() => handleTabClick(0)}>Sertifikat Elektronik</a>
                             </li>
                             <li className="nav-item">
-                                <a className={`tabs nav-link py-3 ${activeTab === 1 ? 'active' : ''}`} href="javascript:void(0)" onClick={() => handleTabClick(1)}>Catatan Servis</a>
+                                <a className={`tabs cataten nav-link py-3 ${activeTab === 1 ? 'active' : ''}`} href="javascript:void(0)" onClick={() => handleTabClick(1)}>Catatan Servis</a>
                             </li>
                         </ul>
                      <div className='tabs-section' style={{ display: activeTab === 0 ? 'block' : 'none' }}>
                         <div class="circle-tabs pt-4">
                         <a href="javascript:void(0)" className={`mx-3 ${activeCircle === 0 ? 'active' : ''}`} onClick={() => handleCircleClick(0)}><img src="assets/mdi_car-side.png" alt='' /></a>
-                        <a href="javascript:void(0)" className={`mx-4  ${activeCircle === 1 ? 'active' : ''}`} onClick={() => handleCircleClick(1)}><img src="assets/Frame 607.png" alt='' /></a>
-                        <a href="javascript:void(0)" className={`mx-3  ${activeCircle === 2 ? 'active' : ''}`} onClick={() => handleCircleClick(2)}><img src="assets/Frame 608.png" alt='' /></a>
+                        <a href="javascript:void(0)" className={`mx-4  ${activeCircle === 1 ? 'active' : ''}`} onClick={() => handleCircleClick(1)}><img src="assets/Group (2).png" alt='' /></a>
+                        <a href="javascript:void(0)" className={`mx-3  ${activeCircle === 2 ? 'active' : ''}`} onClick={() => handleCircleClick(2)}><img src="assets/Group (3).png" alt='' /></a>
                         </div>
+                        {activeCircle === 0 && (
                         <div style={{ display: activeCircle === 0 ? 'block' : 'none' }}>
-                        <div className='d-flex justify-content-between mt-4 mx-2 mx-md-5'>
+                        <div className='d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5'>
                         <p>Validasi Nomor Rangka</p>
-                        <p className='text-danger'>Langkah 1 - 3</p>
+                        <p className='text-danger' >Langkah 1 - 3</p>
                         </div>
-                        <div className='tab-content mx-2 mx-md-5 text-start'>
-                            <p>Nomor Rangka kendaraan Anda dapat ditemukan pada STNK atau BPKB kendaraan Anda</p>
+                        <div className='tab-content mx-4 mx-md-5 text-start'>
+                        <p style={{ color: 'black', fontWeight: 300 }}>Nomor Rangka kendaraan Anda dapat ditemukan pada STNK atau BPKB kendaraan Anda</p>
                         </div>
-                        <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
-                            <p className='text-start pt-2'>Masukkan 17 Digit No. Rangka Kendaraan</p>
+                        <div className="form-group mx-5">
+                          <input type="email" className="form-control Masukkan" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan 17 Digit No. Rangka Kendaraan" />
                         </div>
-                        <button className='btn btn-primary Lanjut mt-4'>Lanjut</button>
+                        <button className='btn btn-primary Lanjut mt-4' onClick={handleLanjutClick}>Lanjut</button>
                         </div>
+                          )}
+                           {activeCircle === 1 && (
                         <div style={{ display: activeCircle === 1 ? 'block' : 'none' }}>
-                        <div className='d-flex justify-content-between mt-4 mx-2 mx-md-5'>
+                        <div className='d-md-flex justify-content-between mt-4 mx-2 mx-md-5'>
                         <p> Nomor Rangka</p>
                         <p className='text-danger'>Langkah 1 - 3</p>
                         </div>
@@ -90,8 +99,10 @@ function TCare() {
                         <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
                             <p className='text-start pt-2'>Masukkan 17 Digit No. Rangka Kendaraan</p>
                         </div>
-                        <button className='btn btn-primary Lanjut mt-4'>Lanjut</button>
+                        <button className='btn btn-primary Lanjut mt-4' onClick={handleLanjutClick}>Lanjut</button>
                         </div>
+                           )}
+                            {activeCircle === 2 && (
                         <div style={{ display: activeCircle === 2 ? 'block' : 'none' }}>
                         <div className='d-flex justify-content-between mt-4 mx-2 mx-md-5'>
                         <p> Rangka</p>
@@ -103,26 +114,61 @@ function TCare() {
                         <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
                             <p className='text-start pt-2'>Masukkan 17 Digit No. Rangka Kendaraan</p>
                         </div>
-                        <button className='btn btn-primary Lanjut mt-4'>Lanjut</button>
+                        <button className='btn btn-primary Lanjut mt-4' onClick={handleLanjutClick}>Lanjut</button>
                         </div>
+                            )}
                      </div>
                      <div className='tabs-section' style={{ display: activeTab === 1 ? 'block' : 'none' }}>
                      <div className="circle-tabs pt-4">
-                        <a href="javascript:void(0)" className={`mx-3  ${activeCircle === 0 ? 'active' : ''}`} onClick={() => handleCircleClick(0)}><img src="assets/mdi_car-side.png" alt='' /></a>
-                        <a href="javascript:void(0)" className={`mx-4  ${activeCircle === 1 ? 'active' : ''}`} onClick={() => handleCircleClick(1)}><img src="assets/Frame 607.png" alt='' /></a>
-                        <a href="javascript:void(0)" className={`mx-3 ${activeCircle === 2 ? 'active' : ''}`} onClick={() => handleCircleClick(2)}><img src="assets/Frame 608.png" alt='' /></a>
+                     <a href="javascript:void(0)" className={`mx-3 ${activeCircle === 0 ? 'active' : ''}`} onClick={() => handleCircleClick(0)}><img src="assets/mdi_car-side.png" alt='' /></a>
+                        <a href="javascript:void(0)" className={`mx-4  ${activeCircle === 1 ? 'active' : ''}`} onClick={() => handleCircleClick(1)}><img src="assets/Group (2).png" alt='' /></a>
+                        <a href="javascript:void(0)" className={`mx-3  ${activeCircle === 2 ? 'active' : ''}`} onClick={() => handleCircleClick(2)}><img src="assets/Group (3).png" alt='' /></a>
                     </div>
-                        <div className='d-flex justify-content-between mt-4 mx-2 mx-md-5'>
-                        <p>Test Validasi Nomor Rangka</p>
+                    {activeCircle === 0 && (
+                        <div style={{ display: activeCircle === 0 ? 'block' : 'none' }}>
+                        <div className='d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5'>
+                        <p> Test Validasi Nomor Rangka</p>
+                        <p className='text-danger' >Langkah 1 - 5</p>
+                        </div>
+                        <div className='tab-content mx-4 mx-md-5 text-start'>
+                        <p style={{ color: 'black', fontWeight: 300 }}>Nomor itemukan pada STNK atau BPKB kendaraan Anda</p>
+                        </div>
+                        <div className="form-group mx-5">
+                          <input type="email" className="form-control Masukkan" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digit No. Rangka Kendaraan" />
+                        </div>
+                        <button className='btn btn-primary Lanjut mt-4' onClick={handleLanjutClick}>Lanjut</button>
+                        </div>
+                          )}
+                           {activeCircle === 1 && (
+                        <div style={{ display: activeCircle === 1 ? 'block' : 'none' }}>
+                        <div className='d-md-flex justify-content-between mt-4 mx-2 mx-md-5'>
+                        <p> Rangka</p>
                         <p className='text-danger'>Langkah 1 - 3</p>
                         </div>
                         <div className='tab-content mx-2 mx-md-5 text-start'>
-                            <p>Cek nomor rangka kendaraan Anda dan dapatkan sertifikat elektroniknya</p>
+                            <p> STNK atau BPKB kendaraan Anda</p>
                         </div>
                         <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
-                            <p className='text-start pt-2'>Masukkan 17 Digit No. Rangka Kendaraan</p>
+                            <p className='text-start pt-2'>loremm Masukkan 17 Digit No. Rangka Kendaraan</p>
                         </div>
-                        <button className='btn btn-primary Lanjut mt-4'>Lanjut</button>
+                        <button className='btn btn-primary Lanjut mt-4' onClick={handleLanjutClick}>Lanjut</button>
+                        </div>
+                           )}
+                            {activeCircle === 2 && (
+                        <div style={{ display: activeCircle === 2 ? 'block' : 'none' }}>
+                        <div className='d-flex justify-content-between mt-4 mx-2 mx-md-5'>
+                        <p> Rangka</p>
+                        <p className='text-danger'>Langkah 1 - 3</p>
+                        </div>
+                        <div className='tab-content mx-2 mx-md-5 text-start'>
+                            <p>STNK atau BPKB kendaraan Anda</p>
+                        </div>
+                        <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
+                            <p className='text-start pt-2'>Masukk Digit No. Rangka Kendaraan</p>
+                        </div>
+                        <button className='btn btn-primary Lanjut mt-4' onClick={handleLanjutClick}>Lanjut</button>
+                        </div>
+                            )}
                      </div>
                     </div>
                             </div>
