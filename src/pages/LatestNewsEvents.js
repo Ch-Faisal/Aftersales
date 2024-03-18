@@ -95,7 +95,7 @@ function LatestNewsEvents() {
                         <p className='text-start'>13/06/2023</p>
                         </div>
                         <p className="card-title fw-bold text-start mb-4">Sempurnakan GR010 HYBRID, TOYOTA GAZOO Racing Siap Cetak Rekor Baru di Edisi 100 Tahun Le Mans 24 Jam</p>
-                        <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                        <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                     </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@ function LatestNewsEvents() {
                                 <p className='text-start'>07/07/2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start">Konsisten Raih Podium, Toyota GAZOO Racing Indonesia Pertahankan Puncak Klasemen di Kelas Bergengsi A & F pada Seri ke-3 MLDSPOT Autokhana Kejurnas Slalom 2023</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                        <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@ function LatestNewsEvents() {
                                 <p className='text-start'>07/07/2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start">Wujudkan Peace of Mind, Toyota Himbau Pemilik Veloz, Avanza, dan Raize dengan Tahun Produksi Tertentu Untuk Mengecek dan Mengganti ECU Airbag di Dealer Resmi Toyota</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                                <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
                             </div>
                         </div>
@@ -137,7 +137,7 @@ function LatestNewsEvents() {
                                 <p className='text-start'>07/07/2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start">Liburan Pakai Mobil, Waspada Sumber Masalah Saat Mengemudi Mobil di Jalan Tol</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                                <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
                             </div>
                         </div>
@@ -150,7 +150,7 @@ function LatestNewsEvents() {
                                 <p className='text-start'>10/07/2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start">Bahaya Adu Banteng, Pahami Alasan Dilarang Menyalip Kendaraan Lain di Tikungan</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                                <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
                         </div>
                         </div>
@@ -163,7 +163,7 @@ function LatestNewsEvents() {
                                 <p className='text-start'> 09/07/2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start">Gejala Kinerja dan Kualitas Cairan Rem Mobil Turun dan Wajib Segera Diganti</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                                <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
                             </div>
                         </div>
@@ -179,7 +179,7 @@ function LatestNewsEvents() {
                                 <p className='text-start'>09/07/2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start">Tanda-Tanda Rem Mobil Bermasalah, Segera Cek Untuk Cegah Rem Blong</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                                <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
                             </div>
                         </div>
@@ -192,7 +192,7 @@ function LatestNewsEvents() {
                                 <p className='text-start'>03 Jul 2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start">TOYOTA GAZOO Racing Raih Podium Pertama Monza 6 Jam yang Sangat Ketat Hingga Lap Terakhir</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                                <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
                             </div>
                         </div>
@@ -205,7 +205,7 @@ function LatestNewsEvents() {
                                 <p className='text-start'>17 Jul 2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start">TOYOTA GAZOO Racing Raih Podium Pertama Monza 6 Jam yang Sangat Ketat Hingga Lap Terakhir</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                                <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
                             </div>
                         </div>
@@ -223,7 +223,7 @@ function LatestNewsEvents() {
                                 <p className='text-start'>07/07/2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start">Persiapan Menuju Dakar Rally 2024, Pembalap TOYOTA GAZOO Racing Raih Podium Kedua Baja Italy</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                                <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
                         </div>
                     </div>
@@ -236,7 +236,7 @@ function LatestNewsEvents() {
                                 <p className='text-start'>17 Jul 2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start">TOYOTA GAZOO Racing Raih Podium Pertama Monza 6 Jam yang Sangat Ketat Hingga Lap Terakhir</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                                <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
                             </div>
                         </div>
@@ -249,12 +249,12 @@ function LatestNewsEvents() {
                                 <p className='text-start'>13/06/2023</p>
                                 </div>
                                 <p className="card-title fw-bold text-start mb-3">Sempurnakan GR010 HYBRID, TOYOTA GAZOO Racing Siap Cetak Rekor Baru di Edisi 100 Tahun Le Mans 24 Jam</p>
-                                <button type="button" class=" d-flex btn btn-outline-dark w-100 py-1 mt-2 mt-md-5">Find Out More <span className='d-block d-md-none'>  <i className="fas fa-chevron-right bg-white"></i></span></button>
+                                <button type="button" class="btn btn-outline-dark w-100 py-1 mt-2 mt-md-5 text-md-center">Find Out More <span className='d-block d-md-none'><i className="fas fa-chevron-right bg-white"></i></span></button>
                             </div>
-        </div>
-      </div>
-    </div>
                         </div>
+                    </div>
+                </div>
+            </div>
                         <div className="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
                         <div className="row mt-5">
                         <div className="col-sm-6 col-lg-4">

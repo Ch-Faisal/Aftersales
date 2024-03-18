@@ -25,6 +25,9 @@ margin-top: -12px;
 .title-color{
     color: #000 !important;
 }
+.tab-pane button {
+    text-align: center !important;
+}
 @media only screen and (max-width: 768px) {
     .title-color{
        color: rgba(213, 32, 39, 1) !important;

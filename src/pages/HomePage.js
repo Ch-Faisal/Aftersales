@@ -96,15 +96,15 @@ function HomePage() {
       <div className='container'>
         <h4 className='terbaik mb-4 mb-md-4'>Rekomendasi Terbaik untuk Kendaraanmu</h4>
         <div className="row justify-content-center Terbaik ">
-            <div className="d-md-flex mb-3 w-75 ">
-            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <div className="d-md-flex mb-3 w-75 custom-select-container">
+            <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                 <option selected>All New Alphard</option>
                 <option value="1">Alphard</option>
                 <option value="2">untuk</option>
                 <option value="3">Terbaik</option>
-                </select>    
-                    <button className='btn Servis px-3 py-1 mx-2' style={{ whiteSpace: 'nowrap' }}>Lihat Servis</button>
-            </div>
+            </select>    
+            <button className='btn Servis px-3 py-1 mx-2' style={{ whiteSpace: 'nowrap' }}>Lihat Servis</button>
+        </div>
         </div>
         </div>
       <div className='section-3 mt-5'>

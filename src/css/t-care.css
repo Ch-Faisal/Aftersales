@@ -12,11 +12,17 @@ font-size: 14px;
 .tabs.active {
     background-color: rgba(223, 29, 29, 1) !important;
     color: #fff !important;
+    border: none !important;
 }
-.tabs{
+.sertifikat{
     color: #000 !important;
-    /* border-top-left-radius: 20px !important; */
+    border: 1px solid #B7B7B7;
     border-top-left-radius: 20px !important;
+}
+.cataten{
+    color: #000 !important;
+    border: 1px solid #B7B7B7;
+    border-top-right-radius: 20px !important;
 }
 
 .round-tabs .nav-link {
@@ -50,25 +56,28 @@ font-size: 14px;
     height: 3px; /* Adjust the height of the line */
     background-color: #999; /* Color of the line */
     z-index: -1; /* Send the line behind the circles */
+    margin-right: 13px !important;
   }
   .circle-tabs a.active {
     background-color: rgba(223, 29, 29, 1); /* Active background color */
     color: #fff; /* Active text color */
   }
   
-  .circle-tabs a:hover {
-    background-color: #999; /* Hover background color */
-    color: #fff; /* Hover text color */
-  }
+  
   .tabs-section{
     background-color: rgb(250, 250, 250);
     width: 100%;
     height: 90%;
     border: 1px solid rgba(183, 183, 183, 1);
+    border-top: none !important;
   }
 .tabs-section p{
     font-size: 16px !important;
     font-weight: 700;
+}
+.Masukkan{
+    border: none;
+    outline: none;
 }
 .tab-content p{
     color: rgba(0, 0, 0, 1) !important;
@@ -90,11 +99,11 @@ font-size: 14px;
 }
 .faq .accordion-button::after {
     font-weight: 900;
-     background-color: #fff !important; 
+     /* background-color: #fff !important;  */
      border-radius: none; 
      padding: 4px 10px 4px 10px; 
      background-image: none !important;
-     content: " " !important; 
+     /* content: " " !important;  */
     font-size: 1rem;
     color: white;
     font-size: 1.5rem !important;
