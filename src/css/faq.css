@@ -1,0 +1,46 @@
+
+.form-controll {
+    border-radius: 15px;
+    transition: border-color 0.3s ease;
+  }
+  .form-controll:focus {
+    border:2px solid #8cb9e9c2 !important; /* focus border color */
+  }
+.has-search .form-controll {
+    padding-left: 2.375rem;
+}
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+/* this for the Faq accordion */
+.faq .accordion-button::after {
+    font-weight: 900;
+    background-color: #000;
+    border-radius: 18px;
+    padding:4px 10px 4px 10px;
+    background-image: none !important;
+    content: "+";
+    font-size: 1rem;
+    color: white;
+    font-size: 1.5rem !important;
+    margin-bottom: 10px;
+}
+.faq .accordion-button:not(.collapsed)::after {
+    font-weight: 600;
+    padding:2px 13px 5px 14px;
+    content: "-";
+    transform: none !important;
+}
+.back_color_set
+{
+  border-bottom:1px solid #D8D8D8 ;
+  padding: 10px;
+}
