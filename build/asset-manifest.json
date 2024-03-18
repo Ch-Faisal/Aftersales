@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.a35cf861.css",
-    "main.js": "/static/js/main.b13fc8b2.js",
-    "static/js/453.3e3d4d89.chunk.js": "/static/js/453.3e3d4d89.chunk.js",
+    "main.css": "/static/css/main.915eba3a.css",
+    "main.js": "/static/js/main.5963164d.js",
+    "static/js/511.b675b728.chunk.js": "/static/js/511.b675b728.chunk.js",
     "static/media/Rectangle4.png": "/static/media/Rectangle4.a243c4361b4fbb2a84db.png",
     "static/media/Toyota Type.ttf": "/static/media/Toyota Type.4a1db136bdafd5b67699.ttf",
     "index.html": "/index.html",
-    "main.a35cf861.css.map": "/static/css/main.a35cf861.css.map",
-    "main.b13fc8b2.js.map": "/static/js/main.b13fc8b2.js.map",
-    "453.3e3d4d89.chunk.js.map": "/static/js/453.3e3d4d89.chunk.js.map"
+    "main.915eba3a.css.map": "/static/css/main.915eba3a.css.map",
+    "main.5963164d.js.map": "/static/js/main.5963164d.js.map",
+    "511.b675b728.chunk.js.map": "/static/js/511.b675b728.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a35cf861.css",
-    "static/js/main.b13fc8b2.js"
+    "static/css/main.915eba3a.css",
+    "static/js/main.5963164d.js"
   ]
 }

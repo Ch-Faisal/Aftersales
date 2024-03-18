@@ -1,0 +1,55 @@
+.nav-tabs .nav-link.active {
+    color: black !important;
+    border-bottom: 4px solid #000 !important;
+}
+.nav-tabs{
+    border-bottom: 2px solid #D8D8D8 !important;
+    border-width: 50% !important;
+}
+.tips-event p{
+font-size: 14px !important;
+font-weight: 400;
+margin-top: -12px;
+}
+.card-title p{
+    font-size: 10px !important;
+}
+
+.event-tabs .nav-link{
+    color: #000 !important;
+    border: none !important;
+}
+.card{
+    height: 100%;
+}
+.title-color{
+    color: #000 !important;
+}
+.tab-pane button {
+    text-align: center !important;
+}
+@media only screen and (max-width: 768px) {
+    .title-color{
+       color: rgba(213, 32, 39, 1) !important;
+    }
+    .event-tabs .card{
+        width: 100% !important;
+    }
+    .event-tabs .card-body button{
+        border: none;
+        text-align: left;
+        color: rgba(213, 32, 39, 1) !important;
+        margin-left: -10px !important;
+    }
+    .event-tabs .card-body button:hover{
+     background-color: #fff !important;
+    }
+    .event-tabs .fa-chevron-right{
+        color: rgba(213, 32, 39, 1) !important;
+        background-color: #D8D8D8;
+        padding: 5px !important;
+    }
+    .event-tabs .fa-chevron-right:hover{
+     background-color: #fff !important;
+    }
+}

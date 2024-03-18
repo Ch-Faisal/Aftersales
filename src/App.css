@@ -22,10 +22,18 @@ font-weight: 400;
 }
 .custom-font-light-one-rem{
   font-family: "CustomToyota";
-font-size: 1rem;
-font-style: normal;
-font-weight: 300; 
-color: #161A1D; 
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300; 
+  color: #161A1D; 
+}
+.navbar-toggler {
+  border: none !important; /* Remove border */
+ 
+}
+.navbar-toggler:focus{
+  outline: none !important;
+  box-shadow: none !important;
 }
 /* media query for font in mobile devices */
 @media only screen and (max-width: 600px) {
@@ -94,7 +102,28 @@ color: #161A1D;
   font-size: 12px;
   font-weight: 600;
 }
-.navbar .nav-item .nav-link:hover{
+.nav-1 .nav-item {
+  color: #000 !important;
+  cursor: pointer;
+}
+.nav-item {
+  cursor: pointer;
+}
+.text-hover-danger:hover {
+  color: #dc3545; /* Change text color to Bootstrap's danger color on hover */
+}
+.custom-border-radius:hover{
+  border-radius: 30px !important;
+  background-color: #fff;
+  color: #000 !important;
+}
+.custom-border-radius{
+  border-radius: 30px !important;
+}
+.hover-color:hover{
+color: #dc3545 !important;
+}
+/* .navbar .nav-item .nav-link:hover{
 background-color: #fff;
 color: #000;
 cursor: pointer;
@@ -106,7 +135,7 @@ border-radius: 30px !important;
 }
 .nav-1 .nav-item .nav-link:hover {
   color: red !important;
-}
+} */
 .nav-1{
   background-color: #fff;
 }
@@ -114,15 +143,8 @@ border-radius: 30px !important;
   color: rgba(255, 255, 255, 1) !important;
 }
 
-@media screen and (max-width: 992px) {
-  .search-img{
-    display: none;
-  }
-  .section-3 h5{
-    font-size: 36px;
-  }
-}
-.section-3 .title{
+
+.section-3 .title-2{
   margin-top: 10% !important;
 }
 .list-unstyled.text-dark.text-start li {
@@ -131,9 +153,10 @@ border-radius: 30px !important;
 .footer h5{
   font-size: 13px !important;
 }
-.footer li{
-  font-size: 12px !important;
+.footer li a {
+  font-size: 10px !important;
 }
+
 .footer p{
   font-size:12px !important;
 }
@@ -164,6 +187,12 @@ border-radius: 30px !important;
 .section-2-content{
   background-color: rgb(250, 250, 250);
   padding: 50px;
+  width: 90%;
+  margin-left: 5%;
+}
+.section-2  .section-text{
+  margin-left: 5% !important;
+  margin-right: 5% !important;
 }
 .wrapper .title h6{
   font-size: 24px;
@@ -177,18 +206,7 @@ border-radius: 30px !important;
     transform: rotate(360deg);
   }
 }
-@media screen and (max-width: 762px) {
-  .section-3 h5{
-    font-size: 28px;
-  }
-  .section-3 .card{
-    width: 90% !important;
-    margin-left: 10px;
-  }
-  .logos img{
-    width: 100px !important;
-  }
-}
+
 
 .custom-bg-gray-dark{
   background-color: #ECEDED;
@@ -199,14 +217,6 @@ border-radius: 30px !important;
 .custom-list-style-number{
   list-style: linear-gradient;
 }
-.heading{
-  color: #161A1D;
-text-align: center;
-font-family: "Toyota Type";
-font-size: 36px;
-font-style: normal;
-font-weight: 600;
-line-height: 120%; /* 43.2px */ 
 .card{
   border-radius: 0% !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -231,9 +241,8 @@ line-height: 120%; /* 43.2px */
   background-color: rgba(0, 0, 0, 1) !important;
   border-radius: 12px !important;
   font-size: 16px !important;
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
   font-family: "CustomToyota";
+  height: 50px;
 }
 .Terbaik select, .Terbaik #button-addon2 {
   border: 1px solid rgba(0, 0, 0, 1);
@@ -301,4 +310,128 @@ line-height: 120%; /* 43.2px */
 .carousel-indicators {
   list-style: none;
   margin: 0;
-  padding: 0;}}
+  padding: 0;
+}
+.accordion-button {
+  color: black !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.accordion-button:not(.collapsed){
+  background-color: #fff !important;
+}
+.section-2-content .main-heading{
+  margin-left: 10% !important;
+  margin-right: 10% !important;
+}
+@media screen and (max-width: 762px) {
+  .section-3 h5{
+    font-size: 28px;
+  }
+  .section-2  .section-text{
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+  }
+  .Servis{
+    margin-top: 7px;
+    padding-top: 10px !important;
+    padding-bottom: 8px !important;
+    width: 50% !important;
+    
+  }
+  .section-3 .card{
+    width: 90% !important;
+    margin-left: 10px;
+  }
+  .logos img{
+    width: 100px !important;
+  }
+  .Terbaik select{
+    font-size: 13px !important;
+    margin-top: 8px !important;
+  }
+  .terbaik{
+    font-size: 26px !important;
+  }
+  .section-3 h5{
+    font-size: 26px;
+  }
+  .section-3 p{
+    font-size: 18px;
+    margin-top: 5%;
+  }
+  .section-2 .wrapper{
+    padding: 30px;
+  }
+  .section-2 .wrapper img{
+    width: 60%;
+  }
+  .section-2 .wrapper h4{
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .search-img{
+    display: none;
+  }
+  .section-3 h5{
+    font-size: 36px;
+  }
+  .section-2-content{
+    margin-left: 0% !important;
+    width: 100%;
+  }
+}
+.custom-select-container {
+  position: relative;
+}
+
+.custom-select-container select {
+  position: relative;
+  z-index: 1;
+}
+
+.custom-select-container::after {
+  content: '';
+  position: absolute;
+  top: 38%;
+  right: 21%;
+  transform: translateY(-50%);
+  height: 73%;
+  width: 1px;
+  background-color: black; 
+  z-index: 2;
+}
+@media screen and (max-width: 1134px) {
+  .custom-select-container::after {
+    top: 37%;
+      right: 25%;
+      height: 74%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .custom-select-container::after {
+    top: 36%;
+      right: 26%;
+      height: 72%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .custom-select-container::after {
+      right: 36%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .custom-select-container::after {
+    top: 35%;
+      right: 34%;
+      height: 70%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .custom-select-container::after {
+    top: 23%;
+      right: 17%;
+      height: 30%; 
+  }
+}

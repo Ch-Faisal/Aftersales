@@ -1,4 +1,68 @@
 /* this for the servies page css */
+/* media query for font in mobile devices */
+body {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+font-family: "CustomToyota";
+font-size: 2rem !important;
+font-style: normal;
+font-weight: 600 !important; 
+}
+b{
+  font-family: "CustomToyota";
+  font-size: 1.5rem !important;
+font-style: normal !important;
+font-weight: 400 !important; 
+}
+p{
+  font-family: "CustomToyota";
+  font-size: 1.125rem; 
+font-style: normal;
+font-weight: 300; 
+}
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-family: "CustomToyota";
+  font-size: 1.1rem !important;
+  font-style: normal;
+  font-weight: 600 !important; 
+  }
+  b{
+    font-family: "CustomToyota";
+    font-size: 0.875rem !important;
+  font-style: normal !important;
+  font-weight: 600 !important; 
+  }
+  p{
+    font-family: "CustomToyota";
+    font-size: 0.775rem; 
+  font-style: normal;
+  font-weight: 400; 
+  }
+  .custom-font-light-one-rem{
+    font-family: "CustomToyota";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 300; 
+  color: #161A1D; 
+  }
+}
+.custom-btn-dark
+{
+  background-color: #000 !important;
+  color: #fff !important;
+}
+.custom-btn-dark:hover
+{
+  background-color: #fff !important;
+  color: #000 !important;
+  border: 1px solid black;
+}
+.container-fluid {
+  overflow-x: hidden; /* Hides horizontal overflow */
+}
 .btn.btn-dark {
     border-radius: 13px;
   }
@@ -13,6 +77,23 @@
    background-position: center;
    background-size: cover;
    }
+   @media only screen and (min-width: 990px) {
+    .custom_height
+    {
+      height: 100% !important;
+    }
+   }
+   @media only screen and (max-width: 600px) {
+    .Banner_image
+    {height: 105.422px;
+      flex-shrink: 0;
+    }
+   }
+   @media (min-width: 600px) and (max-width: 800px) {
+    .Banner_image
+    {height: 305.422px;
+    }
+   }
    .paraTag
    {
     color: #161A1D;
@@ -22,6 +103,10 @@
    .paraTag1
    {
      color: #D71921;
+   }
+   .custom-bg-gray 
+   {
+    background-color: #F8F8F8 !important;
    }
    
  /* //this for the Navs and Tabs  */
@@ -55,7 +140,7 @@
     height: 77px;
     font-size: 13px;
   } */
-  .nav-link:hover {
+  .custom-nav-link:hover {
     border: none !important;
     border-bottom: 1px solid #D8D8D8 !important;
   }
@@ -85,3 +170,56 @@
     overflow-y: scroll;
     height: 300px;
   }
+
+  .faq .accordion-button::after {
+    font-weight: 900;
+    background-color: #000;
+    border-radius: 18px;
+    padding:4px 10px 4px 10px;
+    background-image: none !important;
+    content: "+";
+    font-size: 1rem;
+    color: white;
+    font-size: 1.5rem !important;
+    margin-bottom: 10px;
+}
+.faq .accordion-button:not(.collapsed)::after {
+    font-weight: 600;
+    padding:2px 13px 5px 14px;
+    content: "-";
+    transform: none !important;
+}
+.back_color_set
+{
+  border-bottom:1px solid #D8D8D8 ;
+  padding: 10px;
+}
+.custom_font
+{
+    font-size: 36px; 
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+
+.custom-nav-tabs {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  flex-wrap: nowrap; /* Prevents wrapping */
+  scrollbar-width: none; /* Hides the scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hides the scrollbar for IE and Edge */
+}
+
+.custom-nav-tabs::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar for Webkit (Chrome, Safari, etc.) */
+}
+
+.custom-nav-item {
+  flex: 0 0 auto;
+}
+
+.custom-nav-link {
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
