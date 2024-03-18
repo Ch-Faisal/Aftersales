@@ -1,4 +1,4 @@
-
+/* this css for the search input field */
 .form-controll {
     border-radius: 15px;
     transition: border-color 0.3s ease;
@@ -20,7 +20,9 @@
     pointer-events: none;
     color: #aaa;
 }
+
 /* this for the Faq accordion */
+
 .faq .accordion-button::after {
     font-weight: 900;
     background-color: #000;
@@ -43,4 +45,22 @@
 {
   border-bottom:1px solid #D8D8D8 ;
   padding: 10px;
+}
+@media only screen and (max-width: 770px) {
+.faq .accordion-button::after {
+    font-weight: 600 !important;
+    background-color: #000;
+    border-radius: 18px;
+    padding:0px 6px 0px 6px !important;
+    background-image: none !important;
+    content: "+";
+    color: white;
+    font-size: 1rem !important;
+}
+.faq .accordion-button:not(.collapsed)::after {
+    font-weight: 600;
+    padding:0px 11px 3px 11px !important;
+    content: "-";
+    transform: none !important;
+}
 }

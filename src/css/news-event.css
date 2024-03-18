@@ -53,3 +53,19 @@ margin-top: -12px;
      background-color: #fff !important;
     }
 }
+
+
+.custom_heading_weight{
+    font-weight: 300 !important;
+}
+.custom-b-weight
+{
+    font-weight: 700 !important;
+    font-size: 18px !important;
+}
+@media only screen and (max-width: 600px) {
+    .custom-b-weight
+    {
+        font-size: 14px !important;
+    }
+  }

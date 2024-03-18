@@ -16,6 +16,7 @@ const Faq = () => {
   </div>
       </div>
       <div className="container px-lg-5">
+        <div className="faq">
         <div class="accordions px-lg-5" id="accordionExample">
           <div class="accordion-item back_color_set mb-2">
             <h2 class="accordion-header">
@@ -224,6 +225,7 @@ const Faq = () => {
             </div>
           </div>
 
+        </div>
         </div>
       </div>
       <div className="logos d-flex justify-content-center mt-5 mb-4">
