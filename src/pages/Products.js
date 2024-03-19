@@ -12,6 +12,21 @@ import 'swiper/css/pagination';
 import { Virtual, Navigation, Pagination } from 'swiper/modules';
 
 function Products() {
+  const scrollLeft = () => {
+    const myTab = document.getElementById("myTab");
+    myTab.scrollTo({
+        left: myTab.scrollLeft - 100, // Adjust scroll distance as needed
+        behavior: 'smooth' // Smooth scrolling behavior
+    });
+};
+
+const scrollRight = () => {
+    const myTab = document.getElementById("myTab");
+    myTab.scrollTo({
+        left: myTab.scrollLeft + 100, // Adjust scroll distance as needed
+        behavior: 'smooth' // Smooth scrolling behavior
+    });
+};
   const [swiperRef, setSwiperRef] = useState(null);
   const [slideContent, setSlides] = useState([
     { 
@@ -56,11 +71,31 @@ selalu optimal</span></p>
         <div className='container-fluid px-0 overflow-x-hidden'>
             <div className="row mt-5 d-flex justify-content-center">
                 <div className="bg-white">
-                  <div className='container'>
+                  <div className='container' style={{ position: "relative" }}>
+                  <div className="scroll-buttons d-lg-none d-flex align-items-center">
+                  <img
+                    onClick={scrollRight}
+                    className="ms-1 me-1 pe-2  mt-5 pt-2"
+                    src="assets/frameright.svg"
+                    alt=""
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      marginRight: "10px",
+                    }}
+                  />
+                  <img
+                    className="ms-2 me-1 mt-4"
+                    onClick={scrollLeft}
+                    src="assets/frameleft.svg"
+                    alt=""
+                    style={{ position: "absolute", top: "0px" }}
+                  />
+                </div>
                     <div className='row'>
                     <div className='col-12'>
                   <ul
-                    className="nav nav-tabs custom-nav-tabs nav-fill custom-nav-fill"
+                    className="nav nav-tabs custom-nav-tabs nav-fill custom-nav-fill ms-4 me-4 ms-lg-0 me-lg-0"
                     id="myTab"
                     role="tablist"
                   >

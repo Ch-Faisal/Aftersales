@@ -421,3 +421,19 @@ display: none;
     display: none;
       }
 }
+.custom-nav-tabs {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important; /* Hides the scrollbar for Firefox */
+  -ms-overflow-style: none !important; /* Hides the scrollbar for IE and Edge */
+}
+
+.custom-nav-tabs::-webkit-scrollbar {
+  display: none !important; /* Hides the scrollbar for Webkit (Chrome, Safari, etc.) */
+}
+
+@media (max-width:500px) {
+  .custom-nav-item {
+  flex: 0 0 auto !important;
+}
+}
