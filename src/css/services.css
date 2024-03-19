@@ -103,6 +103,8 @@ font-weight: 300;
    .paraTag1
    {
      color: #D71921;
+     font-weight: 300 !important;
+     text-transform: uppercase !important;
    }
    .custom-bg-gray 
    {
@@ -110,10 +112,10 @@ font-weight: 300;
    }
    
  /* //this for the Navs and Tabs  */
- .nav-tabs
+ /* .nav-tabs
  {
-    border-bottom: 2px solid #D8D8D8 !important;
- }
+    border-bottom: 1px solid #D8D8D8 !important; 
+ } */
  .custom-nav-fill .nav-item .nav-link,
  .nav-justified .nav-item .nav-link {
    border: none !important;
@@ -221,5 +223,11 @@ font-weight: 300;
 
 .custom-nav-link {
   white-space: nowrap; /* Prevents text wrapping */
+}
+.Services_paragraph{
+font-weight: 100 !important; 
+color: rgba(0, 0, 0, 0.80);
+line-height: 120%; /* 21.6px */
+letter-spacing: -0.198px;
 }
 

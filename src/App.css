@@ -1,4 +1,5 @@
-@font-face { font-family: CustomToyota; src: url('../public/assets/fonts/Toyota-Font/Toyota Type.ttf'); }
+/* @font-face { font-family: CustomToyota; src: url('../public/assets/fonts/Toyota-Font/Toyota Type.ttf'); } */
+@font-face { font-family: CustomToyota; src: url('../public/assets/fonts/TTF/ToyotaType-Regular.ttf'); }
 /* *{
   font-family: 'CustomToyota';
 } */

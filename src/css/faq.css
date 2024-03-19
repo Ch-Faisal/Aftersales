@@ -24,43 +24,18 @@
 /* this for the Faq accordion */
 
 .faq .accordion-button::after {
-    font-weight: 900;
-    background-color: #000;
-    border-radius: 18px;
-    padding:4px 10px 4px 10px;
-    background-image: none !important;
-    content: "+";
-    font-size: 1rem;
-    color: white;
-    font-size: 1.5rem !important;
-    margin-bottom: 10px;
+    background-color: #fff;
+    content: url(/public/assets/Vector1.svg);
+    padding: 0px !important;
 }
 .faq .accordion-button:not(.collapsed)::after {
     font-weight: 600;
-    padding:2px 13px 5px 14px;
-    content: "-";
+    padding: 0px !important;
+    content: url(/public/assets/Vector.svg);
     transform: none !important;
 }
 .back_color_set
 {
   border-bottom:1px solid #D8D8D8 ;
-  padding: 10px;
-}
-@media only screen and (max-width: 770px) {
-.faq .accordion-button::after {
-    font-weight: 600 !important;
-    background-color: #000;
-    border-radius: 18px;
-    padding:0px 6px 0px 6px !important;
-    background-image: none !important;
-    content: "+";
-    color: white;
-    font-size: 1rem !important;
-}
-.faq .accordion-button:not(.collapsed)::after {
-    font-weight: 600;
-    padding:0px 11px 3px 11px !important;
-    content: "-";
-    transform: none !important;
-}
+  padding: 15px;
 }

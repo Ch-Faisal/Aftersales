@@ -1,9 +1,9 @@
-.nav-tabs .nav-link.active {
+/* .nav-tabs .nav-link.active {
     color: black !important;
     border-bottom: 4px solid #000 !important;
-}
+} */
 .nav-tabs{
-    border-bottom: 2px solid #D8D8D8 !important;
+    /* border-bottom: 2px solid #D8D8D8 !important; */
     border-width: 50% !important;
 }
 .tips-event p{

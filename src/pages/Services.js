@@ -1,17 +1,24 @@
 import React from "react";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import "./services.css";
+import "../css/services.css";
 const Services = () => {
   // Function to scroll left
   const scrollLeft = () => {
-    document.getElementById("myTab").scrollLeft -= 100; // Adjust scroll distance as needed
-  };
+    const myTab = document.getElementById("myTab");
+    myTab.scrollTo({
+        left: myTab.scrollLeft - 100, // Adjust scroll distance as needed
+        behavior: 'smooth' // Smooth scrolling behavior
+    });
+};
 
-  // Function to scroll right
-  const scrollRight = () => {
-    document.getElementById("myTab").scrollLeft += 100; // Adjust scroll distance as needed
-  };
+const scrollRight = () => {
+    const myTab = document.getElementById("myTab");
+    myTab.scrollTo({
+        left: myTab.scrollLeft + 100, // Adjust scroll distance as needed
+        behavior: 'smooth' // Smooth scrolling behavior
+    });
+};
   return (
     <div>
       <Header></Header>
@@ -19,7 +26,7 @@ const Services = () => {
       <div className="mt-5 mb-5">
         <h1>Discover Our Service</h1>
         <div className="paraTag1">
-          <p className="paraTag">
+          <p className="paraTag px-5">
             Layanan Servis berkualitas prima ,&nbsp;
             <span className="paraTag1">
               agar performa Toyota Anda selalu optimal
@@ -36,7 +43,7 @@ const Services = () => {
                   <img
                     onClick={scrollRight}
                     className="ms-1 me-1 pe-2  mt-5 pt-2"
-                    src="/assets/frameright.svg"
+                    src="assets/frameright.svg"
                     alt=""
                     style={{
                       position: "absolute",
@@ -47,7 +54,7 @@ const Services = () => {
                   <img
                     className="ms-2 me-1 mt-4"
                     onClick={scrollLeft}
-                    src="/assets/frameleft.svg"
+                    src="assets/frameleft.svg"
                     alt=""
                     style={{ position: "absolute", top: "0px" }}
                   />
@@ -137,11 +144,11 @@ const Services = () => {
                     <div className="row d-flex justify-content-center">
                       <div className="col-12 d-lg-none d-block">
                         <p className="paraTag1">
-                          toyota service - General Repair
+                        TOYOTA SERVICE - GENERAL REPAIR
                         </p>
                         <h1>
-                          Layanan Servis berkualitas prima, agar performa
-                          Toyota Anda selalu optimal
+                          Layanan Servis berkualitas prima, agar performa Toyota
+                          Anda selalu optimal
                         </h1>
                       </div>
                       <div className="col-lg-6 col-md-10 col-12">
@@ -152,17 +159,17 @@ const Services = () => {
                       </div>
                       <div className="col-lg-6 col-md-10 col-12 text-center text-lg-start">
                         <p className="paraTag1 d-lg-block d-none">
-                          toyota service - General Repair
+                        TOYOTA SERVICE - GENERAL REPAIR
                         </p>
                         <h1 className="d-lg-block d-none">
                           Layanan Servis berkualitas prima, agar performa Toyota
                           Anda selalu optimal
                         </h1>
-                        <p>
+                        <p className="Services_paragraph">
                           Percayakan perawatan dan perbaikan kendaraan
                           kesayangan Anda kepada bengkel resmi Toyota.
                         </p>
-                        <p>
+                        <p className="Services_paragraph">
                           Baik servis perawatan berkala ataupun perbaikan,
                           kendaraan Anda akan ditangani oleh teknisi
                           berpengalaman dan bersertifikat, serta menggunakan
@@ -170,7 +177,7 @@ const Services = () => {
                           teknisi didukung dengan peralatan yang lengkap dan
                           modern sesuai dengan standar kualitas Toyota.
                         </p>
-                        <p>
+                        <p className="Services_paragraph">
                           Karena kepuasan Anda adalah prioritas kami, masalah
                           pada kendaraan Anda akan didiagnosa oleh master
                           technician dan ditunjang oleh special tools untuk
@@ -178,7 +185,10 @@ const Services = () => {
                           dengan tepat dan akurat dengan jaminan hasil perbaikan
                           (warranty).
                         </p>
-                        <button type="button" class="btn custom-btn-dark px-5 mt-4" >
+                        <button
+                          type="button"
+                          class="btn custom-btn-dark px-5 mt-4"
+                        >
                           Temukan Dealer Terdekat
                         </button>
                       </div>
@@ -214,7 +224,7 @@ const Services = () => {
                       Hadirkan ketenangan berkendara dengan layanan perbaikan
                       Bodi & Cat Toyota di tangan yang paling berpengalaman
                     </h1>
-                    <p>
+                    <p className="Services_paragraph">
                       Toyota memberikan layanan untuk perbaikan bodi kendaraan
                       Anda sehingga kembali ke kondisi semula melalui layanan
                       Bodi & Cat
@@ -227,7 +237,7 @@ const Services = () => {
                           Dengan 80 cabang bengkel Bodi & Cat Toyota yang
                           tersebar di seluruh Indonesia,
                         </h1>
-                        <p className="d-lg-block d-none">
+                        <p className="d-lg-block d-none Services_paragraph">
                           Toyota siap memberikan pelayanan tertinggi seperti :
                           fasilitas, material, teknisi, operasi, hingga jaminan
                           hasil perbaikan (warranty)
@@ -236,7 +246,7 @@ const Services = () => {
                       <div className="col-lg-5">
                         <img src="assets/map_view.png" className="w-100" />
                       </div>
-                      <p className="col-12 d-lg-none d-bolck pt-lg-0 pt-4">
+                      <p className="col-12 d-lg-none d-bolck pt-lg-0 pt-4 Services_paragraph">
                         Toyota siap memberikan pelayanan tertinggi seperti :
                         fasilitas, material, teknisi, operasi, hingga jaminan
                         hasil perbaikan (warranty)
@@ -315,7 +325,7 @@ const Services = () => {
                           Bengkel resmi Toyota akan membantu dari proses
                           administrasi baik pelanggan tunai ataupun asuransi.
                         </h1>
-                        <p className="d-lg-block d-none">
+                        <p className="d-lg-block d-none Services_paragraph">
                           Detail informasi mengenai layanan perbaikan kamu dapat
                           Anda akses melalui Halobeng pada M-Toyota atau jika
                           Anda memiliki asuransi, silahkan mengkonsultasikan
@@ -338,7 +348,10 @@ const Services = () => {
                           Anda memiliki asuransi, silahkan mengkonsultasikan
                           perbaikan pada call center dealer penjual Anda
                         </p>
-                        <button type="button" class="btn custom-btn-dark px-5 mt-4">
+                        <button
+                          type="button"
+                          class="btn custom-btn-dark px-5 mt-4"
+                        >
                           Temukan Dealer Terdekat
                         </button>
                       </div>
@@ -347,197 +360,200 @@ const Services = () => {
                   <div className="container p-lg-5">
                     <h1>Frequently Asked Question</h1>
                     <div className="faq">
-                    <div class="accordions mt-5" id="accordionExample">
-                      <div class="accordion-item back_color_set mb-2">
-                        <h2 class="accordion-header">
-                          <button
-                            class="accordion-button"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseSix"
-                            aria-expanded="true"
-                            aria-controls="collapseSix"
+                      <div class="accordions mt-5" id="accordionExample">
+                        <div class="accordion-item back_color_set mb-2">
+                          <h2 class="accordion-header">
+                            <button
+                              class="accordion-button"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#collapseSix"
+                              aria-expanded="true"
+                              aria-controls="collapseSix"
+                            >
+                              <b className="text-start">
+                                Bengkel BP Toyota menerima perbaikan apa saja?
+                              </b>
+                            </button>
+                          </h2>
+                          <div
+                            id="collapseSix"
+                            class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionExample"
                           >
-                            <b>
-                              Bengkel BP Toyota menerima perbaikan apa saja?
-                            </b>
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseSix"
-                          class="accordion-collapse collapse show"
-                          data-bs-parent="#accordionExample"
-                        >
-                          <div class="accordion-body">
-                            <p class="iner_contect text-start">
-                              Haha no, our goal is to rank you on the top of the
-                              first page of Google. Arbitrarily writing blog
-                              posts and rolling the dice on your content won’t
-                              achieve that.
-                              <br />
-                            </p>
+                            <div class="accordion-body">
+                              <p class="iner_contect text-start">
+                                Haha no, our goal is to rank you on the top of
+                                the first page of Google. Arbitrarily writing
+                                blog posts and rolling the dice on your content
+                                won’t achieve that.
+                                <br />
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div class="accordion-item mt-2 back_color_set">
-                        <h2 class="accordion-header">
-                          <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne"
-                            aria-expanded="false"
-                            aria-controls="collapseOne"
+                        <div class="accordion-item mt-2 back_color_set">
+                          <h2 class="accordion-header">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#collapseOne"
+                              aria-expanded="false"
+                              aria-controls="collapseOne"
+                            >
+                              <b className="text-start">
+                                Bagaimana jika jarak ke bengkel BP Toyota sangat
+                                jauh?
+                              </b>
+                            </button>
+                          </h2>
+                          <div
+                            id="collapseOne"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#accordionExample"
                           >
-                            <b>
-                              Bagaimana jika jarak ke bengkel BP Toyota sangat
-                              jauh?
-                            </b>
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseOne"
-                          class="accordion-collapse collapse"
-                          data-bs-parent="#accordionExample"
-                        >
-                          <div class="accordion-body">
-                            <p class="iner_contect text-start">
-                              We will get industry and company insights from
-                              you, and then send you a questionnaire. Once you
-                              fill that out:
-                              <br />
-                            </p>
+                            <div class="accordion-body">
+                              <p class="iner_contect text-start">
+                                We will get industry and company insights from
+                                you, and then send you a questionnaire. Once you
+                                fill that out:
+                                <br />
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div class="accordion-item mt-2 back_color_set">
-                        <h2 class="accordion-header">
-                          <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree"
-                            aria-expanded="false"
-                            aria-controls="collapseThree"
+                        <div class="accordion-item mt-2 back_color_set">
+                          <h2 class="accordion-header">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#collapseThree"
+                              aria-expanded="false"
+                              aria-controls="collapseThree"
+                            >
+                              <b className="text-start">
+                                Apakah semua jenis asuransi dapat melakukan
+                                perbaikan di bengkel BP Toyota?
+                              </b>
+                            </button>
+                          </h2>
+                          <div
+                            id="collapseThree"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#accordionExample"
                           >
-                            <b>
-                              Apakah semua jenis asuransi dapat melakukan
-                              perbaikan di bengkel BP Toyota?
-                            </b>
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseThree"
-                          class="accordion-collapse collapse"
-                          data-bs-parent="#accordionExample"
-                        >
-                          <div class="accordion-body">
-                            <p class="iner_contect text-start">
-                              Put your feet on your desk and relax. We’ll take
-                              care of everything. All you need to do is upload
-                              them, which we can handle too for a fee.
-                            </p>
+                            <div class="accordion-body">
+                              <p class="iner_contect text-start">
+                                Put your feet on your desk and relax. We’ll take
+                                care of everything. All you need to do is upload
+                                them, which we can handle too for a fee.
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div class="accordion-item mt-2 back_color_set">
-                        <h2 class="accordion-header">
-                          <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseFour"
-                            aria-expanded="false"
-                            aria-controls="collapseFour"
+                        <div class="accordion-item mt-2 back_color_set">
+                          <h2 class="accordion-header">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#collapseFour"
+                              aria-expanded="false"
+                              aria-controls="collapseFour"
+                            >
+                              <b className="text-start">
+                                Berapa lama waktu perbaikan di bengkel BP
+                                Toyota?
+                              </b>
+                            </button>
+                          </h2>
+                          <div
+                            id="collapseFour"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#accordionExample"
                           >
-                            <b>
-                              Berapa lama waktu perbaikan di bengkel BP Toyota?
-                            </b>
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseFour"
-                          class="accordion-collapse collapse"
-                          data-bs-parent="#accordionExample"
-                        >
-                          <div class="accordion-body">
-                            <p class="iner_contect text-start">
-                              Yes, we don’t believe in slowly dripping out your
-                              solution. We will work at lightning speeds to get
-                              all your content to you ASAP.
-                            </p>
+                            <div class="accordion-body">
+                              <p class="iner_contect text-start">
+                                Yes, we don’t believe in slowly dripping out
+                                your solution. We will work at lightning speeds
+                                to get all your content to you ASAP.
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div class="accordion-item mt-2 back_color_set">
-                        <h2 class="accordion-header">
-                          <button
-                            class="accordion-button collapsed "
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseFive"
-                            aria-expanded="false"
-                            aria-controls="collapseFive"
+                        <div class="accordion-item mt-2 back_color_set">
+                          <h2 class="accordion-header">
+                            <button
+                              class="accordion-button collapsed "
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#collapseFive"
+                              aria-expanded="false"
+                              aria-controls="collapseFive"
+                            >
+                              <b className="text-start">
+                                Apakah perlu membawa Surat Perintah Kerja (SPK)
+                                dari asuransi sebelum melakukan perbaikan di
+                                bengkel BP Toyota?
+                              </b>
+                            </button>
+                          </h2>
+                          <div
+                            id="collapseFive"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#accordionExample"
                           >
-                            <b>
-                              Apakah perlu membawa Surat Perintah Kerja (SPK)
-                              dari asuransi sebelum melakukan perbaikan di
-                              bengkel BP Toyota?
-                            </b>
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseFive"
-                          class="accordion-collapse collapse"
-                          data-bs-parent="#accordionExample"
-                        >
-                          <div class="accordion-body">
-                            <p class="iner_contect text-start">
-                              The topics are derived directly from your closest
-                              competitors online. And before you say it, yes you
-                              do have competitors online otherwise you’d already
-                              be on the first page of Google for thousands of
-                              targeted keywords and not reading this page.
-                            </p>
+                            <div class="accordion-body">
+                              <p class="iner_contect text-start">
+                                The topics are derived directly from your
+                                closest competitors online. And before you say
+                                it, yes you do have competitors online otherwise
+                                you’d already be on the first page of Google for
+                                thousands of targeted keywords and not reading
+                                this page.
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div class="accordion-item mt-2 back_color_set">
-                        <h2 class="accordion-header">
-                          <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo"
-                            aria-expanded="false"
-                            aria-controls="collapseTwo"
+                        <div class="accordion-item mt-2 back_color_set">
+                          <h2 class="accordion-header">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#collapseTwo"
+                              aria-expanded="false"
+                              aria-controls="collapseTwo"
+                            >
+                              <b className="text-start">
+                                Apakah bengkel BP Toyota menyediakan jasa
+                                towing?
+                              </b>
+                            </button>
+                          </h2>
+                          <div
+                            id="collapseTwo"
+                            class="accordion-collapse collapse"
+                            data-bs-parent="#accordionExample"
                           >
-                            <b>
-                              Apakah bengkel BP Toyota menyediakan jasa towing?
-                            </b>
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseTwo"
-                          class="accordion-collapse collapse"
-                          data-bs-parent="#accordionExample"
-                        >
-                          <div class="accordion-body">
-                            <p class="iner_contect text-start">
-                              Clicks and impressions to your site generally
-                              start going up within a month of posting your
-                              content. Although it may take 3-6 months to mature
-                              completely.
-                            </p>
+                            <div class="accordion-body">
+                              <p class="iner_contect text-start">
+                                Clicks and impressions to your site generally
+                                start going up within a month of posting your
+                                content. Although it may take 3-6 months to
+                                mature completely.
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
                     </div>
                   </div>
                   <div className="logos d-flex justify-content-center mt-5 mb-4">
@@ -586,7 +602,7 @@ const Services = () => {
                           Layanan perawatan dan perbaikan Toyota yang siap
                           mengunjungi Anda
                         </h1>
-                        <p>
+                        <p className="Services_paragraph">
                           Padatnya pekerjaan dan tuntutan mobilitas keseharian
                           Anda, terkadang menyebabkan Anda tidak sempat
                           meluangkan waktu untuk melakukan servis di bengkel
@@ -594,19 +610,22 @@ const Services = () => {
                           terawat karena dapat menyebabkan penurunan performa
                           kendaraan dan mesin tidak bekerja secara optimal.
                         </p>
-                        <p>
+                        <p className="Services_paragraph">
                           Toyota menghadirkan layanan Toyota Mobile Service
                           (TMS) untuk memberikan kemudahan servis berkala dan
                           perbaikan ringan seperti penggantian aki, wiper, brake
                           pad, v-belt, dan lampu, di lokasi dan waktu yang Anda
                           inginkan, seperti di rumah ataupun di kantor Anda.
                         </p>
-                        <p>
+                        <p className="Services_paragraph">
                           Tidak hanya kemudahan waktu dan lokasi, kualitas
                           pengerjaan TMS terjamin sama baiknya dengan pengerjaan
                           di bengkel Toyota tanpa adanya biaya tambahan.
                         </p>
-                        <button type="button" class="btn custom-btn-dark px-5 mt-4">
+                        <button
+                          type="button"
+                          class="btn custom-btn-dark px-5 mt-4"
+                        >
                           Temukan Dealer Terdekat
                         </button>
                       </div>
@@ -653,14 +672,14 @@ const Services = () => {
                     </h1>
                   </div>
                   <div className="container text-start pt-5 d-none d-lg-block ">
-                    <p>
+                    <p className="Services_paragraph">
                       Jika Anda memiliki waktu yang terbatas untuk perawataan
                       berkala Toyota Anda, Anda tidak perlu lagi khawatir harus
                       menunggu lama. Gunakan Express Maintenance (EM)* dari
                       Toyota, yaitu servis cepat (60 menit) yang dikerjakan
                       lebih dari 1 teknisi.
                     </p>
-                    <p>
+                    <p className="Services_paragraph">
                       Selain cepat, Anda tidak perlu mengeluarkan biaya tambahan
                       dan Toyota menjamin kualitas layanan EM seperti halnya
                       servis regular. Untuk mendapatkan layanan ini, Anda dapat
