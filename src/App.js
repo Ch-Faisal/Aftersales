@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom'; // Import ReactDOM
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
@@ -10,9 +12,11 @@ import Faq from "./pages/Faq";
 import TCare from "./pages/TCare";
 import NewsEvents from "./pages/NewsEvents";
 import LatestNewsEvents from "./pages/LatestNewsEvents";
-
+import { Provider } from 'react-redux';
+import store from './store/store';
 function App() {
   return (
+    <Provider store={store}>
     <div className="App">
       <BrowserRouter>
         <Routes>
@@ -30,6 +34,8 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
+    </Provider>
+    
   );
 }
 
