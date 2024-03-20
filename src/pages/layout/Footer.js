@@ -6,7 +6,48 @@ function Footer() {
     navbar.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className="bg-white container-fluid footer">
+    <div>
+       <div class="wrapper1 " id="wrapper1">
+        <ul>
+          <li class="whatsapp mt-3">
+            <div className="fa">
+              <img src="assets/sideoption.png" alt="" />
+            </div>
+            <p className="sideoption pt-1">Booking Service</p>
+          </li>
+        </ul>
+      </div>
+       <div class="wrapper" id="wrapper">
+        <ul onClick={scrollToTop}>
+          <li class="whatsapp mt-3">
+            <div className="fa d-flex"><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <g clip-path="url(#clip0_2119_64084)">
+                <path
+                  d="M2 7.14286L8 2L14 7.14286M2 14L8 8.85714L14 14"
+                  stroke="white"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_2119_64084">
+                  <rect width="16" height="16" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+            </div>
+            <p className="sideoption ps-2 pt-1">Back To top</p>
+          </li>
+        </ul>
+      </div>
+    <div className="bg-white container-fluid footer px-0">
       <hr />
       <div className="back-to-top">
         <a onClick={scrollToTop}>Back to top </a>
@@ -633,6 +674,7 @@ function Footer() {
           <span className="mx-3">|</span> Contact Us
         </p>
       </div>
+    </div>
     </div>
   );
 }

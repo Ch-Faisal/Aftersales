@@ -3,6 +3,7 @@ background-color: rgb(250, 250, 250);
 padding: 5%;
 }
 .section-1 .section-content p{
+    text-align: left;
 color: rgba(0, 0, 0, 1);
 font-size: 14px;
 }
@@ -118,4 +119,8 @@ font-size: 14px;
     .express{
         width: 100% !important;
     }
+}
+strong
+{
+    font-weight: 600;
 }

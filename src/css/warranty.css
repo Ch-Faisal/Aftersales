@@ -1,0 +1,14 @@
+.custom_text_colors
+{
+    color: #000 !important;
+}
+ul li
+{
+    font-family: "CustomToyotaLight";
+    font-weight: 400 !important;
+
+    color: #2D2D2D;
+font-style: normal;
+font-weight: 400;
+line-height: 20px;
+}

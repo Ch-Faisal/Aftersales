@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
-
+import "../css/warranty.css";
 function Warranty() {
     return (
         <div>
@@ -22,7 +22,7 @@ function Warranty() {
                         <div className='col-12 col-md-7 text-start'>
                             <h1 className='d-none d-lg-block'>Vehicle Warranty</h1>
                             <b className='d-none d-lg-block'>36 bulan (3 tahun) / 100.000 km</b>
-                            <p className='text-center text-md-start'>
+                            <p className='text-center text-md-start custom_text_colors'>
                                 Tuntutan warranty akan dikabulkan dengan syarat pemilik kendaraan melakukan servis secara berkesinambungan di <span className='fw-bold'>Bengkel Resmi Toyota</span> mulai servis ke-1 (1 bulan atau 1.000 KM) hingga servis ke-11 (36 Bulan atau 100.000 KM)
                             </p>
                         </div>
@@ -96,7 +96,7 @@ function Warranty() {
 
                                     </tbody>
                                 </table>
-                                <p>
+                                <p className='custom_text_colors'>
                                     * Mana yang tercapai lebih dahulu. <br />
                                     ** Khusus untuk hybrid battery/aki, warranty berlaku selama 8 tahun dengan 3 tahun pertama sesuai ketentuan manufaktur dan tambahan 5 tahun sesuai ketentuan Toyota Astra Motor.
                                 </p>
@@ -116,7 +116,7 @@ function Warranty() {
                             <div className='col-12 col-md-7 text-start mt-3 mt-md-0'>
                                 <h1>Parts Warranty</h1>
                                 <b>3 Tahun / 100.000 km</b>
-                                <p>
+                                <p className='custom_text_colors'>
                                     Tuntutan warranty akan dikabulkan dengan syarat pemilik kendaraan melakukan servis secara berkesinambungan di <span className='fw-bold'>Bengkel Resmi Toyota</span> mulai servis ke-1 (1 bulan atau 1.000 KM) hingga servis ke-11 (36 Bulan atau 100.000 KM)
                                 </p>
                             </div>

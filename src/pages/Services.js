@@ -25,10 +25,10 @@ const scrollRight = () => {
       <div className="Banner_image"></div>
       <div className="mt-5 mb-5">
         <h1>Discover Our Service</h1>
-        <div className="paraTag1">
-          <p className="paraTag px-5">
+        <div className="">
+          <p className=" px-4 heading_discription">
             Layanan Servis berkualitas prima ,&nbsp;
-            <span className="paraTag1">
+            <span className="text-danger">
               agar performa Toyota Anda selalu optimal
             </span>
           </p>
@@ -272,22 +272,22 @@ const scrollRight = () => {
                             </h1>
                             <div className="col-md-6">
                               <span className="d-flex align-items-center">
-                                <span className="custom_font">1</span>
-                                <span>
+                                <span className="custom_font me-3 me-lg-0">1</span>
+                                <span className="custom_color">
                                   Fasilitas bengkel dan tools yang lengkap untuk
                                   menunjang kualitas perbaikan.
                                 </span>
                               </span>
                               <span className="d-flex align-items-center">
-                                <span className="custom_font">2</span>
-                                <span>
+                                <span className="custom_font me-2 me-lg-0">2</span>
+                                <span className="custom_color">
                                   Estimasi waktu dan biaya yang akurat serta
                                   transparan.
                                 </span>
                               </span>
                               <span className="d-flex align-items-center">
-                                <span className="custom_font">3</span>
-                                <span>
+                                <span className="custom_font me-2 me-lg-0">3</span>
+                                <span className="custom_color">
                                   Teknisi yang telah tersertifikasi oleh Toyota
                                   Astra Motor.
                                 </span>
@@ -295,22 +295,22 @@ const scrollRight = () => {
                             </div>
                             <div className="col-md-6">
                               <span className="d-flex align-items-center">
-                                <span className="custom_font">4</span>
-                                <span>
+                                <span className="custom_font me-2 me-lg-0">4</span>
+                                <span className="custom_color">
                                   Jaminan suku cadang orisinal dari
                                   Toyota.Jaminan suku Toyota.
                                 </span>
                               </span>
                               <span className="d-flex align-items-center">
-                                <span className="custom_font">5</span>
-                                <span>
+                                <span className="custom_font me-2 me-lg-0">5</span>
+                                <span className="custom_color">
                                   Penggunaan material perbaikan dan cat sesuai
                                   standar.
                                 </span>
                               </span>
                               <span className="d-flex align-items-center">
-                                <span className="custom_font">6</span>
-                                <span>Garansi hasil perbaikan Bodi & Cat.</span>
+                                <span className="custom_font me-2 me-lg-0">6</span>
+                                <span className="custom_color">Garansi hasil perbaikan Bodi & Cat.</span>
                               </span>
                             </div>
                           </div>
