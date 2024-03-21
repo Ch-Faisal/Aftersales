@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.0aa344f1.css",
-    "main.js": "/static/js/main.455da2cc.js",
+    "main.css": "/static/css/main.19baf9ec.css",
+    "main.js": "/static/js/main.9838eab1.js",
     "static/js/511.b675b728.chunk.js": "/static/js/511.b675b728.chunk.js",
     "static/media/Rectangle4.png": "/static/media/Rectangle4.a243c4361b4fbb2a84db.png",
     "static/media/ToyotaType-Regular.ttf": "/static/media/ToyotaType-Regular.e91e6060b2f2192802d8.ttf",
+    "static/media/ToyotaType-Light.ttf": "/static/media/ToyotaType-Light.be706ad69fd937293369.ttf",
     "index.html": "/index.html",
     "static/media/Vector1.svg": "/static/media/Vector1.bdfbf780f6ed69d5fc0d.svg",
     "static/media/Vector.svg": "/static/media/Vector.5f36c4e97191943cd909.svg",
-    "main.0aa344f1.css.map": "/static/css/main.0aa344f1.css.map",
-    "main.455da2cc.js.map": "/static/js/main.455da2cc.js.map",
+    "main.19baf9ec.css.map": "/static/css/main.19baf9ec.css.map",
+    "main.9838eab1.js.map": "/static/js/main.9838eab1.js.map",
     "511.b675b728.chunk.js.map": "/static/js/511.b675b728.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0aa344f1.css",
-    "static/js/main.455da2cc.js"
+    "static/css/main.19baf9ec.css",
+    "static/js/main.9838eab1.js"
   ]
 }
