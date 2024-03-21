@@ -99,7 +99,7 @@ line-height: 120% !important;
   }
   .card{
     border: none !important;
-    box-shadow: 0px 0px 0px 0px !important
+    /* box-shadow: 0px 0px 0px 0px !important */
   }
   a{
     font-weight: bold;

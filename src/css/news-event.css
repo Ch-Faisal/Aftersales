@@ -35,9 +35,9 @@ margin-top: -12px;
     .event-tabs .card{
         width: 100% !important;
     }
-    .event-tabs .card-body button{
+    .event-tabs .card-body .custom_button_forcolor{
         border: none;
-        text-align: left;
+        text-align: left !important;
         color: rgba(213, 32, 39, 1) !important;
         margin-left: -10px !important;
     }
