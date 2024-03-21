@@ -173,9 +173,17 @@ border-radius: 30px !important;
   margin-bottom: 6% !important;
 }
 .section-2 .wrapper{
-  padding: 50px;
+  padding: 40px;
   background-color: rgb(250, 250, 250);
   border-radius: 20px;
+}
+.mx-boxes{
+  margin-left: 8% !important;
+  margin-right: 8% !important;
+}
+.section-2 .wrapper img{
+  width: 50%;
+  height: 100% !important;
 }
 .section-2-content .main-heading h2{
   font-size: 36px;
@@ -187,8 +195,7 @@ border-radius: 30px !important;
 .section-2-content{
   background-color: rgb(250, 250, 250);
   padding: 50px;
-  width: 90%;
-  margin-left: 5%;
+  width: 100%;
 }
 .section-2  .section-text{
   margin-left: 5% !important;
@@ -230,12 +237,13 @@ border-radius: 30px !important;
   color: #282c34 !important;
 }
 .terbaik{
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
-  margin-top: 8% !important;
+  margin-top: 6% !important;
   margin-bottom: 3% !important;
   font-family: "CustomToyota";
 }
+
 .Servis{
   color: #fff !important;
   background-color: rgba(0, 0, 0, 1) !important;
@@ -402,6 +410,7 @@ border-radius: 30px !important;
   background-color: black; 
   z-index: 2;
 }
+
 @media screen and (max-width: 1134px) {
   .custom-select-container::after {
     top: 37%;

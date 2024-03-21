@@ -87,7 +87,7 @@ function LatestNewsEvents() {
                         >
                       <div className="row mt-5 ">
                       <div className="col-sm-6 col-lg-4">
-                    <div className="card mt-4 mt-lg-0 " style={{width: "18rem"}}>
+                    <div className="card mt-4 mt-lg-0 ">
                     <img src="assets/beyond exterior 800x600_2 1.png" className="card-img-top rounded-0" alt="..."/>
                     <div className="card-body d-flex flex-column justify-content-between">
                         <div className='tips-event mt-2'>
@@ -100,7 +100,7 @@ function LatestNewsEvents() {
                     </div>
                 </div>
                         <div className="col-sm-6 col-lg-4 mt-4 mt-md-0">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (1).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -113,7 +113,7 @@ function LatestNewsEvents() {
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-4 mt-4 mt-md-0">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (2).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -129,7 +129,7 @@ function LatestNewsEvents() {
                       </div>
                             <div className="row mt-4">
                             <div className="col-sm-6 col-lg-4">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (3).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -142,7 +142,7 @@ function LatestNewsEvents() {
                             </div>
                         </div>
                              <div className="col-sm-6 col-lg-4 mt-4 mt-md-0">
-                                <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                                <div className="card mt-4 mt-lg-0">
                                 <img src="assets/beyond exterior 800x600_2 1 (4).png" className="card-img-top rounded-0" alt="..."/>
                                 <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -155,7 +155,7 @@ function LatestNewsEvents() {
                         </div>
                         </div>
                         <div className="col-sm-6 col-lg-4 mt-4 mt-md-0">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (5).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -171,7 +171,7 @@ function LatestNewsEvents() {
                         </div>
                         <div className="row mt-3">
                         <div className="col-sm-6 col-lg-4">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (6).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -184,7 +184,7 @@ function LatestNewsEvents() {
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-4 mt-4 mt-md-0">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (7).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -197,7 +197,7 @@ function LatestNewsEvents() {
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-4 mt-4 mt-md-0">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (8).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -215,7 +215,7 @@ function LatestNewsEvents() {
                         <div className="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
                         <div className="row mt-5">
                         <div className="col-sm-6 col-lg-4">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (7).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -228,7 +228,7 @@ function LatestNewsEvents() {
                         </div>
                     </div>
                     <div className="col-sm-6 col-lg-4 mt-4 mt-md-0">
-                        <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                        <div className="card mt-4 mt-lg-0">
                         <img src="assets/beyond exterior 800x600_2 1 (8).png" className="card-img-top rounded-0" alt="..."/>
                         <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -241,7 +241,7 @@ function LatestNewsEvents() {
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-4 mt-4 mt-md-0">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1.png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -258,7 +258,7 @@ function LatestNewsEvents() {
                         <div className="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
                         <div className="row mt-5">
                         <div className="col-sm-6 col-lg-4">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (3).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -271,7 +271,7 @@ function LatestNewsEvents() {
                             </div>
                         </div>
       <div className="col-sm-6 col-lg-4 mt-4 mt-md-0">
-        <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+        <div className="card mt-4 mt-lg-0">
           <img src="assets/beyond exterior 800x600_2 1 (6).png" className="card-img-top rounded-0" alt="..."/>
           <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -288,7 +288,7 @@ function LatestNewsEvents() {
                         <div className="tab-pane fade" id="ex1-tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
                         <div className="row mt-5">
                         <div className="col-sm-6 col-lg-4">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (3).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -301,7 +301,7 @@ function LatestNewsEvents() {
                             </div>
                         </div>
                         <div className="col-sm-6 col-lg-4 mt-4 mt-md-0">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (1).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>
@@ -318,7 +318,7 @@ function LatestNewsEvents() {
                         <div className="tab-pane fade" id="ex1-tabs-5" role="tabpanel" aria-labelledby="ex1-tab-5">
                         <div className="row mt-5">
                         <div className="col-sm-6 col-lg-4">
-                            <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
+                            <div className="card mt-4 mt-lg-0">
                             <img src="assets/beyond exterior 800x600_2 1 (2).png" className="card-img-top rounded-0" alt="..."/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <div className='tips-event mt-2'>

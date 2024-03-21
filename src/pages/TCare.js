@@ -94,10 +94,10 @@ function TCare() {
                         <p className='text-danger'>Langkah 1 - 3</p>
                         </div>
                         <div className='tab-content mx-2 mx-md-5 text-start'>
-                            <p>ditemukan pada STNK atau BPKB kendaraan Anda</p>
+                            <p style={{ color: 'black', fontWeight: 300 }}>ditemukan pada STNK atau BPKB kendaraan Anda</p>
                         </div>
-                        <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
-                            <p className='text-start pt-2'>Masukkan 17 Digit No. Rangka Kendaraan</p>
+                        <div className="form-group mx-5">
+                          <input type="email" className="form-control Masukkan" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan 17 Digit No. Rangka Kendaraan" />
                         </div>
                         <button className='btn btn-primary Lanjut mt-4' onClick={handleLanjutClick}>Lanjut</button>
                         </div>
@@ -109,10 +109,10 @@ function TCare() {
                         <p className='text-danger'>Langkah 1 - 3</p>
                         </div>
                         <div className='tab-content mx-2 mx-md-5 text-start'>
-                            <p>ditemukan pada STNK atau BPKB kendaraan Anda</p>
+                            <p style={{ color: 'black', fontWeight: 300 }}>ditemukan pada STNK atau BPKB kendaraan Anda</p>
                         </div>
-                        <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
-                            <p className='text-start pt-2'>Masukkan 17 Digit No. Rangka Kendaraan</p>
+                        <div className="form-group mx-5">
+                          <input type="email" className="form-control Masukkan" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan 17 Digit No. Rangka Kendaraan" />
                         </div>
                         <button className='btn btn-primary Lanjut mt-4' onClick={handleLanjutClick}>Lanjut</button>
                         </div>
@@ -146,10 +146,10 @@ function TCare() {
                         <p className='text-danger'>Langkah 1 - 3</p>
                         </div>
                         <div className='tab-content mx-2 mx-md-5 text-start'>
-                            <p> STNK atau BPKB kendaraan Anda</p>
+                            <p style={{ color: 'black', fontWeight: 300 }}> STNK atau BPKB kendaraan Anda</p>
                         </div>
-                        <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
-                            <p className='text-start pt-2'>loremm Masukkan 17 Digit No. Rangka Kendaraan</p>
+                        <div className="form-group mx-5">
+                          <input type="email" className="form-control Masukkan" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan 17 Digit No. Rangka Kendaraan" />
                         </div>
                         <button className='btn btn-primary Lanjut mt-4' onClick={handleLanjutClick}>Lanjut</button>
                         </div>
@@ -161,10 +161,10 @@ function TCare() {
                         <p className='text-danger'>Langkah 1 - 3</p>
                         </div>
                         <div className='tab-content mx-2 mx-md-5 text-start'>
-                            <p>STNK atau BPKB kendaraan Anda</p>
+                            <p style={{ color: 'black', fontWeight: 300 }}>STNK atau BPKB kendaraan Anda</p>
                         </div>
-                        <div className='Masukkan py-1 mx-2 mx-md-5 px-2'>
-                            <p className='text-start pt-2'>Masukk Digit No. Rangka Kendaraan</p>
+                        <div className="form-group mx-5">
+                          <input type="email" className="form-control Masukkan" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan 17 Digit No. Rangka Kendaraan" />
                         </div>
                         <button className='btn btn-primary Lanjut mt-4' onClick={handleLanjutClick}>Lanjut</button>
                         </div>
