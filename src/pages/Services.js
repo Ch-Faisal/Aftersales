@@ -43,7 +43,7 @@ const scrollRight = () => {
                   <img
                     onClick={scrollRight}
                     className="ms-1 me-1 pe-2  mt-5 pt-2"
-                    src="assets/frameright.svg"
+                    src="assets/Frameright.svg"
                     alt=""
                     style={{
                       position: "absolute",
@@ -54,7 +54,7 @@ const scrollRight = () => {
                   <img
                     className="ms-2 me-1 mt-4"
                     onClick={scrollLeft}
-                    src="assets/frameleft.svg"
+                    src="assets/Frameleft.svg"
                     alt=""
                     style={{ position: "absolute", top: "0px" }}
                   />
