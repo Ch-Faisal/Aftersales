@@ -1,0 +1,140 @@
+.all-new-alphard{
+    background-color: #cfd4d8;
+}
+.new-alphard {
+  background-color: rgba(227, 227, 228, 1)  ;
+  padding: 5px;
+}
+.new-alphard .nav-link{
+    color: rgba(255, 255, 255, 1);
+}
+.nav-pills .nav-item .nav-link.active {
+    background-color: #fff;
+    color: #000;
+}
+.new-alphard{
+    margin-left: 24%;
+    margin-right: 24%;
+}
+
+.divider-links{
+        margin: 1% 5%; /* Adjust the spacing between the line and the tabs */
+        color: #000; 
+}
+.servis-tabs{
+    background-color: #000;
+    color: #fff;
+}
+.custom-nav-link.active .servis-tabs{
+    background-color: rgba(215, 25, 33, 1) ;
+    border: none !important;
+}
+.nav-tabs .nav-link.active{
+    border-bottom: none !important;
+}
+.servis-tabs p{
+    font-size: 12px;
+    font-weight: lighter;
+    color: #fff;
+}
+.custom-home-tabs{
+    border-bottom: none !important;
+}
+.custom-nav-item {
+    flex: 0 0 auto;
+  }
+  
+  .custom-nav-link {
+    white-space: nowrap; /* Prevents text wrapping */
+  }
+.servis-title{
+    color: rgba(215, 25, 33, 1) !important;
+}
+.inline-text{
+    color: rgba(215, 25, 33, 1);
+}
+.tab-content .servis-content .text {
+    color: rgba(22, 26, 29, 1) !important; 
+   font-weight: 200 !important;
+    font-size: 14px !important;
+  }
+  .wrapper-servis{
+    border-radius: 30px;
+    border: 1px solid rgba(215, 25, 33, 1) !important;
+  }
+  .mx-10{
+    margin-left: 12rem !important;
+    margin-right: 12rem !important;
+  }
+  .home-tab .nav-link {
+    border-radius: 30px;
+    color: #000;
+    padding-left: 7rem !important;
+    padding-right: 7rem !important;
+    background-color: rgba(227, 227, 228, 1);
+  }
+  .home-tab .nav-link.active {
+    border-radius: 30px;
+    border: 1px solid rgba(215, 25, 33, 1) !important;
+    background-color: rgba(215, 25, 33, 1) !important;
+    color: #fff !important;
+  }
+  .servis-2-tab .text-red{
+    color: rgba(215, 25, 33, 1) !important;
+    font-weight: 200 !important;
+    font-size: 16px !important;
+  }
+  .text-red{
+    color: rgba(215, 25, 33, 1) !important;
+  }
+  
+  .bg-grey{
+    background-color: rgba(227, 227, 228, 1);
+  }
+  .bg-pink{
+    background-color: rgba(253, 243, 243, 1) !important;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+}
+.borderr{
+  border-left: 0.5 solid rgba(227, 227, 228, 1) !important;
+}
+  @media screen and (max-width: 992px) {
+    .tmo-oli{
+      width: 750px !important;
+      display: flex;
+      justify-content: start !important;
+    }
+    .tmo-ol .tmo-image img{
+         width: 150px !important;
+      }
+}
+  @media screen and (max-width: 768px) {
+    .tmo-oli{
+        width: 100% !important;
+      }
+    .new-alphard{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .standard{
+        font-size: 12px !important;
+    }
+    .tmo-image img{
+      width: 100% !important;
+    }
+    .wrapper-servis .section-img img{
+        width: 70% !important;
+    }
+    .tab-boxes{
+        width:110px !important;
+    }
+    .new-alphard .nav-link{
+        font-size: 12px !important;
+    }
+    .section-3 h5{
+        font-size: 24px !important;
+      }
+  }
