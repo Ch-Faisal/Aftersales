@@ -1,0 +1,41 @@
+/* this css for the search input field */
+.form-controll {
+    border-radius: 15px;
+    transition: border-color 0.3s ease;
+  }
+  .form-controll:focus {
+    border:2px solid #8cb9e9c2 !important; /* focus border color */
+  }
+.has-search .form-controll {
+    padding-left: 2.375rem;
+}
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+/* this for the Faq accordion */
+
+.faq .accordion-button::after {
+    background-color: #fff;
+    content: url(/public/assets/Vector1.svg);
+    padding: 0px !important;
+}
+.faq .accordion-button:not(.collapsed)::after {
+    font-weight: 600;
+    padding: 0px !important;
+    content: url(/public/assets/Vector.svg);
+    transform: none !important;
+}
+.back_color_set
+{
+  border-bottom:1px solid #D8D8D8 ;
+  padding: 15px;
+}

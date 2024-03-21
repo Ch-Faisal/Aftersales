@@ -1,4 +1,6 @@
-@font-face { font-family: CustomToyota; src: url('../public/assets/fonts/Toyota-Font/Toyota Type.ttf'); }
+/* @font-face { font-family: CustomToyota; src: url('../public/assets/fonts/Toyota-Font/Toyota Type.ttf'); } */
+@font-face { font-family: CustomToyota; src: url('../public/assets/fonts/TTF/ToyotaType-Regular.ttf'); }
+@font-face { font-family: CustomToyotaLight; src: url('../public/assets/fonts/TTF/ToyotaType-Light.ttf'); }
 /* *{
   font-family: 'CustomToyota';
 } */
@@ -15,13 +17,11 @@ font-style: normal !important;
 font-weight: 600 !important; 
 }
 p{
-  font-family: "CustomToyota";
-  font-size: 1.125rem; 
+font-size: 1.125rem; 
 font-style: normal;
-font-weight: 400; 
+font-weight: 300; 
 }
 .custom-font-light-one-rem{
-  font-family: "CustomToyota";
   font-size: 1rem;
   font-style: normal;
   font-weight: 300; 
@@ -50,10 +50,9 @@ font-weight: 400;
   font-weight: 600 !important; 
   }
   p{
-    font-family: "CustomToyota";
-    font-size: 0.875rem; 
+  font-size: 0.875rem; 
   font-style: normal;
-  font-weight: 400; 
+  font-weight: 300; 
   }
   .custom-font-light-one-rem{
     font-family: "CustomToyota";
@@ -321,7 +320,7 @@ border-radius: 30px !important;
   padding: 0;
 }
 .accordion-button {
-  color: black !important;
+  /* color: black !important; */
   outline: none !important;
   box-shadow: none !important;
 }
@@ -444,3 +443,149 @@ border-radius: 30px !important;
       height: 30%; 
   }
 }
+
+
+
+.wrapper {
+  position: fixed;
+  bottom: 30%;
+  right: -10%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+#wrapper ul {
+  list-style: none;
+}
+
+#wrapper ul .whatsapp {
+  width: 180px;
+  height: 30px;
+  position: relative;
+  border-radius: 10px 0px 0px 10px !important;
+  background: #D52027;
+  margin: 1px 0;
+  cursor: pointer;
+  border-radius: 0px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+#wrapper ul li .fa {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #fff;
+}
+
+.sideoption
+{
+  font-family: "CustomToyota";
+  font-weight: 500;
+  font-size: 15px;
+  color: white;
+}
+
+.wrapper1 {
+  position: fixed;
+  bottom: 37%;
+  right: -10%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+#wrapper1 ul {
+  list-style: none;
+}
+
+#wrapper1 ul .whatsapp {
+  width: 220px;
+  height: 33px;
+  position: relative;
+  border-radius: 10px 0px 0px 10px !important;
+  background: #000000;
+  margin: 1px 0;
+  cursor: pointer;
+  border-radius: 0px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+#wrapper1 ul li .fa {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #fff;
+}
+
+.sideoption
+{
+  font-family: "CustomToyota";
+  font-weight: 500;
+  font-size: 15px;
+  color: white;
+}
+@media (max-width: 1420px) { /* Adjust this breakpoint as needed */
+  .wrapper1 {
+    bottom: 38%;
+  }
+}
+@media (max-width: 1220px) { /* Adjust this breakpoint as needed */
+  .wrapper1 {
+    right: -14%; /* Adjust the percentage to your preference */
+    bottom: 40%;
+  }
+}
+@media (max-width: 1050px) { /* Adjust this breakpoint as needed */
+  .wrapper {
+    right: -13%; /* Adjust the percentage to your preference */
+  }
+}
+@media (max-width: 970px) { /* Adjust this breakpoint as needed */
+  .wrapper1 {
+    right: -18%; /* Adjust the percentage to your preference */
+  }
+}
+@media (max-width: 830px) { /* Adjust this breakpoint as needed */
+  .wrapper {
+    right: -16%; /* Adjust the percentage to your preference */
+  }
+  .wrapper1 {
+    right: -20%; /* Adjust the percentage to your preference */
+  }
+}
+
+@media (max-width: 650px) { 
+  .wrapper {
+    right: -20%; 
+  }
+  .wrapper1 {
+    right: -24%; 
+  }
+}
+@media (max-width: 530px) { 
+  .wrapper {
+    right: -26%; 
+  }
+  .wrapper1 {
+    right: -29%; 
+  }
+}
+@media (max-width: 410px) { 
+  .wrapper {
+    right: -32%; 
+  }
+  .wrapper1 {
+    right: -37%; 
+  }
+}
+@media (max-width: 330px) { 
+  .wrapper {
+    right: -44%; 
+  }
+  .wrapper1 {
+    right: -44%; 
+  }
+}
+
+

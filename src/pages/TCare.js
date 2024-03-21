@@ -40,7 +40,13 @@ function TCare() {
                                 <div className='col-md-7'>
                                     <div className='section-content'>
                                         <p className='text-start'>
-                                        Toyota sangat peduli terhadap keamanan dan kenyamanan Anda saat berkendara<strong> T-Care</strong> memberikan Anda <strong>Bebas Biaya Jasa Servis Berkala dan Suku Cadang*</strong> sebanyak 7x servis selama 3 tahun. Dengan rutin servis berkala setiap 6 bulan, Anda juga dapat menikmati reward berupa <strong>Extended Warranty 1 tahun/20.000 km!**</strong> Apakah kendaraan Toyota Anda dalam program T-Care? Cek nomor rangka kendaraan Anda dan dapatkan sertifikat elektroniknya! *sesuai ketentuan yang tertera pada buku servis *khusus model LCGC hanya berlaku bebas biaya jasa servis berkala* *total warranty menjadi 4 tahun/120.000 km
+                                        Toyota sangat peduli terhadap keamanan dan kenyamanan Anda saat berkendara<strong> T-Care</strong> memberikan Anda <strong>Bebas Biaya Jasa Servis Berkala dan Suku Cadang*</strong> sebanyak 7x servis selama 3 tahun.</p>
+                                        <p> Dengan rutin servis berkala setiap 6 bulan, Anda juga dapat menikmati reward berupa <strong>Extended Warranty 1 tahun/20.000 km!**</strong></p>
+                                        <p> Apakah kendaraan Toyota Anda dalam program T-Care? </p>
+                                         <p> Cek nomor rangka kendaraan Anda dan dapatkan sertifikat elektroniknya! </p>
+                                          <p> *sesuai ketentuan yang tertera pada buku servis </p> 
+                                          <p>*khusus model LCGC hanya berlaku bebas biaya jasa servis berkala*</p>
+                                          <p> *total warranty menjadi 4 tahun/120.000 km
                                         </p>
                                     </div>
                                 </div>

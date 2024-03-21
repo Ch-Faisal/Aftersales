@@ -3,6 +3,7 @@ background-color: rgb(250, 250, 250);
 padding: 5%;
 }
 .section-1 .section-content p{
+    text-align: left;
 color: rgba(0, 0, 0, 1);
 font-size: 14px;
 }
@@ -79,10 +80,6 @@ font-size: 14px;
     border: none;
     outline: none;
 }
-/* .tab-content p{
-    color: rgba(0, 0, 0, 1) !important;
-    font-size: 18px !important;
-} */
 .Lanjut{
     background-color: rgba(223, 29, 29, 1) !important;
     border: none;
@@ -118,4 +115,8 @@ font-size: 14px;
     .express{
         width: 100% !important;
     }
+}
+strong
+{
+    font-weight: 600;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 function Header() {
   return (
     <div>
@@ -87,29 +87,29 @@ function Header() {
     </nav>
         <nav className="navbar navbar-expand-lg">
       <div className="container">
-        <a className="navbar-brand" href="#">Toyota After Sales</a>
+        <NavLink to="/" className="navbar-brand">Toyota After Sales</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav2" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span><img src='assets/Down.png'/></span>
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav2">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active custom-border-radius text-white" aria-current="page" href="#">SERVICES</a>
+              <NavLink to="/services" className="nav-link active custom-border-radius text-white" aria-current="page">SERVICES</NavLink>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link custom-border-radius text-white " href="#">PRODUCTS</a>
+              <NavLink to="/products" className="nav-link custom-border-radius text-white ">PRODUCTS</NavLink>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link custom-border-radius text-white" href="#">WARRANTY</a>
+              <NavLink to="/warranty" className="nav-link custom-border-radius text-white">WARRANTY</NavLink>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link custom-border-radius text-white" aria-disabled="true">T-CARE</a>
+              <NavLink to="/t-care" className="nav-link custom-border-radius text-white" aria-disabled="true">T-CARE</NavLink>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link custom-border-radius text-white" aria-disabled="true">NEWS & EVENT</a>
+              <NavLink to="/news-and-events" className="nav-link custom-border-radius text-white" aria-disabled="true">NEWS & EVENT</NavLink>
             </li>
             <li className="nav-item mx-3">
-              <a className="nav-link custom-border-radius text-white" aria-disabled="true">FAQ</a>
+              <NavLink  to="/faq"  className="nav-link custom-border-radius text-white" aria-disabled="true">FAQ</NavLink>
             </li>
           </ul>
         </div>
