@@ -193,7 +193,7 @@ border-radius: 30px !important;
   margin-left: 5% !important;
   margin-right: 5% !important;
 }
-.wrapper .title h6{
+.wrapper2.title h6{
   font-size: 24px;
 }
 
@@ -362,10 +362,10 @@ border-radius: 30px !important;
   .section-2 .wrapper{
     padding: 30px;
   }
-  .section-2 .wrapper img{
+  .section-2 .wrapper2img{
     width: 60%;
   }
-  .section-2 .wrapper h4{
+  .section-2 .wrapper2h4{
     font-size: 16px;
   }
 }
@@ -437,18 +437,18 @@ border-radius: 30px !important;
 
 
 
-.wrapper {
+.wrapper2{
   position: fixed;
   bottom: 30%;
   right: -10%;
   transform: translate(-50%, -50%);
   z-index: 10000;
 }
-#wrapper ul {
+#wrapper2 ul {
   list-style: none;
 }
 
-#wrapper ul .whatsapp {
+#wrapper2 ul .whatsapp {
   width: 180px;
   height: 30px;
   position: relative;
@@ -460,7 +460,7 @@ border-radius: 30px !important;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-#wrapper ul li .fa {
+#wrapper2 ul li .fa {
   position: absolute;
   top: 50%;
   left: 15%;
@@ -516,19 +516,14 @@ border-radius: 30px !important;
   font-size: 15px;
   color: white;
 }
-@media (max-width: 1420px) { /* Adjust this breakpoint as needed */
-  .wrapper1 {
-    bottom: 38%;
-  }
-}
 @media (max-width: 1220px) { /* Adjust this breakpoint as needed */
   .wrapper1 {
     right: -14%; /* Adjust the percentage to your preference */
-    bottom: 40%;
+    bottom: 36%;
   }
 }
 @media (max-width: 1050px) { /* Adjust this breakpoint as needed */
-  .wrapper {
+  .wrapper2{
     right: -13%; /* Adjust the percentage to your preference */
   }
 }
@@ -538,7 +533,7 @@ border-radius: 30px !important;
   }
 }
 @media (max-width: 830px) { /* Adjust this breakpoint as needed */
-  .wrapper {
+  .wrapper2{
     right: -16%; /* Adjust the percentage to your preference */
   }
   .wrapper1 {
@@ -547,7 +542,7 @@ border-radius: 30px !important;
 }
 
 @media (max-width: 650px) { 
-  .wrapper {
+  .wrapper2{
     right: -20%; 
   }
   .wrapper1 {
@@ -555,7 +550,7 @@ border-radius: 30px !important;
   }
 }
 @media (max-width: 530px) { 
-  .wrapper {
+  .wrapper2{
     right: -26%; 
   }
   .wrapper1 {
@@ -563,7 +558,7 @@ border-radius: 30px !important;
   }
 }
 @media (max-width: 410px) { 
-  .wrapper {
+  .wrapper2{
     right: -32%; 
   }
   .wrapper1 {
@@ -571,7 +566,7 @@ border-radius: 30px !important;
   }
 }
 @media (max-width: 330px) { 
-  .wrapper {
+  .wrapper2{
     right: -44%; 
   }
   .wrapper1 {
