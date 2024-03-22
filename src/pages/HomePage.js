@@ -7604,7 +7604,7 @@ function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-sm-6 col-lg-4 pt-4 pt-lg-0">
+            <div className="col-sm-6 col-lg-4 pt-lg-0">
               <div className="card custom_body_boder  mt-4 mt-lg-0">
                 <img
                   src="assets/warrenty-img.png"
@@ -7623,7 +7623,7 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="row mt-5 px-5 px-sm-0">
+          <div className="row mt-4 px-5 px-sm-0">
             <div className="col-sm-6 col-lg-4">
               <div className="card custom_body_boder mt-4 mt-lg-0">
                 <img

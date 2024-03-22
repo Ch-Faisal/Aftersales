@@ -219,7 +219,7 @@ function LatestNewsEvents() {
                     </div>
                   </div>
                 </div>
-                <div className="row d-flex justify-content-center mt-4">
+                <div className="row d-flex justify-content-center mt-3">
                   <div className="col-sm-10 col-md-6 col-lg-4 col-12">
                     <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
                       <img
@@ -258,7 +258,7 @@ function LatestNewsEvents() {
                     </div>
                   </div>
                   <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-4 mt-md-0">
-                    <div className="card custom_body_boder h-100 mt-sm-4 mt-lg-0">
+                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
                       <img
                         src="assets/beyond exterior 800x600_2 1 (4).png"
                         className="  rounded-0"
@@ -295,7 +295,7 @@ function LatestNewsEvents() {
                     </div>
                   </div>
                   <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-sm-4 mt-md-0 pt-4 pt-lg-0">
-                    <div className="card custom_body_boder h-100 mt-sm-4 mt-lg-0">
+                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
                       <img
                         src="assets/beyond exterior 800x600_2 1 (5).png"
                         className="  rounded-0"
@@ -334,7 +334,7 @@ function LatestNewsEvents() {
                 </div>
                 <div className="row d-flex justify-content-center mt-3 pb-2 mb-4 mb-lg-0">
                   <div className="col-sm-10 col-md-6 col-lg-4 col-12">
-                    <div className="card custom_body_boder h-100 mt-sm-4 mt-lg-0">
+                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
                       <img
                         src="assets/beyond exterior 800x600_2 1 (6).png"
                         className="  rounded-0"
@@ -371,7 +371,7 @@ function LatestNewsEvents() {
                     </div>
                   </div>
                   <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-4 mt-md-0">
-                    <div className="card custom_body_boder h-100 mt-sm-4 mt-lg-0">
+                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
                       <img
                         src="assets/beyond exterior 800x600_2 1 (7).png"
                         className="  rounded-0"
@@ -410,7 +410,7 @@ function LatestNewsEvents() {
                     </div>
                   </div>
                   <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-sm-4 mt-md-0 pt-4 pt-lg-0">
-                    <div className="card custom_body_boder h-100 mt-sm-4 mt-lg-0">
+                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
                       <img
                         src="assets/beyond exterior 800x600_2 1 (8).png"
                         className="  rounded-0"
