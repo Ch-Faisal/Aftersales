@@ -105,7 +105,7 @@
     .tmo-oli{
       width: 750px !important;
       display: flex;
-      justify-content: start !important;
+      /* justify-content: start !important; */
     }
     .tmo-ol .tmo-image img{
          width: 150px !important;
