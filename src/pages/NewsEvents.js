@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useState,useEffect } from "react";
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import '../css/news-event.css';
 function NewsEvents() {
+    // const [newsData, setNewsData] = useState([]);
+
+//   useEffect(() => {
+    // Function to fetch news data
+    // const fetchNewsData = async () => {
+    //   try {
+    //     const response = await axios.get('https://aftersales-toyota-revamp.thriveagency.id/api/news');
+    //     console.log('Response data:', response.data);
+    //     setNewsData(response.data);
+    //   } catch (error) {
+    //     console.error('Error fetching news data:', error);
+    //   }
+    // };
+
+//     // Call the fetchNewsData function
+//     fetchNewsData();
+//   }, []); 
     return (
         <div>
             <Header></Header>
