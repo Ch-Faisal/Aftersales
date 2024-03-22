@@ -1,4 +1,8 @@
 /* this css for the search input field */
+.main_container
+{
+  overflow-x: hidden; 
+}
 .form-controll {
     border-radius: 15px;
     transition: border-color 0.3s ease;

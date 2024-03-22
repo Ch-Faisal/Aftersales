@@ -7,18 +7,18 @@ const Services = () => {
   const scrollLeft = () => {
     const myTab = document.getElementById("myTab");
     myTab.scrollTo({
-        left: myTab.scrollLeft - 100, // Adjust scroll distance as needed
-        behavior: 'smooth' // Smooth scrolling behavior
+      left: myTab.scrollLeft - 100, // Adjust scroll distance as needed
+      behavior: "smooth", // Smooth scrolling behavior
     });
-};
+  };
 
-const scrollRight = () => {
+  const scrollRight = () => {
     const myTab = document.getElementById("myTab");
     myTab.scrollTo({
-        left: myTab.scrollLeft + 100, // Adjust scroll distance as needed
-        behavior: 'smooth' // Smooth scrolling behavior
+      left: myTab.scrollLeft + 100, // Adjust scroll distance as needed
+      behavior: "smooth", // Smooth scrolling behavior
     });
-};
+  };
   return (
     <div>
       <Header></Header>
@@ -43,7 +43,7 @@ const scrollRight = () => {
                   <img
                     onClick={scrollRight}
                     className="ms-1 me-1 pe-2  mt-5 pt-2"
-                    src="assets/frameright.svg"
+                    src="assets/Frameright.svg"
                     alt=""
                     style={{
                       position: "absolute",
@@ -54,7 +54,7 @@ const scrollRight = () => {
                   <img
                     className="ms-2 me-1 mt-4"
                     onClick={scrollLeft}
-                    src="assets/frameleft.svg"
+                    src="assets/Frameleft.svg"
                     alt=""
                     style={{ position: "absolute", top: "0px" }}
                   />
@@ -144,7 +144,7 @@ const scrollRight = () => {
                     <div className="row d-flex justify-content-center">
                       <div className="col-12 d-lg-none d-block">
                         <p className="paraTag1">
-                        TOYOTA SERVICE - GENERAL REPAIR
+                          TOYOTA SERVICE - GENERAL REPAIR
                         </p>
                         <h1>
                           Layanan Servis berkualitas prima, agar performa Toyota
@@ -159,7 +159,7 @@ const scrollRight = () => {
                       </div>
                       <div className="col-lg-6 col-md-10 col-12 text-center text-lg-start">
                         <p className="paraTag1 d-lg-block d-none">
-                        TOYOTA SERVICE - GENERAL REPAIR
+                          TOYOTA SERVICE - GENERAL REPAIR
                         </p>
                         <h1 className="d-lg-block d-none">
                           Layanan Servis berkualitas prima, agar performa Toyota
@@ -272,22 +272,28 @@ const scrollRight = () => {
                             </h1>
                             <div className="col-md-6">
                               <span className="d-flex align-items-center">
-                                <span className="custom_font me-3 me-lg-0">1</span>
-                                <span className="custom_color">
+                                <span className="custom_font me-3 me-lg-0">
+                                  1
+                                </span>
+                                <span className="custom_color_1">
                                   Fasilitas bengkel dan tools yang lengkap untuk
                                   menunjang kualitas perbaikan.
                                 </span>
                               </span>
                               <span className="d-flex align-items-center">
-                                <span className="custom_font me-2 me-lg-0">2</span>
-                                <span className="custom_color">
+                                <span className="custom_font me-2 me-lg-0">
+                                  2
+                                </span>
+                                <span className="custom_color_1">
                                   Estimasi waktu dan biaya yang akurat serta
                                   transparan.
                                 </span>
                               </span>
                               <span className="d-flex align-items-center">
-                                <span className="custom_font me-2 me-lg-0">3</span>
-                                <span className="custom_color">
+                                <span className="custom_font me-2 me-lg-0">
+                                  3
+                                </span>
+                                <span className="custom_color_1">
                                   Teknisi yang telah tersertifikasi oleh Toyota
                                   Astra Motor.
                                 </span>
@@ -295,22 +301,30 @@ const scrollRight = () => {
                             </div>
                             <div className="col-md-6">
                               <span className="d-flex align-items-center">
-                                <span className="custom_font me-2 me-lg-0">4</span>
-                                <span className="custom_color">
+                                <span className="custom_font me-2 me-lg-0">
+                                  4
+                                </span>
+                                <span className="custom_color_1">
                                   Jaminan suku cadang orisinal dari
                                   Toyota.Jaminan suku Toyota.
                                 </span>
                               </span>
                               <span className="d-flex align-items-center">
-                                <span className="custom_font me-2 me-lg-0">5</span>
-                                <span className="custom_color">
+                                <span className="custom_font me-2 me-lg-0">
+                                  5
+                                </span>
+                                <span className="custom_color_1">
                                   Penggunaan material perbaikan dan cat sesuai
                                   standar.
                                 </span>
                               </span>
                               <span className="d-flex align-items-center">
-                                <span className="custom_font me-2 me-lg-0">6</span>
-                                <span className="custom_color">Garansi hasil perbaikan Bodi & Cat.</span>
+                                <span className="custom_font me-2 me-lg-0">
+                                  6
+                                </span>
+                                <span className="custom_color_1">
+                                  Garansi hasil perbaikan Bodi & Cat.
+                                </span>
                               </span>
                             </div>
                           </div>

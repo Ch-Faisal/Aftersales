@@ -176,6 +176,7 @@ letter-spacing: -0.198px;
   font-weight: 400;
   line-height: 120%;
 
+
 }
 @media only screen and (max-width: 600px) {
   h1 {
@@ -203,7 +204,7 @@ letter-spacing: -0.198px;
   color: #161A1D; 
   }
 }
-.custom_color
+.custom_color_1
 {
   color: #161A1D !important;
   font-style: normal;

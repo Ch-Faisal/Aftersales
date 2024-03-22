@@ -17,7 +17,7 @@ function Footer() {
           </li>
         </ul>
       </div>
-       <div class="wrapper" id="wrapper">
+       <div class="wrapper2" id="wrapper2">
         <ul onClick={scrollToTop}>
           <li class="whatsapp mt-3">
             <div className="fa d-flex"><svg

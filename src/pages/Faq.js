@@ -4,7 +4,7 @@ import Footer from "./layout/Footer";
 import "../css/faq.css";
 const Faq = () => {
   return (
-    <div>
+    <div className="main_container">
       <Header />
       <div className="container m-5">
         <h1>FAQs</h1>
