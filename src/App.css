@@ -582,5 +582,14 @@ border-radius: 30px !important;
     right: -44%; 
   }
 }
-
+.spinner-overlay {
+   display: flex;
+    justify-content: center;
+     align-items: center;
+       top: 10;
+        left: 0;
+         width: 100%;
+          height: 100%;
+           color: blue;
+           }
 

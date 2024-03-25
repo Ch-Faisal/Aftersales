@@ -1,22 +1,109 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
+import axios from 'axios';
+import { Oval } from 'react-loader-spinner'
+
 import '../css/home.css';
 function HomePage() {
-  const [activeTab, setActiveTab] = useState(0); // Initialize active tab index
-  const [activeTab2, setActiveTab2] = useState(0); // Initialize active tab index
+  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab2, setActiveTab2] = useState(0);
+  const [carModels, setCarModels] = useState([]);
+  const [carVariant, setCarVariant] = useState([]);
+  const [selectedCar, setSelectedCar] = useState("All New Alphard");
+  const [selectedCarImage, setSelectedCarImage] = useState(null);
+  const [selectedVariant, setSelectedVariant] = useState('');
+  const [selectedCarId, setSelectedCarId] = useState(null); // State to hold the ID of the selected car
+  const [loading, setLoading] = useState(false); // State to track loading status
+  const [serviceDescriptions, setServiceDescriptions] = useState([]);
 
 
+
+  useEffect(() => {
+    fetchCarModels();
+    fetchCombinationData()
+  }, []);
+
+  useEffect(() => {
+    if (carModels.length > 0) {
+      const defaultCarModel = carModels[0];
+      setSelectedCar(defaultCarModel.name);
+      setSelectedCarImage(defaultCarModel.image);
+      setSelectedCarId(defaultCarModel.id); // Set the ID of the first car model
+      fetchVarients(defaultCarModel.id);
+      console.log('image:', defaultCarModel.image)
+    }
+  }, [carModels]);
+
+  const fetchCarModels = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get('https://aftersales-toyota-revamp.thriveagency.id/api/car',{
+        headers: {
+            'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
+          }
+      });
+      setCarModels(response.data.data);
+      setLoading(false); 
+      console.log("responseCAR:", response.data)
+    } catch (error) {
+      console.error('Error fetching car models:', error);
+      setLoading(false); // Set loading to false when fetching completes
+    }
+  };
+  const fetchVarients = async (carId) => {
+    try{
+        const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/variant?car_id=${carId}`, {
+            headers: {
+            'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
+          }
+      });
+      setCarVariant(response.data.data);
+      const serviceDescriptionsArray = response.data.data.map(variant => variant.services.map(service => service.service_description));
+      console.log("Description:", serviceDescriptionsArray);
+      setServiceDescriptions(serviceDescriptionsArray.flat());
+      console.log("responsevarient:", response.data.data)
+    } catch (error) {
+      console.error('Error fetching car models:', error);
+    }
+  }
+  const fetchCombinationData = async () => {
+    try {
+        setLoading(true);
+        const response = await axios.get('https://aftersales-toyota-revamp.thriveagency.id/api/combination', {
+            headers: {
+                'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
+            }
+        });
+        setLoading(false); 
+        console.log("responseCombination:", response.data);
+    } catch (error) {
+        console.error('Error fetching combination data:', error);
+        setLoading(false);
+    }
+};
+
+  const handleCarChange = (event) => {
+    const selectedCarName = event.target.value;
+    const selectedCarModel = carModels.find(carModel => carModel.name === selectedCarName);
+    console.log("ssss", selectedCarModel)
+    setSelectedCar(selectedCarModel.name);
+    setSelectedCarImage(selectedCarModel.image);
+    console.log("carimage:",selectedCarModel.image)
+    setSelectedCarId(selectedCarModel.id);
+    fetchVarients(selectedCarModel.id); 
+    console.log("selcted car id:", selectedCarModel.id)
+  };
   const handleTabClick = (index) => {
-      setActiveTab(index); // Update active tab index when a tab is clicked
+      setActiveTab(index);
   };
   const handleTab2Click = (index) => {
-    setActiveTab2(index); // Update active tab index when a tab is clicked
+    setActiveTab2(index); 
 };
 
     // Function to scroll left
     const scrollLeft = () => {
-      document.getElementById("myTab").scrollLeft -= 100; // Adjust scroll distance as needed
+      document.getElementById("myTab").scrollLeft -= 100;
     };
   
     // Function to scroll right
@@ -117,31 +204,40 @@ function HomePage() {
         <h4 className='terbaik mb-4 mb-md-4'>Rekomendasi Terbaik untuk Kendaraanmu</h4>
         <div className="row justify-content-center Terbaik ">
         <div className="d-md-flex mb-3 w-75 custom-select-container">
-            <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option selected>All New Alphard</option>
-                <option value="1">Alphard</option>
-                <option value="2">untuk</option>
-                <option value="3">Terbaik</option>
-            </select>    
+            <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"  value={selectedCar}
+              onChange={handleCarChange}>
+               {carModels.map((carModel, index) => (
+                <option key={index} value={carModel.name}>{carModel.name}</option>
+              ))}        
+            </select> 
             <button className='btn Servis px-3 py-1 mx-2' style={{ whiteSpace: 'nowrap' }}>Lihat Servis</button>
         </div>
         </div>
         </div>
-          <div className='all-new-alphard py-2'>
-          <img src="assets/thumbnails.png" alt='car-img' />
-          <p className='text-center'>All New Alphard</p>
-          </div>
+       
+        <div className='all-new-alphard py-2'>
+      <img src={selectedCarImage} alt={selectedCar} />
+      {loading && (
+        <div className='spinner-overlay'>
+          <Oval height="80" width="80" radius="9" color="blue" wrapperStyle={{}} ariaLabel="three-dots-loading" /> 
+        </div>
+      )}
+      <p className='text-center'>{selectedCar}</p>
+    </div>
           <div className='container-fluid'>
           <div className='container'>
           <div className='new-alphard mt-5'>
           <ul className="nav nav-pills nav-fill d-flex">
-                <li className="nav-item">
-                    <a className={`nav-link text-nowrap ${activeTab === 0 ? 'active' : ''}`} onClick={() => handleTabClick(0)} aria-current="page" href="javascript:void(0)">New Alphard 3.5 A/T</a>
+            {carVariant.map((variant, index) => (
+                <li className="nav-item" key={index}>
+                <a
+                    className={`nav-link text-nowrap ${activeTab === index ? 'active' : ''}`}
+                    onClick={() => handleTabClick(index)}
+                    href="javascript:void(0)">
+                    {variant.name}
+                </a>
                 </li>
-                {/* <span className="divider-links">|</span> */}
-                <li className="nav-item">
-                    <a className={`nav-link text-nowrap ${activeTab === 1 ? 'active' : ''}`} onClick={() => handleTabClick(1)} href="javascript:void(0)">New Alphard/Vellfire 2.5 A/T</a>
-                </li>
+            ))}
             </ul>
           </div>
             <div>
@@ -371,10 +467,10 @@ function HomePage() {
                           aria-labelledby="faq_tab_1-tab"
                         >
                           <div className="container mt-5">
-                            <div className='servis-content mx-md-5'>
-                            <h1 className='servis-title'>GRATIS</h1>
-                             <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
-                             <p className='text mt-3'>Berlaku Program T-CARE sampai servis ke 7 atau 3 tahun untuk pembelian model baru mulai bulan Maret 2023</p>
+                          <div className='servis-content mx-md-5'>
+                                <h1 className='servis-title'>GRATIS</h1>
+                                <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
+                                <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[0] ? serviceDescriptions[0] : "No description available"}</p>
                             </div>
                             <div className='row mt-5 mx-md-5'>
                           <div className='col-md-6'>
@@ -542,6 +638,7 @@ function HomePage() {
                             <h1 className='servis-title'>GRATIS</h1>
                              <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
                              <p className='text mt-3'>Berlaku Program T-CARE sampai servis ke 7 atau 3 tahun untuk pembelian model baru mulai bulan Maret 2023</p>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[1] ? serviceDescriptions[1] : "No description available"}</p>
                             </div>
                           </div>
                           <div className='container'>
@@ -769,6 +866,7 @@ function HomePage() {
                             <h1 className='servis-title'>GRATIS</h1>
                              <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
                              <p className='text mt-3'>Berlaku Program T-CARE sampai servis ke 7 atau 3 tahun untuk pembelian model baru mulai bulan Maret 2023</p>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[3] ? serviceDescriptions[3] : "No description available"}</p>
                             </div>
                           </div>
                           <div className='container'>
@@ -993,6 +1091,7 @@ function HomePage() {
                             <h1 className='servis-title'>GRATIS</h1>
                              <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
                              <p className='text mt-3'>Berlaku Program T-CARE sampai servis ke 7 atau 3 tahun untuk pembelian model baru mulai bulan Maret 2023</p>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[4] ? serviceDescriptions[4] : "No description available"}</p>
                             </div>
                           </div>
                           <div className='container'>
@@ -1217,6 +1316,7 @@ function HomePage() {
                             <h1 className='servis-title'>GRATIS</h1>
                              <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
                              <p className='text mt-3'>Berlaku Program T-CARE sampai servis ke 7 atau 3 tahun untuk pembelian model baru mulai bulan Maret 2023</p>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[5] ? serviceDescriptions[5] : "No description available"}</p>
                             </div>
                           </div>
                           <div className='container mx-mx-5'>
@@ -1465,6 +1565,7 @@ function HomePage() {
                             <h1 className='servis-title'>GRATIS</h1>
                              <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
                              <p className='text mt-3'>Berlaku Program T-CARE sampai servis ke 7 atau 3 tahun untuk pembelian model baru mulai bulan Maret 2023</p>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[1] ? serviceDescriptions[6] : "No description available"}</p>
                             </div>
                           </div>
                           <div className='container'>
@@ -1692,6 +1793,7 @@ function HomePage() {
                             <h1 className='servis-title'>GRATIS</h1>
                              <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
                              <p className='text mt-3'>Berlaku Program T-CARE sampai servis ke 7 atau 3 tahun untuk pembelian model baru mulai bulan Maret 2023</p>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[1] ? serviceDescriptions[7] : "No description available"}</p>
                             </div>
                           </div>
                           <div className='container'>
@@ -1918,11 +2020,212 @@ function HomePage() {
                           <div className='servis-content mx-md-5'>
                             <h1 className='servis-title'>Rp 2,715,976,-</h1>
                              <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
-                             <p className='text text-start mt-5 mx-5'><span className='d-block'>1. Harga yang tertera hanya estimasi dengan menggunakan TMO 10W-30 (gasoline) dan TMO 15W-40 (diesel), untuk Raize & Voxy menggunakan TMO 5W-30 (gasoline), dan LC300 menggunakan TMO 5W-30 (diesel). Harga di dealer dapat berbeda sesuai layanan tambahan yang diberikan dealer dan permintaan pelanggan</span>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[8] ? serviceDescriptions[8] : "No description available"}</p>
+                             {/* <p className='text text-start mt-5 mx-5'><span className='d-block'>1. Harga yang tertera hanya estimasi dengan menggunakan TMO 10W-30 (gasoline) dan TMO 15W-40 (diesel), untuk Raize & Voxy menggunakan TMO 5W-30 (gasoline), dan LC300 menggunakan TMO 5W-30 (diesel). Harga di dealer dapat berbeda sesuai layanan tambahan yang diberikan dealer dan permintaan pelanggan</span>
                              <span className='d-block'>2.Dalam satuan Rupiah </span>
                              <span className='d-block'>3.Per Oktober 2022 </span>
                              <span className='d-block'>4.Sudah termasuk Pajak </span>
-                             </p>
+                             </p> */}
+                            </div>
+                          </div>
+                          <div className='container'>
+                            {activeTab2 === 0 && <div>
+                          <div className='d-flex justify-content-center servis-2-tab'>
+                             <div className='row mt-5'>
+                             <h1>TMO Oli Mesin</h1>
+                             <p className='text-red'>Tingkat Kekentalan molekul</p>
+                             </div>
+                          </div>
+                          <div className='container'>
+                        <div className='row justify-content-md-center tmo-oli'> 
+                        <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-3 d-none d-md-block'>Oli Standar</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-md-3 pt-0'>10W-30</p>
+                              <div className='tmo-image'>
+                                  <img src="assets/Group 1597880427.png" alt='' />
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-3 d-block d-md-none'>Oli Standar</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <div className='tmo-image'>
+                                  <img src="assets/tmoBottle.png" alt='' />
+                              </div>
+                          </div>
+                      </div>
+                      <div className='col-md-3 bg-pink text-center d-flex flex-md-column mt-2 mt-md-0'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-4'>
+                              <span className="d-block d-md-none">+0.8%</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                          </p>
+                              <p className='pt-4'>SW-30</p>
+                              <div className='tmo-image'>
+                                  <img src="assets/Group 1597880427.png" alt='' />
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-4'>
+                            <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                              <span className="d-none d-md-block">+0.8%</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                          </p>                            
+                          <div className='tmo-image pb-3 pb-md-0'>
+                                  <img src="assets/tmo bottle3.png " alt='' />
+                              </div>
+                          </div>
+                      </div>
+                      <div className='col-md-3 bg-pink text-center d-flex flex-md-column mt-2 mt-md-0'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-4'>
+                              <span className="d-block d-md-none">+0.8%</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                          </p>
+                              <p className='pt-4'>0W-20</p>
+                              <div className='tmo-image '>
+                                  <img src="assets/Molecule-0W-20.png" alt='' />
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-4'>
+                            <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                              <span className="d-none d-md-block">+0.8%</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                          </p> 
+                              <div className='tmo-image pb-3 pb-md-0'>
+                                  <img src="assets/tmo-bottle2.png" alt='' />
+                              </div>
+                          </div>
+                      </div>
+                        </div>
+                    </div>
+                         </div>}
+                         </div>
+                         <h1 className='mt-4'>Opsi Produk Toyota Lainnya</h1>
+                         <div className='d-flex justify-content-center mt-5'>
+                                <img src="assets/tire-solution.png" className='mx-4 px-2 py-3' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tmo.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tgb.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                            </div>
+                        </div>
+                        <div
+                          className="tab-pane fade px-3 px-lg-0"
+                          id="faq_tab_9"
+                          role="tabpanel"
+                          aria-labelledby="faq_tab_8-tab"
+                        >
+                          <div className="container ps-lg-5 pe-lg-5 mt-5">
+                          <div className='servis-content mx-md-5'>
+                            <h1 className='servis-title'>Rp 2,715,976,-</h1>
+                             <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[9] ? serviceDescriptions[9] : "No description available"}</p>
+                             {/* <p className='text text-start mt-5 mx-5'><span className='d-block'>1. Harga yang tertera hanya estimasi dengan menggunakan TMO 10W-30 (gasoline) dan TMO 15W-40 (diesel), untuk Raize & Voxy menggunakan TMO 5W-30 (gasoline), dan LC300 menggunakan TMO 5W-30 (diesel). Harga di dealer dapat berbeda sesuai layanan tambahan yang diberikan dealer dan permintaan pelanggan</span>
+                             <span className='d-block'>2.Dalam satuan Rupiah </span>
+                             <span className='d-block'>3.Per Oktober 2022 </span>
+                             <span className='d-block'>4.Sudah termasuk Pajak </span>
+                             </p> */}
+                            </div>
+                          </div>
+                          <div className='container'>
+                            {activeTab2 === 0 && <div>
+                          <div className='d-flex justify-content-center servis-2-tab'>
+                             <div className='row mt-5'>
+                             <h1>TMO Oli Mesin</h1>
+                             <p className='text-red'>Tingkat Kekentalan molekul</p>
+                             </div>
+                          </div>
+                          <div className='container'>
+                        <div className='row justify-content-md-center tmo-oli'> 
+                        <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-3 d-none d-md-block'>Oli Standar</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-md-3 pt-0'>10W-30</p>
+                              <div className='tmo-image'>
+                                  <img src="assets/Group 1597880427.png" alt='' />
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-3 d-block d-md-none'>Oli Standar</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <div className='tmo-image'>
+                                  <img src="assets/tmoBottle.png" alt='' />
+                              </div>
+                          </div>
+                      </div>
+                      <div className='col-md-3 bg-pink text-center d-flex flex-md-column mt-2 mt-md-0'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-4'>
+                              <span className="d-block d-md-none">+0.8%</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                          </p>
+                              <p className='pt-4'>SW-30</p>
+                              <div className='tmo-image'>
+                                  <img src="assets/Group 1597880427.png" alt='' />
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-4'>
+                            <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                              <span className="d-none d-md-block">+0.8%</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                          </p>                            
+                          <div className='tmo-image pb-3 pb-md-0'>
+                                  <img src="assets/tmo bottle3.png " alt='' />
+                              </div>
+                          </div>
+                      </div>
+                      <div className='col-md-3 bg-pink text-center d-flex flex-md-column mt-2 mt-md-0'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-4'>
+                              <span className="d-block d-md-none">+0.8%</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                          </p>
+                              <p className='pt-4'>0W-20</p>
+                              <div className='tmo-image '>
+                                  <img src="assets/Molecule-0W-20.png" alt='' />
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-4'>
+                            <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                              <span className="d-none d-md-block">+0.8%</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                          </p> 
+                              <div className='tmo-image pb-3 pb-md-0'>
+                                  <img src="assets/tmo-bottle2.png" alt='' />
+                              </div>
+                          </div>
+                      </div>
+                        </div>
+                    </div>
+                         </div>}
+                         </div>
+                         <h1 className='mt-4'>Opsi Produk Toyota Lainnya</h1>
+                         <div className='d-flex justify-content-center mt-5'>
+                                <img src="assets/tire-solution.png" className='mx-4 px-2 py-3' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tmo.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tgb.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                            </div>
+                        </div>
+                        <div
+                          className="tab-pane fade px-3 px-lg-0"
+                          id="faq_tab_10"
+                          role="tabpanel"
+                          aria-labelledby="faq_tab_10-tab"
+                        >
+                          <div className="container ps-lg-5 pe-lg-5 mt-5">
+                          <div className='servis-content mx-md-5'>
+                            <h1 className='servis-title'>Rp 2,715,976,-</h1>
+                             <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[10] ? serviceDescriptions[10] : "No description available"}</p>
+                             {/* <p className='text text-start mt-5 mx-5'><span className='d-block'>1. Harga yang tertera hanya estimasi dengan menggunakan TMO 10W-30 (gasoline) dan TMO 15W-40 (diesel), untuk Raize & Voxy menggunakan TMO 5W-30 (gasoline), dan LC300 menggunakan TMO 5W-30 (diesel). Harga di dealer dapat berbeda sesuai layanan tambahan yang diberikan dealer dan permintaan pelanggan</span>
+                             <span className='d-block'>2.Dalam satuan Rupiah </span>
+                             <span className='d-block'>3.Per Oktober 2022 </span>
+                             <span className='d-block'>4.Sudah termasuk Pajak </span>
+                             </p> */}
                             </div>
                           </div>
                           <div className='container'>
