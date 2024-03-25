@@ -19,7 +19,9 @@
 .all-new-alphard img{
   width: 30% !important;
 }
-
+.molecule-photos img{
+  width: 200px !important;
+}
 .divider-links{
         margin: 1% 5%; /* Adjust the spacing between the line and the tabs */
         color: #000; 
