@@ -7,9 +7,13 @@ import { useSelector } from 'react-redux';
 import { Oval } from 'react-loader-spinner'
 import axios from 'axios';
 function LatestNewsEvents() {
+  const [activeTab, setActiveTab] = useState('ex1-tabs-1'); // Default active tab
   const [loading, setLoading] = useState(true);
   const [newsData, setNewsData] = useState([]);
   const token = useSelector(state => state.value);
+  const handleTabClick = (tabId) => {
+    setActiveTab(tabId);
+  };
   useEffect(() => {
     const fetchNewsData = async () => {
       setLoading(true);
@@ -110,65 +114,50 @@ function LatestNewsEvents() {
               >
                 <li className="nav-item" role="presentation">
                   <a
-                    data-mdb-tab-init
-                    className="nav-link active mx-md-3"
-                    id="ex1-tab-1"
-                    href="#ex1-tabs-1"
-                    role="tab"
-                    aria-controls="ex1-tabs-1"
-                    aria-selected="true"
+                onClick={() => handleTabClick('ex1-tabs-1')}
+                className={`nav-link ${activeTab === 'ex1-tabs-1' ? 'active' : ''}`}
+                role="tab"
+                aria-selected={activeTab === 'ex1-tabs-1' ? 'true' : 'false'}
                   >
                     All
                   </a>
                 </li>
                 <li className="nav-item" role="presentation">
                   <a
-                    data-mdb-tab-init
-                    className="nav-link mx-md-3"
-                    id="ex1-tab-2"
-                    href="#ex1-tabs-2"
-                    role="tab"
-                    aria-controls="ex1-tabs-2"
-                    aria-selected="false"
+                  onClick={() => handleTabClick('ex1-tabs-2')}
+                  className={`nav-link ${activeTab === 'ex1-tabs-2' ? 'active' : ''}`}
+                  role="tab"
+                  aria-selected={activeTab === 'ex1-tabs-2' ? 'true' : 'false'}
                   >
                     Gazoo Racing
                   </a>
                 </li>
                 <li className="nav-item" role="presentation">
                   <a
-                    data-mdb-tab-init
-                    className="nav-link mx-md-3"
-                    id="ex1-tab-3"
-                    href="#ex1-tabs-3"
-                    role="tab"
-                    aria-controls="ex1-tabs-3"
-                    aria-selected="false"
+                     onClick={() => handleTabClick('ex1-tabs-3')}
+                     className={`nav-link ${activeTab === 'ex1-tabs-3' ? 'active' : ''}`}
+                     role="tab"
+                     aria-selected={activeTab === 'ex1-tabs-3' ? 'true' : 'false'}
                   >
                     Electrified
                   </a>
                 </li>
                 <li className="nav-item d-none d-md-block" role="presentation">
                   <a
-                    data-mdb-tab-init
-                    className="nav-link mx-md-3"
-                    id="ex1-tab-4"
-                    href="#ex1-tabs-4"
-                    role="tab"
-                    aria-controls="ex1-tabs-4"
-                    aria-selected="false"
+                     onClick={() => handleTabClick('ex1-tabs-4')}
+                     className={`nav-link ${activeTab === 'ex1-tabs-4' ? 'active' : ''}`}
+                     role="tab"
+                     aria-selected={activeTab === 'ex1-tabs-4' ? 'true' : 'false'}
                   >
                     Press Release
                   </a>
                 </li>
                 <li className="nav-item d-none d-md-block" role="presentation">
                   <a
-                    data-mdb-tab-init
-                    className="nav-link mx-md-3"
-                    id="ex1-tab-5"
-                    href="#ex1-tabs-5"
-                    role="tab"
-                    aria-controls="ex1-tabs-5"
-                    aria-selected="false"
+                     onClick={() => handleTabClick('ex1-tabs-5')}
+                     className={`nav-link ${activeTab === 'ex1-tabs-5' ? 'active' : ''}`}
+                     role="tab"
+                     aria-selected={activeTab === 'ex1-tabs-5' ? 'true' : 'false'}
                   >
                     Event
                   </a>
@@ -177,10 +166,7 @@ function LatestNewsEvents() {
             </div>
             <div className="tab-content" id="ex1-content">
               <div
-                className="tab-pane fade show active"
-                id="ex1-tabs-1"
-                role="tabpanel"
-                aria-labelledby="ex1-tab-1"
+                className={`tab-pane fade ${activeTab === 'ex1-tabs-1' ? 'show active' : ''}`} id="ex1-tabs-1"
               >
                 <div className="row mt-5 d-flex justify-content-center">
                 {Object.keys(newsData).map((id, index) => (
@@ -228,340 +214,24 @@ function LatestNewsEvents() {
                 </div>
               </div>
               <div
-                className="tab-pane fade"
-                id="ex1-tabs-2"
-                role="tabpanel"
-                aria-labelledby="ex1-tab-2"
+               className={`tab-pane fade ${activeTab === 'ex1-tabs-2' ? 'show active' : ''}`} id="ex1-tabs-2"
               >
-                <div className="row d-flex justify-content-center mt-5 pb-2 mb-4 mb-lg-0">
-                  <div className="col-sm-10 col-md-6 col-lg-4 col-12">
-                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
-                      <img
-                        src="assets/beyond exterior 800x600_2 1 (7).png"
-                        className="  rounded-0"
-                        alt="..."
-                      />
-                      <div className="card-body d-flex flex-column justify-content-between">
-                        <div className="tips-event mt-2">
-                          <p className="text-start">TIPS , EVENT</p>
-                          <p className="text-start">07/07/2023</p>
-                        </div>
-                        <p className="card-title fw-bold text-start">
-                          Persiapan Menuju Dakar Rally 2024, Pembalap TOYOTA
-                          GAZOO Racing Raih Podium Kedua Baja Italy
-                        </p>
-                        <button
-                          type="button"
-                          class="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-4 mt-md-0">
-                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
-                      <img
-                        src="assets/beyond exterior 800x600_2 1 (8).png"
-                        className="  rounded-0"
-                        alt="..."
-                      />
-                      <div className="card-body d-flex flex-column justify-content-between">
-                        <div className="tips-event mt-2">
-                          <p className="text-start">
-                            News & Event, Gazoo Racing
-                          </p>
-                          <p className="text-start">17 Jul 2023</p>
-                        </div>
-                        <p className="card-title fw-bold text-start">
-                          TOYOTA GAZOO Racing Raih Podium Pertama Monza 6 Jam
-                          yang Sangat Ketat Hingga Lap Terakhir
-                        </p>
-                        <button
-                          type="button"
-                          class="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="#col-sm-10 col-md-6 col-lg-4 col-12 mt-4 mt-md-0 pt-4 pt-lg-0">
-                    <div className="card custom_body_boder h-100 mt-sm-4 mt-lg-0">
-                      <img
-                        src="assets/beyond exterior 800x600_2 1.png"
-                        className="  rounded-0"
-                        alt="..."
-                      />
-                      <div className="card-body d-flex flex-column justify-content-between">
-                        <div className="tips-event mt-2">
-                          <p className="text-start">
-                            News & Event, Gazoo Racing
-                          </p>
-                          <p className="text-start">13/06/2023</p>
-                        </div>
-                        <p className="card-title fw-bold text-start mb-3">
-                          Sempurnakan GR010 HYBRID, TOYOTA GAZOO Racing Siap
-                          Cetak Rekor Baru di Edisi 100 Tahun Le Mans 24 Jam
-                        </p>
-                        <button
-                          type="button"
-                          class="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <p>No content</p>
               </div>
               <div
-                className="tab-pane fade"
-                id="ex1-tabs-3"
-                role="tabpanel"
-                aria-labelledby="ex1-tab-3"
+                className={`tab-pane fade ${activeTab === 'ex1-tabs-3' ? 'show active' : ''}`} id="ex1-tabs-3"
               >
-                <div className="row d-flex justify-content-center mt-5 pb-2 mb-4 mb-lg-0">
-                  <div className="col-sm-10 col-md-6 col-lg-4 col-12">
-                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
-                      <img
-                        src="assets/beyond exterior 800x600_2 1 (3).png"
-                        className="  rounded-0"
-                        alt="..."
-                      />
-                      <div className="card-body d-flex flex-column justify-content-between">
-                        <div className="tips-event mt-2">
-                          <p className="text-start">TIPS , EVENT</p>
-                          <p className="text-start">07/07/2023</p>
-                        </div>
-                        <p className="card-title fw-bold text-start">
-                          Liburan Pakai Mobil, Waspada Sumber Masalah Saat
-                          Mengemudi Mobil di Jalan Tol
-                        </p>
-                        <button
-                          type="button"
-                          class="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-4 mt-md-0">
-                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
-                      <img
-                        src="assets/beyond exterior 800x600_2 1 (6).png"
-                        className="  rounded-0"
-                        alt="..."
-                      />
-                      <div className="card-body d-flex flex-column justify-content-between">
-                        <div className="tips-event mt-2">
-                          <p className="text-start">TIPS , EVENT</p>
-                          <p className="text-start">07/07/2023</p>
-                        </div>
-                        <p className="card-title fw-bold text-start">
-                          Liburan Pakai Mobil, Waspada Sumber Masalah Saat
-                          Mengemudi Mobil di Jalan Tol
-                        </p>
-                        <button
-                          type="button"
-                          class="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <p>No content</p>
               </div>
               <div
-                className="tab-pane fade"
-                id="ex1-tabs-4"
-                role="tabpanel"
-                aria-labelledby="ex1-tab-4"
+                className={`tab-pane fade ${activeTab === 'ex1-tabs-4' ? 'show active' : ''}`} id="ex1-tabs-4"
               >
-                <div className="row d-flex justify-content-center mt-5 pb-2 mb-4 mb-lg-0">
-                  <div className="col-sm-10 col-md-6 col-lg-4 col-12">
-                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
-                      <img
-                        src="assets/beyond exterior 800x600_2 1 (3).png"
-                        className="  rounded-0"
-                        alt="..."
-                      />
-                      <div className="card-body d-flex flex-column justify-content-between">
-                        <div className="tips-event mt-2">
-                          <p className="text-start">TIPS , EVENT</p>
-                          <p className="text-start">07/07/2023</p>
-                        </div>
-                        <p className="card-title fw-bold text-start">
-                          Liburan Pakai Mobil, Waspada Sumber Masalah Saat
-                          Mengemudi Mobil di Jalan Tol
-                        </p>
-                        <button
-                          type="button"
-                          class="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-4 mt-md-0">
-                    <div className="card custom_body_boder h-100 mt-4 mt-lg-0">
-                      <img
-                        src="assets/beyond exterior 800x600_2 1 (1).png"
-                        className="  rounded-0"
-                        alt="..."
-                      />
-                      <div className="card-body d-flex flex-column justify-content-between">
-                        <div className="tips-event mt-2">
-                          <p className="text-start">TIPS , EVENT</p>
-                          <p className="text-start">07/07/2023</p>
-                        </div>
-                        <p className="card-title fw-bold text-start">
-                          Liburan Pakai Mobil, Waspada Sumber Masalah Saat
-                          Mengemudi Mobil di Jalan Tol
-                        </p>
-                        <button
-                          type="button"
-                          class="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <p>No content</p>
               </div>
               <div
-                className="tab-pane fade"
-                id="ex1-tabs-5"
-                role="tabpanel"
-                aria-labelledby="ex1-tab-5"
+                className={`tab-pane fade ${activeTab === 'ex1-tabs-5' ? 'show active' : ''}`} id="ex1-tabs-5"
               >
-                <div className="row d-flex justify-content-center mt-5 pb-2 mb-4 mb-lg-0">
-                  <div className="col-sm-10 col-md-6 col-lg-4 col-12">
-                    <div className="card  custom_body_boder h-100 mt-4 mt-lg-0">
-                      <img
-                        src="assets/beyond exterior 800x600_2 1 (2).png"
-                        className="  rounded-0"
-                        alt="..."
-                      />
-                      <div className="card-body d-flex flex-column justify-content-between">
-                        <div className="tips-event mt-2">
-                          <p className="text-start">TIPS , EVENT</p>
-                          <p className="text-start">07/07/2023</p>
-                        </div>
-                        <p className="card-title fw-bold text-start">
-                          Liburan Pakai Mobil, Waspada Sumber Masalah Saat
-                          Mengemudi Mobil di Jalan Tol
-                        </p>
-                        <button
-                          type="button"
-                          class="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
-                        >
-                          Find Out More{" "}
-                          <span className="d-block d-md-none">
-                            <i className="fas fa-chevron-right bg-white"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+<p>No content</p>
               </div>
             </div>
           </div>
