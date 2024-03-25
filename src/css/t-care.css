@@ -48,14 +48,25 @@ font-size: 14px;
   }
   
 /* Add the line between circles */
-.circle-tab a:not(:first-child)::before {
+.circle-tab .active:not(:first-child)::before {
     content: '';
     position: absolute;
     top: 50%;
     left: -40px; /* Adjust the position of the line */
     width: 45px; /* Adjust the width of the line */
     height: 3px; /* Adjust the height of the line */
-    background-color: #999; /* Color of the line */
+    background-color: rgba(223, 29, 29, 1); /* Color of the line */
+    z-index: -1; /* Send the line behind the circles */
+    margin-right: 13px !important;
+  }
+  .circle-tab a:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -40px; /* Adjust the position of the line */
+    width: 45px; /* Adjust the width of the line */
+    height: 3px; /* Adjust the height of the line */
+    background-color: #ccc; /* Color of the line */
     z-index: -1; /* Send the line behind the circles */
     margin-right: 13px !important;
   }
@@ -245,6 +256,17 @@ border-radius: 36px;
 background: #DF1D1D; 
 border: none;
 }
+.download_pdf_buttons1{
+    width: 85px;
+    display: flex;
+padding: 15.49px;
+justify-content: center;
+align-items: center;
+gap: 48.98px; 
+border-radius: 36px;
+background: #DF1D1D; 
+border: none;
+}
 .buttons_custom_gap{
     gap: 48.98px;
 }
@@ -256,6 +278,14 @@ border: none;
         width: 20.105px;
         height: 20.105px; 
         }
+        .download_pdf_buttons1 svg{
+            width: 20.105px;
+            height: 20.105px; 
+            }
+            .download_pdf_buttons1
+            {
+                width: 55px;
+            }
         .custom_size_of_font p{
             font-size: 10px !important; 
         }
@@ -271,6 +301,14 @@ border: none;
         width: 20.105px;
         height: 20.105px; 
         }
+        .download_pdf_buttons1 svg{
+            width: 20.105px;
+            height: 20.105px; 
+            }
+            .download_pdf_buttons1{
+                width: 52px;
+            }
+
         .custom_size_of_font p{
             font-size: 10px !important; 
         }
@@ -298,6 +336,13 @@ font-size: 18px;
 font-style: normal;
 font-weight: 400;
 line-height: 30px;
+    }
+    .tab-light-bold-p1{
+        color: #000;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px; /* 150% */
     }
     .Masukkan::placeholder{
         color: #000;
@@ -358,3 +403,118 @@ line-height: 33.424px;
         font-size: 12px !important;
       }
 }
+
+.input_label{
+    color: #000;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: 33.424px; /* 278.531% */
+}
+.otp
+{
+border-radius: 4px;
+border: 1px solid #B7B7B7;
+background: #FFF;
+width: 42px;
+height: 42px;
+margin-left: 10px;
+}
+.active1
+{
+border-radius: 16px;
+background: #D71921;
+border: 2px solid #D71921;
+color: #FFF;
+font-weight: 600;
+}
+.non_active
+{
+border-radius: 16px;
+border: 2px solid #D71921;
+background: #FFF;
+color: #000;
+font-weight: 600;
+}
+.active1:focus
+{
+color: #FFF;
+font-weight: 600;
+}
+
+.add_custom_properties{
+    border: 1px solid rgba(183, 183, 183, 1);
+    border-top: none !important;
+    border-radius: 0px 0px 20px 20px;
+    height: 450px;
+}
+.tab-discription-p
+{
+    color: #000 !important;
+font-size: 18px !important;
+font-style: normal !important;
+font-weight: 400 !important;
+line-height: 30px !important;
+}
+.custom_discrip_tab
+{
+    color: #000;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px;
+}
+.custom_class_tab_discrip
+{
+    color: #000;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 30px;
+}
+
+.custom_table_heading th{
+background-color: #D71921;
+color: #FFF;
+text-align: center;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.custom_table_heading td{
+    color: var(--Gray-70, #737677);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    }
+    
+    .spinner-overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(247, 245, 245, 0.733);
+      }
+.custom_border_table{
+    border-top-left-radius: 20px !important;
+}     
+.custom_border_table1{
+    border-top-right-radius: 20px !important;
+}      
+.custom_border_table3
+{
+    border-bottom-right-radius: 20px !important;
+} 
+.custom_border_table2
+{
+    border-bottom-left-radius: 20px !important;
+} 
+
+
+
+
+
+
+
+

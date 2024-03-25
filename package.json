@@ -23,6 +23,7 @@
     "react-scripts": "5.0.1",
     "redux": "^5.0.1",
     "swiper": "^11.0.7",
+    "toastr": "^2.1.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
