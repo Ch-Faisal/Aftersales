@@ -129,15 +129,14 @@ function HomePage() {
 
             const moleculePhotos = molecules.map(molecule => molecule.molecule.photo);
             setMoleculePhotos(moleculePhotos);
-            if (!moleculeImages || !moleculePhotos) {
-              setErrorMessage("No data found in the response.");
-          }
+      
+          
             console.log("Package names:", packageNames);
             console.log("Package images:", images);
             console.log("molecile images:", moleculeImages);
             console.log("molecile photos:", moleculePhotos);
         } else {
-            console.log("No data found in the response.");
+          setErrorMessage("No data found in the response.");
         }
     } catch (error) {
         console.error('Error fetching variant:', error);
