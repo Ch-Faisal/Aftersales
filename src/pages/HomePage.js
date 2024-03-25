@@ -1,25 +1,11 @@
 import React, { useEffect,useState } from 'react'; // Import useEffect
 import Header from './layout/Header';
 import Footer from './layout/Footer';
-import { useDispatch, useSelector } from 'react-redux';
-// import store from '../store/store';
-
 import '../css/home.css';
 function HomePage() {
-  const dispatch = useDispatch();
-  const value = useSelector((state) => state.value);
 
   const [activeTab, setActiveTab] = useState(0); // Initialize active tab index
   const [activeTab2, setActiveTab2] = useState(0); // Initialize active tab index
-  console.log("Token:",value); // Log the value
-
-  // Set initial value
-  useEffect(() => {
-    const initialValue = 'OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE';
-    dispatch({ type: 'SET_VALUE', payload: initialValue });
-  }, [dispatch]);
-
-
   const handleTabClick = (index) => {
     setActiveTab(index); // Update active tab index when a tab is clicked
   };
