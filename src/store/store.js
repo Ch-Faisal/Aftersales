@@ -1,12 +1,21 @@
+// store.js
 import { configureStore } from '@reduxjs/toolkit';
-const valueReducer = (state = 'OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE', action) => {
-  return state;
+
+// Reducer
+const valueReducer = (state = null, action) => {
+  switch (action.type) {
+    case 'SET_VALUE':
+      return action.payload;
+    default:
+      return state;
+  }
 };
 
+// Create Redux store
 const store = configureStore({
   reducer: {
-    value: valueReducer
-  }
+    value: valueReducer,
+  },
 });
 
 export default store;

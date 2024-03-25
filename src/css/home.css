@@ -108,7 +108,7 @@
     .tmo-oli{
       width: 750px !important;
       display: flex;
-      justify-content: start !important;
+      /* justify-content: start !important; */
     }
     .tmo-ol .tmo-image img{
          width: 150px !important;
@@ -140,4 +140,14 @@
     .section-3 h5{
         font-size: 24px !important;
       }
+  }
+  @media screen and (max-width: 620px)
+  {
+    .cutom_heading_size{
+      font-size: 16.378px;
+      font-weight: 600;
+    }
+  }
+  .custom_body_boder{
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2) !important;
   }

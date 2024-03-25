@@ -9,7 +9,7 @@ function Warranty() {
             <div className='container-fluid px-0 pb-5'>
                 <img src="assets/Rectangle-3.png" className='w-100' alt='logo' />
             </div>
-            <div className='container-fluid'>
+            <div className='container-fluid p-0'>
                 <div className='container mt-5'>
                     <div className='d-block mx-auto d-lg-none mb-3'>
                         <h1>Vehicle Warranty</h1>

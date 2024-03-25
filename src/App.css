@@ -225,7 +225,7 @@ border-radius: 30px !important;
 }
 .card{
   border-radius: 0% !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   border: none;
 }
 .back-to-top{
@@ -332,6 +332,10 @@ border-radius: 30px !important;
   margin-right: 10% !important;
 }
 @media screen and (max-width: 762px) {
+  .section-2-content .main-heading{
+    margin-left: 0% !important;
+    margin-right: 0% !important;
+  }
   .section-3 h5{
     font-size: 28px;
   }
@@ -346,10 +350,10 @@ border-radius: 30px !important;
     width: 50% !important;
     
   }
-  .section-3 .card{
+  /* .section-3 .card{
     width: 90% !important;
     margin-left: 10px;
-  }
+  } */
   .logos img{
     width: 100px !important;
   }
@@ -386,7 +390,7 @@ border-radius: 30px !important;
   }
   .section-2-content{
     margin-left: 0% !important;
-    width: 100%;
+    width: 100% !important;
   }
 }
 .custom-select-container {
