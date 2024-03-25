@@ -586,5 +586,9 @@ border-radius: 30px !important;
     right: -44%; 
   }
 }
-
-
+.spinner-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(247, 245, 245);
+}

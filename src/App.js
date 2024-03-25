@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
@@ -14,6 +14,12 @@ import LatestNewsEvents from "./pages/LatestNewsEvents";
 import { Provider } from 'react-redux';
 import store from './store/store';
 function App() {
+  useEffect(() => {
+    // Dispatch action to set the static value when the component mounts
+    const initialValue = 'OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE';
+    store.dispatch({ type: 'SET_VALUE', payload: initialValue });
+  }, []); // Empty dependency array ensures this effect runs only once on component mount
+
   return (
     <Provider store={store}>
     <div className="App">
