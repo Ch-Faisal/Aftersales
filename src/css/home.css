@@ -6,7 +6,7 @@
   padding: 5px;
 }
 .new-alphard .nav-link{
-    color: rgba(255, 255, 255, 1);
+    color: rgba(22, 26, 29, 1);
 }
 .nav-pills .nav-item .nav-link.active {
     background-color: #fff;
@@ -19,7 +19,9 @@
 .all-new-alphard img{
   width: 30% !important;
 }
-
+.molecule-photos img{
+  width: 200px !important;
+}
 .divider-links{
         margin: 1% 5%; /* Adjust the spacing between the line and the tabs */
         color: #000; 
