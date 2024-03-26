@@ -91,11 +91,14 @@ function HomePage() {
       globalVariantId = variantId;
       console.log("variantid",globalVariantId);
       try {
+        setLoading2(true);
           const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
+            
               headers: {
                   'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
               }
           });
+          setLoading2(false);
           console.log("responsevariant:", response.data.data);
       } catch (error) {
           console.error('Error fetching variant:', error);
@@ -105,6 +108,13 @@ function HomePage() {
   const handleServiceTab = async (serviceNo) => {
     try {
       setLoading2(true);
+      setServiceDisclaimer("");
+      setPackageNames([]);
+      setPackageImages([]);
+      setMoleculeImages([]);
+      setMoleculePhotos([]);
+      setMoleculeTitles([]);
+      setErrorMessage("");
         const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
             params: {
                 variant_id: globalVariantId,
@@ -149,9 +159,6 @@ function HomePage() {
         console.error('Error fetching variant:', error);
     }
 };
-
-
-
   const handleTab2Click = (index) => {
     setActiveTab2(index); 
 };
