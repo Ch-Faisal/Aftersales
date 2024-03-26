@@ -1,13 +1,14 @@
 .custom-btn-dark
 {
-  background-color: #000 !important;
-  color: #fff !important;
-}
-.custom-btn-dark:hover
-{
+  border-radius: 16px;
   background-color: #fff !important;
   color: #000 !important;
   border: 1px solid black;
+}
+.custom-btn-dark:hover
+{
+  background-color: #000 !important;
+  color: #fff !important;
 }
 .container-fluid {
   overflow-x: hidden; /* Hides horizontal overflow */
@@ -74,7 +75,7 @@
 .nav-tabs .nav-link.active {
     border: none !important;
     /* background-color: #fff !important; */
-    color: #EB0A1E !important;
+    color: #000 !important;
     border-bottom: 4px solid #EB0A1E !important;
   }
   .nav-tabs .nav-link {

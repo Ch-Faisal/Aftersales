@@ -99,6 +99,11 @@ function TCare() {
       setImageUrl(response.data.imgUrl);
       settagline(response.data.tagline);
       setguideline(response.data.tagline);
+      console.log('cetificate',response.data.download_certificate)
+      console.log('cetificate',response.data.download_certificate)
+      setDownloadCertificate(response.data.download_certificate);
+      setDownloadWarranty(response.data.download_warranty);
+      setDownload(response.data.download_certificate);
       setLoading(false);
       setsecondtab(2);
       setregister(2);

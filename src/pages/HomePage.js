@@ -245,7 +245,7 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <div className='col-6 mx-auto col-md d-flex justify-content-center mt-2'>
+            <div className='col-6 mx-auto col-md d-flex justify-content-center mt-4 mt-lg-0'>
                 <div className='wrapper border-0 mb-4 mb-md-3 h-100'>
                     <div className='section-img'>
                         <img src="assets/location-icon.png" alt='' />
@@ -2715,9 +2715,6 @@ function HomePage() {
         </div>
         <div className='mx-2'>
         <img src="assets/genuine-parts (1).png"  alt="t-care-img"/>
-        </div>
-        <div className='mx-2'>
-        <img src="assets/tmo.png"  alt="t-care-img"/>
         </div>
     </div>
   </div>
