@@ -14,13 +14,16 @@ function HomePage() {
   const [selectedCarImage, setSelectedCarImage] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState('');
   const [selectedCarId, setSelectedCarId] = useState(null); // State to hold the ID of the selected car
-  const [loading, setLoading] = useState(false); // State to track loading status
+  const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const [serviceDescriptions, setServiceDescriptions] = useState([]);
   const [serviceDisclaimer, setServiceDisclaimer] = useState('');
   const [packageNames, setPackageNames] = useState([]);
   const [packageImages, setPackageImages] = useState([]);
   const [moleculeImages, setMoleculeImages] = useState([]);
     const [moleculePhotos, setMoleculePhotos] = useState([]);
+    const [moleculeTitles, setMoleculeTitles] = useState([]);
+
     const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -101,6 +104,7 @@ function HomePage() {
     
   const handleServiceTab = async (serviceNo) => {
     try {
+      setLoading2(true);
         const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
             params: {
                 variant_id: globalVariantId,
@@ -129,8 +133,11 @@ function HomePage() {
 
             const moleculePhotos = molecules.map(molecule => molecule.molecule.photo);
             setMoleculePhotos(moleculePhotos);
+
+            const moleculeTitles = molecules.map(molecule => molecule.molecule.title);
+            setMoleculeTitles(moleculeTitles);
       
-          
+            setLoading2(false);
             console.log("Package names:", packageNames);
             console.log("Package images:", images);
             console.log("molecile images:", moleculeImages);
@@ -264,7 +271,15 @@ function HomePage() {
       <img src={selectedCarImage} alt={selectedCar} />
       {loading && (
         <div className='spinner-overlay'>
-          <Oval height="80" width="80" radius="9" color="blue" wrapperStyle={{}} ariaLabel="three-dots-loading" /> 
+      <Oval
+      height="60"
+      width="60"
+      radius="9"
+      color="black"
+      ariaLabel="three-dots-loading"
+      secondaryColor="grey" 
+      wrapperStyle={{marginTop: '10%', marginBottom: '10%' }}
+    />
         </div>
       )}
       <p className='text-center'>{selectedCar}</p>
@@ -712,6 +727,19 @@ function HomePage() {
                              <p className='text mt-3'>{serviceDisclaimer}</p>
                             </div>
                           </div>
+                          {loading2 && (
+                            <div className='spinner-overlay'>
+                          <Oval
+                          height="60"
+                          width="60"
+                          radius="9"
+                          color="black"
+                          ariaLabel="three-dots-loading"
+                          secondaryColor="grey" 
+                          wrapperStyle={{marginTop: '10%', marginBottom: '10%' }}
+                        />
+                            </div>
+                          )}
                           <div className='container'>
                           <div className='d-flex justify-content-center'>
                             <div className='row mt-5'>
@@ -764,7 +792,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                              <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -772,7 +800,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                                 <img src={moleculePhotos[0]} alt='' />
                             </div>
@@ -782,7 +810,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                              <div className='tmo-image'>
@@ -793,7 +821,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                                 <img src={moleculePhotos[1]} alt='' />
@@ -804,7 +832,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                              <div className='tmo-image'>
@@ -815,7 +843,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                                  <div className='tmo-image'>
                                     <img src={moleculePhotos[2]} alt='' />
@@ -841,7 +869,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                              <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -849,7 +877,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                                 <img src={moleculePhotos[0]} alt='' />
                             </div>
@@ -859,7 +887,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                              <div className='tmo-image'>
@@ -870,7 +898,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                                 <img src={moleculePhotos[1]} alt='' />
@@ -881,7 +909,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                              <div className='tmo-image'>
@@ -892,7 +920,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                                  <div className='tmo-image molecule-photos'>
                                     <img src={moleculePhotos[2]} alt='' />
@@ -922,6 +950,19 @@ function HomePage() {
                              <p className='text mt-3'>{serviceDisclaimer}</p>
                             </div>
                           </div>
+                          {loading2 && (
+                            <div className='spinner-overlay'>
+                          <Oval
+                          height="60"
+                          width="60"
+                          radius="9"
+                          color="black"
+                          ariaLabel="three-dots-loading"
+                          secondaryColor="grey" 
+                          wrapperStyle={{marginTop: '10%', marginBottom: '10%' }}
+                        />
+                            </div>
+                          )}
                           <div className='container'>
                           <div className='d-flex justify-content-md-center tmo-oli'>
                             <div className='row mt-5'>
@@ -973,7 +1014,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -981,7 +1022,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               </div>
@@ -991,7 +1032,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -1002,7 +1043,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -1013,7 +1054,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -1024,9 +1065,9 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
-                              <div className='tmo-image pb-3 pb-md-0'>
+                              <div className='tmo-image pb-3 pb-md-0 molecule-photos'>
                               <img src={moleculePhotos[2]} alt='' />
                               </div>
                           </div>
@@ -1047,7 +1088,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -1055,7 +1096,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               </div>
@@ -1065,7 +1106,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -1076,7 +1117,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -1087,7 +1128,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -1098,7 +1139,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
@@ -1126,6 +1167,19 @@ function HomePage() {
                              <p className='text mt-3'>{serviceDisclaimer}</p>
                             </div>
                           </div>
+                          {loading2 && (
+                            <div className='spinner-overlay'>
+                          <Oval
+                          height="60"
+                          width="60"
+                          radius="9"
+                          color="black"
+                          ariaLabel="three-dots-loading"
+                          secondaryColor="grey" 
+                          wrapperStyle={{marginTop: '10%', marginBottom: '10%' }}
+                        />
+                            </div>
+                          )}
                           <div className='container'>
                           <div className='d-flex justify-content-center'>
                             <div className='row mt-5'>
@@ -1177,7 +1231,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -1185,7 +1239,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               </div>
@@ -1195,7 +1249,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -1206,7 +1260,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -1217,7 +1271,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -1228,7 +1282,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
@@ -1251,7 +1305,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -1259,7 +1313,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               </div>
@@ -1269,7 +1323,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -1280,7 +1334,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -1291,7 +1345,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -1302,7 +1356,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
@@ -1330,6 +1384,19 @@ function HomePage() {
                              <p className='text mt-3'>{serviceDisclaimer}</p>
                             </div>
                           </div>
+                          {loading2 && (
+                            <div className='spinner-overlay'>
+                          <Oval
+                          height="60"
+                          width="60"
+                          radius="9"
+                          color="black"
+                          ariaLabel="three-dots-loading"
+                          secondaryColor="grey" 
+                          wrapperStyle={{marginTop: '10%', marginBottom: '10%' }}
+                        />
+                            </div>
+                          )}
                           <div className='container mx-mx-5'>
                           <div className='d-flex justify-content-center mx-5'>
                             <div className='row mt-5 mx-4'>
@@ -1426,7 +1493,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -1434,7 +1501,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               </div>
@@ -1444,7 +1511,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -1455,7 +1522,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -1466,7 +1533,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -1477,7 +1544,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
@@ -1500,7 +1567,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -1508,7 +1575,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               </div>
@@ -1518,7 +1585,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -1529,7 +1596,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -1540,7 +1607,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -1551,7 +1618,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
@@ -1578,6 +1645,19 @@ function HomePage() {
                              <p className='text mt-3'>{serviceDisclaimer}</p>
                             </div>
                           </div>
+                          {loading2 && (
+                            <div className='spinner-overlay'>
+                          <Oval
+                          height="60"
+                          width="60"
+                          radius="9"
+                          color="black"
+                          ariaLabel="three-dots-loading"
+                          secondaryColor="grey" 
+                          wrapperStyle={{marginTop: '10%', marginBottom: '10%' }}
+                        />
+                            </div>
+                          )}
                           <div className='container'>
                           <div className='d-flex justify-content-center'>
                             <div className='row mt-5'>
@@ -1629,7 +1709,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -1637,7 +1717,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               </div>
@@ -1647,7 +1727,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -1658,7 +1738,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -1669,7 +1749,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -1680,7 +1760,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
@@ -1703,7 +1783,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -1711,7 +1791,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               </div>
@@ -1721,7 +1801,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -1732,7 +1812,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image pb-3 molecule-photos pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -1743,7 +1823,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -1754,7 +1834,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
@@ -1781,6 +1861,19 @@ function HomePage() {
                              <p className='text mt-3'>{serviceDisclaimer}</p>
                             </div>
                           </div>
+                          {loading2 && (
+                            <div className='spinner-overlay'>
+                          <Oval
+                          height="60"
+                          width="60"
+                          radius="9"
+                          color="black"
+                          ariaLabel="three-dots-loading"
+                          secondaryColor="grey" 
+                          wrapperStyle={{marginTop: '10%', marginBottom: '10%' }}
+                        />
+                            </div>
+                          )}
                           <div className='container'>
                           <div className='d-flex justify-content-center'>
                             <div className='row mt-5'>
@@ -1832,7 +1925,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -1842,7 +1935,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               {errorMessage && <p>{errorMessage}</p>}
@@ -1854,7 +1947,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -1867,7 +1960,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -1880,7 +1973,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -1893,7 +1986,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
@@ -1918,7 +2011,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -1928,7 +2021,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image'>
                               <img src={moleculePhotos[0]} alt='' />
                               {errorMessage && <p>{errorMessage}</p>}
@@ -1940,7 +2033,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -1953,7 +2046,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -1966,7 +2059,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -1979,7 +2072,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
@@ -2001,6 +2094,19 @@ function HomePage() {
                           role="tabpanel"
                           aria-labelledby="faq_tab_8-tab"
                         >
+                            {loading2 && (
+                            <div className='spinner-overlay'>
+                          <Oval
+                          height="60"
+                          width="60"
+                          radius="9"
+                          color="black"
+                          ariaLabel="three-dots-loading"
+                          secondaryColor="grey" 
+                          wrapperStyle={{marginTop: '10%', marginBottom: '10%' }}
+                        />
+                            </div>
+                          )}
                           <div className="container ps-lg-5 pe-lg-5 mt-5">
                           <div className='servis-content mx-md-5'>
                             <h1 className='servis-title'>Rp 2,715,976,-</h1>
@@ -2026,7 +2132,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                                   <img src="assets/Group 1597880427.png" alt='' />
@@ -2034,7 +2140,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image'>
                                   <img src="assets/tmoBottle.png" alt='' />
                               </div>
@@ -2044,7 +2150,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -2055,7 +2161,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image pb-3 pb-md-0'>
                                   <img src="assets/tmo bottle3.png " alt='' />
@@ -2066,7 +2172,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -2077,7 +2183,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[0]}</span>
                           </p> 
                               <div className='tmo-image pb-3 pb-md-0'>
                                   <img src="assets/tmo-bottle2.png" alt='' />
@@ -2101,6 +2207,19 @@ function HomePage() {
                           role="tabpanel"
                           aria-labelledby="faq_tab_9tab"
                         >
+                           {loading2 && (
+                            <div className='spinner-overlay'>
+                          <Oval
+                          height="60"
+                          width="60"
+                          radius="9"
+                          color="black"
+                          ariaLabel="three-dots-loading"
+                          secondaryColor="grey" 
+                          wrapperStyle={{marginTop: '10%', marginBottom: '10%' }}
+                        />
+                            </div>
+                          )}
                           <div className="container ps-lg-5 pe-lg-5 mt-5">
                           <div className='servis-content mx-md-5'>
                             <h1 className='servis-title'>Rp 2,715,976,-</h1>
@@ -2126,7 +2245,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -2136,7 +2255,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               {errorMessage && <p>{errorMessage}</p>}
@@ -2147,7 +2266,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -2158,7 +2277,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -2169,7 +2288,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -2182,7 +2301,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
@@ -2233,7 +2352,7 @@ function HomePage() {
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
-                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>Standard</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                               <p className='pt-md-3 pt-0'>10W-30</p>
                               <div className='tmo-image'>
                               <img src={moleculeImages[0]} alt='' />
@@ -2242,7 +2361,7 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                              <p className='pt-4 fw-bold standard d-none d-md-block'>Standard</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
                               <div className='tmo-image molecule-photos'>
                               <img src={moleculePhotos[0]} alt='' />
                               </div>
@@ -2254,7 +2373,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
                               <p className='pt-4'>SW-30</p>
                               <div className='tmo-image'>
@@ -2265,7 +2384,7 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>                            
                           <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[1]} alt='' />
@@ -2276,7 +2395,7 @@ function HomePage() {
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-4'>
                               <span className="d-block d-md-none">+0.8%</span>
-                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
                               <p className='pt-4'>0W-20</p>
                               <div className='tmo-image '>
@@ -2287,7 +2406,213 @@ function HomePage() {
                           <p className='pt-4'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                               <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>vs Standard</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
+                          </p> 
+                              <div className='tmo-image molecule-photos pb-3 pb-md-0'>
+                              <img src={moleculePhotos[2]} alt='' />
+                              </div>
+                          </div>
+                      </div>
+                        </div>
+                    </div>
+                         </div>}
+                         </div>
+                         <h1 className='mt-4'>Opsi Produk Toyota Lainnya</h1>
+                         <div className='d-flex justify-content-center mt-5'>
+                                <img src="assets/tire-solution.png" className='mx-4 px-2 py-3' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tmo.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tgb.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                            </div>
+                        </div>
+                        <div
+                          className="tab-pane fade px-3 px-lg-0"
+                          id="faq_tab_11"
+                          role="tabpanel"
+                          aria-labelledby="faq_tab_11-tab"
+                        >
+                          <div className="container ps-lg-5 pe-lg-5 mt-5">
+                          <div className='servis-content mx-md-5'>
+                            <h1 className='servis-title'>Rp 2,715,976,-</h1>
+                             <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[11] ? serviceDescriptions[11] : "No description available"}</p>
+                             {/* <p className='text text-start mt-5 mx-5'><span className='d-block'>1. Harga yang tertera hanya estimasi dengan menggunakan TMO 10W-30 (gasoline) dan TMO 15W-40 (diesel), untuk Raize & Voxy menggunakan TMO 5W-30 (gasoline), dan LC300 menggunakan TMO 5W-30 (diesel). Harga di dealer dapat berbeda sesuai layanan tambahan yang diberikan dealer dan permintaan pelanggan</span>
+                             <span className='d-block'>2.Dalam satuan Rupiah </span>
+                             <span className='d-block'>3.Per Oktober 2022 </span>
+                             <span className='d-block'>4.Sudah termasuk Pajak </span>
+                             </p> */}
+                            </div>
+                          </div>
+                          <div
+                          className="tab-pane fade px-3 px-lg-0"
+                          id="faq_tab_10"
+                          role="tabpanel"
+                          aria-labelledby="faq_tab_10-tab"
+                        >
+                          <div className="container ps-lg-5 pe-lg-5 mt-5">
+                          <div className='servis-content mx-md-5'>
+                            <h1 className='servis-title'>Rp 2,715,976,-</h1>
+                             <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
+                             <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[10] ? serviceDescriptions[10] : "No description available"}</p>
+                             {/* <p className='text text-start mt-5 mx-5'><span className='d-block'>1. Harga yang tertera hanya estimasi dengan menggunakan TMO 10W-30 (gasoline) dan TMO 15W-40 (diesel), untuk Raize & Voxy menggunakan TMO 5W-30 (gasoline), dan LC300 menggunakan TMO 5W-30 (diesel). Harga di dealer dapat berbeda sesuai layanan tambahan yang diberikan dealer dan permintaan pelanggan</span>
+                             <span className='d-block'>2.Dalam satuan Rupiah </span>
+                             <span className='d-block'>3.Per Oktober 2022 </span>
+                             <span className='d-block'>4.Sudah termasuk Pajak </span>
+                             </p> */}
+                            </div>
+                          </div>
+                          <div className='container'>
+                            {activeTab2 === 0 && <div>
+                          <div className='d-flex justify-content-center servis-2-tab'>
+                             <div className='row mt-5'>
+                             <h1>TMO Oli Mesin</h1>
+                             <p className='text-red'>Tingkat Kekentalan molekul</p>
+                             </div>
+                          </div>
+                          <div className='container'>
+                        <div className='row justify-content-md-center tmo-oli'> 
+                        <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-3 d-none d-md-block'>Oli Standar</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
+                              <p className='pt-md-3 pt-0'>10W-30</p>
+                              <div className='tmo-image'>
+                              <img src={moleculeImages[0]} alt='' />
+                              {errorMessage && <p>{errorMessage}</p>}
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-3 d-block d-md-none'>Oli Standar</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
+                              <div className='tmo-image molecule-photos'>
+                              <img src={moleculePhotos[0]} alt='' />
+                              </div>
+                              {errorMessage && <p>{errorMessage}</p>}
+
+                          </div>
+                      </div>
+                      <div className='col-md-3 bg-pink text-center d-flex flex-md-column mt-2 mt-md-0'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-4'>
+                              <span className="d-block d-md-none">+0.8%</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
+                          </p>
+                              <p className='pt-4'>SW-30</p>
+                              <div className='tmo-image'>
+                              <img src={moleculeImages[1]} alt='' />
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-4'>
+                            <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                              <span className="d-none d-md-block">+0.8%</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
+                          </p>                            
+                          <div className='tmo-image molecule-photos pb-3 pb-md-0'>
+                              <img src={moleculePhotos[1]} alt='' />
+                              </div>
+                          </div>
+                      </div>
+                      <div className='col-md-3 bg-pink text-center d-flex flex-md-column mt-2 mt-md-0'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-4'>
+                              <span className="d-block d-md-none">+0.8%</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
+                          </p>
+                              <p className='pt-4'>0W-20</p>
+                              <div className='tmo-image '>
+                              <img src={moleculeImages[2]} alt='' />
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-4'>
+                            <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                              <span className="d-none d-md-block">+0.8%</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
+                          </p> 
+                              <div className='tmo-image molecule-photos pb-3 pb-md-0'>
+                              <img src={moleculePhotos[2]} alt='' />
+                              </div>
+                          </div>
+                      </div>
+                        </div>
+                    </div>
+                         </div>}
+                         </div>
+                         <h1 className='mt-4'>Opsi Produk Toyota Lainnya</h1>
+                         <div className='d-flex justify-content-center mt-5'>
+                                <img src="assets/tire-solution.png" className='mx-4 px-2 py-3' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tmo.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tgb.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                            </div>
+                        </div>
+                          <div className='container'>
+                            {activeTab2 === 0 && <div>
+                          <div className='d-flex justify-content-center servis-2-tab'>
+                             <div className='row mt-5'>
+                             <h1>TMO Oli Mesin</h1>
+                             <p className='text-red'>Tingkat Kekentalan molekul</p>
+                             </div>
+                          </div>
+                          <div className='container'>
+                        <div className='row justify-content-md-center tmo-oli'> 
+                        <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-3 d-none d-md-block'>Oli Standar</p>
+                              <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
+                              <p className='pt-md-3 pt-0'>10W-30</p>
+                              <div className='tmo-image'>
+                              <img src={moleculeImages[0]} alt='' />
+                              {errorMessage && <p>{errorMessage}</p>}
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-3 d-block d-md-none'>Oli Standar</p>
+                              <p className='pt-4 fw-bold standard d-none d-md-block'>{moleculeTitles[0]}</p>
+                              <div className='tmo-image molecule-photos'>
+                              <img src={moleculePhotos[0]} alt='' />
+                              </div>
+                              {errorMessage && <p>{errorMessage}</p>}
+
+                          </div>
+                      </div>
+                      <div className='col-md-3 bg-pink text-center d-flex flex-md-column mt-2 mt-md-0'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-4'>
+                              <span className="d-block d-md-none">+0.8%</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
+                          </p>
+                              <p className='pt-4'>SW-30</p>
+                              <div className='tmo-image'>
+                              <img src={moleculeImages[1]} alt='' />
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-4'>
+                            <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                              <span className="d-none d-md-block">+0.8%</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
+                          </p>                            
+                          <div className='tmo-image molecule-photos pb-3 pb-md-0'>
+                              <img src={moleculePhotos[1]} alt='' />
+                              </div>
+                          </div>
+                      </div>
+                      <div className='col-md-3 bg-pink text-center d-flex flex-md-column mt-2 mt-md-0'>
+                          <div className='col-6 order-1 order-md-0'>
+                              <p className='pt-4'>
+                              <span className="d-block d-md-none">+0.8%</span>
+                              <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
+                          </p>
+                              <p className='pt-4'>0W-20</p>
+                              <div className='tmo-image '>
+                              <img src={moleculeImages[2]} alt='' />
+                              </div>
+                          </div>
+                          <div className='col-6 order-0 order-md-1'>
+                          <p className='pt-4'>
+                            <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                              <span className="d-none d-md-block">+0.8%</span>
+                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p> 
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                               <img src={moleculePhotos[2]} alt='' />
