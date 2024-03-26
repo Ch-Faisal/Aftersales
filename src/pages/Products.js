@@ -55,6 +55,26 @@ function Products() {
       imageUrl: "assets/Frame_874.png",
     },
   ]);
+  const [slideContents, setSlidess] = useState([
+    {
+      title: "TMO Differential Gear Oil",
+      text: "1",
+      description:" Pelumas oil gardan (differential) yang ditujukan untuk penggunaan kendaraan berpenggerak roda belakang (RWD).",
+      imageUrl: "assets/Image12.png",
+    },
+    {
+      title: "TMO Transfer Gear Oil",
+      text: "2",
+      description:"Pelumas yang digunakan pada kendaraan 4WD sebagai pelindung chain dan bearing. Tanpa adanya oli transfer, gigi akan sulit berputar dan mobil pun terasa berat saat dijalankan.",
+      imageUrl: "assets/Image13.png",
+    },
+    {
+      title: "TMO Manual Transmission Fluid",
+      text: "3",
+      description:" Pelumas yang dirancang khusus untuk memberikan pelumasan, mengurangi gesekan, dan mendinginkan komponen dalam transmisi manual.",
+      imageUrl: "assets/Image14.png",
+    },
+  ]);
   return (
     <div>
       <Header></Header>
@@ -448,6 +468,7 @@ function Products() {
                               Minyak pelumas yang digunakan untuk melumasi dan
                               melindungi bagian-bagian mesin mobil.
                             </p>
+                            <img src="assets/video layout.png" className="img-fluid mt-2"/>
                           </div>
                         </div>
                       </div>
@@ -535,34 +556,6 @@ function Products() {
                             </Swiper>
                           </div>
                         </div>
-                        {/* <div className='row'>
-    <div className='col-lg-6 col-md-6 col-12'>
-    <div className="card">
-        <div className="img"><img src="assets/Image10.png"  alt="img" className='img-fluid' draggable="false" /></div>
-        <div className='text-start ps-5 pe-5 ps-lg-0 pe-lg-0 ps-md-0 pe-md-0'>
-          <h4 className='card_heading'>Synthetic</h4>
-          <p className='card_2_text'>Memiliki keunggulannya tidak mudah menguap dan kemampuan pelumasannya lebih merata.</p>
-          <div className='mt-5'>
-            <a className='card_link' href='#'>Cek Produk</a>
-            <img className='ps-2' src='assets/CROSS.svg'/>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className='col-lg-6 col-md-6 col-12'>
-    <div className="card card_2">
-        <div className="img"><img src="assets/Image11.png" className='img-fluid'  alt="img" draggable="false" /></div>
-        <div className='text-start ps-5 pe-5 ps-lg-0 pe-lg-0 ps-md-0 pe-md-0'>
-          <h4 className='card_heading'>Full-Synthetic</h4>
-          <p className='card_2_text'>Memiliki kemampuan pelumasan paling baik, tahan terhadap suhu tinggi dan mampu meningkatkan efisiensi konsumsi bahan bakar lebih hemat bahan bakar.</p>
-          <div className='mt-5'>
-            <a className='card_link' href='#'>Cek Produk</a>
-            <img className='ps-2' src='assets/CROSS.svg'/>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> */}
                       </div>
                       <div className="container mt-5">
                         <div className="row">
@@ -578,25 +571,38 @@ function Products() {
                           </div>
                         </div>
                         <div className="container">
-                          <OwlCarousel
-                            className="owl-theme"
-                            responsive={{
-                              0: { items: 1 },
-                              768: { items: 1 },
-                              1000: { items: 3 },
-                            }}
-                            nav={true}
-                            dots={false}
-                            navText={[
-                              '<i class="fa fa-angle-left"></i>',
-                              '<i class="fa fa-angle-right"></i>',
-                            ]}
-                          >
-                            <div className="item">
-                              <div className="card ">
+                        <div className="row custom_slide_design ms-4 me-4 ms-lg-0 me-lg-0 me-md-0 ms-md-0">
+                           <Swiper
+                           modules={[Virtual, Navigation, Pagination]}
+                           onSwiper={setSwiperRef}
+                           slidesPerView={3}
+                           breakpoints={{
+                             280: {
+                               slidesPerView: 1,
+                             },
+                             // When window width is >= 768px
+                             768: {
+                               slidesPerView: 1.5,
+                             },
+                             1280: {
+                               slidesPerView: 2.5,
+                             },
+                             1400: {
+                               slidesPerView: 3,
+                             },
+                           }}
+                           centeredSlides={true}
+                           spaceBetween={30}
+                           navigation={true}
+                           pagination={{ clickable: true }}
+                           virtual
+                         >
+                           {slideContents.map((slideContents, index) => (
+                             <SwiperSlide key={index} virtualIndex={index}>
+                              <div className="card ne_card">
                                 <div className="img">
                                   <img
-                                    src="assets/Image12.png"
+                                    src={slideContents.imageUrl}
                                     alt="img"
                                     className="img-fluid"
                                     draggable="false"
@@ -604,64 +610,17 @@ function Products() {
                                 </div>
                                 <div className=" card_customm_padding text-start">
                                   <h4 className="card_heading">
-                                    TMO Differential Gear Oil
+                                  {slideContents.title}
                                   </h4>
                                   <p className="card_2_text">
-                                    Pelumas oil gardan (differential) yang
-                                    ditujukan untuk penggunaan kendaraan
-                                    berpenggerak roda belakang (RWD)
+                                  {slideContents.description}
                                   </p>
                                 </div>
                               </div>
-                            </div>
-                            <div className="item">
-                              <div className="card">
-                                <div className="img">
-                                  <img
-                                    src="assets/Image13.png"
-                                    className="img-fluid"
-                                    alt="img"
-                                    draggable="false"
-                                  />
-                                </div>
-                                <div className=" card_customm_padding text-start">
-                                  <h4 className="card_heading">
-                                    TMO Transfer Gear Oil
-                                  </h4>
-                                  <p className="card_2_text">
-                                    Pelumas yang digunakan pada kendaraan 4WD
-                                    sebagai pelindung chain dan bearing. Tanpa
-                                    adanya oli transfer, gigi akan sulit
-                                    berputar dan mobil pun terasa berat saat
-                                    dijalankan.
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="item">
-                              <div className="card">
-                                <div className="img">
-                                  <img
-                                    src="assets/Image14.png"
-                                    className="img-fluid"
-                                    alt="img"
-                                    draggable="false"
-                                  />
-                                </div>
-                                <div className="card_customm_padding text-start">
-                                  <h4 className="card_heading">
-                                    TMO Manual Transmission Fluid
-                                  </h4>
-                                  <p className="card_2_text">
-                                    Pelumas yang dirancang khusus untuk
-                                    memberikan pelumasan, mengurangi gesekan,
-                                    dan mendinginkan komponen dalam transmisi
-                                    manual.
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </OwlCarousel>
+                             </SwiperSlide>
+                           ))}
+                         </Swiper>
+                         </div>
                         </div>
                       </div>
                       <div className="container mt-5">
@@ -716,14 +675,11 @@ function Products() {
                                     />
                                     <div className="card-body custom-color-body text-start">
                                       <div className="d-flex">
-                                        <h3 className="ps-lg-4 ps-md-3 ps-sm-1 ps-0 card_custom_font_size">
-                                          {slideContent.text}
-                                        </h3>
-                                        <h3 className="card-title ps-lg-5 ps-md-4 ps-3 card_custom_font_size">
+                                        <h3 className="card-title ps-3 card_custom_font_size">
                                           {slideContent.title}
                                         </h3>
                                       </div>
-                                      <p className="card-text_3 text-start ps-lg-5 ps-3 pt-3">
+                                      <p className="card-text_3 text-start ps-2 pe-2 pt-3">
                                         {slideContent.description}
                                       </p>
                                     </div>
@@ -747,23 +703,42 @@ function Products() {
                               mobil itu sendiri agar tetap sehat dan aman
                               digunakan.
                             </p>
+                            <img src="assets/video layout.png" className="img-fluid mt-2"/>
                           </div>
                         </div>
                       </div>
                       <div className="container">
-                        <div className="row">
-                          <div className="col-lg-6 col-md-6 col-12">
-                            <div className="card">
-                              <div className="img">
-                                <img
-                                  src="assets/Image16.png"
-                                  alt="img"
-                                  className="img-fluid"
-                                  draggable="false"
-                                />
-                              </div>
-                              <div className="text-lg-start text-md-start text-center">
-                                <h4 className="card_heading">
+                      <div className="row new_slider d-flex justify-content-center mt-5">
+                          <div className="col-lg-8 col-md-10 col-12">
+                            <Swiper
+                              slidesPerView={2}
+                              breakpoints={{
+                                280: {
+                                  slidesPerView: 1,
+                                },
+                                768: {
+                                  slidesPerView: 2,
+                                },
+                              }}
+                              spaceBetween={30}
+                              freeMode={true}
+                              navigation={true}
+                              modules={[FreeMode, Navigation]}
+                              className="mySwiper"
+                            >
+                              <SwiperSlide>
+                                {" "}
+                                <div className="card">
+                                  <div className="img">
+                                    <img
+                                      src="assets/Image16.png"
+                                      alt="img"
+                                      className="img-fluid"
+                                      draggable="false"
+                                    />
+                                  </div>
+                                  <div className="text-start ps-5 pe-5 ps-lg-0 pe-lg-0 ps-md-0 pe-md-0">
+                                  <h4 className="card_heading">
                                   TMO TGRI Motor Oil 0W-20 API-SP
                                 </h4>
                                 <p className="card_2_text">
@@ -772,21 +747,22 @@ function Products() {
                                   penggunaan racing dan harian kendaraan Toyota
                                   dengan bahan bakar bensin.
                                 </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-6 col-12">
-                            <div className="card">
-                              <div className="img">
-                                <img
-                                  src="assets/Image15.png"
-                                  className="img-fluid"
-                                  alt="img"
-                                  draggable="false"
-                                />
-                              </div>
-                              <div className="text-lg-start text-md-start text-center">
-                                <h4 className="card_heading">
+                                  </div>
+                                </div>
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                {" "}
+                                <div className="card card_2">
+                                  <div className="img">
+                                    <img
+                                      src="assets/Image15.png"
+                                      className="img-fluid"
+                                      alt="img"
+                                      draggable="false"
+                                    />
+                                  </div>
+                                  <div className="text-start ps-5 pe-5 ps-lg-0 pe-lg-0 ps-md-0 pe-md-0">
+                                  <h4 className="card_heading">
                                   TMO TGRI Injector Cleaner Gasoline
                                 </h4>
                                 <p className="card_2_text">
@@ -795,8 +771,10 @@ function Products() {
                                   endapan di dalam injektor dan ruang
                                   pembakaran.
                                 </p>
-                              </div>
-                            </div>
+                                  </div>
+                                </div>
+                              </SwiperSlide>
+                            </Swiper>
                           </div>
                         </div>
                       </div>

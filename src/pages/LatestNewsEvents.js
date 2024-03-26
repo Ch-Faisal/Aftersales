@@ -57,6 +57,10 @@ function LatestNewsEvents() {
      </div>
       ) : (
         <div>
+          {Object.keys(newsData).length === 0 ? (
+        <div className="mt-5 mb-5">
+        <p>No content available</p></div>
+) : (
   <div className="news-item">
     <div className="section-1 p-0 " id="section-1">
         <div
@@ -323,6 +327,7 @@ function LatestNewsEvents() {
         </div>
       </div>
     </div>
+    )}
       </div>
       )}
       </div>
