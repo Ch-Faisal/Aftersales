@@ -19,12 +19,16 @@ function TCare() {
   const [type, setType] = useState(1);
   const [vin, setVinInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [guideline, setguideline] = useState("");
+  const [tagline, settagline] = useState("");
   const [color, setcolor] = useState("");
   const [product, setproduct] = useState("");
   const [timerValue, setTimerValue] = useState(60); // Initialize timer value
   const [uname, setName] = useState("");
   const [uemail, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [register, setregister] = useState();
+  const [tableData, settableData] = useState([]);
   const [otp1, setOtp1] = useState("");
   const [otp2, setOtp2] = useState("");
   const [otp3, setOtp3] = useState("");
@@ -40,7 +44,7 @@ function TCare() {
   const [activeTab1, setActiveTab1] = useState(0);
   const [secondtab, setsecondtab] = useState(0);
   const handleTabClick = (index) => {
-    setActiveTab(index); 
+    setActiveTab(index);
   };
   const handleTabClick1 = (index) => {
     setActiveTab1(index); // Set the active tab
@@ -58,11 +62,18 @@ function TCare() {
     setsecondtab(valueChannge);
   };
   const goBack = (index1) => {
-    setActive_tab1(index1)
-  }
+    setActive_tab1(index1);
+  };
 
   const handleLanjutClick = async () => {
     setLoading(true);
+    setDownloadWarranty("");
+    setDownloadCertificate("");
+    setDownload("");
+    setName("");
+    setEmail("");
+    setPhoneNumber("");
+
     if (vin.length < 1) {
       toastr.error("Enter the Vin");
       setLoading(false);
@@ -86,22 +97,20 @@ function TCare() {
       setcolor(response.data.data.color);
       setproduct(response.data.data.color);
       setImageUrl(response.data.imgUrl);
+      settagline(response.data.tagline);
+      setguideline(response.data.tagline);
       setLoading(false);
       setsecondtab(2);
+      setregister(2);
       // setActiveCircle(activeCircle + 1);
     } catch (error) {
       // Handle error here
       setLoading(false);
-      console.error("Error occurred:", error.response.data.message);
-      if (
-        error.response.data.message ==
-        "Nomor rangka yang Anda masukkan tidak terdaftar dalam program ini."
-      ) {
-        setsecondtab(1);
-        toastr.error("Not REgister this user");
+      if (error.response) {
+        toastr.error(error.response.data.message);
       }
-      if (error.response.data.message == "Unauthenticated") {
-      }
+      setsecondtab(1);
+      setregister(1);
     }
   };
   const handleMonthChange = (event) => {
@@ -238,10 +247,10 @@ function TCare() {
           },
         }
       );
-      console.log(response);
-      console.log(response.data.vin);
-      console.log("download warrnety", response.data.download_warranty);
-      console.log("Download certificate", response.data.download_certificate);
+      // console.log(response);
+      // console.log(response.data.vin);
+      // console.log("download warrnety", response.data.download_warranty);
+      // console.log("Download certificate", response.data.download_certificate);
       // Storing the values in state variables
       setDownloadWarranty(response.data.download_warranty);
       setDownloadCertificate(response.data.download_certificate);
@@ -371,8 +380,8 @@ function TCare() {
 
   const serviceHistory = async () => {
     setLoading(true);
-   const vin = vinn;
-   const email = emaill
+    const vin = vinn;
+    const email = emaill;
     try {
       const token =
         "OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE";
@@ -389,16 +398,22 @@ function TCare() {
         }
       );
       console.log(response);
+      console.log(response.data.data);
+      settableData(response.data.data);
+      console.log('table data is ',tableData)
+      if (response.data.message == "success.") {
+        setActive_tab1(3);
+      }
       // toastr.success(response.data.message);
       setLoading(false);
     } catch (error) {
       console.error("Error occurred:", error);
       setLoading(false);
-      setNodata(error.response.data.message)
-      setActive_tab1(2)
+      setNodata(error.response.data.message);
+      setActive_tab1(2);
       toastr.error(error.response.data.message);
     }
-  }
+  };
 
   return (
     <div>
@@ -452,7 +467,7 @@ function TCare() {
         <div className="container px-lg-5">
           <div className="section-2 mt-5">
             <div className="row">
-              <div class="col-md-6 d-flex">
+              <div class="col-lg-6 d-flex">
                 <div class="section-content text-start my-auto">
                   <p className="Check">Check your</p>
                   <h1>Certificate & Service Record!</h1>
@@ -464,8 +479,7 @@ function TCare() {
                   </p>
                 </div>
               </div>
-              <div className="col-md-6 ">
-              
+              <div className="col-lg-6 ">
                 <ul className="nav nav-pills nav-fill">
                   <li className="nav-item">
                     <a
@@ -490,840 +504,995 @@ function TCare() {
                     </a>
                   </li>
                 </ul>
-                <div style={{ display: loading ? "none" : (activeTab === 0 ? "block" : "none")}}>
                 <div
-                  className="tabs-section"
-                  style={{ display: loading ? "none" : (secondtab === 0 ? "block" : "none")}}
+                  style={{
+                    display: loading
+                      ? "none"
+                      : activeTab === 0
+                      ? "block"
+                      : "none",
+                  }}
                 >
-                  <div class="circle-tab pt-4">
-                    <a href="javascript:void(0)" className={`mx-3 active`}>
-                      <img src="assets/mdi_car-side.png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-4`}>
-                      <img src="assets/Group (2).png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-3`}>
-                      <img src="assets/Group (3).png" alt="" />
-                    </a>
-                  </div>
-                  <div>
-                    <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
-                      <p className="tab-bold-p">Validasi Nomor Rangka</p>
-                      <p className="text-danger Langkah_side_text">
-                        Langkah 1 - 3
-                      </p>
-                    </div>
-                    <div className="tab-content mx-4 mx-md-5 text-start">
-                      <p className="tab-light-bold-p">
-                        Nomor Rangka kendaraan Anda dapat ditemukan pada STNK
-                        atau BPKB kendaraan Anda
-                      </p>
-                    </div>
-                    <div className="form-group mx-4 mx-md-5 ">
-                      <input
-                        type="email"
-                        className="form-control Masukkan"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="Masukkan 17 Digit No. Rangka Kendaraan"
-                        value={vin}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                    <button
-                      className="btn btn-primary Lanjut mt-4 mb-4"
-                      onClick={handleLanjutClick}
-                    >
-                      Lanjut
-                    </button>
-                  </div>
-                </div>
-                </div>
-               <div style={{ display: loading ? "none" : (activeTab === 0 ? "block" : "none")}}>
-               <div
-                  className="tabs-section"
-                  style={{ display: loading ? "none" : (secondtab === 1 ? "block" : "none"),}}
-                >
-                  <div class="circle-tab pt-4">
-                    <a
-                      className={`mx-3 active cursor-pointer`}
-                      onClick={() => handleregister(0)}
-                    >
-                      <img src="assets/mdi_car-side.png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-4 active`}>
-                      <img src="assets/Group (2).png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-3`}>
-                      <img src="assets/Group (3).png" alt="" />
-                    </a>
-                  </div>
-                  <div>
-                    <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
-                      <p className="tab-bold-p">Validasi Nomor Rangka</p>
-                      <p className="text-danger Langkah_side_text">
-                        Langkah 2 - 3
-                      </p>
+                  <div
+                    className="tabs-section"
+                    style={{
+                      display: loading
+                        ? "none"
+                        : secondtab === 0
+                        ? "block"
+                        : "none",
+                    }}
+                  >
+                    <div class="circle-tab pt-4">
+                      <a href="javascript:void(0)" className={`mx-3 active`}>
+                        <img src="assets/mdi_car-side.png" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" className={`mx-4`}>
+                        <img src="assets/Group (2).png" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" className={`mx-3`}>
+                        <img src="assets/Group (3).png" alt="" />
+                      </a>
                     </div>
                     <div>
-                      <img src="assets/T-Care-1.png" className="img-fluid" />
-                      <p className="tab-bold-p">{vin}</p>
+                      <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
+                        <p className="tab-bold-p">Validasi Nomor Rangka</p>
+                        <p className="text-danger Langkah_side_text">
+                          Langkah 1 - 3
+                        </p>
+                      </div>
+                      <div className="tab-content mx-4 mx-md-5 text-start">
+                        <p className="tab-light-bold-p">
+                          Nomor Rangka kendaraan Anda dapat ditemukan pada STNK
+                          atau BPKB kendaraan Anda
+                        </p>
+                      </div>
+                      <div className="form-group mx-4 mx-md-5 ">
+                        <input
+                          type="text"
+                          className="form-control Masukkan"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="Masukkan 17 Digit No. Rangka Kendaraan"
+                          value={vin}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                      <button
+                        className="btn btn-primary Lanjut mt-4 mb-4"
+                        onClick={handleLanjutClick}
+                      >
+                        Lanjut
+                      </button>
                     </div>
-                    <div className="text-start mx-4 mx-md-5">
-                      <p className="tab-bold-p">
-                        Selamat! Mobil Anda Terdaftar!
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: loading
+                      ? "none"
+                      : activeTab === 0
+                      ? "block"
+                      : "none",
+                  }}
+                >
+                  <div
+                    className="tabs-section"
+                    style={{
+                      display: loading
+                        ? "none"
+                        : secondtab === 1
+                        ? "block"
+                        : "none",
+                    }}
+                  >
+                    <div class="circle-tab pt-4">
+                      <a
+                        className={`mx-3 active cursor-pointer`}
+                        onClick={() => handleregister(0)}
+                      >
+                        <img src="assets/mdi_car-side.png" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" className={`mx-4 active`}>
+                        <img src="assets/Group (2).png" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" className={`mx-3`}>
+                        <img src="assets/Group (3).png" alt="" />
+                      </a>
+                    </div>
+                    <div>
+                      <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
+                        <p className="tab-bold-p">Validasi Nomor Rangka</p>
+                        <p className="text-danger Langkah_side_text">
+                          Langkah 2 - 3
+                        </p>
+                      </div>
+                      <div>
+                        <img src="assets/T-Care-1.png" className="img-fluid" />
+                        <p className="tab-bold-p">{vin}</p>
+                      </div>
+                      <div className="text-start mx-4 mx-md-5">
+                        <p className="tab-bold-p">
+                          Selamat! Mobil Anda Terdaftar!
+                        </p>
+                        <p className="tab-bold-p">
+                          INNOVA 10R-BRXMBD 2.0 V HV CVT
+                          <span className="tab-light-bold-p">
+                            {" "}
+                            dengan warna kendaraan
+                          </span>{" "}
+                          ATTITUDE BLACK
+                        </p>
+                        <p style={{ color: "#D71921" }} className="tab-bold-p">
+                          Silakan tekan lanjut untuk mendapatkan sertifikat
+                          elektronik
+                        </p>
+                      </div>
+                      <div className="mb-4">
+                        <button
+                          className="btn btn-primary Lanjut mt-4 ms-2"
+                          onClick={() => handleregister(3)}
+                        >
+                          Lanjut
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: loading
+                      ? "none"
+                      : activeTab === 0
+                      ? "block"
+                      : "none",
+                  }}
+                >
+                  <div
+                    className="tabs-section"
+                    style={{
+                      display: loading
+                        ? "none"
+                        : secondtab === 2
+                        ? "block"
+                        : "none",
+                    }}
+                  >
+                    <div class="circle-tab pt-4">
+                      <a
+                        onClick={() => handleregister(0)}
+                        className={`mx-3 active cursor-pointer`}
+                      >
+                        <img src="assets/mdi_car-side.png" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" className={`mx-4 active`}>
+                        <img src="assets/Group (2).png" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" className={`mx-3`}>
+                        <img src="assets/Group (3).png" alt="" />
+                      </a>
+                    </div>
+                    <div>
+                      <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
+                        <p className="tab-bold-p">Validasi Nomor Rangka</p>
+                        <p className="text-danger Langkah_side_text">
+                          Langkah 2 - 3
+                        </p>
+                      </div>
+                      <div>
+                        <img src={imageUrl} className="img-fluid" />
+                        <p className="tab-bold-p">{vin}</p>
+                      </div>
+                      <div className="text-start mx-4 mx-md-5">
+                        <p className="tab-bold-p">
+                          Hai!
+                          <br />
+                          Bapak/Ibu Iky.
+                        </p>
+                        <p className="tab-bold-p">
+                          Mobil Anda Sudah Terdaftar di Program T-Care!
+                        </p>
+                        <p className="tab-bold-p">
+                          {product}(GUN125R-DDTHXD)
+                          <span className="tab-light-bold-p">
+                            dengan warna kendaraan
+                          </span>
+                          {color}
+                        </p>
+                        <p style={{ color: "#D71921" }} className="tab-bold-p">
+                          Ingin ubah data diri anda?
+                        </p>
+                      </div>
+                      <div className="mb-4">
+                        <button
+                          className="btn btn-primary lihat_Diri mt-4"
+                          onClick={() => handleregister(3)}
+                        >
+                          Lihat Data Diri
+                        </button>
+                        <button
+                          className="btn btn-primary Lanjut mt-4 ms-2"
+                          onClick={() => handleregister(6)}
+                        >
+                          Lanjut
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: loading
+                      ? "none"
+                      : activeTab === 0
+                      ? "block"
+                      : "none",
+                  }}
+                >
+                  <div
+                    className="tabs-section"
+                    style={{
+                      display: loading
+                        ? "none"
+                        : secondtab === 3
+                        ? "block"
+                        : "none",
+                    }}
+                  >
+                    <div class="circle-tab pt-4">
+                      <a
+                        onClick={() => handleregister(0)}
+                        className={`mx-3 active cursor-pointer`}
+                      >
+                        <img src="assets/mdi_car-side.png" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" className={`mx-4 active`}>
+                        <img src="assets/Group (2).png" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" className={`mx-3`}>
+                        <img src="assets/Group (3).png" alt="" />
+                      </a>
+                    </div>
+                    <div>
+                      <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
+                        <p className="tab-bold-p">Validasi Nomor Rangka</p>
+                        <p className="text-danger Langkah_side_text">
+                          Langkah 2 - 3
+                        </p>
+                      </div>
+                      <div className="form-group mx-4 mx-md-5 text-start ">
+                        <label className="input_label">Nama sesuai KTP</label>
+                        <input
+                          type="text"
+                          className="form-control Masukkan"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="Name"
+                          value={uname}
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="form-group mx-4 mx-md-5 text-start">
+                        <label className="input_label">
+                          Bulan & Tahun kendaraan diterima oleh pelanggan
+                        </label>
+                        <div className="d-flex">
+                          <div className="me-4 w-100">
+                            <select
+                              className="form-select"
+                              aria-label="Select Month"
+                              value={selectedMonth}
+                              onChange={handleMonthChange}
+                              style={{ border: "none" }}
+                            >
+                              <option value="">Month</option>
+                              <option value="January">January</option>
+                              <option value="February">February</option>
+                              <option value="March">March</option>
+                              <option value="April">April</option>
+                              <option value="May">May</option>
+                              <option value="June">June</option>
+                              <option value="July">July</option>
+                              <option value="August">August</option>
+                              <option value="September">September</option>
+                              <option value="October">October</option>
+                              <option value="November">November</option>
+                              <option value="December">December</option>
+                            </select>
+                          </div>
+                          <div className="w-100">
+                            <select
+                              className="form-select"
+                              aria-label="Select Year"
+                              value={selectedYear}
+                              onChange={handleYearChange}
+                              style={{ border: "none" }}
+                            >
+                              <option value="">Year</option>
+                              {Array.from(
+                                { length: new Date().getFullYear() - 1999 },
+                                (_, index) => (
+                                  <option
+                                    key={2000 + index}
+                                    value={2000 + index}
+                                  >
+                                    {2000 + index}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="form-group mx-4 mx-md-5 text-start ">
+                        <label className="input_label">Email</label>
+                        <input
+                          type="email"
+                          className="form-control Masukkan"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="email@thrive.co.id"
+                          value={uemail}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </div>
+                      <div className="form-group mx-4 mx-md-5 text-start">
+                        <label className="input_label">Nomor Telepon</label>
+                        <input
+                          type="number"
+                          className="form-control Masukkan"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="6281234567890"
+                          value={phoneNumber}
+                          onChange={(e) => setPhoneNumber(e.target.value)}
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <button
+                          className="btn btn-primary lihat_Diri mt-4"
+                          onClick={() => handleregister(0)}
+                        >
+                          Lihat Data Diri
+                        </button>
+                        <button
+                          className="btn btn-primary Lanjut mt-4 ms-2"
+                          onClick={submitData}
+                        >
+                          Lanjut
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: loading
+                      ? "none"
+                      : activeTab === 0
+                      ? "block"
+                      : "none",
+                  }}
+                >
+                  <div
+                    className="tabs-section"
+                    style={{
+                      display: loading
+                        ? "none"
+                        : secondtab === 4
+                        ? "block"
+                        : "none",
+                    }}
+                  >
+                    <div>
+                      <div className="pt-4">
+                        <img
+                          src="assets/icon-park-outline_info.svg"
+                          className="img-fluid"
+                        />
+                        <p className="tab-bold-p pt-4">
+                          Apakah data yang Anda masukkan sudah benar?
+                        </p>
+                      </div>
+                      <div className="text-start mx-4 mx-md-5">
+                        <div className="row">
+                          <div className="col-4 p-0">
+                            <span className="tab-light-bold-p1">Nama</span>
+                          </div>
+                          <div className="col-8 p-0">
+                            <span className="tab-light-bold-p1">: {uname}</span>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-4 p-0">
+                            <span className="tab-light-bold-p1">Email</span>
+                          </div>
+                          <div className="col-8 p-0">
+                            <span className="tab-light-bold-p1">
+                              : {uemail}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-4 p-0">
+                            <span className="tab-light-bold-p1">Telepon</span>
+                          </div>
+                          <div className="col-8 p-0">
+                            <span className="tab-light-bold-p1">
+                              : {phoneNumber}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-4 p-0">
+                            <span className="tab-light-bold-p1">VIN</span>
+                          </div>
+                          <div className="col-8 p-0">
+                            <span className="tab-light-bold-p1">: {vin}</span>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-4 p-0">
+                            <span className="tab-light-bold-p1">Kendaraan</span>
+                          </div>
+                          <div className="col-8 p-0">
+                            <span className="tab-light-bold-p1">
+                              : HILUX 2.4V DOUBLE CABIN 4X4 A/T(GUN125R-DDTHXD)
+                            </span>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-4 p-0">
+                            <span className="tab-light-bold-p1">Warna</span>
+                          </div>
+                          <div className="col-8 p-0">
+                            <span className="tab-light-bold-p1">
+                              : ATTITUDE BLACK METALIC
+                            </span>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-4 p-0">
+                            <span className="tab-light-bold-p1">
+                              Bulan Penerimaan
+                            </span>
+                          </div>
+                          <div className="col-8 p-0">
+                            <span className="tab-light-bold-p1">
+                              : {selectedMonth} {selectedYear}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mb-4">
+                        <button
+                          className="btn btn-primary lihat_Diri mt-4"
+                          onClick={() => handleregister(3)}
+                        >
+                          Lihat Data Diri
+                        </button>
+                        <button
+                          className="btn btn-primary Lanjut mt-4 ms-2"
+                          onClick={submitRegister}
+                        >
+                          Lanjut
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: loading
+                      ? "none"
+                      : activeTab === 0
+                      ? "block"
+                      : "none",
+                  }}
+                >
+                  <div
+                    className="tabs-section"
+                    style={{
+                      display: loading
+                        ? "none"
+                        : secondtab === 5
+                        ? "block"
+                        : "none",
+                    }}
+                  >
+                    <div class="circle-tab pt-4">
+                      <a
+                        onClick={() => handleregister(0)}
+                        className={`mx-3 active cursor-pointer`}
+                      >
+                        <img src="assets/mdi_car-side.png" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" className={`mx-4 active`}>
+                        <img src="assets/Group (2).png" alt="" />
+                      </a>
+                      <a href="javascript:void(0)" className={`mx-3`}>
+                        <img src="assets/Group (3).png" alt="" />
+                      </a>
+                    </div>
+                    <div>
+                      <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
+                        <p className="tab-bold-p">Verifikasi Email</p>
+                        <p className="text-danger Langkah_side_text">
+                          Langkah 2 - 3
+                        </p>
+                      </div>
+                      <div className="form-group mx-4 mx-md-5 text-start d-flex justify-content-center py-4 ">
+                        <input
+                          type="text"
+                          className="otp text-center"
+                          id="otp1"
+                          maxLength="1"
+                          value={otp1}
+                          onChange={(e) => setOtp1(e.target.value)}
+                          onKeyPress={(e) => {
+                            // Allow only numbers to be entered
+                            const isValidInput = /^\d*$/.test(e.key);
+                            const isMaxLengthReached =
+                              e.target.value.length >= 1;
+
+                            if (!isValidInput || isMaxLengthReached) {
+                              e.preventDefault();
+                            }
+                          }}
+                        />
+                        <input
+                          type="text"
+                          className="otp text-center"
+                          id="otp2"
+                          maxLength="1"
+                          value={otp2}
+                          onChange={(e) => setOtp2(e.target.value)}
+                          onKeyPress={(e) => {
+                            // Allow only numbers to be entered
+                            const isValidInput = /^\d*$/.test(e.key);
+                            const isMaxLengthReached =
+                              e.target.value.length >= 1;
+
+                            if (!isValidInput || isMaxLengthReached) {
+                              e.preventDefault();
+                            }
+                          }}
+                        />
+                        <input
+                          type="text"
+                          className="otp text-center"
+                          id="otp3"
+                          maxLength="1"
+                          value={otp3}
+                          onChange={(e) => setOtp3(e.target.value)}
+                          onKeyPress={(e) => {
+                            // Allow only numbers to be entered
+                            const isValidInput = /^\d*$/.test(e.key);
+                            const isMaxLengthReached =
+                              e.target.value.length >= 1;
+
+                            if (!isValidInput || isMaxLengthReached) {
+                              e.preventDefault();
+                            }
+                          }}
+                        />
+                        <input
+                          type="text"
+                          className="otp text-center"
+                          id="otp4"
+                          maxLength="1"
+                          value={otp4}
+                          onChange={(e) => setOtp4(e.target.value)}
+                          onKeyPress={(e) => {
+                            // Allow only numbers to be entered
+                            const isValidInput = /^\d*$/.test(e.key);
+                            const isMaxLengthReached =
+                              e.target.value.length >= 1;
+
+                            if (!isValidInput || isMaxLengthReached) {
+                              e.preventDefault();
+                            }
+                          }}
+                        />
+                        <input
+                          type="text"
+                          className="otp text-center"
+                          id="otp5"
+                          maxLength="1"
+                          value={otp5}
+                          onChange={(e) => setOtp5(e.target.value)}
+                          onKeyPress={(e) => {
+                            // Allow only numbers to be entered
+                            const isValidInput = /^\d*$/.test(e.key);
+                            const isMaxLengthReached =
+                              e.target.value.length >= 1;
+
+                            if (!isValidInput || isMaxLengthReached) {
+                              e.preventDefault();
+                            }
+                          }}
+                        />
+                        <input
+                          type="text"
+                          className="otp text-center"
+                          id="otp6"
+                          maxLength="1"
+                          value={otp6}
+                          onChange={(e) => setOtp6(e.target.value)}
+                          onKeyPress={(e) => {
+                            // Allow only numbers to be entered
+                            const isValidInput = /^\d*$/.test(e.key);
+                            const isMaxLengthReached =
+                              e.target.value.length >= 1;
+
+                            if (!isValidInput || isMaxLengthReached) {
+                              e.preventDefault();
+                            }
+                          }}
+                        />
+                      </div>
+                      <p className="tab-light-bold-p1 mx-4 mx-md-5 text-start">
+                        Silakan masukkan 6 digit kode OTP yang dikirimkan ke
+                        email Anda.
                       </p>
-                      <p className="tab-bold-p">
-                        INNOVA 10R-BRXMBD 2.0 V HV CVT
-                        <span className="tab-light-bold-p">
+                      <div className=" mx-4 mx-md-5 text-start d-flex">
+                        <p className="tab-light-bold-p1">
+                          Tidak menerima kode verifikasi? silakan{" "}
+                        </p>
+                        <p
+                          className="text-danger tab-light-bold-p1"
+                          style={{
+                            display: timerValue != 0 ? "block" : "none",
+                          }}
+                        >
                           {" "}
-                          dengan warna kendaraan
-                        </span>{" "}
-                        ATTITUDE BLACK
-                      </p>
-                      <p style={{ color: "#D71921" }} className="tab-bold-p">
-                        Silakan tekan lanjut untuk mendapatkan sertifikat
-                        elektronik
-                      </p>
-                    </div>
-                    <div className="mb-4">
-                      <button
-                        className="btn btn-primary Lanjut mt-4 ms-2"
-                        onClick={() => handleregister(3)}
-                      >
-                        Lanjut
-                      </button>
+                          &nbsp; klik di sini &nbsp;
+                        </p>
+                        <p
+                          className="text-danger tab-light-bold-p1 cursor-pointer"
+                          onClick={submitRegister}
+                          style={{
+                            display: timerValue === 0 ? "block" : "none",
+                          }}
+                        >
+                          {" "}
+                          &nbsp; klik di sini &nbsp;
+                        </p>
+                        <p className="tab-light-bold-p1">00:{timerValue}</p>
+                      </div>
+                      <div className="mb-4">
+                        <button
+                          className="btn btn-primary Lanjut mt-4 ms-2"
+                          onClick={submitOtp}
+                        >
+                          Lanjut
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-               </div>
-               <div style={{ display: loading ? "none" : (activeTab === 0 ? "block" : "none")}}>
-               <div
-                  className="tabs-section"
-                  style={{ display: loading ? "none" : (secondtab === 2 ? "block" : "none"),}}
+                <div
+                  style={{
+                    display: loading
+                      ? "none"
+                      : activeTab === 0
+                      ? "block"
+                      : "none",
+                  }}
                 >
-                  <div class="circle-tab pt-4">
-                    <a
-                      onClick={() => handleregister(0)}
-                      className={`mx-3 active cursor-pointer`}
-                    >
-                      <img src="assets/mdi_car-side.png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-4 active`}>
-                      <img src="assets/Group (2).png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-3`}>
-                      <img src="assets/Group (3).png" alt="" />
-                    </a>
-                  </div>
-                  <div>
-                    <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
-                      <p className="tab-bold-p">Validasi Nomor Rangka</p>
-                      <p className="text-danger Langkah_side_text">
-                        Langkah 2 - 3
-                      </p>
+                  <div
+                    className="tabs-section"
+                    style={{
+                      display: loading
+                        ? "none"
+                        : secondtab === 6
+                        ? "block"
+                        : "none",
+                    }}
+                  >
+                    <div class="circle-tab pt-4">
+                      <a
+                        onClick={() => handleregister(0)}
+                        className={`mx-3 active cursor-pointer`}
+                      >
+                        <img src="assets/mdi_car-side.png" alt="" />
+                      </a>
+                      {register === 2 && (
+                        <a
+                          onClick={() => handleregister(2)}
+                          className={`mx-4 active cursor-pointer`}
+                        >
+                          <img src="assets/Group (2).png" alt="" />
+                        </a>
+                      )}
+                      {register === 1 && (
+                        <a
+                          onClick={() => handleregister(1)}
+                          className={`mx-4 active cursor-pointer`}
+                        >
+                          <img src="assets/Group (2).png" alt="" />
+                        </a>
+                      )}
+
+                      <a href="javascript:void(0)" className={`mx-3 active`}>
+                        <img src="assets/Group (3).png" alt="" />
+                      </a>
                     </div>
                     <div>
-                      <img src={imageUrl} className="img-fluid" />
-                      <p className="tab-bold-p">{vin}</p>
-                    </div>
-                    <div className="text-start mx-4 mx-md-5">
-                      <p className="tab-bold-p">
-                        Hai!
-                        <br />
-                        Bapak/Ibu Iky.
-                      </p>
-                      <p className="tab-bold-p">
-                        Mobil Anda Sudah Terdaftar di Program T-Care!
-                      </p>
-                      <p className="tab-bold-p">
-                        {product}(GUN125R-DDTHXD)
-                        <span className="tab-light-bold-p">
-                          dengan warna kendaraan
-                        </span>
-                        {color}
-                      </p>
-                      <p style={{ color: "#D71921" }} className="tab-bold-p">
-                        Ingin ubah data diri anda?
-                      </p>
-                    </div>
-                    <div className="mb-4">
-                      <button
-                        className="btn btn-primary lihat_Diri mt-4"
-                        onClick={() => handleregister(3)}
-                      >
-                        Lihat Data Diri
-                      </button>
-                      <button
-                        className="btn btn-primary Lanjut mt-4 ms-2"
-                        onClick={() => handleregister(6)}
-                      >
-                        Lanjut
-                      </button>
-                    </div>
-                  </div>
-                </div>
-               </div>
-               <div style={{ display: loading ? "none" : (activeTab === 0 ? "block" : "none")}}>
-               <div
-                  className="tabs-section"
-                  style={{ display: loading ? "none" : (secondtab === 3 ? "block" : "none"),}}
-                >
-                  <div class="circle-tab pt-4">
-                    <a
-                      onClick={() => handleregister(0)}
-                      className={`mx-3 active cursor-pointer`}
-                    >
-                      <img src="assets/mdi_car-side.png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-4 active`}>
-                      <img src="assets/Group (2).png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-3`}>
-                      <img src="assets/Group (3).png" alt="" />
-                    </a>
-                  </div>
-                  <div>
-                    <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
-                      <p className="tab-bold-p">Validasi Nomor Rangka</p>
-                      <p className="text-danger Langkah_side_text">
-                        Langkah 2 - 3
-                      </p>
-                    </div>
-                    <div className="form-group mx-4 mx-md-5 text-start ">
-                      <label className="input_label">Nama sesuai KTP</label>
-                      <input
-                        type="text"
-                        className="form-control Masukkan"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="Name"
-                        value={uname}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
-
-                    <div className="form-group mx-4 mx-md-5 text-start">
-                      <label className="input_label">
-                        Bulan & Tahun kendaraan diterima oleh pelanggan
-                      </label>
-                      <div className="d-flex">
-                        <div className="me-4 w-100">
-                          <select
-                            className="form-select"
-                            aria-label="Select Month"
-                            value={selectedMonth}
-                            onChange={handleMonthChange}
-                            style={{ border: "none" }}
-                          >
-                            <option value="">Month</option>
-                            <option value="January">January</option>
-                            <option value="February">February</option>
-                            <option value="March">March</option>
-                            <option value="April">April</option>
-                            <option value="May">May</option>
-                            <option value="June">June</option>
-                            <option value="July">July</option>
-                            <option value="August">August</option>
-                            <option value="September">September</option>
-                            <option value="October">October</option>
-                            <option value="November">November</option>
-                            <option value="December">December</option>
-                          </select>
-                        </div>
-                        <div className="w-100">
-                          <select
-                            className="form-select"
-                            aria-label="Select Year"
-                            value={selectedYear}
-                            onChange={handleYearChange}
-                            style={{ border: "none" }}
-                          >
-                            <option value="">Year</option>
-                            {Array.from(
-                              { length: new Date().getFullYear() - 1999 },
-                              (_, index) => (
-                                <option key={2000 + index} value={2000 + index}>
-                                  {2000 + index}
-                                </option>
-                              )
-                            )}
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="form-group mx-4 mx-md-5 text-start ">
-                      <label className="input_label">Email</label>
-                      <input
-                        type="email"
-                        className="form-control Masukkan"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="email@thrive.co.id"
-                        value={uemail}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
-                    <div className="form-group mx-4 mx-md-5 text-start">
-                      <label className="input_label">Nomor Telepon</label>
-                      <input
-                        type="number"
-                        className="form-control Masukkan"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="6281234567890"
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <button
-                        className="btn btn-primary lihat_Diri mt-4"
-                        onClick={() => handleregister(0)}
-                      >
-                        Lihat Data Diri
-                      </button>
-                      <button
-                        className="btn btn-primary Lanjut mt-4 ms-2"
-                        onClick={submitData}
-                      >
-                        Lanjut
-                      </button>
-                    </div>
-                  </div>
-                </div>
-               </div>
-               <div style={{ display: loading ? "none" : (activeTab === 0 ? "block" : "none")}}>
-               <div
-                  className="tabs-section"
-                  style={{ display: loading ? "none" : (secondtab === 4 ? "block" : "none"),}}
-                >
-                  <div>
-                    <div className="pt-4">
-                      <img
-                        src="assets/icon-park-outline_info.svg"
-                        className="img-fluid"
-                      />
-                      <p className="tab-bold-p pt-4">
-                        Apakah data yang Anda masukkan sudah benar?
-                      </p>
-                    </div>
-                    <div className="text-start mx-4 mx-md-5">
-                      <div className="row">
-                        <div className="col-4 p-0">
-                          <span className="tab-light-bold-p1">Nama</span>
-                        </div>
-                        <div className="col-8 p-0">
-                          <span className="tab-light-bold-p1">: {uname}</span>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-4 p-0">
-                          <span className="tab-light-bold-p1">Email</span>
-                        </div>
-                        <div className="col-8 p-0">
-                          <span className="tab-light-bold-p1">: {uemail}</span>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-4 p-0">
-                          <span className="tab-light-bold-p1">Telepon</span>
-                        </div>
-                        <div className="col-8 p-0">
-                          <span className="tab-light-bold-p1">
-                            : {phoneNumber}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-4 p-0">
-                          <span className="tab-light-bold-p1">VIN</span>
-                        </div>
-                        <div className="col-8 p-0">
-                          <span className="tab-light-bold-p1">: {vin}</span>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-4 p-0">
-                          <span className="tab-light-bold-p1">Kendaraan</span>
-                        </div>
-                        <div className="col-8 p-0">
-                          <span className="tab-light-bold-p1">
-                            : HILUX 2.4V DOUBLE CABIN 4X4 A/T(GUN125R-DDTHXD)
-                          </span>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-4 p-0">
-                          <span className="tab-light-bold-p1">Warna</span>
-                        </div>
-                        <div className="col-8 p-0">
-                          <span className="tab-light-bold-p1">
-                            : ATTITUDE BLACK METALIC
-                          </span>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-4 p-0">
-                          <span className="tab-light-bold-p1">
-                            Bulan Penerimaan
-                          </span>
-                        </div>
-                        <div className="col-8 p-0">
-                          <span className="tab-light-bold-p1">
-                            : {selectedMonth} {selectedYear}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-4">
-                      <button
-                        className="btn btn-primary lihat_Diri mt-4"
-                        onClick={() => handleregister(3)}
-                      >
-                        Lihat Data Diri
-                      </button>
-                      <button
-                        className="btn btn-primary Lanjut mt-4 ms-2"
-                        onClick={submitRegister}
-                      >
-                        Lanjut
-                      </button>
-                    </div>
-                  </div>
-                </div>
-               </div>
-               <div style={{ display: loading ? "none" : (activeTab === 0 ? "block" : "none")}}>
-               <div
-                  className="tabs-section"
-                  style={{ display: loading ? "none" : (secondtab === 5 ? "block" : "none"),}}
-                >
-                  <div class="circle-tab pt-4">
-                    <a
-                      onClick={() => handleregister(0)}
-                      className={`mx-3 active cursor-pointer`}
-                    >
-                      <img src="assets/mdi_car-side.png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-4 active`}>
-                      <img src="assets/Group (2).png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-3`}>
-                      <img src="assets/Group (3).png" alt="" />
-                    </a>
-                  </div>
-                  <div>
-                    <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
-                      <p className="tab-bold-p">Verifikasi Email</p>
-                      <p className="text-danger Langkah_side_text">
-                        Langkah 2 - 3
-                      </p>
-                    </div>
-                    <div className="form-group mx-4 mx-md-5 text-start d-flex justify-content-center py-4 ">
-                      <input
-                        type="text"
-                        className="otp text-center"
-                        id="otp1"
-                        maxLength="1"
-                        value={otp1}
-                        onChange={(e) => setOtp1(e.target.value)}
-                        onKeyPress={(e) => {
-                          // Allow only numbers to be entered
-                          const isValidInput = /^\d*$/.test(e.key);
-                          const isMaxLengthReached = e.target.value.length >= 1;
-
-                          if (!isValidInput || isMaxLengthReached) {
-                            e.preventDefault();
-                          }
-                        }}
-                      />
-                      <input
-                        type="text"
-                        className="otp text-center"
-                        id="otp2"
-                        maxLength="1"
-                        value={otp2}
-                        onChange={(e) => setOtp2(e.target.value)}
-                        onKeyPress={(e) => {
-                          // Allow only numbers to be entered
-                          const isValidInput = /^\d*$/.test(e.key);
-                          const isMaxLengthReached = e.target.value.length >= 1;
-
-                          if (!isValidInput || isMaxLengthReached) {
-                            e.preventDefault();
-                          }
-                        }}
-                      />
-                      <input
-                        type="text"
-                        className="otp text-center"
-                        id="otp3"
-                        maxLength="1"
-                        value={otp3}
-                        onChange={(e) => setOtp3(e.target.value)}
-                        onKeyPress={(e) => {
-                          // Allow only numbers to be entered
-                          const isValidInput = /^\d*$/.test(e.key);
-                          const isMaxLengthReached = e.target.value.length >= 1;
-
-                          if (!isValidInput || isMaxLengthReached) {
-                            e.preventDefault();
-                          }
-                        }}
-                      />
-                      <input
-                        type="text"
-                        className="otp text-center"
-                        id="otp4"
-                        maxLength="1"
-                        value={otp4}
-                        onChange={(e) => setOtp4(e.target.value)}
-                        onKeyPress={(e) => {
-                          // Allow only numbers to be entered
-                          const isValidInput = /^\d*$/.test(e.key);
-                          const isMaxLengthReached = e.target.value.length >= 1;
-
-                          if (!isValidInput || isMaxLengthReached) {
-                            e.preventDefault();
-                          }
-                        }}
-                      />
-                      <input
-                        type="text"
-                        className="otp text-center"
-                        id="otp5"
-                        maxLength="1"
-                        value={otp5}
-                        onChange={(e) => setOtp5(e.target.value)}
-                        onKeyPress={(e) => {
-                          // Allow only numbers to be entered
-                          const isValidInput = /^\d*$/.test(e.key);
-                          const isMaxLengthReached = e.target.value.length >= 1;
-
-                          if (!isValidInput || isMaxLengthReached) {
-                            e.preventDefault();
-                          }
-                        }}
-                      />
-                      <input
-                        type="text"
-                        className="otp text-center"
-                        id="otp6"
-                        maxLength="1"
-                        value={otp6}
-                        onChange={(e) => setOtp6(e.target.value)}
-                        onKeyPress={(e) => {
-                          // Allow only numbers to be entered
-                          const isValidInput = /^\d*$/.test(e.key);
-                          const isMaxLengthReached = e.target.value.length >= 1;
-
-                          if (!isValidInput || isMaxLengthReached) {
-                            e.preventDefault();
-                          }
-                        }}
-                      />
-                    </div>
-                    <p className="tab-light-bold-p1 mx-4 mx-md-5 text-start">
-                      Silakan masukkan 6 digit kode OTP yang dikirimkan ke email
-                      Anda.
-                    </p>
-                    <div className=" mx-4 mx-md-5 text-start d-flex">
-                      <p className="tab-light-bold-p1">
-                        Tidak menerima kode verifikasi? silakan{" "}
-                      </p>
-                      <p
-                        className="text-danger tab-light-bold-p1"
-                        style={{ display: timerValue != 0 ? "block" : "none" }}
-                      >
-                        {" "}
-                        &nbsp; klik di sini &nbsp;
-                      </p>
-                      <p
-                        className="text-danger tab-light-bold-p1 cursor-pointer"
-                        onClick={submitRegister}
-                        style={{ display: timerValue === 0 ? "block" : "none" }}
-                      >
-                        {" "}
-                        &nbsp; klik di sini &nbsp;
-                      </p>
-                      <p className="tab-light-bold-p1">00:{timerValue}</p>
-                    </div>
-                    <div className="mb-4">
-                      <button
-                        className="btn btn-primary Lanjut mt-4 ms-2"
-                        onClick={submitOtp}
-                      >
-                        Lanjut
-                      </button>
-                    </div>
-                  </div>
-                </div>
-               </div>
-               <div style={{ display: loading ? "none" : (activeTab === 0 ? "block" : "none")}}>
-               <div
-                  className="tabs-section"
-                  style={{ display: loading ? "none" : (secondtab === 6 ? "block" : "none"),}}
-                >
-                  <div class="circle-tab pt-4">
-                    <a
-                      onClick={() => handleregister(0)}
-                      className={`mx-3 active cursor-pointer`}
-                    >
-                      <img src="assets/mdi_car-side.png" alt="" />
-                    </a>
-                    <a
-                      onClick={() => handleregister(1)}
-                      className={`mx-4 active cursor-pointer`}
-                    >
-                      <img src="assets/Group (2).png" alt="" />
-                    </a>
-                    <a href="javascript:void(0)" className={`mx-3 active`}>
-                      <img src="assets/Group (3).png" alt="" />
-                    </a>
-                  </div>
-                  <div>
-                    <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
-                      <p></p>
-                      <p className="text-danger Langkah_side_text">
-                        Langkah 3 - 3
-                      </p>
-                    </div>
-                    <ul className="nav  nav-fill px-lg-5 px-3">
-                      <li className="nav-item me-4 custom_border_radios_add">
-                        <button
-                          className={`tabs nav-link py-3 li_text_1 ${
-                            activeTab1 === 0 ? "active1" : "non_active"
-                          }`}
-                          onClick={() => handleTabClick1(0)}
-                        >
-                          T-Care Certificate
-                        </button>
-                      </li>
-                      <li className="nav-item custom_border_radios_add">
-                        <button
-                          className={`tabs nav-link py-3 li_text_1 ${
-                            activeTab1 === 1 ? "active1" : "non_active"
-                          }`}
-                          onClick={() => handleTabClick1(1)}
-                        >
-                          Extended Warranty
-                        </button>
-                      </li>
-                    </ul>
-                    <div className="pt-4">
-                      <p className="tab-bold-p">
-                        Terima Kasih
-                        <br />
-                        Bapak/Ibu Iky
-                      </p>
-                    </div>
-                    <div className="text-start mx-4 mx-md-5">
-                      <p className="tab-light-bold-p">
-                        Untuk mendapatkan sertifikat
-                        <span
-                          className={`tab-bold-p ${
-                            activeTab1 === 1 ? "d-none" : "d-inline"
-                          }`}
-                        >
-                          “T-Care”
-                        </span>{" "}
-                        <span
-                          className={`tab-bold-p ${
-                            activeTab1 === 0 ? "d-none" : "d-inline"
-                          }`}
-                        >
-                          “Extended Warranty”
-                        </span>
-                        ,silakan lakukan download melalui:
-                      </p>
-                    </div>
-                    <div className="d-flex justify-content-center custom_size_of_font buttons_custom_gap mx-5">
-                      <div className="d-flex flex-column">
-                        <button
-                          className="download_pdf_buttons1 ms-3"
-                          onClick={handleDownload}
-                        >
-                          <svg
-                            width="48"
-                            height="48"
-                            viewBox="0 0 48 48"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M24.8825 32.5445L35.0865 22.3404L32.2294 19.3812L26.9233 24.6873V8.05469H22.8416L22.8416 24.6873L17.5355 19.3812L14.6784 22.3404L24.8825 32.5445ZM37.1274 40.7077C38.2498 40.7077 39.2103 40.3084 40.009 39.5098C40.8076 38.7111 41.2076 37.7499 41.209 36.6261V30.5037H37.1274V36.6261H12.6376V30.5037H8.55592V36.6261C8.55592 37.7486 8.95524 38.7098 9.75388 39.5098C10.5525 40.3098 11.5137 40.7091 12.6376 40.7077H37.1274Z"
-                              fill="white"
-                            />
-                          </svg>
-                        </button>
-                        <p
-                          className="mt-2 tab-bold-p"
-                          style={{ color: "#DF1D1D" }}
-                        >
-                          Download PDF
+                      <div className="d-md-flex justify-content-between mt-4 mx-4 text-start mx-md-5">
+                        <p></p>
+                        <p className="text-danger Langkah_side_text">
+                          Langkah 3 - 3
                         </p>
                       </div>
-                      <div className="d-flex flex-column">
-                        <button
-                          className="download_pdf_buttons"
-                          onClick={sendEmail}
-                        >
-                          <svg
-                            width="48"
-                            height="48"
-                            viewBox="0 0 48 48"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
+                      <ul className="nav  nav-fill px-lg-5 px-3">
+                        <li className="nav-item me-4 custom_border_radios_add">
+                          <button
+                            className={`tabs nav-link py-3 li_text_1 ${
+                              activeTab1 === 0 ? "active1" : "non_active"
+                            }`}
+                            onClick={() => handleTabClick1(0)}
                           >
-                            <path
-                              d="M37.9437 36.8978C38.8416 36.8978 39.6101 36.5784 40.249 35.9395C40.8879 35.3006 41.2079 34.5316 41.209 33.6325V14.0407C41.209 13.1427 40.889 12.3743 40.249 11.7354C39.609 11.0965 38.8405 10.7765 37.9437 10.7754L11.8212 10.7754C10.9233 10.7754 10.1543 11.0954 9.51429 11.7354C8.87429 12.3754 8.55484 13.1438 8.55593 14.0407V33.6325C8.55593 34.5305 8.87538 35.2995 9.51429 35.9395C10.1532 36.5795 10.9222 36.8989 11.8212 36.8978H37.9437ZM24.8825 25.4693L37.9437 17.306V33.6325H11.8212L11.8212 17.306L24.8825 25.4693ZM24.8825 22.204L11.8212 14.0407L37.9437 14.0407L24.8825 22.204ZM37.9437 17.306V14.0407V33.6325V17.306Z"
-                              fill="white"
-                            />
-                          </svg>{" "}
-                        </button>
-                        <p
-                          className="mt-2 tab-bold-p"
-                          style={{ color: "#DF1D1D" }}
-                        >
-                          Email
+                            T-Care Certificate
+                          </button>
+                        </li>
+                        <li className="nav-item custom_border_radios_add">
+                          <button
+                            className={`tabs nav-link py-3 li_text_1 ${
+                              activeTab1 === 1 ? "active1" : "non_active"
+                            }`}
+                            onClick={() => handleTabClick1(1)}
+                          >
+                            Extended Warranty
+                          </button>
+                        </li>
+                      </ul>
+                      <div className="pt-4">
+                        <p className="tab-bold-p">
+                          Terima Kasih
+                          <br />
+                          Bapak/Ibu Iky
                         </p>
                       </div>
-                      <div className="d-flex flex-column">
-                        <button
-                          className="download_pdf_buttons"
-                          onClick={handlePrint}
-                        >
-                          <svg
-                            width="48"
-                            height="48"
-                            viewBox="0 0 48 48"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
+                      <div className="text-start mx-4 mx-md-5">
+                        <p className="tab-light-bold-p">
+                          Untuk mendapatkan sertifikat
+                          <span
+                            className={`tab-bold-p ${
+                              activeTab1 === 1 ? "d-none" : "d-inline"
+                            }`}
                           >
-                            <path
-                              d="M18.3518 17.5773V12.6794L31.4131 12.6794V17.5773H34.6784V9.41406L15.0865 9.41406V17.5773H18.3518ZM15.0865 24.9243C14.624 24.9243 14.2359 24.7675 13.9225 24.4541C13.609 24.1406 13.4528 23.7531 13.4539 23.2916C13.4539 22.829 13.6106 22.4415 13.9241 22.1292C14.2376 21.8168 14.625 21.66 15.0865 21.659C15.5491 21.659 15.9366 21.8157 16.249 22.1292C16.5614 22.4426 16.7181 22.8301 16.7192 23.2916C16.7192 23.7542 16.5625 24.1422 16.249 24.4557C15.9355 24.7692 15.548 24.9254 15.0865 24.9243ZM18.3518 35.5365V29.0059L31.4131 29.0059L31.4131 35.5365H18.3518ZM15.0865 38.8018H34.6784V32.2712H41.209V22.4753C41.209 21.0875 40.7328 19.9245 39.7804 18.9863C38.828 18.0481 37.6716 17.5784 36.311 17.5773L13.4539 17.5773C12.0661 17.5773 10.9026 18.047 9.96328 18.9863C9.02396 19.9256 8.55484 21.0886 8.55593 22.4753V32.2712H15.0865V38.8018ZM11.8212 29.0059L11.8212 22.4753C11.8212 22.0127 11.978 21.6252 12.2914 21.3128C12.6049 21.0005 12.9924 20.8437 13.4539 20.8426L36.311 20.8426C36.7736 20.8426 37.1611 20.9994 37.4735 21.3128C37.7859 21.6263 37.9426 22.0138 37.9437 22.4753V29.0059H34.6784V25.7406L15.0865 25.7406V29.0059H11.8212Z"
-                              fill="white"
-                            />
-                          </svg>{" "}
-                        </button>
-                        <p
-                          className="mt-2 tab-bold-p"
-                          style={{ color: "#DF1D1D" }}
-                        >
-                          Print
+                            “T-Care”
+                          </span>{" "}
+                          <span
+                            className={`tab-bold-p ${
+                              activeTab1 === 0 ? "d-none" : "d-inline"
+                            }`}
+                          >
+                            “Extended Warranty”
+                          </span>
+                          ,silakan lakukan download melalui:
                         </p>
                       </div>
-                    </div>
-                    <div className="mb-4">
-                      <button
-                        className="btn btn-primary lihat_Diri_1 mt-4"
-                        onClick={() => handleregister(0)}
-                      >
-                        <img src="assets/Left.png" className="pe-2" />
-                        Kembali ke Halaman Awal
-                      </button>
+                      <div className="d-flex justify-content-center custom_size_of_font buttons_custom_gap mx-5">
+                        <div className="d-flex flex-column">
+                          <button
+                            className="download_pdf_buttons1 ms-3"
+                            onClick={handleDownload}
+                          >
+                            <svg
+                              width="48"
+                              height="48"
+                              viewBox="0 0 48 48"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M24.8825 32.5445L35.0865 22.3404L32.2294 19.3812L26.9233 24.6873V8.05469H22.8416L22.8416 24.6873L17.5355 19.3812L14.6784 22.3404L24.8825 32.5445ZM37.1274 40.7077C38.2498 40.7077 39.2103 40.3084 40.009 39.5098C40.8076 38.7111 41.2076 37.7499 41.209 36.6261V30.5037H37.1274V36.6261H12.6376V30.5037H8.55592V36.6261C8.55592 37.7486 8.95524 38.7098 9.75388 39.5098C10.5525 40.3098 11.5137 40.7091 12.6376 40.7077H37.1274Z"
+                                fill="white"
+                              />
+                            </svg>
+                          </button>
+                          <p
+                            className="mt-2 tab-bold-p"
+                            style={{ color: "#DF1D1D" }}
+                          >
+                            Download PDF
+                          </p>
+                        </div>
+                        <div className="d-flex flex-column">
+                          <button
+                            className="download_pdf_buttons"
+                            onClick={sendEmail}
+                          >
+                            <svg
+                              width="48"
+                              height="48"
+                              viewBox="0 0 48 48"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M37.9437 36.8978C38.8416 36.8978 39.6101 36.5784 40.249 35.9395C40.8879 35.3006 41.2079 34.5316 41.209 33.6325V14.0407C41.209 13.1427 40.889 12.3743 40.249 11.7354C39.609 11.0965 38.8405 10.7765 37.9437 10.7754L11.8212 10.7754C10.9233 10.7754 10.1543 11.0954 9.51429 11.7354C8.87429 12.3754 8.55484 13.1438 8.55593 14.0407V33.6325C8.55593 34.5305 8.87538 35.2995 9.51429 35.9395C10.1532 36.5795 10.9222 36.8989 11.8212 36.8978H37.9437ZM24.8825 25.4693L37.9437 17.306V33.6325H11.8212L11.8212 17.306L24.8825 25.4693ZM24.8825 22.204L11.8212 14.0407L37.9437 14.0407L24.8825 22.204ZM37.9437 17.306V14.0407V33.6325V17.306Z"
+                                fill="white"
+                              />
+                            </svg>{" "}
+                          </button>
+                          <p
+                            className="mt-2 tab-bold-p"
+                            style={{ color: "#DF1D1D" }}
+                          >
+                            Email
+                          </p>
+                        </div>
+                        <div className="d-flex flex-column">
+                          <button
+                            className="download_pdf_buttons"
+                            onClick={handlePrint}
+                          >
+                            <svg
+                              width="48"
+                              height="48"
+                              viewBox="0 0 48 48"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M18.3518 17.5773V12.6794L31.4131 12.6794V17.5773H34.6784V9.41406L15.0865 9.41406V17.5773H18.3518ZM15.0865 24.9243C14.624 24.9243 14.2359 24.7675 13.9225 24.4541C13.609 24.1406 13.4528 23.7531 13.4539 23.2916C13.4539 22.829 13.6106 22.4415 13.9241 22.1292C14.2376 21.8168 14.625 21.66 15.0865 21.659C15.5491 21.659 15.9366 21.8157 16.249 22.1292C16.5614 22.4426 16.7181 22.8301 16.7192 23.2916C16.7192 23.7542 16.5625 24.1422 16.249 24.4557C15.9355 24.7692 15.548 24.9254 15.0865 24.9243ZM18.3518 35.5365V29.0059L31.4131 29.0059L31.4131 35.5365H18.3518ZM15.0865 38.8018H34.6784V32.2712H41.209V22.4753C41.209 21.0875 40.7328 19.9245 39.7804 18.9863C38.828 18.0481 37.6716 17.5784 36.311 17.5773L13.4539 17.5773C12.0661 17.5773 10.9026 18.047 9.96328 18.9863C9.02396 19.9256 8.55484 21.0886 8.55593 22.4753V32.2712H15.0865V38.8018ZM11.8212 29.0059L11.8212 22.4753C11.8212 22.0127 11.978 21.6252 12.2914 21.3128C12.6049 21.0005 12.9924 20.8437 13.4539 20.8426L36.311 20.8426C36.7736 20.8426 37.1611 20.9994 37.4735 21.3128C37.7859 21.6263 37.9426 22.0138 37.9437 22.4753V29.0059H34.6784V25.7406L15.0865 25.7406V29.0059H11.8212Z"
+                                fill="white"
+                              />
+                            </svg>{" "}
+                          </button>
+                          <p
+                            className="mt-2 tab-bold-p"
+                            style={{ color: "#DF1D1D" }}
+                          >
+                            Print
+                          </p>
+                        </div>
+                      </div>
+                      <div className="mb-4">
+                        <button
+                          className="btn btn-primary lihat_Diri_1 mt-4"
+                          onClick={() => handleregister(0)}
+                        >
+                          <img src="assets/Left.png" className="pe-2" />
+                          Kembali ke Halaman Awal
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-               </div>
-                
+
                 {loading && (
-    <div className="spinner-overlay add_custom_properties">
-      <Oval
-        height="60"
-        width="60"
-        radius="9"
-        color="black"
-        ariaLabel="three-dots-loading"
-        secondaryColor="grey"
-        wrapperStyle={{ marginTop: "10%", marginBottom: "10%" }}
-      />
-    </div>
-  )}
-  <div   style={{ display: loading ? "none" : (activeTab === 1 ? "block" : "none")}}>
-  <div
-                  className="tabs-section"
-                  style={{ display: loading ? "none" : (Active_tab1 === 1 ? "block" : "none")}}
+                  <div className="spinner-overlay add_custom_properties">
+                    <Oval
+                      height="60"
+                      width="60"
+                      radius="9"
+                      color="black"
+                      ariaLabel="three-dots-loading"
+                      secondaryColor="grey"
+                      wrapperStyle={{ marginTop: "10%", marginBottom: "10%" }}
+                    />
+                  </div>
+                )}
+                <div
+                  style={{
+                    display: loading
+                      ? "none"
+                      : activeTab === 1
+                      ? "block"
+                      : "none",
+                  }}
                 >
-                  <div>
-                    <div className="form-group mx-4 mx-md-5 text-start pt-4 ">
-                      <p className="custom_class_tab_discrip">Mau cari tau catatan servis pemakaian Gratis Servis Berkala Toyota Anda? Cek disini:</p>
-                      <label className="input_label">Nomor Rangka Kendaraan</label>
-                      <input
-                        type="email"
-                        className="form-control Masukkan"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="MROBB3CD4P5812581"
-                        value={vinn}
-                        onChange={(e) => setVinn(e.target.value)}
-                      />
-                    </div>
-                    <div className="form-group mx-4 mx-md-5 text-start">
-                      <label className="input_label">Email</label>
-                      <input
-                        type="email"
-                        className="form-control Masukkan"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="rizkyocta.th@gmail.com"
-                        value={emaill}
-                        onChange={(e) => setEmaill(e.target.value)}
-                      />
-                    </div>
-                    <div className="form-group mx-4 mx-md-5 text-start pt-3">
-                     <p className="custom_discrip_tab">*Masukkan alamat email yang didaftarkan pada sertifikat elektronik</p>
-                    </div>
-                    <div className="mb-4">
-                      <button
-                        className="btn btn-primary Lanjut mt-4 ms-2"
-                        onClick={serviceHistory}
-                      >
-                        Lanjut
-                      </button>
+                  <div
+                    className="tabs-section"
+                    style={{
+                      display: loading
+                        ? "none"
+                        : Active_tab1 === 1
+                        ? "block"
+                        : "none",
+                    }}
+                  >
+                    <div>
+                      <div className="form-group mx-4 mx-md-5 text-start pt-4 ">
+                        <p className="custom_class_tab_discrip">
+                          Mau cari tau catatan servis pemakaian Gratis Servis
+                          Berkala Toyota Anda? Cek disini:
+                        </p>
+                        <label className="input_label">
+                          Nomor Rangka Kendaraan
+                        </label>
+                        <input
+                          type="email"
+                          className="form-control Masukkan"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="MROBB3CD4P5812581"
+                          value={vinn}
+                          onChange={(e) => setVinn(e.target.value)}
+                        />
+                      </div>
+                      <div className="form-group mx-4 mx-md-5 text-start">
+                        <label className="input_label">Email</label>
+                        <input
+                          type="email"
+                          className="form-control Masukkan"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="rizkyocta.th@gmail.com"
+                          value={emaill}
+                          onChange={(e) => setEmaill(e.target.value)}
+                        />
+                      </div>
+                      <div className="form-group mx-4 mx-md-5 text-start pt-3">
+                        <p className="custom_discrip_tab">
+                          *Masukkan alamat email yang didaftarkan pada
+                          sertifikat elektronik
+                        </p>
+                      </div>
+                      <div className="mb-4">
+                        <button
+                          className="btn btn-primary Lanjut mt-4 ms-2"
+                          onClick={serviceHistory}
+                        >
+                          Lanjut
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  className="tabs-section"
-                  style={{ display: loading ? "none" : (Active_tab1 === 2 ? "block" : "none")}}
-                >
-                  <div>
-                    <div className="pt-4">
-                      <img
-                        src="assets/icon-park-outline_info.svg"
-                        className="img-fluid"
-                      />
-                      <p className="tab-discription-p pt-4 px-4">
-                      {Nodata}
-                      </p>
-                    </div>
-                    <div className="mb-4">
-                      <button
-                        className="btn btn-primary Lanjut mt-4 ms-2"
-                        onClick={() => goBack(1)}
-                      >
-                        Lanjut
-                      </button>
+                  <div
+                    className="tabs-section"
+                    style={{
+                      display: loading
+                        ? "none"
+                        : Active_tab1 === 2
+                        ? "block"
+                        : "none",
+                    }}
+                  >
+                    <div>
+                      <div className="pt-4">
+                        <img
+                          src="assets/icon-park-outline_info.svg"
+                          className="img-fluid"
+                        />
+                        <p className="tab-discription-p pt-4 px-4">{Nodata}</p>
+                      </div>
+                      <div className="mb-4">
+                        <button
+                          className="btn btn-primary Lanjut mt-4 ms-2"
+                          onClick={() => goBack(1)}
+                        >
+                          Lanjut
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  className="tabs-section"
-                  style={{ display: loading ? "none" : (Active_tab1 === 3 ? "block" : "none")}}
-                >
-                  <div>
-                    <div className="text-start px-5 pt-4">
-                    <p className="tab-discription-p">Hai Bapak/Ibu Rizky</p>
-                    <p className="tab-discription-p">Pemilik Kendaraan:</p>
-                    </div>
-                  <div className="row">
+                  <div className="tabs-section" style={{
+                      display: loading
+                        ? "none"
+                        : Active_tab1 === 3
+                        ? "block"
+                        : "none",
+                    }}>
+                    <div>
+                      <div className="text-start px-5 pt-4">
+                        <p className="tab-discription-p">Hai Bapak/Ibu Rizky</p>
+                        <p className="tab-discription-p">Pemilik Kendaraan:</p>
+                      </div>
+                      <div className="row">
                         <div className="col-4 p-0">
                           <span className="tab-light-bold-p1">Nama</span>
                         </div>
                         <div className="col-8 p-0 text-start">
-                          <span className="tab-light-bold-p1">: MROBB3CD4P5812581</span>
+                          <span className="tab-light-bold-p1">
+                            : MROBB3CD4P5812581
+                          </span>
                         </div>
                       </div>
                       <div className="row">
@@ -1331,66 +1500,77 @@ function TCare() {
                           <span className="tab-light-bold-p1">Model</span>
                         </div>
                         <div className="col-8 p-0 text-start">
-                          <span className="tab-light-bold-p1">: HILUX 2.4V DOUBLE CABIN 4X4 A/T(GUN125R-DDTHXD)</span>
+                          <span className="tab-light-bold-p1">
+                            : HILUX 2.4V DOUBLE CABIN 4X4 A/T(GUN125R-DDTHXD)
+                          </span>
                         </div>
                       </div>
                       <div className="text-start px-5 pt-4">
-                    <p className="tab-discription-p">Berikut adalah catatan Servis Berkala Mobil Toyota Anda:</p>
-                    </div>
-                    <div className="px-5">
-                    <table class="table">
-  <thead>
-    <tr className="custom_table_heading">
-      <th scope="col " className="custom_border_table">Servis</th>
-      <th scope="col">Tanggal Servis</th>
-      <th scope="col">Bengkel Servis</th>
-      <th scope="col">Tepat Waktu</th>
-      <th scope="col" className="custom_border_table1">Max Servis Slenjutnya</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr className="custom_table_heading">
-      <td scope="row">1 (1 bulan)</td>
-      <td>-</td>
-      <td>-</td>
-      <td>Tidak</td>
-      <td>30 November 2023</td>
-    </tr>
-    <tr className="custom_table_heading">
-      <td scope="row">1 (1 bulan)</td>
-      <td>-</td>
-      <td>-</td>
-      <td>Tidak</td>
-      <td>30 November 2023</td>
-    </tr>
-    <tr className="custom_table_heading">
-      <td scope="row">1 (1 bulan)</td>
-      <td>-</td>
-      <td>-</td>
-      <td>Tidak</td>
-      <td>30 November 2023</td>
-    </tr>
-    <tr className="custom_table_heading">
-      <td className="custom_border_table2" scope="row">1 (1 bulan)</td>
-      <td>-</td>
-      <td>-</td>
-      <td>Tidak</td>
-      <td className="custom_border_table3">30 November 2023</td>
-    </tr>
-  </tbody>
-</table>
-                    </div>
-                    <div className="mb-4">
-                      <button
-                        className="btn btn-primary Lanjut mt-4 ms-2"
-                        onClick={() => goBack(1)}
-                      >
-                        Lanjut
-                      </button>
+                        <p className="tab-discription-p">
+                          Berikut adalah catatan Servis Berkala Mobil Toyota
+                          Anda:
+                        </p>
+                      </div>
+                      <div className="px-5">
+                        <table class="table custom-table">
+                          <thead>
+                            <tr className="custom_table_heading">
+                              <th scope="col " className="custom_border_table">
+                                Servis
+                              </th>
+                              <th scope="col">Tanggal Servis</th>
+                              <th scope="col">Bengkel Servis</th>
+                              <th scope="col">Tepat Waktu</th>
+                              <th scope="col" className="custom_border_table1">
+                                Max Servis Slenjutnya
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {tableData.map((rowData, index) => (
+                              <tr key={index} className="custom_border_tr">
+                                <td
+                                  className="custom_border_set_td"
+                                  scope="row"
+                                >
+                                  {rowData.no}
+                                </td>
+                                <td className="custom_border_set_td">
+                                  {rowData.create_date}
+                                </td>
+                                <td className="custom_border_set_td">
+                                  {rowData.programName}
+                                </td>
+                                <td className="custom_border_set_td">
+                                  {rowData.status}
+                                </td>
+                                <td className="custom_border_set_td">
+                                  {rowData.next}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        <div className="text-start pt-4">
+                        <p className="tab-discription-p text-start">
+                        Jangan lupa Servis Berkala Toyota Anda setiap 6 bulan di bengkel resmi Toyota!
+                        </p>
+                      </div>
+                      </div>
+                      <div className="mb-4">
+                        <button
+                          className="btn btn-primary lihat_Diri_2 mt-4"
+                          onClick={() => goBack(1)}
+                        >
+                          <svg className="me-2" xmlns="http://www.w3.org/2000/svg" width="7" height="13" viewBox="0 0 7 13" fill="none">
+  <path d="M5.5 11.167L2.46392 7.62489C1.90924 6.97778 1.90924 6.02288 2.46392 5.37576L5.5 1.83366" stroke="white" stroke-width="2.16" stroke-linecap="round"/>
+</svg>
+                          Kembali ke Halaman Awal
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-  </div>
               </div>
             </div>
           </div>

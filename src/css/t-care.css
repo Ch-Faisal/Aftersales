@@ -195,6 +195,17 @@ line-height: normal;
     border: 1px solid rgba(223, 29, 29, 1);
 
 }
+.lihat_Diri_2{
+    background-color: rgba(223, 29, 29, 1) !important;
+    border: 1px solid rgba(223, 29, 29, 1);
+    border-radius: 16px;
+}
+.lihat_Diri_2:hover{
+    background-color: white !important;
+    border: 1px solid rgba(223, 29, 29, 1);
+    color: #000000;
+
+}
 @media (max-width:768px) {
     .lihat_Diri_1 img{
         display: none;
@@ -505,13 +516,39 @@ line-height: normal;
 .custom_border_table3
 {
     border-bottom-right-radius: 20px !important;
+    border: none;
 } 
 .custom_border_table2
 {
     border-bottom-left-radius: 20px !important;
+    border: none;
 } 
+.custom_border_set_td
+{
+    color: var(--Gray-70, #737677);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+}
 
+.custom_border_tr{
+    border-radius: 0px 0px 24px 24px;
+    border-right: 1px solid var(--Gray-30, #E3E3E4);
+    border-bottom: 1px solid var(--Gray-30, #E3E3E4);
+    border-left: 1px solid var(--Gray-30, #E3E3E4);
+}
+.custom-table {
+    border-spacing: 0;
+    width: 100%;
+    border-radius: 30px;
+  }
 
+  .custom-table tbody {
+    border-bottom-left-radius: 15px; /* Adjust radius as needed */
+    border-bottom-right-radius: 15px; /* Adjust radius as needed */
+  }
 
 
 
