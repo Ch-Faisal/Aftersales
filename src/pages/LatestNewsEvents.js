@@ -168,6 +168,7 @@ function LatestNewsEvents() {
               <div
                 className={`tab-pane fade ${activeTab === 'ex1-tabs-1' ? 'show active' : ''}`} id="ex1-tabs-1"
               >
+                
                 <div className="row mt-5 d-flex justify-content-center">
                 {Object.keys(newsData).map((id, index) => (
                   <div className="col-sm-10 col-md-6 col-lg-4 col-12">
@@ -213,15 +214,76 @@ function LatestNewsEvents() {
                   ))}
                 </div>
               </div>
+              
               <div
                className={`tab-pane fade ${activeTab === 'ex1-tabs-2' ? 'show active' : ''}`} id="ex1-tabs-2"
               >
-                <p>No content</p>
+ <div className="row mt-5 d-flex justify-content-center">
+                {Object.keys(newsData).map((id, index) => (
+                  newsData[id].category.name === 'Aftersales' && (
+                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" key={id}>
+                        <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
+                          <img
+                            src="assets/beyond exterior 800x600_2 1.png"
+                            className="  rounded-0"
+                            alt="..."
+                          />
+                          <div className="card-body d-flex flex-column justify-content-between">
+                            <div className="tips-event mt-2">
+                              <p className="text-start title-color">{newsData[id].category.name}</p>
+                              <p className="text-start">{newsData[id].posted_at}</p>
+                            </div>
+                            <p className="card-title fw-bold text-start mb-4">
+                              Sempurnakan GR010 HYBRID, TOYOTA GAZOO Racing Siap
+                              Cetak Rekor Baru di Edisi 100 Tahun Le Mans 24 Jam
+                            </p>
+                            <button type="button" className="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
+                              Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
+                            </button>
+                            <button type="button" className="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
+                              Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
+                            </button>
+                          </div>
+                        </div>
+                    </div>
+                    )
+                ))}
+              </div>
               </div>
               <div
                 className={`tab-pane fade ${activeTab === 'ex1-tabs-3' ? 'show active' : ''}`} id="ex1-tabs-3"
               >
-                <p>No content</p>
+                 <div className="row mt-5 d-flex justify-content-center">
+                {Object.keys(newsData).map((id, index) => (
+                  newsData[id].category.name === 'T-Care' && (
+                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" key={id}>
+                        <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
+                          <img
+                            src="assets/beyond exterior 800x600_2 1.png"
+                            className="  rounded-0"
+                            alt="..."
+                          />
+                          <div className="card-body d-flex flex-column justify-content-between">
+                            <div className="tips-event mt-2">
+                              <p className="text-start title-color">{newsData[id].category.name}</p>
+                              <p className="text-start">{newsData[id].posted_at}</p>
+                            </div>
+                            <p className="card-title fw-bold text-start mb-4">
+                              Sempurnakan GR010 HYBRID, TOYOTA GAZOO Racing Siap
+                              Cetak Rekor Baru di Edisi 100 Tahun Le Mans 24 Jam
+                            </p>
+                            <button type="button" className="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
+                              Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
+                            </button>
+                            <button type="button" className="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
+                              Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
+                            </button>
+                          </div>
+                        </div>
+                    </div>
+                    )
+                ))}
+              </div>
               </div>
               <div
                 className={`tab-pane fade ${activeTab === 'ex1-tabs-4' ? 'show active' : ''}`} id="ex1-tabs-4"
