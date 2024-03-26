@@ -312,14 +312,14 @@ top: 50%;
 }
 .card_custom_font_size{
   color: #000 !important;
-  font-size: 48px !important;
+  font-size: 24px !important;
   font-style: normal !important;
   font-weight: 600 !important;
   line-height: 120% !important;
 }
 @media (max-width:992px) {
   .card_custom_font_size{
-    font-size: 36px !important;
+    font-size: 20px !important;
   }  
 }
 .swiper-wrapper {
@@ -332,14 +332,14 @@ top: 50%;
   z-index: 0 !important;
 }
 .custom_slide_design .swiper-slide-next .card_custom_font_size{
-    font-size: 1.15rem !important;
+    font-size: 18px !important;
 }
 .custom_slide_design .swiper-slide-next .card-text{
-  font-size: 0.7rem !important;
-  padding-right: 30px !important;
+  font-size: 15px;
 }
+
 .custom_slide_design .swiper-slide-next .card-img-top{
-  height: 300px !important;
+  height: 250px !important;
 }
 .custom_slide_design .swiper-slide-prev{
   filter: blur(5px) !important;
@@ -369,7 +369,26 @@ top: 50%;
   padding-right: 30px !important;
 }
 .custom_slide_design .swiper-slide-prev .card-img-top{
-  height: 300px !important;
+  height: 250px !important;
+}
+
+.custom_slide_design .swiper-slide-prev .ne_card .img img{
+  height: 260px !important;
+}
+.custom_slide_design .swiper-slide-next .ne_card .img img{
+  height: 260px !important;
+}
+.custom_slide_design .swiper-slide-prev .ne_card .card_heading{
+  font-size: 20px !important;
+}
+.custom_slide_design .swiper-slide-prev .ne_card .card_2_text{
+  font-size: 12px !important;
+}
+.custom_slide_design .swiper-slide-next .ne_card .card_heading{
+  font-size: 20px !important;
+}
+.custom_slide_design .swiper-slide-next .ne_card .card_2_text{
+  font-size: 12px !important;
 }
 .custom_box_shadow{
   margin-bottom: 10% !important;
