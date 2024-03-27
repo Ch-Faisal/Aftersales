@@ -48,7 +48,11 @@ function NewsEvents() {
      </div>
       ) : (
         <div>
-            {newsData[Object.keys(newsData)[0]] && (
+            {/* {newsData[Object.keys(newsData)[0]] && ( */}
+            {Object.keys(newsData).length === 0 ? (
+    <div className="mt-5 mb-5">
+      <p>No content available</p></div>
+) : (
   <div className="news-item px-0">
      <div className='container-fluid px-0 mx-0'>
      <img src={newsData[Object.keys(newsData)[0]].desktop_banner} className="w-100" alt='News Hero' />

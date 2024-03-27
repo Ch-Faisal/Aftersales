@@ -1,14 +1,23 @@
 .custom_text_colors
 {
-    color: #000 !important;
+color: #000 !important;
 }
 ul li
 {
-    font-family: "CustomToyotaLight";
-    font-weight: 400 !important;
-
-    color: #2D2D2D;
+font-family: "CustomToyotaLight";
+font-weight: 400 !important;
+color: #2D2D2D;
 font-style: normal;
 font-weight: 400;
 line-height: 20px;
 }
+.regular-bg {
+    background-color: #EDEDED !important;
+  }
+  .test-bg {
+    background-color: #F3F3F3 !important;
+  }
+  .hybrid-bg {
+    background-color: #F8F8F8 !important;
+  }
+

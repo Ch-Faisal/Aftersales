@@ -301,7 +301,7 @@ border-radius: 30px !important;
 .fa-chevron-right,.fa-chevron-left{
   color: #fff !important;
   background-color: #000 !important;
-  padding: 10px;
+  padding: 10px 13px;
   border-radius: 50%;
 }
 .fa-chevron-right:hover,.fa-chevron-left:hover{
@@ -594,3 +594,10 @@ border-radius: 30px !important;
 }
 
 
+.sticky
+{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
