@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
+import { NavLink } from 'react-router-dom';
 import "../css/t-care.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/free-mode";
@@ -113,6 +114,10 @@ function TCare() {
       setLoading(false);
       if (error.response) {
         toastr.error(error.response.data.message);
+      }
+      else
+      {
+        toastr.error('Not Found.')
       }
       setsecondtab(1);
       setregister(1);
@@ -424,10 +429,48 @@ function TCare() {
     <div>
       <Header></Header>
 
-      <div className="container-fluid px-0 pb-5">
-        <img src="assets/Rectangle 3.png" className="w-100" alt="logo" />
+      <div className='section-1 p-0 ' id='section-1'>
+      <div id="carouselExample" className="carousel slide d-none d-lg-block" data-bs-ride="carousel">
+      <div className="carousel-inner">
+        <div className="carousel-item active">
+          <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 1" />
+        </div>
+        <div className="carousel-item">
+          <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 2" />
+        </div>
+        <div className="carousel-item">
+          <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 3" />
+        </div>
+         <div className="carousel-item">
+          <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 3" />
+        </div>
       </div>
-      <div className="container-fluid p-0 ">
+
+      <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span aria-hidden="true">
+          <i className="fas fa-chevron-left"></i> 
+        </span>
+        <span className="visually-hidden">Previous</span>
+      </button>
+      <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span aria-hidden="true">
+          <i className="fas fa-chevron-right"></i>
+        </span>
+        <span className="visually-hidden">Next</span>
+      </button>
+
+      <ol className="carousel-indicators">
+        <li data-bs-target="#carouselExample" data-bs-slide-to="0" className="active"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="3"></li>
+      </ol>
+    </div>
+    <div className='d-block d-lg-none'>
+        <img src='assets/showcase.png' alt='showcase' className='img-fluid w-100 '/>
+    </div>
+      </div>
+      <div className="container-fluid p-0 mt-5 ">
         <div className="container px-lg-5">
           <div className="section-1">
             <div className="row">
@@ -439,31 +482,18 @@ function TCare() {
               <div className="col-md-7">
                 <div className="section-content">
                   <p className="text-start">
-                    Toyota sangat peduli terhadap keamanan dan kenyamanan Anda
-                    saat berkendara<strong> T-Care</strong> memberikan Anda{" "}
+                  Toyota sangat peduli terhadap keamanan dan kenyamanan Anda saat berkendara<strong> T-Care</strong> memberikan Anda
                     <strong>
-                      Bebas Biaya Jasa Servis Berkala dan Suku Cadang*
-                    </strong>{" "}
-                    sebanyak 7x servis selama 3 tahun.
+                    Bebas Biaya Jasa Servis Berkala dan Suku Cadang*
+                    </strong>
+                    sebanyak
+7x servis selama 3 tahun.
                   </p>
                   <p>
-                    {" "}
-                    Dengan rutin servis berkala setiap 6 bulan, Anda juga dapat
-                    menikmati reward berupa{" "}
+                  Dengan rutin servis berkala setiap 6 bulan, Anda juga dapat menikmati reward berupa
                     <strong>Extended Warranty 1 tahun/20.000 km!**</strong>
                   </p>
-                  <p> Apakah kendaraan Toyota Anda dalam program T-Care? </p>
-                  <p>
-                    {" "}
-                    Cek nomor rangka kendaraan Anda dan dapatkan sertifikat
-                    elektroniknya!{" "}
-                  </p>
-                  <p> *sesuai ketentuan yang tertera pada buku servis </p>
-                  <p>
-                    *khusus model LCGC hanya berlaku bebas biaya jasa servis
-                    berkala*
-                  </p>
-                  <p> *total warranty menjadi 4 tahun/120.000 km</p>
+                  <p> *sesuai ketentuan yang tertera pada buku servis <br /> *khusus model LCGC hanya berlaku bebas biaya jasa servis berkala <br />**total warranty menjadi 4 tahun/120.000 km </p>
                 </div>
               </div>
             </div>
@@ -1162,7 +1192,6 @@ function TCare() {
                             display: timerValue === 0 ? "block" : "none",
                           }}
                         >
-                          {" "}
                           &nbsp; klik di sini &nbsp;
                         </p>
                         <p className="tab-light-bold-p1">00:{timerValue}</p>
@@ -1615,160 +1644,25 @@ function TCare() {
               </button>
             </div>
             <div className="col-6 col-md-5">
-              <img src="assets/map view.png" className="w-100" />
+              <img src="assets/services.png" className="w-100" />
             </div>
           </div>
         </div>
-        <div className="container p-lg-5 mt-5 mt-md-3">
-          <h1>Frequently Asked Question</h1>
-          <div className="faq">
-            <div class="accordions mt-5" id="accordionExample">
-              <div class="accordion-item back_color_set mb-2">
-                <h2 class="accordion-header">
-                  <hr />
-                  <button
-                    class="accordion-button"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseSix"
-                    aria-expanded="true"
-                    aria-controls="collapseSix"
-                  >
-                    <b>Apakah Program T-CARE itu?</b>
-                  </button>
-                </h2>
-                <div
-                  id="collapseSix"
-                  class="accordion-collapse collapse show"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div class="accordion-body">
-                    <p class="iner_contect text-start">
-                      Haha no, our goal is to rank you on the top of the first
-                      page of Google. Arbitrarily writing blog posts and rolling
-                      the dice on your content won’t achieve that.
-                      <br />
-                    </p>
+        <div className="container p-lg-5">
+                    <b>Download Informasi GBSB atau lihat hal-hal yang sering ditanyakan</b>
+                    <div className="mt-5">
+                    <button
+                          className="btn custom-btn-dark me-3"
+                        >
+                          Download info GBSB
+                        </button>
+                        <NavLink to="/faq"
+                          className="btn custom-btn-dark"
+                        >
+                          Go to FAQ Page
+                        </NavLink>
+                      </div>
                   </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2 back_color_set">
-                <h2 class="accordion-header">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="false"
-                    aria-controls="collapseOne"
-                  >
-                    <b>Benefit apa yang didapat pada program ini?</b>
-                  </button>
-                </h2>
-                <div
-                  id="collapseOne"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div class="accordion-body">
-                    <p class="iner_contect text-start">
-                      We will get industry and company insights from you, and
-                      then send you a questionnaire. Once you fill that out:
-                      <br />
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2 back_color_set">
-                <h2 class="accordion-header">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
-                  >
-                    <b>
-                      Apa perbedaan program T-CARE dari Program Gratis Biaya
-                      Servis Berkala?
-                    </b>
-                  </button>
-                </h2>
-                <div
-                  id="collapseThree"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div class="accordion-body">
-                    <p class="iner_contect text-start">
-                      Put your feet on your desk and relax. We’ll take care of
-                      everything. All you need to do is upload them, which we
-                      can handle too for a fee.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2 back_color_set">
-                <h2 class="accordion-header">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseFour"
-                    aria-expanded="false"
-                    aria-controls="collapseFour"
-                  >
-                    <b>
-                      Bagaimana saya dikategorikan Servis Berkala tepat waktu?
-                    </b>
-                  </button>
-                </h2>
-                <div
-                  id="collapseFour"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div class="accordion-body">
-                    <p class="iner_contect text-start">
-                      Yes, we don’t believe in slowly dripping out your
-                      solution. We will work at lightning speeds to get all your
-                      content to you ASAP.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item mt-2 back_color_set">
-                <h2 class="accordion-header">
-                  <button
-                    class="accordion-button collapsed "
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseFive"
-                    aria-expanded="false"
-                    aria-controls="collapseFive"
-                  >
-                    <b>
-                      Bagaimana cara saya mengetahui ketepatan waktu servis ke-1
-                      sampai ke-7?
-                    </b>
-                  </button>
-                </h2>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container mt-4 mb-5">
-          <h1>Informasi Program Gratis Biaya Servis Berkala (GBSB)</h1>
-          <p> silahkan download disini</p>
-          <button type="button" class="btn btn-outline-dark w-25">
-            Download
-          </button>
-        </div>
         <div className="container mt-5 mb-5">
           <div className="logos d-flex justify-content-center mt-5 mb-4">
             <div className="mx-2">

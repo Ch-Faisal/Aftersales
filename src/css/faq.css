@@ -43,3 +43,19 @@
   border-bottom:1px solid #D8D8D8 ;
   padding: 15px;
 }
+.custom_color_bg
+{
+  background-color: aqua !important;
+}
+.custom_color_bg th
+{
+  background-color: #D9DADB !important;
+}
+.cusotm_text_size
+{
+  color: #000;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 35px;
+}

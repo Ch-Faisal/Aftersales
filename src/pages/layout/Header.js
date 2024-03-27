@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 function Header() {
+  const [isSticky, setIsSticky] = useState(false);
+  const targetRef = useRef(null);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        setIsSticky(entry.isIntersecting); // Update isSticky based on intersection
+      });
+    }, options);
+
+    if (targetRef.current) {
+      observer.observe(targetRef.current);
+    }
+
+    return () => {
+      if (targetRef.current) {
+        observer.unobserve(targetRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div>
+    <div ref={targetRef} className={isSticky ? 'sticky' : ''}>
           <nav className="nav-1 navbar navbar-expand-lg pt-3" id='navbar'>
       <div className="container">
         <a className="navbar-brand" href="#"><img src="assets/logo.png" alt='logo' /></a>
