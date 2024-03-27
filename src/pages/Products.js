@@ -14,6 +14,31 @@ import { Virtual, Navigation, Pagination, FreeMode } from "swiper/modules";
 import { useSelector } from "react-redux";
 
 function Products() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+  const [isVisible1, setIsVisible1] = useState(false);
+
+  const toggleVisibility1 = () => {
+    setIsVisible1(!isVisible1);
+  };
+  const [isVisible2, setIsVisible2] = useState(false);
+
+  const toggleVisibility2 = () => {
+    setIsVisible2(!isVisible2);
+  };
+  const [isVisible3, setIsVisible3] = useState(false);
+
+  const toggleVisibility3 = () => {
+    setIsVisible3(!isVisible3);
+  };
+  const [isVisible4, setIsVisible4] = useState(false);
+
+  const toggleVisibility4 = () => {
+    setIsVisible4(!isVisible4);
+  };
   const value = useSelector((state) => state.value);
   console.log("token value from store:", value);
   const scrollLeft = () => {
@@ -48,11 +73,39 @@ function Products() {
       imageUrl: "assets/Frame_875.png",
     },
     {
-      title: "TMO Evaporator Cleaner",
+      title: "TMO Brake Cleaner",
       text: "3",
       description:
-        "TMO Evaporator Cleaner membersihkan kotoran ringan pada Evaporator AC kendaraan untuk menjaga sistem AC tetap bekerja optimal & menyegarkan udara keluar dari AC di dalam kabin. Pembersihan dilakukan sesuai dengan standar operasional Toyota.",
-      imageUrl: "assets/Frame_874.png",
+        "Aerosol untuk membersihkan komponen pengereman dari debu, grease, oli, pada saat periodic maintenance.",
+      imageUrl: "assets/Frame 874_1.png",
+    },
+    {
+      title: "TMO Engine Room Treatment",
+      text: "3",
+      description:
+        "Produk berbahan dasar air yang didesain khusus dengan formula terbaru yang lebih optimal untuk membersihkan & mengkilapkan lebih efektif pada kompartemen ruang mesin mobil. Pembersihan dilakukan sesuai dengan standar operasional Toyota.",
+      imageUrl: "assets/Frame 874_2.png",
+    },
+    {
+      title: "TMO Glass Cleaner",
+      text: "3",
+      description:
+        "Cairan untuk membersihkan kaca mobil dari kotoran dan jamur (waterspot). Membantu meningkatkan visibilitas saat berkendara.",
+      imageUrl: "assets/Frame 874_3.png",
+    },
+    {
+      title: "TMO Wiper Fluid",
+      text: "3",
+      description:
+        "Cairan pembersih kaca mobil & pencegah jamur",
+      imageUrl: "assets/Frame 874_4.png",
+    },
+    {
+      title: "TMO Cabin Disinfectant",
+      text: "3",
+      description:
+        "Aerosol penghilang bakteri* hingga 99,99%* (teruji) dan penyegar kabin.",
+      imageUrl: "assets/Frame 874_5.png",
     },
   ]);
   const [slideContents, setSlidess] = useState([
@@ -71,8 +124,14 @@ function Products() {
     {
       title: "TMO Manual Transmission Fluid",
       text: "3",
-      description:" Pelumas yang dirancang khusus untuk memberikan pelumasan, mengurangi gesekan, dan mendinginkan komponen dalam transmisi manual.",
+      description:"Pelumas yang dirancang khusus untuk memberikan pelumasan, mengurangi gesekan, dan mendinginkan komponen dalam transmisi manual.",
       imageUrl: "assets/Image14.png",
+    },
+    {
+      title: "TMO Automatic Transmission Fluid",
+      text: "3",
+      description:"Pelumas yang dirancang khusus untuk digunakan dalam pelumasan, pendinginan, dan transmisi daya yang efisien dalam transmisi otomatis.",
+      imageUrl: "assets/Image203.png",
     },
   ]);
   return (
@@ -302,7 +361,7 @@ function Products() {
                                     Rush, Agya, dan Calya.
                                   </p>
                                   <div className="mt-5">
-                                    <a className="card_link" href="#">
+                                    <a onClick={toggleVisibility} className="card_link">
                                       Keunggulan
                                     </a>
                                     <img
@@ -310,6 +369,15 @@ function Products() {
                                       src="assets/CROSS.svg"
                                     />
                                   </div>
+                                  {isVisible && (
+                                  <div className="card_background_image_1 mt-4">
+                                    <div className="custom_grey_background d-flex align-items-center">
+                                      <img src='assets/Vector.png' className="ms-3"/>
+                                    <p className="notePad_text me-3 mt-3 ps-3">Tahan terhadap tekanan tinggi</p>
+                                    </div>
+                                    
+                                  </div>
+                                  )}
                                 </div>
                               </div>
                             </SwiperSlide>
@@ -335,7 +403,7 @@ function Products() {
                                     Avanza, Agya dan Calya.
                                   </p>
                                   <div className="mt-5">
-                                    <a className="card_link" href="#">
+                                    <a onClick={toggleVisibility1} className="card_link">
                                       Keunggulan
                                     </a>
                                     <img
@@ -343,6 +411,15 @@ function Products() {
                                       src="assets/CROSS.svg"
                                     />
                                   </div>
+                                  {isVisible1 && (
+                                  <div className="card_background_image_1 mt-4">
+                                    <div className="custom_grey_background d-flex align-items-center">
+                                      <img src='assets/Asset 2.svg' className="ms-3"/>
+                                    <p className="notePad_text me-3 mt-3 ps-3">Performa filtrasi yang tinggi dibanding kompetitor</p>
+                                    </div>
+                                    
+                                  </div>
+                                  )}
                                 </div>
                               </div>
                             </SwiperSlide>
@@ -370,7 +447,7 @@ function Products() {
                                     Avanza, dan Calya.
                                   </p>
                                   <div className="mt-5">
-                                    <a className="card_link" href="#">
+                                    <a onClick={toggleVisibility2} className="card_link">
                                       Keunggulan
                                     </a>
                                     <img
@@ -378,6 +455,20 @@ function Products() {
                                       src="assets/CROSS.svg"
                                     />
                                   </div>
+                                  {isVisible2 && (
+                                  <div className="card_background_image_1 mt-4">
+                                    <div className="custom_grey_background d-flex flex-column">
+                                      <div className="d-flex align-items-center"><img src='assets/Asset 2.svg' className="ms-3"/>
+                                    <p className="notePad_text me-3 mt-3 ps-3">Durabilitas lebih tinggi dibanding kompetitor, dapat dipakai hingga 45.000 KM.</p>
+                                    </div>
+                                    <div className="d-flex align-items-center custom_border_23" style={{backgroundColor:'git (236, 231, 231)'}}>
+                                    <img src='assets/Layer 2.svg' className="ms-3"/>
+                                    <p className="notePad_text me-3 mt-3 ps-3">Menggunakan material non asbestos yang ramah lingkungan.</p>
+                                    </div>
+                                    </div>
+                                    
+                                  </div>
+                                  )}
                                 </div>
                               </div>
                             </SwiperSlide>
@@ -385,25 +476,22 @@ function Products() {
                               <div className="card">
                                 <div className="img">
                                   <img
-                                    src="assets/Image.png"
+                                    src="assets/Image_card_4.png"
                                     alt="img"
                                     className="img-fluid"
                                     draggable="false"
                                   />
                                 </div>
                                 <div className="text-start card_customm_padding">
-                                  <h4 className="card_heading">Oil Filter</h4>
+                                  <h4 className="card_heading">Disc Clutch</h4>
                                   <p className="card_paragraph">
                                     <span className="italic_text">
-                                      Oil Filter,
+                                    Didesain khusus
                                     </span>{" "}
-                                    didesain khusus dengan harga yang kompetitif
-                                    namun memenuhi standar Toyota. Tersedia 3
-                                    line up untuk model Old Kijang, Avanza,
-                                    Rush, Agya, dan Calya.
+                                     dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 3 line up untuk model Avanza, Rush, Calya.
                                   </p>
                                   <div className="mt-5">
-                                    <a className="card_link" href="#">
+                                    <a onClick={toggleVisibility3} className="card_link">
                                       Keunggulan
                                     </a>
                                     <img
@@ -411,6 +499,20 @@ function Products() {
                                       src="assets/CROSS.svg"
                                     />
                                   </div>
+                                  {isVisible3 && (
+                                 <div className="card_background_image_1 mt-4">
+                                 <div className="custom_grey_background d-flex flex-column">
+                                   <div className="d-flex align-items-center"><img src='assets/Asset 5.svg' className="ms-3"/>
+                                 <p className="notePad_text me-3 mt-3 ps-3">Fitur additional damper untuk mencegah noise.</p>
+                                 </div>
+                                 <div className="d-flex align-items-center custom_border_23" style={{backgroundColor:'rgb(236, 231, 231)'}}>
+                                 <img src='assets/Layer 3.svg' className="ms-3"/>
+                                 <p className="notePad_text me-3 mt-3 ps-3">Memiliki durabilitas yang tinggi, tahan kondisi ekstrem.</p>
+                                 </div>
+                                 </div>
+                                 
+                               </div>
+                                  )}
                                 </div>
                               </div>
                             </SwiperSlide>
@@ -418,25 +520,22 @@ function Products() {
                               <div className="card">
                                 <div className="img">
                                   <img
-                                    src="assets/Image-2.png"
+                                    src="assets/Image_card_5.png"
                                     className="img-fluid"
                                     alt="img"
                                     draggable="false"
                                   />
                                 </div>
                                 <div className="text-start card_customm_padding">
-                                  <h4 className="card_heading">Air Filter</h4>
+                                  <h4 className="card_heading">Rear Absorber</h4>
                                   <p className="card_paragraph">
-                                    <span className="italic_text">
-                                      Air Filter,
+                                  <span className="italic_text">
+                                    Didesain khusus
                                     </span>{" "}
-                                    didesain khusus dengan harga yang kompetitif
-                                    namun memenuhi standar Toyota. Tersedia 6
-                                    line up untuk model Old Kijang, Innova,
-                                    Avanza, Agya dan Calya.
+dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up untuk model Old Kijang, Innova, Avanza, Agya dan Calya.
                                   </p>
                                   <div className="mt-5">
-                                    <a className="card_link" href="#">
+                                    <a onClick={toggleVisibility4} className="card_link">
                                       Keunggulan
                                     </a>
                                     <img
@@ -444,6 +543,20 @@ function Products() {
                                       src="assets/CROSS.svg"
                                     />
                                   </div>
+                                  {isVisible4 && (
+                                 <div className="card_background_image_1 mt-4">
+                                 <div className="custom_grey_background d-flex flex-column">
+                                   <div className="d-flex align-items-center"><img src='assets/Layer 5.svg' className="ms-3"/>
+                                 <p className="notePad_text me-3 mt-3 ps-3">Damping force yang optimal sehingga stabil saat mengendara.</p>
+                                 </div>
+                                 <div className="d-flex align-items-center custom_border_23" style={{backgroundColor:'rgb(236, 231, 231)'}}>
+                                 <img src='assets/Layer 3.svg' className="ms-3"/>
+                                 <p className="notePad_text me-3 mt-3 ps-3">Durabilitas yang tinggi, lebih awet dan tahan lama. </p>
+                                 </div>
+                                 </div>
+                                 
+                               </div>
+                                  )}
                                 </div>
                               </div>
                             </SwiperSlide>
@@ -558,6 +671,55 @@ function Products() {
                         </div>
                       </div>
                       <div className="container mt-5">
+<div className="row">
+  <div className="col-12">
+    <h2 className="circle-Tabs-heading">Lakukan pengecekan keaslian oli dengan scan QR pada kemasan TMO:</h2>
+  <div class="circle-tabs mt-5">
+    <div className="d-flex flex-lg-column flex-md-column remove-svg w-100 align-items-center ms-5 ms-lg-0 ms-md-0">
+                      <div>
+                      <a href="javascript:void(0)" className={`class_1`}>
+                        1
+                      </a>
+                      </div>
+                      <div className="mt-md-3 mt-lg-3 text-lg-center text-md-center text-start me-5 me-lg-0 me-md-0">
+                      <p>Congkel segel tutup botol TMO.</p>
+                      </div>
+                      </div>
+                      <div className="d-flex flex-lg-column flex-md-column w-100 mt-lg-0 mt-md-0 mt-3 align-items-center ms-5 ms-lg-0 ms-md-0">
+                      <div>
+                      <a href="javascript:void(0)" className={`class_1`}>
+                        2
+                      </a>
+                      </div>
+                      <div className="mt-md-3 mt-lg-3 text-lg-center text-md-center text-start me-5 me-lg-0 me-md-0">
+                      <p>Cabut penutup plastik tutup botol TMO.</p>
+                      </div>
+                      </div>
+                      <div className="d-flex flex-lg-column flex-md-column w-100 mt-lg-0 mt-md-0 mt-3 align-items-center ms-5 ms-lg-0 ms-md-0">
+                      <div >
+                      <a href="javascript:void(0)" className={`class_1`}>
+                        3
+                      </a>
+                      </div>
+                      <div className="mt-md-3 mt-lg-3 text-lg-center text-md-center text-start me-5 me-lg-0 me-md-0">
+                      <p>Copot kepingan kertas pelindung seal aluminium TMO.</p>
+                      </div>
+                      </div>
+                      <div className="d-flex flex-lg-column flex-md-column align-items-center w-100 remove-svg-2 mt-lg-0 mt-md-0 mt-3 ms-5 ms-lg-0 ms-md-0">
+                      <div>
+                      <a href="javascript:void(0)" className={`class_1`}>
+                        4
+                      </a>
+                      </div>
+                      <div className="mt-md-3 mt-lg-3 text-start text-lg-center text-md-center me-5 me-lg-0 me-md-0">
+                      <p>Cek keaslian dengan scan kode QR yang terdapat pada seal aluminium TMO.</p>
+                      </div>
+                      </div>
+                    </div>
+  </div>
+</div>
+                      </div>
+                      <div className="container mt-5">
                         <div className="row">
                           <div className="col-12">
                             <p className="product_title">Toyota PRODUCT -TMO</p>
@@ -599,24 +761,25 @@ function Products() {
                          >
                            {slideContents.map((slideContents, index) => (
                              <SwiperSlide key={index} virtualIndex={index}>
-                              <div className="card ne_card">
-                                <div className="img">
-                                  <img
-                                    src={slideContents.imageUrl}
-                                    alt="img"
-                                    className="img-fluid"
-                                    draggable="false"
-                                  />
+                              <div className="card">
+                                  <div className="custom_box_shadow">
+                                    <img
+                                      className="card-img-top img-fluid"
+                                      src={slideContents.imageUrl}
+                                      alt="Card image cap"
+                                    />
+                                    <div className="card-body custom-color-body text-start">
+                                      <div className="d-flex">
+                                        <h3 className="card-title ps-3 card_custom_font_size">
+                                          {slideContents.title}
+                                        </h3>
+                                      </div>
+                                      <p className="card-text_3 text-start ps-2 pe-2 pt-3">
+                                        {slideContents.description}
+                                      </p>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div className=" card_customm_padding text-start">
-                                  <h4 className="card_heading">
-                                  {slideContents.title}
-                                  </h4>
-                                  <p className="card_2_text">
-                                  {slideContents.description}
-                                  </p>
-                                </div>
-                              </div>
                              </SwiperSlide>
                            ))}
                          </Swiper>
@@ -669,7 +832,7 @@ function Products() {
                                 <div className="card">
                                   <div className="custom_box_shadow">
                                     <img
-                                      className="card-img-top"
+                                      className="card-img-top img-fluid"
                                       src={slideContent.imageUrl}
                                       alt="Card image cap"
                                     />
@@ -838,6 +1001,14 @@ function Products() {
                             <p className="custom-padding">Bebas korosi/Karat</p>
                           </div>
                         </div>
+                        <div className="row d-flex pt-3 text-start ms-lg-5 me-lg-5 custom_img_width">
+                          <div className="col-lg-6 col-md-6 col-sm-12 d-flex align-items-center ps-5 pe-5 ps-lg-0 pe-lg-0 ps-md-0 pe-md-0">
+                            <img src="assets/JaminanKualitas.svg" alt="svg3" />
+                            <p className="custom-padding">
+                            Warranty 1 tahun*
+                            </p>
+                          </div>
+                        </div>
                         <div className="container mt-5">
                           <div className="row">
                             <div className="col-12">
@@ -857,6 +1028,7 @@ function Products() {
                                 className="img-fluid"
                                 alt="logo"
                               />
+                              <p className="product_paragraph mt-3">Warranty 1 tahun di seluruh dealer resmi Toyota.</p>
                             </div>
                           </div>
                         </div>
@@ -1018,9 +1190,9 @@ function Products() {
                                   className="pt-2"
                                   alt="Logo"
                                 />
-                                <p className="card_heading_3 pt-2">
+                                <h5 className="card_heading_3 pt-2">
                                   Produk Ban Bervariasi
-                                </p>
+                                </h5>
                                 <p className="card_text_3 pb-4">
                                   Tersedia berbagai macam merk & tipe
                                 </p>
@@ -1033,9 +1205,9 @@ function Products() {
                                   className="pt-2"
                                   alt="Logo"
                                 />
-                                <p className="card_heading_3 pt-2">
+                                <h5 className="card_heading_3 pt-2">
                                   Kualitas Ban Terbaik
-                                </p>
+                                </h5>
                                 <p className="card_text_3 pb-4">
                                   Usia Produksi Ban Terbaru
                                 </p>
@@ -1048,9 +1220,9 @@ function Products() {
                                   className="pt-2"
                                   alt="Logo"
                                 />
-                                <p className="card_heading_3 pt-2">
+                                <h5 className="card_heading_3 pt-2">
                                   One Stop Service
-                                </p>
+                                </h5>
                                 <p className="card_text_3 pb-4">
                                   Layanan pengecekan kendaraan & cuci mobil
                                   garansi produk ban*
@@ -1064,9 +1236,9 @@ function Products() {
                                   className="pt-2"
                                   alt="Logo"
                                 />
-                                <p className="card_heading_3 pt-2">
+                                <h5 className="card_heading_3 pt-2">
                                   Bebas Biaya Tambahan
-                                </p>
+                                </h5>
                                 <p className="card_text_3 pb-4">
                                   Gratis biaya pemasangan, balancing & pentil
                                   ban
@@ -1080,9 +1252,9 @@ function Products() {
                                   className="pt-2"
                                   alt="Logo"
                                 />
-                                <p className="card_heading_3 pt-2">
+                                <h5 className="card_heading_3 pt-2">
                                   Ditangani oleh Teknisi Berpengalaman
-                                </p>
+                                </h5>
                                 <p className="card_text_3 pb-4">
                                   Tersedia berbagai macam merk & tipe
                                 </p>
@@ -1102,7 +1274,7 @@ function Products() {
                             </h1>
                           </div>
                         </div>
-                        <div className="row pt-3 last_images">
+                        <div className="row pt-3 last_images mx-5">
                           <div className="col-4">
                             <img
                               src="assets/Bridgestone_logo1.png"
@@ -1110,9 +1282,9 @@ function Products() {
                               alt="Logo"
                             />
                           </div>
-                          <div className="col-4">
+                          <div className="col-4 skaj">
                             <img
-                              src="assets/Bridgestone_logo2.png"
+                              src="assets/Bridgestone_logo 3.png"
                               className="img-fluid"
                               alt="Logo"
                             />
@@ -1125,7 +1297,7 @@ function Products() {
                             />
                           </div>
                         </div>
-                        <div className="row pt-3">
+                        <div className="row pt-3 mx-5">
                           <div className="col-4">
                             <img
                               src="assets/Bridgestone_logo4.png"
@@ -1148,7 +1320,7 @@ function Products() {
                             />
                           </div>
                         </div>
-                        <div className="row justify-content-center pt-3">
+                        <div className="row justify-content-center pt-3 mx-5">
                           <div className="col-4">
                             <img
                               src="assets/Bridgestone_logo7.png"
@@ -1182,7 +1354,7 @@ function Products() {
           />
         </div>
         <div className="mx-2">
-          <img src="assets/tmo.png" alt="t-care-img" className="img-fluid" />
+          <img src="assets/logo-tmo (1) 1.png" alt="t-care-img" className="img-fluid" />
         </div>
       </div>
       <Footer></Footer>
