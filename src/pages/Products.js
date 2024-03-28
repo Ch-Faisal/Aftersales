@@ -918,7 +918,7 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                                 <div className="card card_2">
                                   <div className="img">
                                     <img
-                                      src="assets/Image15.png"
+                                      src="assets/image15.png"
                                       className="img-fluid"
                                       alt="img"
                                       draggable="false"
