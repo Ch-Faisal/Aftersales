@@ -363,18 +363,16 @@ function Products() {
                                   <div className="mt-5">
                                     <a onClick={toggleVisibility} className="card_link">
                                       Keunggulan
-                                    </a>
-                                    <img
+                                      <img
                                       className="ps-2"
                                       src="assets/CROSS.svg"
                                     />
+                                    </a>
                                   </div>
                                   {isVisible && (
-                                  <div className="card_background_image_1 mt-4">
-                                    <div className="custom_grey_background d-flex align-items-center">
-                                      <img src='assets/Vector.png' className="ms-3"/>
+                                  <div className="card_background_image_1 mt-4 d-flex align-items-center">
+                                      <img src='assets/Vector.png' className="img-notepad_1"/>
                                     <p className="notePad_text me-3 mt-3 ps-3">Tahan terhadap tekanan tinggi</p>
-                                    </div>
                                     
                                   </div>
                                   )}
@@ -405,18 +403,16 @@ function Products() {
                                   <div className="mt-5">
                                     <a onClick={toggleVisibility1} className="card_link">
                                       Keunggulan
-                                    </a>
-                                    <img
+                                      <img
                                       className="ps-2"
                                       src="assets/CROSS.svg"
                                     />
+                                    </a>
                                   </div>
                                   {isVisible1 && (
-                                  <div className="card_background_image_1 mt-4">
-                                    <div className="custom_grey_background d-flex align-items-center">
-                                      <img src='assets/Asset 2.svg' className="ms-3"/>
+                                  <div className="card_background_image_2 mt-4 d-flex align-items-center">
+                                      <img src='assets/Asset 2.svg' className="ms-3 margin_of_2"/>
                                     <p className="notePad_text me-3 mt-3 ps-3">Performa filtrasi yang tinggi dibanding kompetitor</p>
-                                    </div>
                                     
                                   </div>
                                   )}
@@ -449,22 +445,22 @@ function Products() {
                                   <div className="mt-5">
                                     <a onClick={toggleVisibility2} className="card_link">
                                       Keunggulan
-                                    </a>
-                                    <img
+                                      <img
                                       className="ps-2"
                                       src="assets/CROSS.svg"
                                     />
+                                    </a>
                                   </div>
                                   {isVisible2 && (
-                                  <div className="card_background_image_1 mt-4">
-                                    <div className="custom_grey_background d-flex flex-column">
-                                      <div className="d-flex align-items-center"><img src='assets/Asset 2.svg' className="ms-3"/>
-                                    <p className="notePad_text me-3 mt-3 ps-3">Durabilitas lebih tinggi dibanding kompetitor, dapat dipakai hingga 45.000 KM.</p>
+                                  <div className="card_background_image_3 mt-4 d-flex flex-column">
+                                    <div className="">
+                                      <div className="d-flex align-items-center"><img src='assets/Asset 2.svg' className="ms-3 third_double_image"/>
+                                    <p className="notePad_text text_334 me-3 mt-3 ps-3">Durabilitas lebih tinggi dibanding kompetitor, dapat dipakai hingga 45.000 KM.</p>
                                     </div>
-                                    <div className="d-flex align-items-center custom_border_23" style={{backgroundColor:'git (236, 231, 231)'}}>
-                                    <img src='assets/Layer 2.svg' className="ms-3"/>
-                                    <p className="notePad_text me-3 mt-3 ps-3">Menggunakan material non asbestos yang ramah lingkungan.</p>
                                     </div>
+                                    <div className="d-flex align-items-center custom_border_23 double_color_image" >
+                                    <img src='assets/Layer 2.svg' className="ms-3 image_334"/>
+                                    <p className="notePad_text me-3 mt-3 ps-3 text_336">Menggunakan material non asbestos yang ramah lingkungan.</p>
                                     </div>
                                     
                                   </div>
@@ -493,21 +489,21 @@ function Products() {
                                   <div className="mt-5">
                                     <a onClick={toggleVisibility3} className="card_link">
                                       Keunggulan
-                                    </a>
-                                    <img
+                                      <img
                                       className="ps-2"
                                       src="assets/CROSS.svg"
                                     />
+                                    </a>
                                   </div>
                                   {isVisible3 && (
-                                 <div className="card_background_image_1 mt-4">
+                                 <div className="card_background_image_3 mt-4">
                                  <div className="custom_grey_background d-flex flex-column">
-                                   <div className="d-flex align-items-center"><img src='assets/Asset 5.svg' className="ms-3"/>
-                                 <p className="notePad_text me-3 mt-3 ps-3">Fitur additional damper untuk mencegah noise.</p>
+                                   <div className="d-flex align-items-center"><img src='assets/Asset 5.svg' className="ms-3 image_338"/>
+                                 <p className="notePad_text me-3 mt-3 ps-3 text_338">Fitur additional damper untuk mencegah noise.</p>
                                  </div>
-                                 <div className="d-flex align-items-center custom_border_23" style={{backgroundColor:'rgb(236, 231, 231)'}}>
+                                 <div className="d-flex align-items-center custom_border_23 double_color_image_1">
                                  <img src='assets/Layer 3.svg' className="ms-3"/>
-                                 <p className="notePad_text me-3 mt-3 ps-3">Memiliki durabilitas yang tinggi, tahan kondisi ekstrem.</p>
+                                 <p className="notePad_text me-3 mt-3 ps-3 text-339">Memiliki durabilitas yang tinggi, tahan kondisi ekstrem.</p>
                                  </div>
                                  </div>
                                  
@@ -537,25 +533,25 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                                   <div className="mt-5">
                                     <a onClick={toggleVisibility4} className="card_link">
                                       Keunggulan
-                                    </a>
-                                    <img
+                                      <img
                                       className="ps-2"
                                       src="assets/CROSS.svg"
                                     />
+                                    </a>
                                   </div>
                                   {isVisible4 && (
-                                 <div className="card_background_image_1 mt-4">
-                                 <div className="custom_grey_background d-flex flex-column">
-                                   <div className="d-flex align-items-center"><img src='assets/Layer 5.svg' className="ms-3"/>
-                                 <p className="notePad_text me-3 mt-3 ps-3">Damping force yang optimal sehingga stabil saat mengendara.</p>
-                                 </div>
-                                 <div className="d-flex align-items-center custom_border_23" style={{backgroundColor:'rgb(236, 231, 231)'}}>
-                                 <img src='assets/Layer 3.svg' className="ms-3"/>
-                                 <p className="notePad_text me-3 mt-3 ps-3">Durabilitas yang tinggi, lebih awet dan tahan lama. </p>
-                                 </div>
-                                 </div>
-                                 
-                               </div>
+ <div className="card_background_image_3 mt-4">
+ <div className="custom_grey_background d-flex flex-column">
+   <div className="d-flex align-items-center"><img src='assets/Layer 5.svg' className="ms-3 image_338 image_340"/>
+ <p className="notePad_text me-3 mt-3 ps-3 text_338 text_340">Damping force yang optimal sehingga stabil saat mengendara.</p>
+ </div>
+ <div className="d-flex align-items-center custom_border_23 double_color_image_1 double_color_image_2">
+ <img src='assets/Layer 3.svg' className="ms-3 image_341"/>
+ <p className="notePad_text me-3 mt-3 ps-3 text-339 text_341">Durabilitas yang tinggi, lebih awet dan tahan lama.</p>
+ </div>
+ </div>
+ 
+</div>
                                   )}
                                 </div>
                               </div>
@@ -563,6 +559,22 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                           </Swiper>
                         </div>
                       </div>
+                      <div className="logos d-flex justify-content-center mt-5 mb-4">
+        <div className="mx-2">
+          <img
+            src="assets/quality-service.png"
+            alt="t-care-img"
+            className="img-fluid"
+          />
+        </div>
+        <div className="mx-2">
+          <img
+            src="assets/genuine-parts (1).png"
+            alt="t-care-img"
+            className="img-fluid"
+          />
+        </div>
+      </div>
                     </div>
                     <div
                       className="tab-pane fade"
@@ -624,11 +636,11 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                                     <div className="mt-5">
                                       <a className="card_link" href="#">
                                         Cek Produk
-                                      </a>
-                                      <img
+                                        <img
                                         className="ps-2"
                                         src="assets/CROSS.svg"
                                       />
+                                      </a>
                                     </div>
                                   </div>
                                 </div>
@@ -657,11 +669,11 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                                     <div className="mt-5">
                                       <a className="card_link" href="#">
                                         Cek Produk
-                                      </a>
-                                      <img
+                                        <img
                                         className="ps-2"
                                         src="assets/CROSS.svg"
                                       />
+                                      </a>
                                     </div>
                                   </div>
                                 </div>
@@ -768,13 +780,13 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                                       src={slideContents.imageUrl}
                                       alt="Card image cap"
                                     />
-                                    <div className="card-body custom-color-body text-start">
-                                      <div className="d-flex">
+                                    <div className="card-body custom-color-body">
+                                      <div className="d-flex justify-content-center">
                                         <h3 className="card-title ps-3 card_custom_font_size">
                                           {slideContents.title}
                                         </h3>
                                       </div>
-                                      <p className="card-text_3 text-start ps-2 pe-2 pt-3">
+                                      <p className="card-text_3 ps-2 pe-2 text-start pt-3">
                                         {slideContents.description}
                                       </p>
                                     </div>
@@ -941,6 +953,25 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                           </div>
                         </div>
                       </div>
+                      <div className="logos d-flex justify-content-center mt-5 mb-4">
+        <div className="mx-2">
+          <img
+            src="assets/quality-service.png"
+            alt="t-care-img"
+            className="img-fluid"
+          />
+        </div>
+        <div className="mx-2">
+          <img
+            src="assets/genuine-parts (1).png"
+            alt="t-care-img"
+            className="img-fluid"
+          />
+        </div>
+        <div className="mx-2">
+          <img src="assets/tmo.png" alt="t-care-img" className="img-fluid" />
+        </div>
+      </div>
                     </div>
                     <div
                       className="tab-pane fade"
@@ -1009,6 +1040,11 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                             </p>
                           </div>
                         </div>
+                        <div className="row text-start ms-lg-5 me-lg-5 ms-0 me-0 mt-3">
+                        <div className="col-12">
+                        <p className="Keunggulan_p">*Berlaku di seluruh dealer resmi Toyota & beberapa partshop partner Toyota tertentu.</p>
+                        </div>
+                        </div>
                         <div className="container mt-5">
                           <div className="row">
                             <div className="col-12">
@@ -1033,6 +1069,25 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                           </div>
                         </div>
                       </div>
+                      <div className="logos d-flex justify-content-center mt-5 mb-4">
+        <div className="mx-2">
+          <img
+            src="assets/quality-service.png"
+            alt="t-care-img"
+            className="img-fluid"
+          />
+        </div>
+        <div className="mx-2">
+          <img
+            src="assets/genuine-parts (1).png"
+            alt="t-care-img"
+            className="img-fluid"
+          />
+        </div>
+        <div className="mx-2">
+          <img src="assets/logo-tmo (1) 1.png" alt="t-care-img" className="img-fluid" />
+        </div>
+      </div>
                     </div>
                     <div
                       className="tab-pane fade"
@@ -1058,6 +1113,7 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                               </span>{" "}
                               (usia produksi ban terbaru)
                             </p>
+                            <img src="assets/video layout_1.png" className="img-fluid"/>
                           </div>
                         </div>
                       </div>
@@ -1330,15 +1386,7 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="logos d-flex justify-content-center mt-5 mb-4">
+                      <div className="logos d-flex justify-content-center mt-5 mb-4">
         <div className="mx-2">
           <img
             src="assets/quality-service.png"
@@ -1354,7 +1402,15 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
           />
         </div>
         <div className="mx-2">
-          <img src="assets/logo-tmo (1) 1.png" alt="t-care-img" className="img-fluid" />
+          <img src="assets/toyota tire-01 1.png" alt="t-care-img" className="img-fluid" />
+        </div>
+      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Footer></Footer>
