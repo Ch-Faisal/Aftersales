@@ -135,7 +135,7 @@ function Products() {
     },
   ]);
   return (
-    <div>
+    <div id="navbar_top">
       <Header></Header>
       <div className="container-fluid px-0">
         <img src="assets/Rectangle.png" className="w-100" alt="logo" />

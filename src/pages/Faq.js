@@ -21,9 +21,9 @@ const Faq = () => {
       });
     };
   return (
-    <div className="main_container">
+    <div className="main_container" id="navbar_top">
       <Header />
-      <div className="container my-5">
+      <div className="container pt-5 my-5">
         <h1>FAQs</h1>
       </div>
       <div className="container mb-5">
@@ -137,7 +137,7 @@ const Faq = () => {
                   aria-expanded="true"
                   aria-controls="collapseA"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >Kenapa harus servis di bengkel resmi?</b>
+                  <b  className="custom_add_b_fonts_faqs text-start " >Kenapa harus servis di bengkel resmi?</b>
                 </button>
               </h2>
               <div
@@ -167,7 +167,7 @@ const Faq = () => {
                   aria-expanded="false"
                   aria-controls="collapseB"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >Kenapa harus servis berkala?</b>
+                  <b  className="custom_add_b_fonts_faqs text-start" >Kenapa harus servis berkala?</b>
                 </button>
               </h2>
               <div
@@ -197,7 +197,7 @@ const Faq = () => {
                   aria-expanded="false"
                   aria-controls="collapseC"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >
+                  <b  className="custom_add_b_fonts_faqs text-start text-start" >
                   Kenapa servis berkala secara rutin 6 bulan sekali itu sangat penting?
                   </b>
                 </button>
@@ -227,7 +227,7 @@ const Faq = () => {
                   aria-expanded="false"
                   aria-controls="collapseD"
                 >
-                  <b className="text-start">
+                  <b className="text-start  custom_add_b_fonts_faqs">
                   Kenapa servis setiap 6 bulan penting walaupun kilometer 10,000 km belum tercapai?
                   </b>
                 </button>
@@ -271,7 +271,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseE"
                 >
-                  <b className="text-start">
+                  <b className="text-start  custom_add_b_fonts_faqs">
                   Kilometer kendaraan mencapai 10,000 km sebelum 6 bulan. Apakah harus tetap servis setiap 6 bulan?
                   </b>
                 </button>
@@ -300,7 +300,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseF"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >Hal apa saja yang dilakukan saat Servis Berkala?</b>
+                  <b  className="custom_add_b_fonts_faqs text-start" >Hal apa saja yang dilakukan saat Servis Berkala?</b>
                 </button>
               </h2>
               <div
@@ -327,7 +327,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseG"
                 >
-                  <b className="text-start">
+                  <b className="text-start  custom_add_b_fonts_faqs">
                    Apakah boleh saya bawa sendiri oli merk lain selain Toyota ke bengkel resmi?
                   </b>
                 </button>
@@ -370,7 +370,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseBa"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >Benefit apa yang didapat pada program ini?</b>
+                  <b  className="custom_add_b_fonts_faqs text-start" >Benefit apa yang didapat pada program ini?</b>
                 </button>
               </h2>
               <div
@@ -402,7 +402,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseCa"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >
+                  <b  className="custom_add_b_fonts_faqs text-start" >
                   Apa perbedaan program T-CARE dari Program Gratis Biaya Servis Berkala?
                   </b>
                 </button>
@@ -440,7 +440,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseDa"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >
+                  <b  className="custom_add_b_fonts_faqs text-start" >
                     Bagaimana saya dikategorikan Servis Berkala tepat waktu?
                   </b>
                 </button>
@@ -471,7 +471,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseEa"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >
+                  <b  className="custom_add_b_fonts_faqs text-start" >
                   Bagaimana cara saya mengetahui ketepatan waktu servis ke-1 sampai ke-7?
                   </b>
                 </button>
@@ -499,7 +499,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseFa"
                 >
-                  <b className="text-start">Apakah terdapat masa tenggang atau grace period jika saya agak telat saat servis ke-1 sampai ke-7?</b>
+                  <b className="text-start  custom_add_b_fonts_faqs">Apakah terdapat masa tenggang atau grace period jika saya agak telat saat servis ke-1 sampai ke-7?</b>
                 </button>
               </h2>
               <div
@@ -526,7 +526,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseGa"
                 >
-                  <b className="text-start">
+                  <b className="text-start  custom_add_b_fonts_faqs">
                   Jika saya Servis Berkala secara tidak tepat waktu, apakah saya tetap bisa mendapatkan benefit T-CARE?
                   </b>
                 </button>
@@ -554,7 +554,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseHa"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >
+                  <b  className="custom_add_b_fonts_faqs text-start" >
                   Siapa saja yang dapat menikmati program ini?
                   </b>
                 </button>
@@ -613,7 +613,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseIa"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >
+                  <b  className="custom_add_b_fonts_faqs text-start" >
                   Item suku cadang apa saja yang didapat pada program ini?
                   </b>
                 </button>
@@ -738,7 +738,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseJa"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >
+                  <b  className="custom_add_b_fonts_faqs text-start" >
                   Apakah model LCGC tidak berlaku bebas biaya suku cadang?
                   </b>
                 </button>
@@ -765,7 +765,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseKa"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >
+                  <b  className="custom_add_b_fonts_faqs text-start" >
                   Dimana saja program ini dilaksanakan?
                   </b>
                 </button>
@@ -795,7 +795,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="true"
                   aria-controls="collapseSix"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >Bengkel BP Toyota menerima perbaikan apa saja?</b>
+                  <b  className="custom_add_b_fonts_faqs text-start" >Bengkel BP Toyota menerima perbaikan apa saja?</b>
                 </button>
               </h2>
               <div
@@ -834,7 +834,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseOne"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >Bagaimana jika jarak ke bengkel BP Toyota sangat jauh?</b>
+                  <b  className="custom_add_b_fonts_faqs text-start" >Bagaimana jika jarak ke bengkel BP Toyota sangat jauh?</b>
                 </button>
               </h2>
               <div
@@ -861,7 +861,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  <b className="text-start">
+                  <b className="text-start  custom_add_b_fonts_faqs">
                   Apakah semua jenis asuransi dapat melakukan perbaikan di bengkel BP Toyota?
                   </b>
                 </button>
@@ -892,7 +892,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseFour"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >
+                  <b  className="custom_add_b_fonts_faqs text-start" >
                   Berapa lama waktu perbaikan di bengkel BP Toyota?
                   </b>
                 </button>
@@ -920,7 +920,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseFive"
                 >
-                  <b className="text-start">
+                  <b className="text-start  custom_add_b_fonts_faqs">
                   Apakah perlu membawa Surat Perintah Kerja (SPK) dari asuransi sebelum melakukan perbaikan di bengkel BP Toyota?
                   </b>
                 </button>
@@ -948,7 +948,7 @@ Walaupun mesin mati, beberapa komponen mobil masih menggunakan daya dari aki. Ji
                   aria-expanded="false"
                   aria-controls="collapseTwo"
                 >
-                  <b  className="custom_add_b_fonts_faqs" >Apakah bengkel BP Toyota menyediakan jasa towing?</b>
+                  <b  className="custom_add_b_fonts_faqs text-start" >Apakah bengkel BP Toyota menyediakan jasa towing?</b>
                 </button>
               </h2>
               <div

@@ -40,7 +40,7 @@ function LatestNewsEvents() {
   }, []);
 
   return (
-    <div>
+    <div id="navbar_top">
       <Header />
       <div>
       {loading ? ( // Display loader if loading state is true

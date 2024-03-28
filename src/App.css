@@ -570,20 +570,28 @@ border-radius: 30px !important;
     right: -29%; 
   }
 }
-@media (max-width: 410px) { 
+@media (max-width: 435px) { 
   .wrapper2{
-    right: -32%; 
+    right: -30%; 
   }
   .wrapper1 {
-    right: -37%; 
+    right: -35%; 
+  }
+}
+@media (max-width: 420px) { 
+  .wrapper2{
+    right: -33%; 
+  }
+  .wrapper1 {
+    right: -41%; 
   }
 }
 @media (max-width: 330px) { 
   .wrapper2{
-    right: -44%; 
+    right: -45%; 
   }
   .wrapper1 {
-    right: -44%; 
+    right: -47%; 
   }
 }
 .spinner-overlay {
