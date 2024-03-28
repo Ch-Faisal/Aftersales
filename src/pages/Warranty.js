@@ -4,7 +4,7 @@ import Footer from './layout/Footer';
 import "../css/warranty.css";
 function Warranty() {
     return (
-        <div>
+        <div id='navbar_top'>
             <Header></Header>
             <div className='container-fluid px-0 pb-5'>
                 <img src="assets/Rectangle-3.png" className='w-100' alt='logo' />

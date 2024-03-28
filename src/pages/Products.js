@@ -135,7 +135,7 @@ function Products() {
     },
   ]);
   return (
-    <div>
+    <div id="navbar_top">
       <Header></Header>
       <div className="container-fluid px-0">
         <img src="assets/Rectangle.png" className="w-100" alt="logo" />
@@ -1243,13 +1243,13 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                               <div className="card cards_custom_design align-items-center">
                                 <img
                                   src="assets/card-icon-1.png"
-                                  className="pt-2"
+                                  className="mt-4"
                                   alt="Logo"
                                 />
-                                <h5 className="card_heading_3 pt-2">
+                                <h5 className="card_heading_3 mt-4 pb-1 px-2">
                                   Produk Ban Bervariasi
                                 </h5>
-                                <p className="card_text_3 pb-4">
+                                <p className="card_text_3 pb-4 px-2">
                                   Tersedia berbagai macam merk & tipe
                                 </p>
                               </div>
@@ -1258,13 +1258,13 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                               <div className="card cards_custom_design align-items-center">
                                 <img
                                   src="assets/card-icon-2.png"
-                                  className="pt-2"
+                                  className="mt-4"
                                   alt="Logo"
                                 />
-                                <h5 className="card_heading_3 pt-2">
+                                <h5 className="card_heading_3 mt-4 pb-1 px-2">
                                   Kualitas Ban Terbaik
                                 </h5>
-                                <p className="card_text_3 pb-4">
+                                <p className="card_text_3 pb-4 px-2">
                                   Usia Produksi Ban Terbaru
                                 </p>
                               </div>
@@ -1273,13 +1273,13 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                               <div className="card cards_custom_design align-items-center">
                                 <img
                                   src="assets/card-icon-3.png"
-                                  className="pt-2"
+                                  className="mt-4"
                                   alt="Logo"
                                 />
-                                <h5 className="card_heading_3 pt-2">
+                                <h5 className="card_heading_3 mt-4 pb-1 px-2">
                                   One Stop Service
                                 </h5>
-                                <p className="card_text_3 pb-4">
+                                <p className="card_text_3 pb-4 px-2">
                                   Layanan pengecekan kendaraan & cuci mobil
                                   garansi produk ban*
                                 </p>
@@ -1289,29 +1289,29 @@ dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 5 line up u
                               <div className="card cards_custom_design align-items-center">
                                 <img
                                   src="assets/card-icon-4.png"
-                                  className="pt-2"
+                                  className="mt-4"
                                   alt="Logo"
                                 />
-                                <h5 className="card_heading_3 pt-2">
+                                <h5 className="card_heading_3 mt-4 pb-1 px-2">
                                   Bebas Biaya Tambahan
                                 </h5>
-                                <p className="card_text_3 pb-4">
+                                <p className="card_text_3 pb-4 px-2">
                                   Gratis biaya pemasangan, balancing & pentil
                                   ban
                                 </p>
                               </div>
                             </div>
                             <div className="col-lg-2 col-md-4 col-6 pt-md-3 pt-lg-0 pt-3">
-                              <div className="card cards_custom_design align-items-center">
+                              <div className="card cards_custom_design align-items-center ">
                                 <img
                                   src="assets/card-icon-5.png"
-                                  className="pt-2"
+                                  className="mt-4"
                                   alt="Logo"
                                 />
-                                <h5 className="card_heading_3 pt-2">
+                                <h5 className="card_heading_3 mt-4 pb-1 px-2">
                                   Ditangani oleh Teknisi Berpengalaman
                                 </h5>
-                                <p className="card_text_3 pb-4">
+                                <p className="card_text_3 pb-4 px-2">
                                   Tersedia berbagai macam merk & tipe
                                 </p>
                               </div>
