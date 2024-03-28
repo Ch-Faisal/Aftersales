@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   const scrollToTop = () => {
-    const navbar = document.getElementById("navbar");
+    const navbar = document.getElementById("navbar_top");
     navbar.scrollIntoView({ behavior: "smooth" });
   };
   return (

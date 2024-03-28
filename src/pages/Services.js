@@ -21,7 +21,7 @@ const Services = () => {
     });
   };
   return (
-    <div>
+    <div id="navbar_top">
       <Header></Header>
       <div className="Banner_image"></div>
       <div className="mt-5 mb-5">
@@ -235,7 +235,7 @@ const Services = () => {
                     <div className="row align-items-center">
                       <div className="col-lg-7 text-lg-start">
                         <h1>
-                          Dengan 80 cabang bengkel Bodi & Cat Toyota yang
+                          Dengan 81 cabang bengkel Bodi & Cat Toyota yang
                           tersebar di seluruh Indonesia,
                         </h1>
                         <p className="d-lg-block d-none Services_paragraph">
@@ -256,7 +256,7 @@ const Services = () => {
                   </div>
                   <div className="custom-bg-gray pb-5 pt-2 mt-lg-5 container-fluid">
                     <div className="container mt-5">
-                      <div className="row align-items-center">
+                      <div className="row">
                         <div className="col-12 d-lg-none d-block">
                           <h1>Servis dengan kualitas terbaik</h1>
                         </div>
@@ -273,10 +273,10 @@ const Services = () => {
                             </h1>
                             <div className="col-md-6">
                               <span className="d-flex align-items-center">
-                                <span className="custom_font me-3 me-lg-0">
+                                <span className="custom_font pe-lg-3 me-3 me-lg-0">
                                   1
                                 </span>
-                                <span className="custom_color_1">
+                                <span className="custom_color_11">
                                   Fasilitas bengkel dan tools yang lengkap untuk
                                   menunjang kualitas perbaikan.
                                 </span>
@@ -285,7 +285,7 @@ const Services = () => {
                                 <span className="custom_font me-2 me-lg-0">
                                   2
                                 </span>
-                                <span className="custom_color_1">
+                                <span className="custom_color_11">
                                   Estimasi waktu dan biaya yang akurat serta
                                   transparan.
                                 </span>
@@ -294,7 +294,7 @@ const Services = () => {
                                 <span className="custom_font me-2 me-lg-0">
                                   3
                                 </span>
-                                <span className="custom_color_1">
+                                <span className="custom_color_11">
                                   Teknisi yang telah tersertifikasi oleh Toyota
                                   Astra Motor.
                                 </span>
@@ -305,16 +305,16 @@ const Services = () => {
                                 <span className="custom_font me-2 me-lg-0">
                                   4
                                 </span>
-                                <span className="custom_color_1">
+                                <span className="custom_color_11">
                                   Jaminan suku cadang orisinal dari
-                                  Toyota.Jaminan suku Toyota.
+                                  Toyota.
                                 </span>
                               </span>
                               <span className="d-flex align-items-center">
                                 <span className="custom_font me-2 me-lg-0">
                                   5
                                 </span>
-                                <span className="custom_color_1">
+                                <span className="custom_color_11">
                                   Penggunaan material perbaikan dan cat sesuai
                                   standar.
                                 </span>
@@ -323,7 +323,7 @@ const Services = () => {
                                 <span className="custom_font me-2 me-lg-0">
                                   6
                                 </span>
-                                <span className="custom_color_1">
+                                <span className="custom_color_11">
                                   Garansi hasil perbaikan Bodi & Cat.
                                 </span>
                               </span>

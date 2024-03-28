@@ -32,7 +32,7 @@ function NewsEvents() {
     fetchNewsData();
   }, [token]);
     return (
-        <div>
+        <div id="navbar_top">
             <Header></Header>
             {loading ? ( // Display loader if loading state is true
        <div className='spinner-overlay'>

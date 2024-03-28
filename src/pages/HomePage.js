@@ -272,7 +272,7 @@ function HomePage() {
       document.getElementById("myTab").scrollLeft += 100;
     };
   return (
-    <div>
+    <div id='navbar_top'>
       <Header></Header>
       <div className='section-1 p-0 ' id='section-1'>
       <div id="carouselExample" className="carousel slide d-none d-lg-block" data-bs-ride="carousel">
