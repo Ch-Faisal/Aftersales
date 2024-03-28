@@ -178,7 +178,7 @@ function LatestNewsEvents() {
                   <div className="col-sm-10 col-md-6 col-lg-4 col-12">
                     <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                       <img
-                        src="assets/beyond exterior 800x600_2 1.png"
+                       src={newsData[id].desktop_banner} 
                         className="  rounded-0"
                         alt="..."
                       />
@@ -191,8 +191,7 @@ function LatestNewsEvents() {
                           <p className="text-start">{newsData[Object.keys(newsData)[id]].posted_at}</p>
                         </div>
                         <p className="card-title fw-bold text-start mb-4">
-                          Sempurnakan GR010 HYBRID, TOYOTA GAZOO Racing Siap
-                          Cetak Rekor Baru di Edisi 100 Tahun Le Mans 24 Jam
+                          {newsData[id].title}
                         </p>
                         <button
                           type="button"
@@ -228,7 +227,7 @@ function LatestNewsEvents() {
                     <div className="col-sm-10 col-md-6 col-lg-4 col-12" key={id}>
                         <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                           <img
-                            src="assets/beyond exterior 800x600_2 1.png"
+                            src={newsData[id].desktop_banner}
                             className="  rounded-0"
                             alt="..."
                           />
@@ -238,8 +237,7 @@ function LatestNewsEvents() {
                               <p className="text-start">{newsData[id].posted_at}</p>
                             </div>
                             <p className="card-title fw-bold text-start mb-4">
-                              Sempurnakan GR010 HYBRID, TOYOTA GAZOO Racing Siap
-                              Cetak Rekor Baru di Edisi 100 Tahun Le Mans 24 Jam
+                            {newsData[id].title}
                             </p>
                             <button type="button" className="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
                               Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
@@ -263,7 +261,7 @@ function LatestNewsEvents() {
                     <div className="col-sm-10 col-md-6 col-lg-4 col-12" key={id}>
                         <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                           <img
-                            src="assets/beyond exterior 800x600_2 1.png"
+                            src={newsData[id].desktop_banner}
                             className="  rounded-0"
                             alt="..."
                           />
@@ -273,8 +271,7 @@ function LatestNewsEvents() {
                               <p className="text-start">{newsData[id].posted_at}</p>
                             </div>
                             <p className="card-title fw-bold text-start mb-4">
-                              Sempurnakan GR010 HYBRID, TOYOTA GAZOO Racing Siap
-                              Cetak Rekor Baru di Edisi 100 Tahun Le Mans 24 Jam
+                            {newsData[id].title}
                             </p>
                             <button type="button" className="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
                               Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>

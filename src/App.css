@@ -594,10 +594,20 @@ border-radius: 30px !important;
 }
 
 
-.sticky
+.Main_transition_add
 {
+  transition: all 1s ease-in !important;
+}
+.sticky {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 1s ease !important;
+}
+.custom_margin_header_bottom
+{
+  margin-bottom: 150px !important;
 }
