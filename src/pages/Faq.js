@@ -24,7 +24,7 @@ const Faq = () => {
     <div className="main_container" id="navbar_top">
       <Header />
       <div className="container pt-5 my-5">
-        <h1>FAQs testing</h1>
+        <h1>FAQs</h1>
       </div>
       <div className="container mb-5">
         <div class="form-group has-search">
