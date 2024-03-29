@@ -619,3 +619,8 @@ border-radius: 30px !important;
 {
   margin-bottom: 150px !important;
 }
+.active
+{
+  background-color: #ffffff !important;
+  color: #000 !important;
+}

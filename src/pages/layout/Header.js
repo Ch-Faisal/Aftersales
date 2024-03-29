@@ -18,7 +18,6 @@ function Header() {
   //     window.removeEventListener("scroll", handleScroll);
   //   };
   // }, []);
-
   return (
     <div className="custom_margin_header_bottom">
     <div className=" sticky">
@@ -259,7 +258,7 @@ function Header() {
               <li className="nav-item">
                 <NavLink
                   to="/services"
-                  className="nav-link active custom-border-radius text-white"
+                  className={`nav-link custom-border-radius`}
                   aria-current="page"
                 >
                   SERVICES
@@ -268,7 +267,7 @@ function Header() {
               <li className="nav-item mx-3">
                 <NavLink
                   to="/products"
-                  className="nav-link custom-border-radius text-white "
+                  className="nav-link custom-border-radius  "
                 >
                   PRODUCTS
                 </NavLink>
@@ -276,7 +275,7 @@ function Header() {
               <li className="nav-item mx-3">
                 <NavLink
                   to="/warranty"
-                  className="nav-link custom-border-radius text-white"
+                  className="nav-link custom-border-radius "
                 >
                   WARRANTY
                 </NavLink>
@@ -284,7 +283,7 @@ function Header() {
               <li className="nav-item mx-3">
                 <NavLink
                   to="/t-care"
-                  className="nav-link custom-border-radius text-white"
+                  className="nav-link custom-border-radius "
                   aria-disabled="true"
                 >
                   T-CARE
@@ -293,7 +292,7 @@ function Header() {
               <li className="nav-item mx-3">
                 <NavLink
                   to="/news-and-events"
-                  className="nav-link custom-border-radius text-white"
+                  className="nav-link custom-border-radius "
                   aria-disabled="true"
                 >
                   NEWS & EVENT
@@ -302,7 +301,7 @@ function Header() {
               <li className="nav-item mx-3">
                 <NavLink
                   to="/faq"
-                  className="nav-link custom-border-radius text-white"
+                  className="nav-link custom-border-radius "
                   aria-disabled="true"
                 >
                   FAQ
