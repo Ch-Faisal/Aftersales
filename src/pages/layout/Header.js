@@ -292,7 +292,7 @@ function Header() {
               </li>
               <li className="nav-item mx-3">
                 <NavLink
-                  to="/news-and-events"
+                  to="/news-information"
                   className="nav-link custom-border-radius text-white"
                   aria-disabled="true"
                 >
