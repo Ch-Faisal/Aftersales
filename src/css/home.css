@@ -64,8 +64,16 @@
     font-size: 14px !important;
   }
   .wrapper-servis{
-    border-radius: 30px;
+    border-radius: 20px;
     border: 1px solid rgba(215, 25, 33, 1) !important;
+  }
+  .wrapper-servis p{
+    color: rgba(22, 26, 29, 1);
+    font-weight: 500;
+  }
+  .custom-btn {
+    border-radius: 10px !important;
+    border: 2px solid rgba(0, 0, 0, 1);
   }
   .mx-10{
     margin-left: 12rem !important;
@@ -105,6 +113,9 @@
 }
 .borderr{
   border-left: 0.5 solid rgba(227, 227, 228, 1) !important;
+}
+.tmo-2 img{
+  width: 202px !important;
 }
   @media screen and (max-width: 992px) {
     .tmo-oli{

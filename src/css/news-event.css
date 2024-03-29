@@ -70,3 +70,6 @@ margin-top: -12px;
         font-size: 14px !important;
     }
   }
+  .fixed_height{
+    height: 180px !important;
+  }

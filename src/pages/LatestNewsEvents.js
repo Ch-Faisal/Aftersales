@@ -6,6 +6,7 @@ import "../css/news-event.css";
 import { useSelector } from 'react-redux';
 import { Oval } from 'react-loader-spinner'
 import axios from 'axios';
+import { NavLink } from "react-router-dom";
 function LatestNewsEvents() {
   const [activeTab, setActiveTab] = useState('ex1-tabs-1'); // Default active tab
   const [loading, setLoading] = useState(true);
@@ -14,6 +15,9 @@ function LatestNewsEvents() {
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
+  // const routeTOLatestNews =(slug) =>{
+  //   console.log("slug:",slug)
+  // }
   useEffect(() => {
     const fetchNewsData = async () => {
       setLoading(true);
@@ -173,13 +177,13 @@ function LatestNewsEvents() {
                 className={`tab-pane fade ${activeTab === 'ex1-tabs-1' ? 'show active' : ''}`} id="ex1-tabs-1"
               >
                 
-                <div className="row mt-5 d-flex justify-content-center">
+                <div className="row d-flex justify-content-center">
                 {Object.keys(newsData).map((id, index) => (
-                  <div className="col-sm-10 col-md-6 col-lg-4 col-12">
+                  <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-3 " style={{marginTop:'15px'}}>
                     <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                       <img
                        src={newsData[id].desktop_banner} 
-                        className="  rounded-0"
+                        className="fixed_height  rounded-0"
                         alt="..."
                       />
                               
@@ -193,6 +197,11 @@ function LatestNewsEvents() {
                         <p className="card-title fw-bold text-start mb-4">
                           {newsData[id].title}
                         </p>
+                <NavLink
+                  to={{
+                    pathname: `/news-information/read/${newsData[id].slug}`,
+                  }}
+                >
                         <button
                           type="button"
                           class="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
@@ -202,6 +211,12 @@ function LatestNewsEvents() {
                             <i className="fas fa-chevron-right bg-white"></i>
                           </span>
                         </button>
+                        </NavLink>
+                        <NavLink
+                  to={{
+                    pathname: `/news-information/read/${newsData[id].slug}`,
+                  }}
+                >
                         <button
                           type="button"
                           class="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center"
@@ -211,6 +226,7 @@ function LatestNewsEvents() {
                             <i className="fas fa-chevron-right bg-white"></i>
                           </span>
                         </button>
+                        </NavLink>
                       </div>
                     </div>
                   </div>
@@ -224,11 +240,11 @@ function LatestNewsEvents() {
  <div className="row mt-5 d-flex justify-content-center">
                 {Object.keys(newsData).map((id, index) => (
                   newsData[id].category.name === 'Aftersales' && (
-                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" key={id}>
+                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px'}} key={id}>
                         <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                           <img
                             src={newsData[id].desktop_banner}
-                            className="  rounded-0"
+                            className="fixed_height  rounded-0"
                             alt="..."
                           />
                           <div className="card-body d-flex flex-column justify-content-between">
@@ -239,12 +255,24 @@ function LatestNewsEvents() {
                             <p className="card-title fw-bold text-start mb-4">
                             {newsData[id].title}
                             </p>
+                            <NavLink
+                  to={{
+                    pathname: `/news-information/read/${newsData[id].slug}`,
+                  }}
+                >
                             <button type="button" className="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
                               Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
                             </button>
+                            </NavLink>
+                            <NavLink
+                  to={{
+                    pathname: `/news-information/read/${newsData[id].slug}`,
+                  }}
+                >
                             <button type="button" className="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
                               Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
                             </button>
+                            </NavLink>
                           </div>
                         </div>
                     </div>
@@ -258,11 +286,11 @@ function LatestNewsEvents() {
                  <div className="row mt-5 d-flex justify-content-center">
                 {Object.keys(newsData).map((id, index) => (
                   newsData[id].category.name === 'T-Care' && (
-                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" key={id}>
+                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px'}} key={id}>
                         <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                           <img
                             src={newsData[id].desktop_banner}
-                            className="  rounded-0"
+                            className="fixed_height  rounded-0"
                             alt="..."
                           />
                           <div className="card-body d-flex flex-column justify-content-between">
@@ -273,12 +301,24 @@ function LatestNewsEvents() {
                             <p className="card-title fw-bold text-start mb-4">
                             {newsData[id].title}
                             </p>
+                            <NavLink
+                  to={{
+                    pathname: `/news-information/read/${newsData[id].slug}`,
+                  }}
+                >
                             <button type="button" className="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
                               Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
                             </button>
+                            </NavLink>
+                            <NavLink
+                  to={{
+                    pathname: `/news-information/read/${newsData[id].slug}`,
+                  }}
+                >
                             <button type="button" className="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
                               Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
                             </button>
+                            </NavLink>
                           </div>
                         </div>
                     </div>
@@ -289,12 +329,94 @@ function LatestNewsEvents() {
               <div
                 className={`tab-pane fade ${activeTab === 'ex1-tabs-4' ? 'show active' : ''}`} id="ex1-tabs-4"
               >
-                <p>No content</p>
+                  <div className="row mt-5 d-flex justify-content-center">
+                {Object.keys(newsData).map((id, index) => (
+                  newsData[id].category.name === 'News and Event' && (
+                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px'}} key={id}>
+                        <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
+                          <img
+                            src={newsData[id].desktop_banner}
+                            className="fixed_height  rounded-0"
+                            alt="..."
+                          />
+                          <div className="card-body d-flex flex-column justify-content-between">
+                            <div className="tips-event mt-2">
+                              <p className="text-start title-color">{newsData[id].category.name}</p>
+                              <p className="text-start">{newsData[id].posted_at}</p>
+                            </div>
+                            <p className="card-title fw-bold text-start mb-4">
+                            {newsData[id].title}
+                            </p>
+                            <NavLink
+                  to={{
+                    pathname: `/news-information/read/${newsData[id].slug}`,
+                  }}
+                >
+                            <button type="button" className="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
+                              Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
+                            </button>
+                            </NavLink>
+                            <NavLink
+                  to={{
+                    pathname: `/news-information/read/${newsData[id].slug}`,
+                  }}
+                >
+                            <button type="button" className="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
+                              Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
+                            </button>
+                            </NavLink>
+                          </div>
+                        </div>
+                    </div>
+                    )
+                ))}
+              </div>
               </div>
               <div
                 className={`tab-pane fade ${activeTab === 'ex1-tabs-5' ? 'show active' : ''}`} id="ex1-tabs-5"
               >
-<p>No content</p>
+ <div className="row mt-5 d-flex justify-content-center">
+                {Object.keys(newsData).map((id, index) => (
+                  newsData[id].category.name === 'Event' && (
+                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px'}} key={id}>
+                        <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
+                          <img
+                            src={newsData[id].desktop_banner}
+                            className="fixed_height  rounded-0"
+                            alt="..."
+                          />
+                          <div className="card-body d-flex flex-column justify-content-between">
+                            <div className="tips-event mt-2">
+                              <p className="text-start title-color">{newsData[id].category.name}</p>
+                              <p className="text-start">{newsData[id].posted_at}</p>
+                            </div>
+                            <p className="card-title fw-bold text-start mb-4">
+                            {newsData[id].title}
+                            </p>
+                            <NavLink
+                  to={{
+                    pathname: `/news-information/read/${newsData[id].slug}`,
+                  }}
+                >
+                            <button type="button" className="btn d-md-block d-none  btn-outline-dark d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
+                              Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
+                            </button>
+                            </NavLink>
+                            <NavLink
+                  to={{
+                    pathname: `/news-information/read/${newsData[id].slug}`,
+                  }}
+                >
+                            <button type="button" className="btn d-md-none custom_button_forcolor d-flex w-100 py-1 mt-2 mt-md-5 text-md-center">
+                              Find Out More <span className="d-block d-md-none"><i className="fas fa-chevron-right bg-white"></i></span>
+                            </button>
+                            </NavLink>
+                          </div>
+                        </div>
+                    </div>
+                    )
+                ))}
+              </div>
               </div>
             </div>
           </div>

@@ -32,8 +32,8 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/t-care" element={<TCare />} />
-            <Route path="/latest-news-and-events" element={<NewsEvents />} />
-            <Route path="/news-and-events" element={<LatestNewsEvents />} />
+            <Route path="/news-information/read/:slug" element={<NewsEvents />} />
+            <Route path="/news-information" element={<LatestNewsEvents />} />
           </Routes>
         </BrowserRouter>
       </div>

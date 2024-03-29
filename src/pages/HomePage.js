@@ -3,9 +3,40 @@ import Header from './layout/Header';
 import Footer from './layout/Footer';
 import axios from 'axios';
 import { Oval } from 'react-loader-spinner'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css/free-mode";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Virtual, Navigation, Pagination, FreeMode } from "swiper/modules";
 
 import '../css/home.css';
 function HomePage() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+  const [isVisible1, setIsVisible1] = useState(false);
+
+  const toggleVisibility1 = () => {
+    setIsVisible1(!isVisible1);
+  };
+  const [isVisible2, setIsVisible2] = useState(false);
+
+  const toggleVisibility2 = () => {
+    setIsVisible2(!isVisible2);
+  };
+  const [isVisible3, setIsVisible3] = useState(false);
+
+  const toggleVisibility3 = () => {
+    setIsVisible3(!isVisible3);
+  };
+  const [isVisible4, setIsVisible4] = useState(false);
+
+  const toggleVisibility4 = () => {
+    setIsVisible4(!isVisible4);
+  };
   const [activeTab, setActiveTab] = useState(0);
   const [activeTab2, setActiveTab2] = useState(0);
   const [carModels, setCarModels] = useState([]);
@@ -18,11 +49,19 @@ function HomePage() {
   const [loading2, setLoading2] = useState(false);
   const [serviceDescriptions, setServiceDescriptions] = useState([]);
   const [serviceDisclaimer, setServiceDisclaimer] = useState('');
+  const [serviceCost, setServiceCost] = useState([]);
   const [packageNames, setPackageNames] = useState([]);
   const [packageImages, setPackageImages] = useState([]);
   const [moleculeImages, setMoleculeImages] = useState([]);
     const [moleculePhotos, setMoleculePhotos] = useState([]);
     const [moleculeTitles, setMoleculeTitles] = useState([]);
+    const [recommendationsName, setRecommendationsName] = useState();
+    const [OptionalsName, setOptionalsName] = useState();
+    const [OptionalsTagline, setOptionalsTagline] = useState();
+    const [OptionalsImage, setOptionalsImage] = useState([]);
+    const [recommendationRemark, setRecommendationsRemark] = useState([]);
+    const [imageComparation, setImageComparation] = useState([]);
+    const [recommendationImage, setRecommendationImage] = useState([]);
     const [showAlphardWrapper, setShowAlphardWrapper] = useState(false);
     const [activeServiceTab, setActiveServiceTab] = useState(1); 
 
@@ -70,6 +109,11 @@ function HomePage() {
       const serviceDescriptionsArray = response.data.data.map(variant => variant.services.map(service => service.service_description));
       console.log("Description:", serviceDescriptionsArray);
       setServiceDescriptions(serviceDescriptionsArray.flat());
+
+      const serviceCost = response.data.data.map(variant => variant.services.map(service => service.service_cost));
+      console.log("serviceCost:", serviceCost)
+      setServiceCost(serviceCost);
+      console.log("responseservicecost:", serviceCost)
       console.log("responsevarient:", response.data.data)
     } catch (error) {
       console.error('Error fetching car models:', error);
@@ -155,7 +199,6 @@ function HomePage() {
             const disclaimer = response.data.data[0].variant.car.disclaimer;
             setServiceDisclaimer(disclaimer);
             console.log("disclaimer:", disclaimer);
-            debugger
             const packages = response.data.data[0].packages;
             const packageNames = packages.map(pkg => pkg.name);
             setPackageNames(packageNames); 
@@ -172,12 +215,38 @@ function HomePage() {
 
             const moleculeTitles = molecules.map(molecule => molecule.molecule.title);
             setMoleculeTitles(moleculeTitles);
+          
+            const recommendations = response.data.data[0].recommendations;
+            const recommendationsName = recommendations.map(recommendation => recommendation.product.name);
+            setRecommendationsName(recommendationsName);
+
+            const recommendationsRemark = recommendations.map(recommendation => recommendation.product.remark);
+            setRecommendationsRemark(recommendationsRemark);
+
+            const recommendationsComparison = recommendations.map(recommendation => recommendation.product.image_comparation);
+            setImageComparation(recommendationsComparison);
+
+            const recommendationsImage = recommendations.map(recommendation => recommendation.product.image);
+            setRecommendationImage(recommendationsImage);
       
+            const optionals = response.data.data[0].optionals;
+            const OptionalName = optionals.map(optional => optional.product.name);
+            setOptionalsName(OptionalName);
+            console.log("OptionalsName",OptionalName)
+
+            const OptionalsTagline = optionals.map(optional=>optional.product.tagline);
+            setOptionalsTagline(OptionalsTagline);
+
+            const OptionalsImage = optionals.map(optional=>optional.product.image);
+            setOptionalsImage(OptionalsImage);
+            console.log("testets:",OptionalsImage)
             setLoading2(false);
             console.log("Package names:", packageNames);
+            console.log("recommendationsComparison:", recommendationsComparison);
             console.log("Package images:", images);
             console.log("molecile images:", moleculeImages);
             console.log("molecile photos:", moleculePhotos);
+            console.log("comparison:", recommendationsComparison)
         } else {
           setServiceDisclaimer("");
           setPackageNames([]);
@@ -200,7 +269,7 @@ function HomePage() {
     };
   
     const scrollRight = () => {
-      document.getElementById("myTab").scrollLeft += 100; // Adjust scroll distance as needed
+      document.getElementById("myTab").scrollLeft += 100;
     };
   return (
     <div id='navbar_top'>
@@ -250,45 +319,46 @@ function HomePage() {
         <div className='container px-0'>
         <div className='section-2-content px-0 px-md-5 mb-4'>
             <div className='main-heading text-center'>
-                    <h2 className='fw-bold'>Meningkatkan Kenyamanan Para Customer dengan Aftersales Test</h2>
+                    <h2 className='fw-bold'>Meningkatkan Kenyamanan Para Customer dengan Aftersales</h2>
                 </div>
                 <div className='section-text'>
                     <p>After Sales Service Toyota dengan kualitas servis terjamin karena kendaraan Anda akan ditangani oleh teknisi yang berpengalaman dan bersertifikat. Layanan di bengkel resmi Toyota menggunakan Toyota Genuine Parts yaitu suku cadang resmi dari Toyota dengan mengedepankan kualitas dan telah dirancang sesuai dengan spesifikasi dan kebutuhan kendaraan kesayangan Anda. Jaringan luas dengan 297 bengkel perawatan dan perbaikan serta 80 bengkel Body & Paint yang tersebar di seluruh penjuru Nusantara.</p>
                 </div>
             </div>
             <div className='px-lg-5 justify-content-center justify-content-lg-start mx-auto'>
-          <div className='row mx-boxes align-items-stretch'>
-          <div className='col-6 col-md'>
-                  <div className='wrapper border-0 mb-4 mb-md-3 h-100'>
-                      <div className='section-img'>
-                        <img src="assets/value_icon_1.png" alt='' />
-                    </div>
-                    <div className='title mt-4'>
-                        <h4 className='fw-bold text-dark'>Servis yang Berkualitas</h4>
-                    </div>
-                </div>
+            <div className='row mx-boxes align-items-stretch'>
+    <div className='col-6 col-xl d-flex flex-column'>
+        <div className='wrapper border-0 mb-4'>
+            <div className='section-img'>
+                <img src="assets/value_icon_1.png" className='w-75' alt='' />
             </div>
-            <div className='col-6 col-md w-50'>
-                <div className='wrapper border-0 mb-4 mb-md-3 h-100'>
-                    <div className='section-img'>
-                        <img src="assets/value_icon_2.png" alt='' />
-                    </div>
-                    <div className='title mt-5'>
-                        <h4 className='fw-bold text-dark'>Toyota Genuine Parts</h4>
-                    </div>
-                </div>
+            <div className='title mt-3 d-flex align-items-center'>
+                <h4 className='fw-bold text-dark'>Servis yang Berkualitas</h4>
             </div>
-            <div className='col-6 mx-auto col-md d-flex justify-content-center mt-4 mt-lg-0'>
-                <div className='wrapper border-0 mb-4 mb-md-3 h-100'>
-                    <div className='section-img'>
-                        <img src="assets/location-icon.png" alt='' />
-                    </div>
-                    <div className='title mt-4'>
-                        <h4 className='fw-bold px-md-4 text-dark'>Jaringan yang luas</h4>
-                    </div>
-                </div>
+        </div>
+    </div>
+    <div className='col-6 col-xl d-flex flex-column'>
+        <div className='wrapper border-0 mb-4 mb-md-3'>
+            <div className='section-img toyota'>
+                <img src="assets/value_icon_2.png" className='w-100' alt='' />
             </div>
-          </div>
+            <div className='title mt-3 d-flex align-items-center'>
+                <h4 className='fw-bold text-dark'>Toyota Genuine Parts</h4>
+            </div>
+        </div>
+    </div>
+    <div className='col-6 mx-auto col-xl d-flex flex-column justify-content-center mt-4 mt-lg-0'>
+        <div className='wrapper border-0 mb-4 mb-md-3'>
+            <div className='section-img'>
+                <img src="assets/location-icon.png" className='w-75' alt='' />
+            </div>
+            <div className='title mt-3 d-flex align-items-center'>
+                <h4 className='fw-bold px-md-4 text-dark'>Jaringan yang luas</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
          </div>
         </div>
       </div>
@@ -376,7 +446,7 @@ function HomePage() {
                         </div>
                         <ul
                             className="nav custom-home-tabs custom-nav-tabs nav-fill custom-nav-fill"
-                           
+                            id="myTab"
                             style={{ borderBottom: "none !important", whiteSpace: "nowrap" }}
                             >
                           <li className="nav-item  custom-nav-item" role="presentation">
@@ -534,14 +604,14 @@ function HomePage() {
                       </div>
                       <div
                         className="tab-content container-fluid p-0"
-                        id="myTabContent"
+                        
                       >
                         <div
                           className="tab-pane fade active show px-3 px-lg-0"
                         
                         >
                           {activeServiceTab === 1 && (
-                          <div className="container mt-5">
+                          <div className="container mt-5 ">
                           <div className='servis-content mx-md-5'>
                                 <h1 className='servis-title'>GRATIS</h1>
                                 <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
@@ -553,100 +623,100 @@ function HomePage() {
                                   <div>
                                       <img src="assets/Komponen Mesin.png" alt='' />
                                   </div>
-                                  <p className='px-3 mb-0 text-nowrap'>Periksa Komponen Mesin</p> 
+                                  <p className='px-3 mb-0 text-nowrap fw-bold'>Periksa Komponen Mesin</p> 
                               </div>
                               <div className='d-flex justify-content-between mt-4'>
                                   <div className='d-flex align-items-center'>
                                       <img src="assets/Check.png" alt='' />
-                                      <p className='px-3 mb-0 text-nowrap'>Oli mesin</p>
+                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Oli mesin</p>
                                   </div>
                                   <div className='d-flex align-items-center mx-md-5'>
                                       <img src="assets/Check.png" className='mx-md-5' alt='' />
-                                      <p className='px-3 px-md-0 mb-0 text-nowrap '>Pipa gas buang</p> 
+                                      <p className='px-3 px-md-0 mb-0 text-nowrap fw-bold'>Pipa gas buang</p> 
                                   </div>
                               </div>
                               <div className='d-flex mt-3'>
                                   <div className='d-flex align-items-center'>
                                       <img src="assets/Check.png" alt='' />
-                                      <p className='px-3 mb-0 text-nowrap'>Sistem pendingin</p> 
+                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Sistem pendingin</p> 
                                   </div>
                                   <div className='d-flex align-items-center mx-md-4'>
                                       <img src="assets/Check.png" className='mx-md-1' alt='' />
-                                      <p className='px-3 mb-0 text-nowrap' >Baterai 12 Volt</p> 
+                                      <p className='px-3 mb-0 text-nowrap fw-bold' >Baterai 12 Volt</p> 
                                   </div>
                               </div>
                               <div className='d-flex justify-content-between mt-3'>
                                   <div className='d-flex align-items-center'>
                                       <img src="assets/Check.png" alt='' />
-                                      <p className='px-3 mb-0 text-nowrap'>Cairan pendingin mesin & power control unit</p>
+                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Cairan pendingin mesin & power control unit</p>
                                   </div>
                               </div>
                           </div>
                           <div className='col-md-6 mt-5 mt-md-0'>
-                              <div className='d-flex justify-content-center align-items-center'>
+                          <div className='d-flex justify-content-center justify-content-md-start align-items-center'>
                                   <div>
                                       <img src="assets/Komponen Mesin.png" alt='' />
                                   </div>
-                                  <p className='px-3 mb-0 text-nowrap'>Periksa Komponen Mesin</p> 
+                                  <p className='px-3 mb-0 text-nowrap fw-bold'>Periksa Chasis & Bodi</p> 
                               </div>
                               <div className='d-flex mt-3'>
                                   <div className='d-flex align-items-center'>
                                       <img src="assets/Check.png" alt='' />
-                                      <p className='px-3 mb-0 text-nowrap'>Pedal rem</p> 
+                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Pedal rem</p> 
                                   </div>
                                   <div className='d-flex align-items-center mx-md-4'>
                                       <img src="assets/Check.png" className=' ms-2 ms-md-2 mx-md-2' alt='' />
-                                      <p className='px-3 mb-0 text-nowrap'>Ban</p>
+                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Ban</p>
                                   </div>
                               </div>
                               <div className='d-flex  mt-3'>
                                   <div className='d-flex align-items-center'>
                                       <img src="assets/Check.png" alt='' />
-                                      <p className='px-3 mb-0 text-nowrap'>Minyak rem</p>
+                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Minyak rem</p>
                                   </div>
                                   <div className='d-flex align-items-center mx-md-4'>
                                       <img src="assets/Check.png" alt='' />
-                                      <p className='px-3 mb-0 text-nowrap'>Lampu, Klakson, Kaca Wiper</p>
+                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Lampu, Klakson, Kaca Wiper</p>
                                   </div>
                               </div>
                               <div className='d-flex mt-3'>
                                   <div className='d-flex align-items-center'>
                                       <img src="assets/Check.png" alt='' />
-                                      <p className='px-3 mb-0 text-nowrap'>Suspensi</p>
+                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Suspensi</p>
                                   </div>
                                   <div className='d-flex align-items-center mx-md-5'>
                                       <img src="assets/Check.png" className='ms-3 ms-md-0' alt='' />
-                                      <p className='px-3 mb-0 text-nowrap'>Isi cairan AC</p>
+                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Isi cairan AC</p>
                                   </div>
                               </div>
                           </div>
                       </div>      
                       <div className='d-none d-lg-block'>
-                            <div className='row mx-md-5'>
+                            <div className='row mx-md-4'>
                             <h1 className='fw-bold mt-5 mb-5'>Opsi Produk Toyota Lainnya</h1>
                             <div className='col-6 col-md'>
-                            <div className='wrapper-servis border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center'>
+                            <div className='wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center'>
                             <div className='section-img'>
-                              <img src="assets/value_icon_1.png" alt='' />
+                              <img src="assets/tire-solution.png" alt='' />
                             </div>   
                           </div>
                         </div>
                         <div className='col-6 col-md'>
-                        <div className='wrapper-servis border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center' style={{ backgroundColor: 'rgba(215, 25, 33, 1)' }}>
+                        <div className='wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center' style={{ backgroundColor: 'rgba(215, 25, 33, 1)' }}>
                                 <div className='section-img ' >
                                     <img src="assets/TMO-02.png" alt='' />
                                 </div>
                             </div>
                         </div>
                         <div className='col-6 col-md'>
-                            <div className='wrapper-servis border-0 mb-4 mb-md-3 h-100 mx-md-3 mt-2 mt-md-0 py-1 d-flex align-items-center justify-content-center'>
+                            <div className='wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 mt-2 mt-md-0 py-1 d-flex align-items-center justify-content-center'>
                                 <div className='section-img'>
                                     <img src="assets/location-icon.png" alt='' />
                                 </div>
                             </div>
                         </div>
                             </div>
-                            <div className='row mx-md-5 mt-4'>
+                            <div className='row mx-md-4 mt-4'>
                             <div className='col-6 col-md'>
                             <div className='wrapper-servis border-0 mb-4 mb-md-3 h-100 mx-md-3 py-4 d-flex flex-column align-items-center justify-content-center'>
                             <div className='section-img'>
@@ -657,10 +727,10 @@ function HomePage() {
                         </div>
                         <div className='col-6 col-md'>
                         <div className='wrapper-servis border-0 mb-4 mb-md-3 h-100 py-4 mx-3  d-flex flex-column align-items-center justify-content-center'>
-                                <div className='section-img ' >
+                                <div className='section-img' >
                                     <img src="assets/Rectangle 87.png" alt='' />
                                 </div>
-                                <p className='pt-2'>Layanan Ban dari Toyota</p>
+                                <p className='pt-2 px-2'>Cairan pembersih kaca dari jamur (waterspot)</p>
                             </div>
                         </div>
                         <div className='col-6 col-md'>
@@ -668,11 +738,11 @@ function HomePage() {
                                 <div className='section-img'>
                                     <img src="assets/Engine Room Treatment 1.png" alt='' />
                                 </div>
-                                <p className='pt-2'>Layanan Ban dari Toyota</p>
+                                <p className='pt-3 px-1'>Produk pembersih ruang mesin kendaraan</p>
                             </div>
                         </div>
                             </div>
-                            <div className='row mx-5 mt-4'>
+                            <div className='row mx-4 mt-4'>
                             <div className='col-6 col-md'>
                             <div className='wrapper-servis border-0 mb-4 mb-md-3 h-100 mx-3 py-4 d-flex flex-column align-items-center justify-content-center'>
                             <div className='section-img'>
@@ -698,9 +768,168 @@ function HomePage() {
                             </div>
                         </div>
                             </div>
-                            <button type="button" class="btn btn-outline-dark w-25 py-2 mt-5">Learn  more</button>
+                            <button type="button" class="btn btn-outline-dark custom-btn w-25 py-2 mt-5">Learn  more</button>
                             </div>
+                            <div className="container mt-5">
+                          <Swiper
+                            slidesPerView={3}
+                            breakpoints={{
+                              280: {
+                                slidesPerView: 1,
+                              },
+                              // When window width is >= 768px
+                              768: {
+                                slidesPerView: 2,
+                              },
+                              // When window width is >= 992px
+                              992: {
+                                slidesPerView: 3,
+                              },
+                            }}
+                            spaceBetween={30}
+                            navigation={true}
+                            modules={[Navigation]}
+                            className="mySwiper"
+                          >
+                            <SwiperSlide>
+                              <div className="card">
+                                <div className="img">
+                                  <img
+                                    src="assets/4L 5W-30 Gasoline (2).png"
+                                    alt="img"
+                                    className="img-fluid w-50"
+                                    draggable="false"
+                                  />
+                                </div>
+                                <div className="text-center card_customm_padding">
+                                  <h4 className="card_heading mt-5">TMO Wiper Fluid.</h4>
+                                  <p className="card_paragraph">
+                                    <span className="italic_text">
+                                    TMO Wiper Fluid,
+                                    </span>{" "}
+                                    Cairan pembersih kaca mobil & pencegah jamur..
+                                  </p>
+                                  
+                                  {isVisible && (
+                                  <div className="card_background_image_1 mt-4">
+                                    <div className="custom_grey_background d-flex align-items-center">
+                                      <img src='assets/Vector.png' className="ms-3"/>
+                                    <p className="notePad_text me-3 mt-3 ps-3">Tahan terhadap tekanan tinggi</p>
+                                    </div>
+                                    
+                                  </div>
+                                  )}
+                                </div>
+                              </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                              <div className="card">
+                                <div className="img">
+                                  <img
+                                    src="assets/4L 5W-30 Gasoline (3).png"
+                                    className="img-fluid w-50"
+                                    alt="img"
+                                    draggable="false"
+                                  />
+                                </div>
+                                <div className="text-start card_customm_padding mt-5">
+                                  <h4 className="card_heading">TMO Cabin Disinfectant</h4>
+                                  <p className="card_paragraph">
+                                    <span className="italic_text">
+                                      Air Filter,
+                                    </span>{" "}
+                                    Aerosol penghilang bakteri dan penyegar kabin.
+                                  </p>
+                               
+                                  {isVisible1 && (
+                                  <div className="card_background_image_1 mt-4">
+                                    <div className="custom_grey_background d-flex align-items-center">
+                                      <img src='assets/Asset 2.svg' className="ms-3"/>
+                                    <p className="notePad_text me-3 mt-3 ps-3">Performa filtrasi yang tinggi dibanding kompetitor</p>
+                                    </div>
+                                    
+                                  </div>
+                                  )}
+                                </div>
+                              </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                              <div className="card">
+                                <div className="img">
+                                  <img
+                                    src="assets/4L 5W-30 Gasoline (4).png"
+                                    className="img-fluid w-50"
+                                    alt="img"
+                                    draggable="false"
+                                  />
+                                </div>
+                                <div className="text-center card_customm_padding mt-5">
+                                  <h4 className="card_heading mt-4">
+                                  TMO Injector Cleaner
+                                  </h4>
+                                  <p className="card_paragraph">
+                                    <span className="italic_text">
+                                    Cairan pembersih injector & ruang bakar.
+                                    </span>{" "}
+                                  </p>
+                                
+                                  {isVisible2 && (
+                                  <div className="card_background_image_1 mt-4">
+                                    <div className="custom_grey_background d-flex flex-column">
+                                      <div className="d-flex align-items-center"><img src='assets/Asset 2.svg' className="ms-3"/>
+                                    <p className="notePad_text me-3 mt-3 ps-3">Durabilitas lebih tinggi dibanding kompetitor, dapat dipakai hingga 45.000 KM.</p>
+                                    </div>
+                                    <div className="d-flex align-items-center custom_border_23" style={{backgroundColor:'git (236, 231, 231)'}}>
+                                    <img src='assets/Layer 2.svg' className="ms-3"/>
+                                    <p className="notePad_text me-3 mt-3 ps-3">Menggunakan material non asbestos yang ramah lingkungan.</p>
+                                    </div>
+                                    </div>
+                                    
+                                  </div>
+                                  )}
+                                </div>
+                              </div>
+                            </SwiperSlide>
+                           
+                            <SwiperSlide>
+                              <div className="card">
+                                <div className="img">
+                                  <img
+                                    src="assets/4L 5W-30 Gasoline.png"
+                                    className="img-fluid w-50"
+                                    alt="img"
+                                    draggable="false"
+                                  />
+                                </div>
+                                <div className="text-center card_customm_padding mt-5">
+                                  <h4 className="card_heading mt-3">Rear Absorber</h4>
+                                  <p className="card_paragraph">
+                                  <span className="italic_text">
+                                    Didesain khusus
+                                    </span>{" "}
+                                 dengan harga yang kompetitif namun memenuhi  Avanza, Agya dan Calya.
+                                  </p>
+                                  {isVisible4 && (
+                                 <div className="card_background_image_1 mt-4">
+                                 <div className="custom_grey_background d-flex flex-column">
+                                   <div className="d-flex align-items-center"><img src='assets/Layer 5.svg' className="ms-3"/>
+                                 <p className="notePad_text me-3 mt-3 ps-3">Damping force yang optimal sehingga stabil saat mengendara.</p>
+                                 </div>
+                                 <div className="d-flex align-items-center custom_border_23" style={{backgroundColor:'rgb(236, 231, 231)'}}>
+                                 <img src='assets/Layer 3.svg' className="ms-3"/>
+                                 <p className="notePad_text me-3 mt-3 ps-3">Durabilitas yang tinggi, lebih awet dan tahan lama. </p>
+                                 </div>
+                                 </div>
+                                 
+                               </div>
+                                  )}
+                                </div>
+                              </div>
+                            </SwiperSlide>
+                          </Swiper>
+                        </div>
                           </div>
+                          
                           )}
                          {loading2 ? (
                         <div className='spinner-overlay'>
@@ -720,9 +949,13 @@ function HomePage() {
                           <div className="container ps-lg-5 pe-lg-5 mt-5">  
                           <div className='servis-content mx-md-5'>
                             <h1 className='servis-title'>GRATIS</h1>
-                            {activeServiceTab >= 8 && ( 
-                                  <h1 className='servis-title'>Rp 2,715,976,-</h1>
-                              )}
+                            {activeServiceTab >= 8 && (
+                                <h1 className='servis-title'>
+                                    Rp {serviceCost.length > 0 && serviceCost[activeServiceTab]
+                                        ? serviceCost[activeServiceTab].service_code
+                                        : "no-service-code"}
+                                </h1>
+                            )}
                              <h1>Servis berkala setelah <span className='inline-text' >6 bulan</span> </h1>
                              {activeServiceTab >= 8 && (   
                              <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[8] ? serviceDescriptions[8] : "No description available"}</p>)}
@@ -736,14 +969,15 @@ function HomePage() {
                                     index % 2 === 0 && (
                                         <div key={index} className='d-flex justify-content-between mt-2 mt-md-4'>
                                             <div className='d-flex'>
-                                                <img src="assets/Komponen Mesin.png" alt='' />
-                                                {/* <img src={packageImages[index]} alt='' /> */}
+                                                {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
+                                                <img src={packageImages[index]} alt='' />
                                                 <p className='px-3 text-nowrap'>{packageName}</p>
                                                 {/* {errorMessage && <p>{errorMessage}</p>} */}
                                             </div>
                                             {index + 1 < packageNames.length && (
                                                 <div className='d-flex'>
-                                                    <img src="assets/Komponen Mesin.png" alt='' />
+                                                    {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
+                                                    <img src={packageImages[index]} alt='' />
                                                     <p className='px-3 text-nowrap'>{packageNames[index + 1]}</p>
                                                     {/* {errorMessage && <p>{errorMessage}</p>} */}
                                                 </div>
@@ -760,10 +994,10 @@ function HomePage() {
                                   <div className='col-lg-12'>
                                     <ul className="nav nav-pills nav-fill home-tab d-flex">
                                         <li className="nav-item mx-2">
-                                            <a className={`nav-link text-nowrap rounded py-3 text-nowrap px-5 ${activeTab2 === 0 ? 'active' : ''}`} href="javascript:void(0)" onClick={() => handleTab2Click(0)}>TMO Oli Mesin</a>
+                                            <a className={`nav-link text-nowrap rounded py-3 text-nowrap px-5 ${activeTab2 === 0 ? 'active' : ''}`} href="javascript:void(0)" onClick={() => handleTab2Click(0)}>Opsi Upgrade TMO Oli Mesin</a>
                                         </li>
                                         <li className="nav-item">
-                                            <a className={`nav-link text-nowrap rounded py-3 text-nowrap px-5 ${activeTab2 === 1 ? 'active' : ''}`} href="javascript:void(0)" onClick={() => handleTab2Click(1)}>Tambah Produk Lain</a>
+                                            <a className={`nav-link text-nowrap rounded py-3 text-nowrap px-5 ${activeTab2 === 1 ? 'active' : ''}`} href="javascript:void(0)" onClick={() => handleTab2Click(1)}>Opsi Tambah Produk Lain</a>
                                         </li>
                                     </ul>
                                  </div>
@@ -772,18 +1006,18 @@ function HomePage() {
                             {activeTab2 === 0 && <div>
                           <div className='d-flex justify-content-center servis-2-tab'>
                              <div className='row mt-5'>
-                             <p className='text px-md-5'>Berlaku Program T-CARE sampai servis ke 7 atau 3 tahun untuk pembelian model baru mulai bulan Maret 2023</p>
+                             <p className='text px-md-5'>Pelanggan setia Toyota, untuk pengalaman berkendara lebih nyaman, Anda mungkin membutuhkan produk ini</p>
                              <h1>TMO Oli Mesin</h1>
-                             <p className='text-red'>Tingkat Kekentalan molekul</p>
+                             <p className='text-red'>TINGKAT KEKENTALAN MOLEKUL</p>
                              </div>
                           </div>
                           <div className='container'>
-                        <div className='row justify-content-md-center tmo-oli'> 
+                        <div className={`row justify-content-md-center tmo-oli ${errorMessage ? 'd-none' : ''}`}> 
                         <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column'>
                           <div className='col-6 order-1 order-md-0'>
                               <p className='pt-3 d-none d-md-block'>Oli Standar</p>
                               <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
-                              <p className='pt-md-3 pt-0'>10W-30</p>
+                              <p className='pt-md-3 pt-0 text-center fw-bold'>10W-30</p>
                               <div className='tmo-image'>
                                   {moleculeImages[0] ? (
                                       <img src={moleculeImages[0]} alt='' />
@@ -794,8 +1028,12 @@ function HomePage() {
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-3 d-block d-md-none'>Oli Standar</p>
-                          <p className='pt-4 fw-bold standard d-none d-md-block'>
-                              {moleculeTitles[0] ? moleculeTitles[0] : errorMessage}
+                          <p className='pt-4 fw-bold standard d-none d-md-block mt-5'>
+                          {moleculeTitles[0] ? (
+                              <div dangerouslySetInnerHTML={{ __html: moleculeTitles[0] }} />
+                            ) : (
+                              errorMessage
+                            )}
                               </p>
                               <div className='tmo-image'>
                                   {moleculeImages[0] ? (
@@ -812,17 +1050,18 @@ function HomePage() {
                               <span className="d-block d-md-none">+0.8%</span>
                               <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
                           </p>
-                              <p className='pt-4'>SW-30</p>
+                              <p className='pt-4 text-center fw-bold'>SW-30</p>
                              <div className='tmo-image'>
                             <img src={moleculeImages[1]} alt='' />
                         </div>
                           </div>
                           <div className='col-6 order-0 order-md-1'>
                           <p className='pt-4'>
-                            <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
-                              <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[1]}</span>
-                          </p>                            
+                            <span className="d-block d-md-none" style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                            {moleculeTitles[1] ? (
+                              <span className="d-none d-md-block mt-2" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }} dangerouslySetInnerHTML={{ __html: moleculeTitles[1] }} />
+                            ) : null}
+                          </p>                
                               <div className='tmo-image molecule-photos pb-3 pb-md-0'>
                                 <img src={moleculePhotos[1]} alt='' />
                             </div>
@@ -834,18 +1073,17 @@ function HomePage() {
                               <span className="d-block d-md-none">+0.8%</span>
                               <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
                           </p>
-                              <p className='pt-4'>0W-20</p>
+                              <p className='pt-4 text-center fw-bold'>0W-20</p>
                              <div className='tmo-image'>
                                 <img src={moleculeImages[2]} alt='' />
                             </div>
                           </div>
                           <div className='col-6 order-0 order-md-1'>
-                          <p className='pt-4'>
+                          <p className='pt-4 text-center'>
                             <span className="d-block d-md-none"style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
-                              <span className="d-none d-md-block">+0.8%</span>
-                              <span className="d-none d-md-block" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }}>{moleculeTitles[2]}</span>
+                              <span className="d-none d-md-block mt-2" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '14px' }} dangerouslySetInnerHTML={{ __html: moleculeTitles[2] }} />
                           </p> 
-                                 <div className='tmo-image'>
+                                 <div className='tmo-image tmo-2'>
                                     <img src={moleculePhotos[2]} alt='' />
                                 </div>
                               <p className='mt-2 text-red d-none d-md-block text-nowrap' style={{ color: 'rgba(215, 25, 33, 1)', fontSize:'14px' }}>
@@ -863,25 +1101,33 @@ function HomePage() {
                              </div>
                           </div>
                           <div className='container'>
+                          {!errorMessage &&
                             <div className='row'>
                               <div className='col-md-4 mx-md-5 text-center d-flex justify-content-end'>
-                                <img src="assets/Brake Cleaner.png" alt='brake' />
+                                <img src={recommendationImage} className='w-100' alt='brake' />
                               </div>
                               <div className='col-md-6 mx-md-2'>
-                                <h1 className='text-start'>TMO Brake Cleaner</h1>
-                                <p className='text-start'>Menghindari brake failure yang diakibatkan oleh kotoran dan memberikan feeling pengereman yang lebih baik</p>
+                                <h1 className='text-start'>{recommendationsName}</h1>
+                                <p className='text-start' dangerouslySetInnerHTML={{ __html: recommendationRemark }} />
                                 <div className='d-flex'>
-                                <img src="assets/tyre.png" className='w-50' alt='brake' />
-                                <img src="assets/tyre2.png" className='w-50' alt='brake' />
+                                <img src={imageComparation} className='w-50' alt='brake' />
+                                {/* <img src="assets/tyre2.png" className='w-50' alt='brake' /> */}
                                 </div>
                               </div>
-                              <h1 className='mt-4'>Opsi Produk Toyota Lainnya</h1>
+                              <h1 className='mt-4'>{OptionalsName[0]}</h1>
+                              <p className='text-start' dangerouslySetInnerHTML={{ __html: OptionalsTagline }} />
                          <div className='d-flex justify-content-center mt-5'>
-                                <img src="assets/tire-solution.png" className='mx-4 px-2 py-3' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                         <img src={OptionalsImage[0]} className='w-25 mx-2' alt='OPTIONAL' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                         <img src={OptionalsImage[1]} className='w-25 mx-2' alt='OPTIONAL' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                         <img src={OptionalsImage[2]} className='w-25 mx-2' alt='OPTIONAL' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                         <img src={OptionalsImage[3]} className='w-25 mx-2' alt='OPTIONAL' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+
+                                {/* <img src="assets/tire-solution.png" className='mx-4 px-2 py-3' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
                                 <img src="assets/tmo.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
-                                <img src="assets/tgb.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tgb.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} /> */}
+
                             </div>
-                            </div>
+                            </div>}
                           </div>
                          </div>}
                          <p className='mt-2 d-block d-md-none' style={{ color: 'rgba(215, 25, 33, 1)'}}>*Power comparison merupakan perbandingan hp (Horse Power)</p>
@@ -908,8 +1154,8 @@ function HomePage() {
     <p className='mb-5'>Telusuri penawaran terbaik di bengkel Resmi kami!</p>
     <div className="row">
       <div className="col-sm-6 col-lg-4">
-        <div className="card mt-4 mt-lg-0" style={{width: "18rem"}}>
-          <img src="assets/services.png" className="card-img-top rounded-0" alt="..."/>
+        <div className="card custom_box_shadow mt-4 mt-lg-0">
+          <img src="assets/services.png" className="rounded-0" alt="..."/>
           <div className="card-body">
             <h4 className="card-title fw-bold">Services</h4>
             <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
@@ -917,8 +1163,8 @@ function HomePage() {
         </div>
       </div>
       <div className="col-sm-6 col-lg-4">
-        <div className="card mt-5 mt-lg-0" style={{width: "18rem"}}>
-          <img src="assets/products-img.png" className="card-img-top rounded-0" alt="..."/>
+        <div className="card custom_box_shadow mt-5 mt-lg-0">
+          <img src="assets/products-img.png" className="rounded-0" alt="..."/>
           <div className="card-body">
             <h4 className="card-title fw-bold">Products</h4>
             <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
@@ -926,8 +1172,8 @@ function HomePage() {
         </div>
       </div>
       <div className="col-sm-6 col-lg-4">
-        <div className="card mt-5 mt-lg-0" style={{width: "18rem"}}>
-          <img src="assets/warrenty-img.png" className="card-img-top rounded-0" alt="..."/>
+        <div className="card custom_box_shadow mt-5 mt-lg-0">
+          <img src="assets/warrenty-img.png" className="rounded-0" alt="..."/>
           <div className="card-body">
             <h4 className="card-title fw-bold">Warrenty</h4>
             <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
@@ -937,8 +1183,8 @@ function HomePage() {
     </div>
     <div className="row mt-5">
       <div className="col-sm-6 col-lg-4">
-        <div className="card mt-5 mt-lg-0" style={{width: "18rem"}}>
-          <img src="assets/T-care.png" className="card-img-top rounded-0" alt="t-care-img"/>
+        <div className="card custom_box_shadow mt-5 mt-lg-0">
+          <img src="assets/T-care.png" className="rounded-0" alt="t-care-img"/>
           <div className="card-body">
             <h5 className="card-title fw-bold">T-Care</h5>
             <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
@@ -946,8 +1192,8 @@ function HomePage() {
         </div>
       </div>
       <div className="col-sm-6 col-lg-4">
-        <div className="card mt-5 mt-lg-0" style={{width: "18rem"}}>
-          <img src="assets/News-event.png" className="card-img-top rounded-0" alt="news-event-img"/>
+        <div className="card custom_box_shadow mt-5 mt-lg-0">
+          <img src="assets/News-event.png" className="rounded-0" alt="news-event-img"/>
           <div className="card-body">
             <h5 className="card-title fw-bold">News-Event</h5>
             <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
@@ -955,8 +1201,8 @@ function HomePage() {
         </div>
       </div>
       <div className="col-sm-6 col-lg-4 mb-4 mb-md-0">
-        <div className="card mt-5  mt-lg-0" style={{width: "18rem"}}>
-          <img src="assets/faq.png" className="card-img-top rounded-0" alt="faq-img"/>
+        <div className="card custom_box_shadow mt-5  mt-lg-0">
+          <img src="assets/faq.png" className="rounded-0" alt="faq-img"/>
           <div className="card-body">
             <h5 className="card-title fw-bold">FAQ</h5>
             <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
