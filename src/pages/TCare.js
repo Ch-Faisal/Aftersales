@@ -20,6 +20,9 @@ function TCare() {
   const [type, setType] = useState(1);
   const [vin, setVinInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [kendaraan, setkendaraan] = useState("");
+  const [warna, setwarna] = useState("");
+  const [hidebutton, sethidebutton] = useState(0);
   const [guideline, setguideline] = useState("");
   const [tagline, settagline] = useState("");
   const [color, setcolor] = useState("");
@@ -36,8 +39,10 @@ function TCare() {
   const [otp4, setOtp4] = useState("");
   const [otp5, setOtp5] = useState("");
   const [otp6, setOtp6] = useState("");
+  const [WrongVin, setWrongVin] = useState("");
   const handleInputChange = (event) => {
     setVinInput(event.target.value);
+    setWrongVin('')
   };
   const [selectedMonth, setSelectedMonth] = useState(""); // State to store the selected month
 
@@ -105,6 +110,10 @@ function TCare() {
       setDownloadCertificate(response.data.download_certificate);
       setDownloadWarranty(response.data.download_warranty);
       setDownload(response.data.download_certificate);
+      if(downloadWarranty.length<1)
+      {
+        sethidebutton(1);
+      }
       setLoading(false);
       setsecondtab(2);
       setregister(2);
@@ -113,13 +122,22 @@ function TCare() {
       // Handle error here
       setLoading(false);
       if (error.response) {
-        toastr.error(error.response.data.message);
+        if(error.response.data.message == 'Server Error')
+        {
+          toastr.error(error.response.data.message);
+          setWrongVin('')
+        }
+        else
+        {
+          toastr.error(error.response.data.message);
+          setWrongVin(error.response.data.message)
+        }
       }
       else
       {
         toastr.error('Not Found.')
       }
-      setsecondtab(1);
+      // setsecondtab(1);
       setregister(1);
     }
   };
@@ -193,11 +211,22 @@ function TCare() {
           },
         }
       );
-      console.log(response);
+      console.log(response.data);
+      setkendaraan(response.data.kendaraan);
+      setName(response.data.name)
+      setEmail(response.data.email)
+      setPhoneNumber(response.data.telepon)
+      setVinInput(response.data.vin)
+      setwarna(response.data.warna)
+      setSelectedYear(response.data.buy_year)
+      setSelectedMonth(response.data.buy_month)
       setLoading(false);
       setsecondtab(4);
     } catch (error) {
       setLoading(false);
+      if (error.response) {
+        toastr.error(error.response.data.message);
+      }
       console.error("Error occurred:", error);
     }
   };
@@ -232,9 +261,12 @@ function TCare() {
       setLoading(false);
       setsecondtab(5);
       setTimerValue(60);
-      startTimer();
+      countdown()
     } catch (error) {
       setLoading(false);
+      if (error.response) {
+        toastr.error(error.response.data.message);
+      }
       console.error("Error occurred:", error);
     }
   };
@@ -282,16 +314,29 @@ function TCare() {
     }
   };
 
-  function startTimer() {
-    const timerInterval = setInterval(() => {
-      setTimerValue((prevTimerValue) => {
+ 
+const countdown =() =>
+{
+  let intervalId;
+  const startTimer = () => {
+    intervalId = setInterval(() => {
+      setTimerValue(prevTimerValue => {
         if (prevTimerValue === 0) {
-          return prevTimerValue;
+          clearInterval(intervalId);
+          return 0; // Reset timer to 60 seconds
         }
-        return prevTimerValue - 1; // Update timer value using useState setter
+        return prevTimerValue - 1;
       });
     }, 1000);
-  }
+  };
+
+  // Start the timer initially
+  startTimer();
+
+  // Clean up the timer on component unmount
+  return () => clearInterval(intervalId);
+}
+ 
 
   const sendEmail = async () => {
     setLoading(true);
@@ -592,6 +637,7 @@ function TCare() {
                           value={vin}
                           onChange={handleInputChange}
                         />
+                        <p className="mt-1 custom_wrong_chase">{WrongVin}</p>
                       </div>
                       <button
                         className="btn btn-primary Lanjut mt-4 mb-4"
@@ -653,15 +699,13 @@ function TCare() {
                         <p className="tab-bold-p">
                           INNOVA 10R-BRXMBD 2.0 V HV CVT
                           <span className="tab-light-bold-p">
-                            {" "}
+                           
                             dengan warna kendaraan
-                          </span>{" "}
+                          </span>
                           ATTITUDE BLACK
                         </p>
                         <p style={{ color: "#D71921" }} className="tab-bold-p">
-                          Silakan tekan lanjut untuk mendapatkan sertifikat
-                          elektronik
-                        </p>
+                          {WrongVin}</p>
                       </div>
                       <div className="mb-4">
                         <button
@@ -974,7 +1018,7 @@ function TCare() {
                           </div>
                           <div className="col-8 p-0">
                             <span className="tab-light-bold-p1">
-                              : HILUX 2.4V DOUBLE CABIN 4X4 A/T(GUN125R-DDTHXD)
+                              : {kendaraan}
                             </span>
                           </div>
                         </div>
@@ -984,7 +1028,7 @@ function TCare() {
                           </div>
                           <div className="col-8 p-0">
                             <span className="tab-light-bold-p1">
-                              : ATTITUDE BLACK METALIC
+                              : {warna}
                             </span>
                           </div>
                         </div>
@@ -1225,6 +1269,7 @@ function TCare() {
                         ? "block"
                         : "none",
                     }}
+                   
                   >
                     <div class="circle-tab pt-4">
                       <a
@@ -1261,6 +1306,7 @@ function TCare() {
                           Langkah 3 - 3
                         </p>
                       </div>
+                      <div className={` ${hidebutton !== 0 ? "d-none" : "d-block"}`}>
                       <ul className="nav  nav-fill px-lg-5 px-3">
                         <li className="nav-item me-4 custom_border_radios_add">
                           <button
@@ -1283,11 +1329,13 @@ function TCare() {
                           </button>
                         </li>
                       </ul>
+                      </div>
+                    
                       <div className="pt-4">
                         <p className="tab-bold-p">
                           Terima Kasih
                           <br />
-                          Bapak/Ibu Iky
+                          Bapak/Ibu {uname}
                         </p>
                       </div>
                       <div className="text-start mx-4 mx-md-5">
@@ -1446,7 +1494,7 @@ function TCare() {
                           className="form-control Masukkan"
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
-                          placeholder="MROBB3CD4P5812581"
+                          placeholder="Masukkan 17 Digit No. Rangka Kendaraan"
                           value={vinn}
                           onChange={(e) => setVinn(e.target.value)}
                         />
@@ -1458,7 +1506,7 @@ function TCare() {
                           className="form-control Masukkan"
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
-                          placeholder="rizkyocta.th@gmail.com"
+                          placeholder="test@mail.com"
                           value={emaill}
                           onChange={(e) => setEmaill(e.target.value)}
                         />
@@ -1633,19 +1681,28 @@ function TCare() {
         </div>
         <div className="container mt-5">
           <div className="row align-items-center">
-            <div className="col-6 col-md-7 text-start">
+            <div className="col-12 col-md-7 text-start">
               <p className="text-danger">Toyota SERVICE</p>
               <h1>Manfaatkan T-Care dengan program Express Maintenance</h1>
               <button
                 type="button"
-                class="btn btn-outline-dark express w-md-50 mt-4"
+                class="btn custom-btn-dark express w-md-50 mt-4  d-lg-block d-none"
               >
                 Telurusi Express Maintenance
               </button>
             </div>
-            <div className="col-6 col-md-5">
+            <div className="col-12 col-md-5 text-center mt-lg-0 mt-4">
               <img src="assets/services.png" className="w-100" />
             </div>
+            <div className="mt-4 mb-5">
+                    <button
+                          className="btn custom-btn-dark me-3  d-lg-none"
+                        >
+                          Telurusi Express Maintenance
+                        </button>
+                       
+            </div>
+            
           </div>
         </div>
         <div className="container p-lg-5">

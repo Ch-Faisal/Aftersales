@@ -152,7 +152,7 @@ const Services = () => {
                           Anda selalu optimal
                         </h1>
                       </div>
-                      <div className="col-lg-6 col-md-10 col-12">
+                      <div className="col-lg-6 col-md-10 col-12 mt-lg-0 mt-3 ">
                         <img
                           src="assets/img.png"
                           className="img-fluid w-100 h-100"
@@ -166,7 +166,7 @@ const Services = () => {
                           Layanan Servis berkualitas prima, agar performa Toyota
                           Anda selalu optimal
                         </h1>
-                        <p className="Services_paragraph">
+                        <p className="Services_paragraph mt-lg-0 mt-4">
                           Percayakan perawatan dan perbaikan kendaraan
                           kesayangan Anda kepada bengkel resmi Toyota.
                         </p>
@@ -255,7 +255,7 @@ const Services = () => {
                     </div>
                   </div>
                   <div className="custom-bg-gray pb-5 pt-2 mt-lg-5 container-fluid">
-                    <div className="container mt-5">
+                    <div className="container mt-4">
                       <div className="row">
                         <div className="col-12 d-lg-none d-block">
                           <h1>Servis dengan kualitas terbaik</h1>
@@ -266,13 +266,13 @@ const Services = () => {
                             className="img-fluid w-100 pb-4 pt-4 pt-lg-0 pb-lg-0"
                           />
                         </div>
-                        <div className="col-lg-7 text-start">
+                        <div className="col-lg-7 text-start ps-lg-5">
                           <div className="row">
                             <h1 className="d-lg-block d-none">
                               Servis dengan kualitas terbaik
                             </h1>
                             <div className="col-md-6">
-                              <span className="d-flex align-items-center">
+                              <span className="d-flex align-items-center pb-2">
                                 <span className="custom_font pe-lg-3 me-3 me-lg-0">
                                   1
                                 </span>
@@ -281,7 +281,7 @@ const Services = () => {
                                   menunjang kualitas perbaikan.
                                 </span>
                               </span>
-                              <span className="d-flex align-items-center">
+                              <span className="d-flex align-items-center pb-2">
                                 <span className="custom_font me-2 me-lg-0">
                                   2
                                 </span>
@@ -290,7 +290,7 @@ const Services = () => {
                                   transparan.
                                 </span>
                               </span>
-                              <span className="d-flex align-items-center">
+                              <span className="d-flex align-items-center pb-2">
                                 <span className="custom_font me-2 me-lg-0">
                                   3
                                 </span>
@@ -301,16 +301,16 @@ const Services = () => {
                               </span>
                             </div>
                             <div className="col-md-6">
-                              <span className="d-flex align-items-center">
+                              <span className="d-flex align-items-center pb-2">
                                 <span className="custom_font me-2 me-lg-0">
                                   4
                                 </span>
-                                <span className="custom_color_11">
+                                <span className="custom_color_11 me-lg-4 pe-lg-4">
                                   Jaminan suku cadang orisinal dari
                                   Toyota.
                                 </span>
                               </span>
-                              <span className="d-flex align-items-center">
+                              <span className="d-flex align-items-center pb-2">
                                 <span className="custom_font me-2 me-lg-0">
                                   5
                                 </span>
@@ -319,7 +319,7 @@ const Services = () => {
                                   standar.
                                 </span>
                               </span>
-                              <span className="d-flex align-items-center">
+                              <span className="d-flex align-items-center pb-2">
                                 <span className="custom_font me-2 me-lg-0">
                                   6
                                 </span>
