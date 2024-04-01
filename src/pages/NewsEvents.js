@@ -5,11 +5,15 @@ import '../css/news-event.css';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Oval } from 'react-loader-spinner'
+import { useParams } from 'react-router-dom';
 function NewsEvents() {
+  let { slug } = useParams();
     const [newsData, setNewsData] = useState([]);
   const token = useSelector(state => state.value);
   const [loading, setLoading] = useState(true);
   const [content, setContent] =useState([])
+  const queryParams = window.location.search;
+  console.log(queryParams)
   useEffect(() => {
     const fetchNewsData = async () => {
       setLoading(true);
@@ -19,7 +23,7 @@ function NewsEvents() {
             Authorization: `Bearer ${token}`
           }
         };
-        const response = await axios.get('https://aftersales-toyota-revamp.thriveagency.id/api/news', config);
+        const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/news?slug=${slug}`, config);
         console.log('Response data of news:', response.data.data);
         setNewsData(response.data.data);
         setContent(response.data.data[0].body.replace(/['"]+/g, ''));

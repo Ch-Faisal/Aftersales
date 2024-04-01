@@ -20,6 +20,10 @@ function TCare() {
   const [type, setType] = useState(1);
   const [vin, setVinInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [message, setmessage] = useState("");
+  const [kendaraan, setkendaraan] = useState("");
+  const [warna, setwarna] = useState("");
+  const [hidebutton, sethidebutton] = useState(0);
   const [guideline, setguideline] = useState("");
   const [tagline, settagline] = useState("");
   const [color, setcolor] = useState("");
@@ -36,8 +40,10 @@ function TCare() {
   const [otp4, setOtp4] = useState("");
   const [otp5, setOtp5] = useState("");
   const [otp6, setOtp6] = useState("");
+  const [WrongVin, setWrongVin] = useState("");
   const handleInputChange = (event) => {
     setVinInput(event.target.value);
+    setWrongVin('')
   };
   const [selectedMonth, setSelectedMonth] = useState(""); // State to store the selected month
 
@@ -93,33 +99,64 @@ function TCare() {
         }
       );
       // Handle response data here
-      console.log(response.data.data.color);
-      console.log(response.data.data.product);
+      if (response && response.data &&response.data.data && response.data.data.color) { 
       setcolor(response.data.data.color);
       setproduct(response.data.data.color);
       setImageUrl(response.data.imgUrl);
       settagline(response.data.tagline);
       setguideline(response.data.tagline);
-      console.log('cetificate',response.data.download_certificate)
-      console.log('cetificate',response.data.download_certificate)
+      setName(response.data.data.name)
+      setEmail(response.data.data.email)
+      setPhoneNumber(response.data.data.phone)
       setDownloadCertificate(response.data.download_certificate);
       setDownloadWarranty(response.data.download_warranty);
       setDownload(response.data.download_certificate);
+      if(response.data.download_warranty.length<1)
+      {
+        sethidebutton(1);
+      }
       setLoading(false);
       setsecondtab(2);
       setregister(2);
+    }
+    else {
+      setLoading(false);
+      console.log('This is response of else api',response);
+      console.log('This is response of else api',response.data.imgUrl);
+
+      setImageUrl(response.data.imgUrl);
+      settagline(response.data.tagline);
+      setguideline(response.data.guideline);
+      setVinInput(response.data.vin)
+      setmessage(response.data.message)
+      toastr.error(response.data.status)
+      setLoading(false);
+      setsecondtab(1);
+      setregister(2);
+    }
+     
       // setActiveCircle(activeCircle + 1);
     } catch (error) {
+      console.log('error is ',error)
       // Handle error here
       setLoading(false);
       if (error.response) {
-        toastr.error(error.response.data.message);
+        if(error.response.data.message == 'Server Error')
+        {
+          toastr.error(error.response.data.message);
+          setWrongVin('')
+        }
+        else
+        {
+          toastr.error(error.response.data.message);
+          setWrongVin(error.response.data.message)
+        }
       }
       else
       {
         toastr.error('Not Found.')
       }
-      setsecondtab(1);
+      // setsecondtab(1);
       setregister(1);
     }
   };
@@ -193,22 +230,32 @@ function TCare() {
           },
         }
       );
-      console.log(response);
+      console.log(response.data);
+      setkendaraan(response.data.kendaraan);
+      setName(response.data.name)
+      setEmail(response.data.email)
+      setPhoneNumber(response.data.telepon)
+      setVinInput(response.data.vin)
+      setwarna(response.data.warna)
+      setSelectedYear(response.data.buy_year)
+      setSelectedMonth(response.data.buy_month)
       setLoading(false);
       setsecondtab(4);
     } catch (error) {
       setLoading(false);
+      if (error.response) {
+        toastr.error(error.response.data.message);
+      }
       console.error("Error occurred:", error);
     }
   };
   const submitRegister = async () => {
     setLoading(true);
-    const selectedMonthValue = monthMap[selectedMonth];
     try {
       const name = uname;
       const email = uemail;
       const phone = phoneNumber;
-      const buy_month = selectedMonthValue;
+      const buy_month = selectedMonth;
       const buy_year = selectedYear;
       const token =
         "OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE";
@@ -232,9 +279,12 @@ function TCare() {
       setLoading(false);
       setsecondtab(5);
       setTimerValue(60);
-      startTimer();
+      countdown()
     } catch (error) {
       setLoading(false);
+      if (error.response) {
+        toastr.error(error.response.data.message);
+      }
       console.error("Error occurred:", error);
     }
   };
@@ -242,6 +292,12 @@ function TCare() {
     setLoading(true);
     const selectedMonthValue = monthMap[selectedMonth];
     const otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
+    setOtp1(""); // Empty the value of otp1
+    setOtp2(""); // Empty the value of otp2
+    setOtp3(""); // Empty the value of otp3
+    setOtp4(""); // Empty the value of otp4
+    setOtp5(""); // Empty the value of otp5
+    setOtp6("");
     try {
       const token =
         "OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE";
@@ -269,6 +325,10 @@ function TCare() {
       if (response.data.vin) {
         setsecondtab(6);
       }
+      if(response.data.download_warranty == null)
+      {
+        sethidebutton(1);
+      }
     } catch (error) {
       setLoading(false);
       console.error("Error occurred:", error);
@@ -282,16 +342,29 @@ function TCare() {
     }
   };
 
-  function startTimer() {
-    const timerInterval = setInterval(() => {
-      setTimerValue((prevTimerValue) => {
+ 
+const countdown =() =>
+{
+  let intervalId;
+  const startTimer = () => {
+    intervalId = setInterval(() => {
+      setTimerValue(prevTimerValue => {
         if (prevTimerValue === 0) {
-          return prevTimerValue;
+          clearInterval(intervalId);
+          return 0; // Reset timer to 60 seconds
         }
-        return prevTimerValue - 1; // Update timer value using useState setter
+        return prevTimerValue - 1;
       });
     }, 1000);
-  }
+  };
+
+  // Start the timer initially
+  startTimer();
+
+  // Clean up the timer on component unmount
+  return () => clearInterval(intervalId);
+}
+ 
 
   const sendEmail = async () => {
     setLoading(true);
@@ -320,44 +393,61 @@ function TCare() {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload =  async () => {
     if (!download) {
       toastr.error("No PDF data available for download");
       return;
     }
+    try{
 
-    // Create a Blob from the PDF data
-    const blob = new Blob([download], { type: "application/pdf" });
+       console.log(download)
 
-    // Create a URL for the Blob
-    const url = URL.createObjectURL(blob);
+            // Fetch the PDF file using the PDF URL
+            const response = await axios.get(download, { responseType: 'blob' });
 
-    // Create a link element
-    const link = document.createElement("a");
-
-    // Set the href attribute of the link to the URL of the Blob
-    link.href = url;
-
-    // Set the download attribute to specify the filename
-    link.download = "downloaded_file.pdf";
-
-    // Simulate a click on the link to trigger the download
-    link.click();
-
-    // Clean up by revoking the URL object
-    URL.revokeObjectURL(url);
+            // Create a Blob from the response data
+            const blob = new Blob([response.data], { type: 'application/pdf' });
+      
+            // Create a URL for the Blob
+            const url = URL.createObjectURL(blob);
+      
+            // Create a link element
+            const link = document.createElement('a');
+      
+            // Set the href attribute of the link to the URL of the Blob
+            link.href = url;
+      
+            // Set the download attribute to specify the filename
+            link.download = 'downloaded_file.pdf';
+      
+            // Simulate a click on the link to trigger the download
+            link.click();
+      
+            // Clean up by revoking the URL object
+            URL.revokeObjectURL(url);
+    }
+    catch(error)
+    {
+    }
+ 
   };
 
+  
   const handlePrint = () => {
     if (!download) {
-      toastr.error("No PDF data available for printing");
+      toastr.error("No PDF URL available for printing");
       return;
     }
-
+  
     // Open a new window for printing
     const printWindow = window.open("", "_blank");
-
-    // Write the PDF content to the new window
+  
+    if (!printWindow) {
+      toastr.error("Popup blocker may be preventing the print window from opening. Please disable it and try again.");
+      return;
+    }
+  
+    // Write the HTML content to the new window
     printWindow.document.write(`
       <html>
         <head>
@@ -368,21 +458,29 @@ function TCare() {
                 margin: 0;
                 padding: 0;
               }
+              /* Adjust iframe size for printing */
+              iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+              }
             }
           </style>
         </head>
         <body>
-          <embed width="100%" height="100%" type="application/pdf" src="${download}" />
+          <iframe src="${download}" frameborder="0"></iframe>
         </body>
       </html>
     `);
-
+  
     // Close the document for printing
     printWindow.document.close();
-
+  
     // Print the document
     printWindow.print();
   };
+  
+  
   const [vinn, setVinn] = useState("");
   const [emaill, setEmaill] = useState("");
   const [Nodata, setNodata] = useState("");
@@ -592,6 +690,7 @@ function TCare() {
                           value={vin}
                           onChange={handleInputChange}
                         />
+                        <p className="mt-1 custom_wrong_chase text-start">{WrongVin}</p>
                       </div>
                       <button
                         className="btn btn-primary Lanjut mt-4 mb-4"
@@ -643,25 +742,18 @@ function TCare() {
                         </p>
                       </div>
                       <div>
-                        <img src="assets/T-Care-1.png" className="img-fluid" />
+                        <img src={imageUrl} className="img-fluid" />
                         <p className="tab-bold-p">{vin}</p>
                       </div>
                       <div className="text-start mx-4 mx-md-5">
                         <p className="tab-bold-p">
-                          Selamat! Mobil Anda Terdaftar!
+                          {tagline}
                         </p>
                         <p className="tab-bold-p">
-                          INNOVA 10R-BRXMBD 2.0 V HV CVT
-                          <span className="tab-light-bold-p">
-                            {" "}
-                            dengan warna kendaraan
-                          </span>{" "}
-                          ATTITUDE BLACK
+                          {message}
                         </p>
                         <p style={{ color: "#D71921" }} className="tab-bold-p">
-                          Silakan tekan lanjut untuk mendapatkan sertifikat
-                          elektronik
-                        </p>
+                          {guideline}</p>
                       </div>
                       <div className="mb-4">
                         <button
@@ -701,7 +793,7 @@ function TCare() {
                         <img src="assets/mdi_car-side.png" alt="" />
                       </a>
                       <a href="javascript:void(0)" className={`mx-4 active`}>
-                        <img src="assets/Group (2).png" alt="" />
+                      <img src="assets/Group (2).png" alt="" />
                       </a>
                       <a href="javascript:void(0)" className={`mx-3`}>
                         <img src="assets/Group (3).png" alt="" />
@@ -722,7 +814,7 @@ function TCare() {
                         <p className="tab-bold-p">
                           Hai!
                           <br />
-                          Bapak/Ibu Iky.
+                          Bapak/Ibu  {uname}.
                         </p>
                         <p className="tab-bold-p">
                           Mobil Anda Sudah Terdaftar di Program T-Care!
@@ -974,7 +1066,7 @@ function TCare() {
                           </div>
                           <div className="col-8 p-0">
                             <span className="tab-light-bold-p1">
-                              : HILUX 2.4V DOUBLE CABIN 4X4 A/T(GUN125R-DDTHXD)
+                              : {kendaraan}
                             </span>
                           </div>
                         </div>
@@ -984,7 +1076,7 @@ function TCare() {
                           </div>
                           <div className="col-8 p-0">
                             <span className="tab-light-bold-p1">
-                              : ATTITUDE BLACK METALIC
+                              : {warna}
                             </span>
                           </div>
                         </div>
@@ -1225,6 +1317,7 @@ function TCare() {
                         ? "block"
                         : "none",
                     }}
+                   
                   >
                     <div class="circle-tab pt-4">
                       <a
@@ -1261,6 +1354,7 @@ function TCare() {
                           Langkah 3 - 3
                         </p>
                       </div>
+                      <div className={` ${hidebutton != 0 ? "d-none" : "d-block"}`}>
                       <ul className="nav  nav-fill px-lg-5 px-3">
                         <li className="nav-item me-4 custom_border_radios_add">
                           <button
@@ -1283,11 +1377,13 @@ function TCare() {
                           </button>
                         </li>
                       </ul>
+                      </div>
+                    
                       <div className="pt-4">
                         <p className="tab-bold-p">
                           Terima Kasih
                           <br />
-                          Bapak/Ibu Iky
+                          Bapak/Ibu {uname}
                         </p>
                       </div>
                       <div className="text-start mx-4 mx-md-5">
@@ -1446,7 +1542,7 @@ function TCare() {
                           className="form-control Masukkan"
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
-                          placeholder="MROBB3CD4P5812581"
+                          placeholder="Masukkan 17 Digit No. Rangka Kendaraan"
                           value={vinn}
                           onChange={(e) => setVinn(e.target.value)}
                         />
@@ -1458,7 +1554,7 @@ function TCare() {
                           className="form-control Masukkan"
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
-                          placeholder="rizkyocta.th@gmail.com"
+                          placeholder="test@mail.com"
                           value={emaill}
                           onChange={(e) => setEmaill(e.target.value)}
                         />
@@ -1633,19 +1729,28 @@ function TCare() {
         </div>
         <div className="container mt-5">
           <div className="row align-items-center">
-            <div className="col-6 col-md-7 text-start">
+            <div className="col-12 col-md-7 text-start">
               <p className="text-danger">Toyota SERVICE</p>
               <h1>Manfaatkan T-Care dengan program Express Maintenance</h1>
               <button
                 type="button"
-                class="btn btn-outline-dark express w-md-50 mt-4"
+                class="btn custom-btn-dark express w-md-50 mt-4  d-lg-block d-none"
               >
                 Telurusi Express Maintenance
               </button>
             </div>
-            <div className="col-6 col-md-5">
+            <div className="col-12 col-md-5 text-center mt-lg-0 mt-4">
               <img src="assets/services.png" className="w-100" />
             </div>
+            <div className="mt-4 mb-5">
+                    <button
+                          className="btn custom-btn-dark me-3  d-lg-none"
+                        >
+                          Telurusi Express Maintenance
+                        </button>
+                       
+            </div>
+            
           </div>
         </div>
         <div className="container p-lg-5">
