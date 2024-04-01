@@ -688,3 +688,11 @@ border-radius: 30px !important;
     border: 0px !important;
   }
 }
+@media only screen and (min-width: 990px) {
+
+  .custom_active_class{
+
+    background-color: white !important;
+    color: #000 !important;
+  }
+}
