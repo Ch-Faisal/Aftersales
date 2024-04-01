@@ -232,13 +232,13 @@ function Header() {
           </div>
         </div>
       </nav>
-      <nav className="navbar navbar-expand-lg">
-        <div className="container">
-          <NavLink to="/" className="navbar-brand">
+      <nav className="navbar navbar-expand-lg navbar_bottom_custom_padding">
+        <div className="container-lg container-fluid px-0">
+          <NavLink to="/" className="navbar-brand mx-lg-0 mx-3 navbar_bottom_custom_padding_1">
             Toyota After Sales
           </NavLink>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler mx-lg-0 mx-3 navbar_bottom_custom_padding_2"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav2"
@@ -251,57 +251,140 @@ function Header() {
             </span>
           </button>
           <div
-            className="collapse navbar-collapse justify-content-end"
+            className="collapse navbar-collapse justify-content-end color_in_mobile"
             id="navbarNav2"
           >
             <ul className="navbar-nav">
-              <li className="nav-item">
+              <li className="nav-item mx-0">
+                <div className="d-flex justify-content-between justify-content-lg-start">
                 <NavLink
                   to="/services"
-                  className={`nav-link custom-border-radius`}
+                  className="nav-link active custom-border-radius text-white mx-lg-0 mx-3"
+
                   aria-current="page"
                 >
                   SERVICES
                 </NavLink>
+                <button
+            className="navbar-toggler mx-lg-0 mx-3 navbar_bottom_custom_padding_2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav3"
+            aria-controls="navbarNav3"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span>
+              <img src="assets/Down.png" />
+            </span>
+          </button>
+          </div>
+          <div className="collapse" id="navbarNav3">
+  <ul className="navbar-nav">
+    <li className="nav-item mx-3">
+      <NavLink to="" className="nav-link custom-border-radius text-white">
+      General Repair
+      </NavLink>
+    </li>
+    <li className="nav-item mx-3">
+      <NavLink to="" className="nav-link custom-border-radius text-white">
+      Body & Paint
+      </NavLink>
+    </li>
+    <li className="nav-item mx-3">
+      <NavLink to="" className="nav-link custom-border-radius text-white">
+      Toyota Mobile Service
+      </NavLink>
+    </li>
+    <li className="nav-item mx-3">
+      <NavLink to="" className="nav-link custom-border-radius text-white">
+      Express Maintenance
+      </NavLink>
+    </li>
+  </ul>
+</div>
               </li>
-              <li className="nav-item mx-3">
+              <li className="nav-item mx-0">
+              <div className="d-flex justify-content-between justify-content-lg-start">
                 <NavLink
                   to="/products"
-                  className="nav-link custom-border-radius  "
+                  className="nav-link custom-border-radius text-white mx-3"
+
                 >
                   PRODUCTS
                 </NavLink>
+                <button
+            className="navbar-toggler mx-lg-0 mx-3 navbar_bottom_custom_padding_2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav4"
+            aria-controls="navbarNav4"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span>
+              <img src="assets/Down.png" />
+            </span>
+          </button>
+          </div>
+          <div className="collapse" id="navbarNav4">
+  <ul className="navbar-nav">
+    <li className="nav-item mx-3">
+      <NavLink to="" className="nav-link custom-border-radius text-white">
+      Service Parts
+      </NavLink>
+    </li>
+    <li className="nav-item mx-3">
+      <NavLink to="" className="nav-link custom-border-radius text-white">
+      TMO
+      </NavLink>
+    </li>
+    <li className="nav-item mx-3">
+      <NavLink to="" className="nav-link custom-border-radius text-white">
+      TGB
+      </NavLink>
+    </li>
+    <li className="nav-item mx-3">
+      <NavLink to="" className="nav-link custom-border-radius text-white">
+      Tire Solution
+      </NavLink>
+    </li>
+  </ul>
+</div>
               </li>
-              <li className="nav-item mx-3">
+              <li className="nav-item mx-0">
                 <NavLink
                   to="/warranty"
-                  className="nav-link custom-border-radius "
+                  className="nav-link custom-border-radius text-white mx-3"
+
                 >
                   WARRANTY
                 </NavLink>
               </li>
-              <li className="nav-item mx-3">
+              <li className="nav-item mx-0">
                 <NavLink
                   to="/t-care"
-                  className="nav-link custom-border-radius "
+                  className="nav-link custom-border-radius text-white mx-3"
+
                   aria-disabled="true"
                 >
                   T-CARE
                 </NavLink>
               </li>
-              <li className="nav-item mx-3">
+              <li className="nav-item mx-0">
                 <NavLink
                   to="/news-information"
-                  className="nav-link custom-border-radius"
+                  className="nav-link custom-border-radius text-white mx-3"
+
                   aria-disabled="true"
                 >
                   NEWS & EVENT
                 </NavLink>
               </li>
-              <li className="nav-item mx-3">
+              <li className="nav-item mx-0">
                 <NavLink
                   to="/faq"
-                  className="nav-link custom-border-radius "
+                  className="nav-link custom-border-radius text-white mx-3"
                   aria-disabled="true"
                 >
                   FAQ
