@@ -1426,8 +1426,8 @@ function HomePage() {
                                                   <p className="pt-3 d-none d-md-block">
                                                     Oli Standar
                                                   </p>
-                                                  <p className="pt-3 fw-bold standard d-block d-md-none mb-4">
-                                                    {moleculeTitles[0]}
+                                                  <p className="pt-3 fw-bold standard d-block d-md-none mb-4" dangerouslySetInnerHTML={{ __html: moleculeTitles[0] }}>
+                                    
                                                   </p>
                                                   <p className="pt-md-3 pt-0 text-center fw-bold">
                                                     10W-30
@@ -1484,8 +1484,9 @@ function HomePage() {
                                                           "rgba(22, 26, 29, 1)",
                                                         fontSize: "14px",
                                                       }}
+                                                      dangerouslySetInnerHTML={{ __html: moleculeTitles[1] }}
                                                     >
-                                                      {moleculeTitles[1]}
+                                                      {/* {moleculeTitles[1]} */}
                                                     </span>
                                                   </p>
                                                   <p className="pt-4 text-center fw-bold">
@@ -1546,8 +1547,10 @@ function HomePage() {
                                                           "rgba(22, 26, 29, 1)",
                                                         fontSize: "14px",
                                                       }}
+
+                                                      dangerouslySetInnerHTML={{ __html: moleculeTitles[2] }}
                                                     >
-                                                      {moleculeTitles[2]}
+                                                      {/* {moleculeTitles[2]} */}
                                                     </span>
                                                   </p>
                                                   <p className="pt-4 text-center fw-bold">

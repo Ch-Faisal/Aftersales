@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import "../css/t-care.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/free-mode";
@@ -20,6 +20,7 @@ function TCare() {
   const [type, setType] = useState(1);
   const [vin, setVinInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [message, setmessage] = useState("");
   const [kendaraan, setkendaraan] = useState("");
   const [warna, setwarna] = useState("");
   const [hidebutton, sethidebutton] = useState(0);
@@ -42,7 +43,7 @@ function TCare() {
   const [WrongVin, setWrongVin] = useState("");
   const handleInputChange = (event) => {
     setVinInput(event.target.value);
-    setWrongVin('')
+    setWrongVin("");
   };
   const [selectedMonth, setSelectedMonth] = useState(""); // State to store the selected month
 
@@ -97,40 +98,61 @@ function TCare() {
           },
         }
       );
-      setcolor(response.data.data.color);
-      setproduct(response.data.data.color);
-      setImageUrl(response.data.imgUrl);
-      settagline(response.data.tagline);
-      setguideline(response.data.tagline);
-      setDownloadCertificate(response.data.download_certificate);
-      setDownloadWarranty(response.data.download_warranty);
-      setDownload(response.data.download_certificate);
-      if(downloadWarranty.length<1)
-      {
-        sethidebutton(1);
+      // Handle response data here
+      if (
+        response &&
+        response.data &&
+        response.data.data &&
+        response.data.data.color
+      ) {
+        setcolor(response.data.data.color);
+        setproduct(response.data.data.color);
+        setImageUrl(response.data.imgUrl);
+        settagline(response.data.tagline);
+        setguideline(response.data.tagline);
+        setName(response.data.data.name);
+        setEmail(response.data.data.email);
+        setPhoneNumber(response.data.data.phone);
+        setDownloadCertificate(response.data.download_certificate);
+        setDownloadWarranty(response.data.download_warranty);
+        setDownload(response.data.download_certificate);
+        if (response.data.download_warranty.length < 1) {
+          sethidebutton(1);
+        }
+        setLoading(false);
+        setsecondtab(2);
+        setregister(2);
+      } else {
+        setLoading(false);
+        console.log("This is response of else api", response);
+        console.log("This is response of else api", response.data.imgUrl);
+
+        setImageUrl(response.data.imgUrl);
+        settagline(response.data.tagline);
+        setguideline(response.data.guideline);
+        setVinInput(response.data.vin);
+        setmessage(response.data.message);
+        toastr.error(response.data.status);
+        setLoading(false);
+        setsecondtab(1);
+        setregister(2);
       }
-      setLoading(false);
-      setsecondtab(2);
-      setregister(2);
+
       // setActiveCircle(activeCircle + 1);
     } catch (error) {
+      console.log("error is ", error);
       // Handle error here
       setLoading(false);
       if (error.response) {
-        if(error.response.data.message == 'Server Error')
-        {
+        if (error.response.data.message == "Server Error") {
           toastr.error(error.response.data.message);
-          setWrongVin('')
-        }
-        else
-        {
+          setWrongVin("");
+        } else {
           toastr.error(error.response.data.message);
-          setWrongVin(error.response.data.message)
+          setWrongVin(error.response.data.message);
         }
-      }
-      else
-      {
-        toastr.error('Not Found.')
+      } else {
+        toastr.error("Not Found.");
       }
       // setsecondtab(1);
       setregister(1);
@@ -206,14 +228,15 @@ function TCare() {
           },
         }
       );
+      console.log(response.data);
       setkendaraan(response.data.kendaraan);
-      setName(response.data.name)
-      setEmail(response.data.email)
-      setPhoneNumber(response.data.telepon)
-      setVinInput(response.data.vin)
-      setwarna(response.data.warna)
-      setSelectedYear(response.data.buy_year)
-      setSelectedMonth(response.data.buy_month)
+      setName(response.data.name);
+      setEmail(response.data.email);
+      setPhoneNumber(response.data.telepon);
+      setVinInput(response.data.vin);
+      setwarna(response.data.warna);
+      setSelectedYear(response.data.buy_year);
+      setSelectedMonth(response.data.buy_month);
       setLoading(false);
       setsecondtab(4);
     } catch (error) {
@@ -221,16 +244,16 @@ function TCare() {
       if (error.response) {
         toastr.error(error.response.data.message);
       }
+      console.error("Error occurred:", error);
     }
   };
   const submitRegister = async () => {
     setLoading(true);
-    const selectedMonthValue = monthMap[selectedMonth];
     try {
       const name = uname;
       const email = uemail;
       const phone = phoneNumber;
-      const buy_month = selectedMonthValue;
+      const buy_month = selectedMonth;
       const buy_year = selectedYear;
       const token =
         "OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE";
@@ -250,21 +273,29 @@ function TCare() {
           },
         }
       );
+      console.log(response);
       setLoading(false);
       setsecondtab(5);
       setTimerValue(60);
-      countdown()
+      countdown();
     } catch (error) {
       setLoading(false);
       if (error.response) {
         toastr.error(error.response.data.message);
       }
+      console.error("Error occurred:", error);
     }
   };
   const submitOtp = async () => {
     setLoading(true);
     const selectedMonthValue = monthMap[selectedMonth];
     const otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
+    setOtp1(""); // Empty the value of otp1
+    setOtp2(""); // Empty the value of otp2
+    setOtp3(""); // Empty the value of otp3
+    setOtp4(""); // Empty the value of otp4
+    setOtp5(""); // Empty the value of otp5
+    setOtp6("");
     try {
       const token =
         "OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE";
@@ -280,6 +311,11 @@ function TCare() {
           },
         }
       );
+      // console.log(response);
+      // console.log(response.data.vin);
+      // console.log("download warrnety", response.data.download_warranty);
+      // console.log("Download certificate", response.data.download_certificate);
+      // Storing the values in state variables
       setDownloadWarranty(response.data.download_warranty);
       setDownloadCertificate(response.data.download_certificate);
       setDownload(response.data.download_certificate);
@@ -287,8 +323,12 @@ function TCare() {
       if (response.data.vin) {
         setsecondtab(6);
       }
+      if (response.data.download_warranty == null) {
+        sethidebutton(1);
+      }
     } catch (error) {
       setLoading(false);
+      console.error("Error occurred:", error);
       toastr.error(error.response.data.message);
       setOtp1(""); // Empty the value of otp1
       setOtp2(""); // Empty the value of otp2
@@ -299,29 +339,26 @@ function TCare() {
     }
   };
 
- 
-const countdown =() =>
-{
-  let intervalId;
-  const startTimer = () => {
-    intervalId = setInterval(() => {
-      setTimerValue(prevTimerValue => {
-        if (prevTimerValue === 0) {
-          clearInterval(intervalId);
-          return 0; // Reset timer to 60 seconds
-        }
-        return prevTimerValue - 1;
-      });
-    }, 1000);
+  const countdown = () => {
+    let intervalId;
+    const startTimer = () => {
+      intervalId = setInterval(() => {
+        setTimerValue((prevTimerValue) => {
+          if (prevTimerValue === 0) {
+            clearInterval(intervalId);
+            return 0; // Reset timer to 60 seconds
+          }
+          return prevTimerValue - 1;
+        });
+      }, 1000);
+    };
+
+    // Start the timer initially
+    startTimer();
+
+    // Clean up the timer on component unmount
+    return () => clearInterval(intervalId);
   };
-
-  // Start the timer initially
-  startTimer();
-
-  // Clean up the timer on component unmount
-  return () => clearInterval(intervalId);
-}
- 
 
   const sendEmail = async () => {
     setLoading(true);
@@ -340,52 +377,67 @@ const countdown =() =>
           },
         }
       );
+      console.log(response);
       toastr.success(response.data.message);
       setLoading(false);
     } catch (error) {
+      console.error("Error occurred:", error);
       setLoading(false);
       toastr.error(error.response.data.message);
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!download) {
       toastr.error("No PDF data available for download");
       return;
     }
+    try {
+      console.log(download);
 
-    // Create a Blob from the PDF data
-    const blob = new Blob([download], { type: "application/pdf" });
+      // Fetch the PDF file using the PDF URL
+      const response = await axios.get(download, { responseType: "blob" });
 
-    // Create a URL for the Blob
-    const url = URL.createObjectURL(blob);
+      // Create a Blob from the response data
+      const blob = new Blob([response.data], { type: "application/pdf" });
 
-    // Create a link element
-    const link = document.createElement("a");
+      // Create a URL for the Blob
+      const url = URL.createObjectURL(blob);
 
-    // Set the href attribute of the link to the URL of the Blob
-    link.href = url;
+      // Create a link element
+      const link = document.createElement("a");
 
-    // Set the download attribute to specify the filename
-    link.download = "downloaded_file.pdf";
+      // Set the href attribute of the link to the URL of the Blob
+      link.href = url;
 
-    // Simulate a click on the link to trigger the download
-    link.click();
+      // Set the download attribute to specify the filename
+      link.download = "downloaded_file.pdf";
 
-    // Clean up by revoking the URL object
-    URL.revokeObjectURL(url);
+      // Simulate a click on the link to trigger the download
+      link.click();
+
+      // Clean up by revoking the URL object
+      URL.revokeObjectURL(url);
+    } catch (error) {}
   };
 
   const handlePrint = () => {
     if (!download) {
-      toastr.error("No PDF data available for printing");
+      toastr.error("No PDF URL available for printing");
       return;
     }
 
     // Open a new window for printing
     const printWindow = window.open("", "_blank");
 
-    // Write the PDF content to the new window
+    if (!printWindow) {
+      toastr.error(
+        "Popup blocker may be preventing the print window from opening. Please disable it and try again."
+      );
+      return;
+    }
+
+    // Write the HTML content to the new window
     printWindow.document.write(`
       <html>
         <head>
@@ -396,11 +448,17 @@ const countdown =() =>
                 margin: 0;
                 padding: 0;
               }
+              /* Adjust iframe size for printing */
+              iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+              }
             }
           </style>
         </head>
         <body>
-          <embed width="100%" height="100%" type="application/pdf" src="${download}" />
+          <iframe src="${download}" frameborder="0"></iframe>
         </body>
       </html>
     `);
@@ -411,6 +469,7 @@ const countdown =() =>
     // Print the document
     printWindow.print();
   };
+
   const [vinn, setVinn] = useState("");
   const [emaill, setEmaill] = useState("");
   const [Nodata, setNodata] = useState("");
@@ -435,13 +494,17 @@ const countdown =() =>
           },
         }
       );
+      console.log(response);
+      console.log(response.data.data);
       settableData(response.data.data);
+      console.log("table data is ", tableData);
       if (response.data.message == "success.") {
         setActive_tab1(3);
       }
       // toastr.success(response.data.message);
       setLoading(false);
     } catch (error) {
+      console.error("Error occurred:", error);
       setLoading(false);
       setNodata(error.response.data.message);
       setActive_tab1(2);
@@ -453,46 +516,84 @@ const countdown =() =>
     <div id="navbar_top">
       <Header></Header>
 
-      <div className='section-1 p-0 ' id='section-1'>
-      <div id="carouselExample" className="carousel slide d-none d-lg-block" data-bs-ride="carousel">
-      <div className="carousel-inner">
-        <div className="carousel-item active">
-          <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 1" />
-        </div>
-        <div className="carousel-item">
-          <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 2" />
-        </div>
-        <div className="carousel-item">
-          <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 3" />
-        </div>
-         <div className="carousel-item">
-          <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 3" />
-        </div>
-      </div>
+      <div className="section-1 p-0 " id="section-1">
+        <div
+          id="carouselExample"
+          className="carousel slide d-none d-lg-block"
+          data-bs-ride="carousel"
+        >
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img
+                src="assets/home-page-slider.png"
+                className="d-block w-100"
+                alt="Slide 1"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                src="assets/home-page-slider.png"
+                className="d-block w-100"
+                alt="Slide 2"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                src="assets/home-page-slider.png"
+                className="d-block w-100"
+                alt="Slide 3"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                src="assets/home-page-slider.png"
+                className="d-block w-100"
+                alt="Slide 3"
+              />
+            </div>
+          </div>
 
-      <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span aria-hidden="true">
-          <i className="fas fa-chevron-left"></i> 
-        </span>
-        <span className="visually-hidden">Previous</span>
-      </button>
-      <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span aria-hidden="true">
-          <i className="fas fa-chevron-right"></i>
-        </span>
-        <span className="visually-hidden">Next</span>
-      </button>
+          <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="prev"
+          >
+            <span aria-hidden="true">
+              <i className="fas fa-chevron-left"></i>
+            </span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="next"
+          >
+            <span aria-hidden="true">
+              <i className="fas fa-chevron-right"></i>
+            </span>
+            <span className="visually-hidden">Next</span>
+          </button>
 
-      <ol className="carousel-indicators">
-        <li data-bs-target="#carouselExample" data-bs-slide-to="0" className="active"></li>
-        <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
-        <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
-        <li data-bs-target="#carouselExample" data-bs-slide-to="3"></li>
-      </ol>
-    </div>
-    <div className='d-block d-lg-none'>
-        <img src='assets/showcase.png' alt='showcase' className='img-fluid w-100 '/>
-    </div>
+          <ol className="carousel-indicators">
+            <li
+              data-bs-target="#carouselExample"
+              data-bs-slide-to="0"
+              className="active"
+            ></li>
+            <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
+            <li data-bs-target="#carouselExample" data-bs-slide-to="3"></li>
+          </ol>
+        </div>
+        <div className="d-block d-lg-none">
+          <img
+            src="assets/showcase.png"
+            alt="showcase"
+            className="img-fluid w-100 "
+          />
+        </div>
       </div>
       <div className="container-fluid p-0 mt-5 ">
         <div className="container px-lg-5">
@@ -504,20 +605,27 @@ const countdown =() =>
                 </div>
               </div>
               <div className="col-md-7">
-                <div className="section-content_12">
+                <div className="section-content">
                   <p className="text-start">
-                  Toyota sangat peduli terhadap keamanan dan kenyamanan Anda saat berkendara<strong> T-Care</strong> memberikan Anda
+                    Toyota sangat peduli terhadap keamanan dan kenyamanan Anda
+                    saat berkendara<strong> T-Care</strong> memberikan Anda
                     <strong>
-                    Bebas Biaya Jasa Servis Berkala dan Suku Cadang*
+                      Bebas Biaya Jasa Servis Berkala dan Suku Cadang*
                     </strong>
-                    sebanyak
-7x servis selama 3 tahun.
+                    sebanyak 7x servis selama 3 tahun.
                   </p>
                   <p>
-                  Dengan rutin servis berkala setiap 6 bulan, Anda juga dapat menikmati reward berupa
+                    Dengan rutin servis berkala setiap 6 bulan, Anda juga dapat
+                    menikmati reward berupa
                     <strong>Extended Warranty 1 tahun/20.000 km!**</strong>
                   </p>
-                  <p> *sesuai ketentuan yang tertera pada buku servis <br /> *khusus model LCGC hanya berlaku bebas biaya jasa servis berkala <br />**total warranty menjadi 4 tahun/120.000 km </p>
+                  <p>
+                    {" "}
+                    *sesuai ketentuan yang tertera pada buku servis <br />{" "}
+                    *khusus model LCGC hanya berlaku bebas biaya jasa servis
+                    berkala <br />
+                    **total warranty menjadi 4 tahun/120.000 km{" "}
+                  </p>
                 </div>
               </div>
             </div>
@@ -616,7 +724,9 @@ const countdown =() =>
                           value={vin}
                           onChange={handleInputChange}
                         />
-                        <p className="mt-1 custom_wrong_chase">{WrongVin}</p>
+                        <p className="mt-1 custom_wrong_chase text-start">
+                          {WrongVin}
+                        </p>
                       </div>
                       <button
                         className="btn btn-primary Lanjut mt-4 mb-4"
@@ -668,23 +778,15 @@ const countdown =() =>
                         </p>
                       </div>
                       <div>
-                        <img src="assets/T-Care-1.png" className="img-fluid" />
+                        <img src={imageUrl} className="img-fluid" />
                         <p className="tab-bold-p">{vin}</p>
                       </div>
                       <div className="text-start mx-4 mx-md-5">
-                        <p className="tab-bold-p">
-                          Selamat! Mobil Anda Terdaftar!
-                        </p>
-                        <p className="tab-bold-p">
-                          INNOVA 10R-BRXMBD 2.0 V HV CVT
-                          <span className="tab-light-bold-p">
-                           
-                            dengan warna kendaraan
-                          </span>
-                          ATTITUDE BLACK
-                        </p>
+                        <p className="tab-bold-p">{tagline}</p>
+                        <p className="tab-bold-p">{message}</p>
                         <p style={{ color: "#D71921" }} className="tab-bold-p">
-                          {WrongVin}</p>
+                          {guideline}
+                        </p>
                       </div>
                       <div className="mb-4">
                         <button
@@ -745,7 +847,7 @@ const countdown =() =>
                         <p className="tab-bold-p">
                           Hai!
                           <br />
-                          Bapak/Ibu Iky.
+                          Bapak/Ibu {uname}.
                         </p>
                         <p className="tab-bold-p">
                           Mobil Anda Sudah Terdaftar di Program T-Care!
@@ -1006,9 +1108,7 @@ const countdown =() =>
                             <span className="tab-light-bold-p1">Warna</span>
                           </div>
                           <div className="col-8 p-0">
-                            <span className="tab-light-bold-p1">
-                              : {warna}
-                            </span>
+                            <span className="tab-light-bold-p1">: {warna}</span>
                           </div>
                         </div>
                         <div className="row">
@@ -1050,16 +1150,7 @@ const countdown =() =>
                       : "none",
                   }}
                 >
-                  <div
-                    className="tabs-section"
-                    style={{
-                      display: loading
-                        ? "none"
-                        : secondtab === 5
-                        ? "block"
-                        : "none",
-                    }}
-                  >
+                  <div className="tabs-section">
                     <div class="circle-tab pt-4">
                       <a
                         onClick={() => handleregister(0)}
@@ -1088,7 +1179,14 @@ const countdown =() =>
                           id="otp1"
                           maxLength="1"
                           value={otp1}
-                          onChange={(e) => setOtp1(e.target.value)}
+                          onChange={(e) => {
+                            setOtp1(e.target.value);
+                            if (e.target.value === "") {
+                              document.getElementById('otp1').focus();
+                            } else if (e.target.value.length === 1) {
+                              document.getElementById('otp2').focus();
+                            }
+                          }}
                           onKeyPress={(e) => {
                             // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
@@ -1106,7 +1204,14 @@ const countdown =() =>
                           id="otp2"
                           maxLength="1"
                           value={otp2}
-                          onChange={(e) => setOtp2(e.target.value)}
+                          onChange={(e) => {
+                            setOtp2(e.target.value);
+                            if (e.target.value === "") {
+                              document.getElementById('otp1').focus();
+                            } else if (e.target.value.length === 1) {
+                              document.getElementById('otp3').focus();
+                            }
+                          }}
                           onKeyPress={(e) => {
                             // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
@@ -1124,7 +1229,14 @@ const countdown =() =>
                           id="otp3"
                           maxLength="1"
                           value={otp3}
-                          onChange={(e) => setOtp3(e.target.value)}
+                          onChange={(e) => {
+                            setOtp3(e.target.value);
+                            if (e.target.value === "") {
+                              document.getElementById('otp2').focus();
+                            } else if (e.target.value.length === 1) {
+                              document.getElementById('otp4').focus();
+                            }
+                          }}
                           onKeyPress={(e) => {
                             // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
@@ -1142,7 +1254,14 @@ const countdown =() =>
                           id="otp4"
                           maxLength="1"
                           value={otp4}
-                          onChange={(e) => setOtp4(e.target.value)}
+                          onChange={(e) => {
+                            setOtp4(e.target.value);
+                            if (e.target.value === "") {
+                              document.getElementById('otp3').focus();
+                            } else if (e.target.value.length === 1) {
+                              document.getElementById('otp5').focus();
+                            }
+                          }}
                           onKeyPress={(e) => {
                             // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
@@ -1160,7 +1279,14 @@ const countdown =() =>
                           id="otp5"
                           maxLength="1"
                           value={otp5}
-                          onChange={(e) => setOtp5(e.target.value)}
+                          onChange={(e) => {
+                            setOtp5(e.target.value);
+                            if (e.target.value === "") {
+                              document.getElementById('otp4').focus();
+                            } else if (e.target.value.length === 1) {
+                              document.getElementById('otp6').focus();
+                            }
+                          }}
                           onKeyPress={(e) => {
                             // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
@@ -1178,7 +1304,12 @@ const countdown =() =>
                           id="otp6"
                           maxLength="1"
                           value={otp6}
-                          onChange={(e) => setOtp6(e.target.value)}
+                          onChange={(e) => {
+                            setOtp6(e.target.value);
+                            if (e.target.value === "") {
+                              document.getElementById('otp5').focus();
+                            }
+                          }}
                           onKeyPress={(e) => {
                             // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
@@ -1248,7 +1379,6 @@ const countdown =() =>
                         ? "block"
                         : "none",
                     }}
-                   
                   >
                     <div class="circle-tab pt-4">
                       <a
@@ -1285,31 +1415,33 @@ const countdown =() =>
                           Langkah 3 - 3
                         </p>
                       </div>
-                      <div className={` ${hidebutton !== 0 ? "d-none" : "d-block"}`}>
-                      <ul className="nav  nav-fill px-lg-5 px-3">
-                        <li className="nav-item me-4 custom_border_radios_add">
-                          <button
-                            className={`tabs nav-link py-3 li_text_1 ${
-                              activeTab1 === 0 ? "active1" : "non_active"
-                            }`}
-                            onClick={() => handleTabClick1(0)}
-                          >
-                            T-Care Certificate
-                          </button>
-                        </li>
-                        <li className="nav-item custom_border_radios_add">
-                          <button
-                            className={`tabs nav-link py-3 li_text_1 ${
-                              activeTab1 === 1 ? "active1" : "non_active"
-                            }`}
-                            onClick={() => handleTabClick1(1)}
-                          >
-                            Extended Warranty
-                          </button>
-                        </li>
-                      </ul>
+                      <div
+                        className={` ${hidebutton != 0 ? "d-none" : "d-block"}`}
+                      >
+                        <ul className="nav  nav-fill px-lg-5 px-3">
+                          <li className="nav-item me-4 custom_border_radios_add">
+                            <button
+                              className={`tabs nav-link py-3 li_text_1 ${
+                                activeTab1 === 0 ? "active1" : "non_active"
+                              }`}
+                              onClick={() => handleTabClick1(0)}
+                            >
+                              T-Care Certificate
+                            </button>
+                          </li>
+                          <li className="nav-item custom_border_radios_add">
+                            <button
+                              className={`tabs nav-link py-3 li_text_1 ${
+                                activeTab1 === 1 ? "active1" : "non_active"
+                              }`}
+                              onClick={() => handleTabClick1(1)}
+                            >
+                              Extended Warranty
+                            </button>
+                          </li>
+                        </ul>
                       </div>
-                    
+
                       <div className="pt-4">
                         <p className="tab-bold-p">
                           Terima Kasih
@@ -1534,13 +1666,16 @@ const countdown =() =>
                       </div>
                     </div>
                   </div>
-                  <div className="tabs-section" style={{
+                  <div
+                    className="tabs-section"
+                    style={{
                       display: loading
                         ? "none"
                         : Active_tab1 === 3
                         ? "block"
                         : "none",
-                    }}>
+                    }}
+                  >
                     <div>
                       <div className="text-start px-5 pt-4">
                         <p className="tab-discription-p">Hai Bapak/Ibu Rizky</p>
@@ -1613,19 +1748,32 @@ const countdown =() =>
                           </tbody>
                         </table>
                         <div className="text-start pt-4">
-                        <p className="tab-discription-p text-start">
-                        Jangan lupa Servis Berkala Toyota Anda setiap 6 bulan di bengkel resmi Toyota!
-                        </p>
-                      </div>
+                          <p className="tab-discription-p text-start">
+                            Jangan lupa Servis Berkala Toyota Anda setiap 6
+                            bulan di bengkel resmi Toyota!
+                          </p>
+                        </div>
                       </div>
                       <div className="mb-4">
                         <button
                           className="btn btn-primary lihat_Diri_2 mt-4"
                           onClick={() => goBack(1)}
                         >
-                          <svg className="me-2" xmlns="http://www.w3.org/2000/svg" width="7" height="13" viewBox="0 0 7 13" fill="none">
-  <path d="M5.5 11.167L2.46392 7.62489C1.90924 6.97778 1.90924 6.02288 2.46392 5.37576L5.5 1.83366" stroke="white" stroke-width="2.16" stroke-linecap="round"/>
-</svg>
+                          <svg
+                            className="me-2"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="7"
+                            height="13"
+                            viewBox="0 0 7 13"
+                            fill="none"
+                          >
+                            <path
+                              d="M5.5 11.167L2.46392 7.62489C1.90924 6.97778 1.90924 6.02288 2.46392 5.37576L5.5 1.83366"
+                              stroke="white"
+                              stroke-width="2.16"
+                              stroke-linecap="round"
+                            />
+                          </svg>
                           Kembali ke Halaman Awal
                         </button>
                       </div>
@@ -1674,31 +1822,25 @@ const countdown =() =>
               <img src="assets/services.png" className="w-100" />
             </div>
             <div className="mt-4 mb-5">
-                    <button
-                          className="btn custom-btn-dark me-3  d-lg-none"
-                        >
-                          Telurusi Express Maintenance
-                        </button>
-                       
+              <button className="btn custom-btn-dark me-3  d-lg-none">
+                Telurusi Express Maintenance
+              </button>
             </div>
-            
           </div>
         </div>
         <div className="container p-lg-5">
-                    <b>Download Informasi GBSB atau lihat hal-hal yang sering ditanyakan</b>
-                    <div className="mt-5">
-                    <button
-                          className="btn custom-btn-dark me-3"
-                        >
-                          Download info GBSB
-                        </button>
-                        <NavLink to="/faq"
-                          className="btn custom-btn-dark"
-                        >
-                          Go to FAQ Page
-                        </NavLink>
-                      </div>
-                  </div>
+          <b>
+            Download Informasi GBSB atau lihat hal-hal yang sering ditanyakan
+          </b>
+          <div className="mt-5">
+            <button className="btn custom-btn-dark me-3">
+              Download info GBSB
+            </button>
+            <NavLink to="/faq" className="btn custom-btn-dark">
+              Go to FAQ Page
+            </NavLink>
+          </div>
+        </div>
         <div className="container mt-5 mb-5">
           <div className="logos d-flex justify-content-center mt-5 mb-4">
             <div className="mx-2">
