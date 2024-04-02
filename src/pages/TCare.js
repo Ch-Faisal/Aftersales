@@ -504,7 +504,7 @@ const countdown =() =>
                 </div>
               </div>
               <div className="col-md-7">
-                <div className="section-content">
+                <div className="section-content_12">
                   <p className="text-start">
                   Toyota sangat peduli terhadap keamanan dan kenyamanan Anda saat berkendara<strong> T-Care</strong> memberikan Anda
                     <strong>
