@@ -25,7 +25,7 @@ function HomePage() {
   const [selectedCarId, setSelectedCarId] = useState(null); // State to hold the ID of the selected car
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(true);
-  const [loading3, setLoading3] = useState(true);
+  const [loading3, setLoading3] = useState(false);
   const [serviceDescriptions, setServiceDescriptions] = useState([]);
   const [serviceDisclaimer, setServiceDisclaimer] = useState('');
   const [serviceCost, setServiceCost] = useState([]);
@@ -166,6 +166,8 @@ function HomePage() {
       }
       setActiveServiceTab(serviceNo);
       setLoading2(true);
+      console.log('debug 2')
+      debugger
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
         params: {
           variant_id: variantIdParent === 0 ? 2 : variantIdParent,
@@ -246,6 +248,8 @@ function HomePage() {
   const handleVariantService = async (variantId, serviceNo) => {
     setLoading(true);
     try {
+      console.log('debug 3')
+      debugger
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/variantService`, {
         params: {
           variant_id: variantId === 0 ? 2 : variantId,
@@ -262,6 +266,7 @@ function HomePage() {
         serviceCostMap[item.service_no] = item.service_cost;
       });
       setServiceCost(serviceCostMap);
+      handleOptionalTabs(variantId, serviceNo)
       console.log("Service costs:", serviceCostMap);
       setLoading(false);
     } catch (error) {
@@ -279,6 +284,8 @@ function HomePage() {
   const handleOptionalTabs = async (variantId, serviceNo) => {
     try {
       // setvariantIdParent(variantId)
+      console.log('debug 1')
+      debugger
       setLoading3(true);
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
         params: {
