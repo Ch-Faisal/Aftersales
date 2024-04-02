@@ -118,8 +118,10 @@ function TCare() {
         setDownloadCertificate(response.data.download_certificate);
         setDownloadWarranty(response.data.download_warranty);
         setDownload(response.data.download_certificate);
-        if (response.data.download_warranty.length < 1) {
+        if (response.data.download_warranty == null) {
           sethidebutton(1);
+        } else {
+          sethidebutton(0);
         }
         setLoading(false);
         setsecondtab(2);
@@ -327,6 +329,8 @@ function TCare() {
       }
       if (response.data.download_warranty == null) {
         sethidebutton(1);
+      } else {
+        sethidebutton(0);
       }
     } catch (error) {
       setLoading(false);
@@ -396,30 +400,49 @@ function TCare() {
     }
     try {
       console.log(download);
-
-      // Fetch the PDF file using the PDF URL
-      const response = await axios.get(download, { responseType: "blob" });
-
-      // Create a Blob from the response data
-      const blob = new Blob([response.data], { type: "application/pdf" });
-
-      // Create a URL for the Blob
-      const url = URL.createObjectURL(blob);
+      // Replace 'path/to/your/pdf.pdf' with the path to your PDF file
 
       // Create a link element
-      const link = document.createElement("a");
+      var link = document.createElement('a');
 
-      // Set the href attribute of the link to the URL of the Blob
-      link.href = url;
+      // Set the href attribute of the link to the PDF file URL
+      link.href = download;
+      link.setAttribute('target', '_blank');
 
-      // Set the download attribute to specify the filename
-      link.download = "downloaded_file.pdf";
+      // Set the download attribute to force download the PDF file
+      link.setAttribute('download', 'downloaded_file.pdf');
 
-      // Simulate a click on the link to trigger the download
+      // Append the link to the body
+      document.body.appendChild(link);
+
+      // Trigger a click event on the link
       link.click();
 
-      // Clean up by revoking the URL object
-      URL.revokeObjectURL(url);
+      // Remove the link from the DOM after triggering download
+      document.body.removeChild(link);
+
+      // // Fetch the PDF file using the PDF URL
+      // const response = await axios.get(download, { responseType: "blob" });
+
+      // // Create a Blob from the response data
+      // const blob = new Blob([response.data], { type: "application/pdf" });
+
+      // // Create a URL for the Blob
+      // const url = URL.createObjectURL(blob);
+
+      // // Create a link element
+      // const link = document.createElement("a");
+
+      // // Set the href attribute of the link to the URL of the Blob
+      // link.href = url;
+
+      // // Set the download attribute to specify the filename
+      // link.download = "downloaded_file.pdf";
+
+      // // Simulate a click on the link to trigger the download
+      // link.click();
+      // // Clean up by revoking the URL object
+      // URL.revokeObjectURL(url);
     } catch (error) { }
   };
 
@@ -1438,8 +1461,7 @@ function TCare() {
                           </li>
                           <li className="nav-item custom_border_radios_add">
                             <button
-                              className={`tabs nav-link py-3 li_text_1 ${activeTab1 === 1 ? "active1" : "non_active"
-                                }`}
+                              className={`tabs nav-link py-3 li_text_1 ${activeTab1 === 1 ? "active1" : "non_active"}`}
                               onClick={() => handleTabClick1(1)}
                             >
                               Extended Warranty
@@ -1527,7 +1549,7 @@ function TCare() {
                         <div className="d-flex flex-column">
                           <button
                             className="download_pdf_buttons"
-                            onClick={handlePrint}
+                            onClick={handleDownload}
                           >
                             <svg
                               width="48"
@@ -1682,7 +1704,7 @@ function TCare() {
                   >
                     <div>
                       <div className="text-start px-5 pt-4">
-                        <p className="tab-discription-p">Hai Bapak/Ibu Rizky</p>
+                        <p className="tab-discription-p">Hai Bapak/Ibu {checkServiceNmae}</p>
                         <p className="tab-discription-p">Pemilik Kendaraan:</p>
                       </div>
                       <div className="row">

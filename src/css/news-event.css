@@ -73,6 +73,7 @@ margin-top: -12px;
   .fixed_height{
     /* height: 167px !important; */
     aspect-ratio: 16/9;
+    object-fit: cover;
   }
   .custom-nav-tabs {
     overflow-x: auto !important;
