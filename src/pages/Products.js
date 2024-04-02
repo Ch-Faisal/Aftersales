@@ -50,20 +50,19 @@ function Products() {
     setIsVisible6(!isVisible6);
   };
   const value = useSelector((state) => state.value);
-  console.log("token value from store:", value);
   const scrollLeft = () => {
     const myTab = document.getElementById("myTab");
     myTab.scrollTo({
-      left: myTab.scrollLeft - 100, // Adjust scroll distance as needed
-      behavior: "smooth", // Smooth scrolling behavior
+      left: myTab.scrollLeft - 100,
+      behavior: "smooth",
     });
   };
 
   const scrollRight = () => {
     const myTab = document.getElementById("myTab");
     myTab.scrollTo({
-      left: myTab.scrollLeft + 100, // Adjust scroll distance as needed
-      behavior: "smooth", // Smooth scrolling behavior
+      left: myTab.scrollLeft + 100,
+      behavior: "smooth",
     });
   };
   const [swiperRef, setSwiperRef] = useState(null);
@@ -335,11 +334,9 @@ function Products() {
                               280: {
                                 slidesPerView: 1,
                               },
-                              // When window width is >= 768px
                               768: {
                                 slidesPerView: 2,
                               },
-                              // When window width is >= 992px
                               992: {
                                 slidesPerView: 3,
                               },
@@ -822,7 +819,6 @@ function Products() {
                              280: {
                                slidesPerView: 1,
                              },
-                             // When window width is >= 768px
                              768: {
                                slidesPerView: 1.5,
                              },
@@ -890,7 +886,6 @@ function Products() {
                               280: {
                                 slidesPerView: 1,
                               },
-                              // When window width is >= 768px
                               768: {
                                 slidesPerView: 1.5,
                               },

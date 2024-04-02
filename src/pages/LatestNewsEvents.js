@@ -8,16 +8,13 @@ import { Oval } from 'react-loader-spinner'
 import axios from 'axios';
 import { NavLink } from "react-router-dom";
 function LatestNewsEvents() {
-  const [activeTab, setActiveTab] = useState('ex1-tabs-1'); // Default active tab
+  const [activeTab, setActiveTab] = useState('ex1-tabs-1');
   const [loading, setLoading] = useState(true);
   const [newsData, setNewsData] = useState([]);
   const token = useSelector(state => state.value);
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
-  // const routeTOLatestNews =(slug) =>{
-  //   console.log("slug:",slug)
-  // }
   useEffect(() => {
     const fetchNewsData = async () => {
       setLoading(true);
@@ -28,12 +25,10 @@ function LatestNewsEvents() {
           }
         };
         const response = await axios.get('https://aftersales-toyota-revamp.thriveagency.id/api/news', config);
-        console.log('Response data of news:', response.data.data);
         setNewsData(response.data.data);
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        console.error('Error fetching news data:', error);
       }
     };
     fetchNewsData();
@@ -47,7 +42,7 @@ function LatestNewsEvents() {
     <div id="navbar_top">
       <Header />
       <div>
-      {loading ? ( // Display loader if loading state is true
+      {loading ? (
        <div className='spinner-overlay'>
 <Oval
    height="60"

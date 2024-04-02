@@ -1,23 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 function Header() {
-  // const [isSticky, setIsSticky] = useState(false);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollPosition = window.scrollY;
-  //     if (scrollPosition > 150) {
-  //       setIsSticky(true);
-  //     } else {
-  //       setIsSticky(false);
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
   return (
     <div className="custom_margin_header_bottom">
     <div className=" sticky">
@@ -259,11 +242,7 @@ function Header() {
                 <div className="d-flex justify-content-between justify-content-lg-start">
                 <NavLink
                   to="/services"
-<<<<<<< HEAD
                   className="nav-link active custom-border-radius text-white mx-lg-0 mx-3"
-=======
-                  className={`nav-link custom-border-radius`}
->>>>>>> ffe55cae1ba25bbd4004ad6825624846b9887193
                   aria-current="page"
                 >
                   SERVICES
@@ -311,11 +290,7 @@ function Header() {
               <div className="d-flex justify-content-between justify-content-lg-start">
                 <NavLink
                   to="/products"
-<<<<<<< HEAD
                   className="nav-link custom-border-radius text-white mx-3"
-=======
-                  className="nav-link custom-border-radius  "
->>>>>>> ffe55cae1ba25bbd4004ad6825624846b9887193
                 >
                   PRODUCTS
                 </NavLink>
@@ -361,11 +336,7 @@ function Header() {
               <li className="nav-item mx-0">
                 <NavLink
                   to="/warranty"
-<<<<<<< HEAD
                   className="nav-link custom-border-radius text-white mx-3"
-=======
-                  className="nav-link custom-border-radius "
->>>>>>> ffe55cae1ba25bbd4004ad6825624846b9887193
                 >
                   WARRANTY
                 </NavLink>
@@ -373,12 +344,7 @@ function Header() {
               <li className="nav-item mx-0">
                 <NavLink
                   to="/t-care"
-<<<<<<< HEAD
                   className="nav-link custom-border-radius text-white mx-3"
-=======
-                  className="nav-link custom-border-radius "
->>>>>>> ffe55cae1ba25bbd4004ad6825624846b9887193
-                  aria-disabled="true"
                 >
                   T-CARE
                 </NavLink>
@@ -386,11 +352,7 @@ function Header() {
               <li className="nav-item mx-0">
                 <NavLink
                   to="/news-information"
-<<<<<<< HEAD
                   className="nav-link custom-border-radius text-white mx-3"
-=======
-                  className="nav-link custom-border-radius"
->>>>>>> ffe55cae1ba25bbd4004ad6825624846b9887193
                   aria-disabled="true"
                 >
                   NEWS & EVENT
@@ -399,11 +361,7 @@ function Header() {
               <li className="nav-item mx-0">
                 <NavLink
                   to="/faq"
-<<<<<<< HEAD
                   className="nav-link custom-border-radius text-white mx-3"
-=======
-                  className="nav-link custom-border-radius "
->>>>>>> ffe55cae1ba25bbd4004ad6825624846b9887193
                   aria-disabled="true"
                 >
                   FAQ

@@ -9,7 +9,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Virtual, Navigation, Pagination, FreeMode } from "swiper/modules";
-
 import '../css/home.css';
 function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -78,7 +77,6 @@ function HomePage() {
       setSelectedCarImage(defaultCarModel.image);
       setSelectedCarId(defaultCarModel.id); // Set the ID of the first car model
       fetchVarients(defaultCarModel.id);
-      console.log('image:', defaultCarModel.image)
     }
   }, [carModels]);
 
@@ -92,9 +90,7 @@ function HomePage() {
       });
       setCarModels(response.data.data);
       setLoading(false); 
-      console.log("responseCAR:", response.data)
     } catch (error) {
-      console.error('Error fetching car models:', error);
       setLoading(false);
     }
   };
@@ -107,16 +103,10 @@ function HomePage() {
       });
       setCarVariant(response.data.data);
       const serviceDescriptionsArray = response.data.data.map(variant => variant.services.map(service => service.service_description));
-      console.log("Description:", serviceDescriptionsArray);
       setServiceDescriptions(serviceDescriptionsArray.flat());
-
       const serviceCost = response.data.data.map(variant => variant.services.map(service => service.service_cost));
-      console.log("serviceCost:", serviceCost)
       setServiceCost(serviceCost);
-      console.log("responseservicecost:", serviceCost)
-      console.log("responsevarient:", response.data.data)
     } catch (error) {
-      console.error('Error fetching car models:', error);
     }
   }
 
@@ -125,15 +115,11 @@ function HomePage() {
     const selectedCarName = event.target.value;
     const selectedCarModel = carModels.find(carModel => carModel.name === selectedCarName);
     if (selectedCarModel) {
-        console.log("ssss", selectedCarModel)
         setSelectedCar(selectedCarModel.name);
         setSelectedCarImage(selectedCarModel.image);
-        console.log("carimage:",selectedCarModel.image)
         setSelectedCarId(selectedCarModel.id);
         fetchVarients(selectedCarModel.id); 
-        console.log("selcted car id:", selectedCarModel.id)
     } else {
-        console.error(`Car model with name '${selectedCarName}' not found.`);
     }
     setLoading(false);
 };
@@ -148,7 +134,6 @@ function HomePage() {
   const handleTabClick = async (variantId, index) => {
       setActiveTab(index);
       globalVariantId = variantId;
-      console.log("variantid",globalVariantId);
       try {
         setLoading2(true);
           const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
@@ -160,7 +145,6 @@ function HomePage() {
           if (response.data && response.data.data && response.data.data.length > 0)
           {
             setLoading2(false);
-            console.log("responsevariant:", response.data.data);
           }
           else{
             setErrorMessage("No data found in the response.");
@@ -169,13 +153,11 @@ function HomePage() {
           
       } catch (error) {
         setLoading2(false);
-          console.error('Error fetching variant:', error);
       }
   };  
     
   const handleServiceTab = async (serviceNo) => {
     try {
-           // Remove active class from all nav links
            const navLinks = document.querySelectorAll('.custom-nav-link');
            navLinks.forEach(link => link.classList.remove('active'));
            const clickedNavLink = document.querySelector(`.custom-nav-link[data-service="${serviceNo}"]`);
@@ -198,7 +180,6 @@ function HomePage() {
         if (response.data && response.data.data && response.data.data.length > 0) {
             const disclaimer = response.data.data[0].variant.car.disclaimer;
             setServiceDisclaimer(disclaimer);
-            console.log("disclaimer:", disclaimer);
             const packages = response.data.data[0].packages;
             const packageNames = packages.map(pkg => pkg.name);
             setPackageNames(packageNames); 
@@ -232,21 +213,13 @@ function HomePage() {
             const optionals = response.data.data[0].optionals;
             const OptionalName = optionals.map(optional => optional.product.name);
             setOptionalsName(OptionalName);
-            console.log("OptionalsName",OptionalName)
 
             const OptionalsTagline = optionals.map(optional=>optional.product.tagline);
             setOptionalsTagline(OptionalsTagline);
 
             const OptionalsImage = optionals.map(optional=>optional.product.image);
             setOptionalsImage(OptionalsImage);
-            console.log("testets:",OptionalsImage)
             setLoading2(false);
-            console.log("Package names:", packageNames);
-            console.log("recommendationsComparison:", recommendationsComparison);
-            console.log("Package images:", images);
-            console.log("molecile images:", moleculeImages);
-            console.log("molecile photos:", moleculePhotos);
-            console.log("comparison:", recommendationsComparison)
         } else {
           setServiceDisclaimer("");
           setPackageNames([]);
@@ -258,7 +231,6 @@ function HomePage() {
             setLoading2(false);
         }
     } catch (error) {
-        console.error('Error fetching variant:', error);
     }
 };
   const handleTab2Click = (index) => {
@@ -777,11 +749,9 @@ function HomePage() {
                               280: {
                                 slidesPerView: 1,
                               },
-                              // When window width is >= 768px
                               768: {
                                 slidesPerView: 2,
                               },
-                              // When window width is >= 992px
                               992: {
                                 slidesPerView: 3,
                               },
@@ -969,17 +939,13 @@ function HomePage() {
                                     index % 2 === 0 && (
                                         <div key={index} className='d-flex justify-content-between mt-2 mt-md-4'>
                                             <div className='d-flex'>
-                                                {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
                                                 <img src={packageImages[index]} alt='' />
                                                 <p className='px-3 text-nowrap'>{packageName}</p>
-                                                {/* {errorMessage && <p>{errorMessage}</p>} */}
                                             </div>
                                             {index + 1 < packageNames.length && (
                                                 <div className='d-flex'>
-                                                    {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
                                                     <img src={packageImages[index]} alt='' />
                                                     <p className='px-3 text-nowrap'>{packageNames[index + 1]}</p>
-                                                    {/* {errorMessage && <p>{errorMessage}</p>} */}
                                                 </div>
                                             )}
                                         </div>
@@ -1111,7 +1077,6 @@ function HomePage() {
                                 <p className='text-start' dangerouslySetInnerHTML={{ __html: recommendationRemark }} />
                                 <div className='d-flex'>
                                 <img src={imageComparation} className='w-50' alt='brake' />
-                                {/* <img src="assets/tyre2.png" className='w-50' alt='brake' /> */}
                                 </div>
                               </div>
                               <h1 className='mt-4'>{OptionalsName[0]}</h1>
@@ -1121,11 +1086,6 @@ function HomePage() {
                          <img src={OptionalsImage[1]} className='w-25 mx-2' alt='OPTIONAL' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
                          <img src={OptionalsImage[2]} className='w-25 mx-2' alt='OPTIONAL' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
                          <img src={OptionalsImage[3]} className='w-25 mx-2' alt='OPTIONAL' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
-
-                                {/* <img src="assets/tire-solution.png" className='mx-4 px-2 py-3' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
-                                <img src="assets/tmo.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
-                                <img src="assets/tgb.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} /> */}
-
                             </div>
                             </div>}
                           </div>

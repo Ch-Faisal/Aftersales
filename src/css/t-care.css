@@ -2,10 +2,10 @@
 background-color: rgb(250, 250, 250);
 padding: 5%;
 }
-.section-1 .section-content p{
+.section-1 .section-content-1 p{
     text-align: left;
 color: rgba(0, 0, 0, 1);
-font-size: 14px;
+font-size: 1.125rem;
 }
 .Check{
    color:  rgba(0, 0, 0, 1);
@@ -235,7 +235,7 @@ line-height: normal;
 }
 @media only screen and (max-width: 768px) {
 
-    .section-2 .section-content{
+    .section-2 .section-content-1{
         text-align: center !important;
         margin-bottom: 15px !important;
     }

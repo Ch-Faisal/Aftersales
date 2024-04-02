@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import axios from "axios";
-import "toastr/build/toastr.min.css"; // Import toastr CSS
+import "toastr/build/toastr.min.css";
 import toastr from "toastr";
 import { Oval } from "react-loader-spinner";
 function TCare() {
@@ -27,7 +27,7 @@ function TCare() {
   const [tagline, settagline] = useState("");
   const [color, setcolor] = useState("");
   const [product, setproduct] = useState("");
-  const [timerValue, setTimerValue] = useState(60); // Initialize timer value
+  const [timerValue, setTimerValue] = useState(60);
   const [uname, setName] = useState("");
   const [uemail, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -44,7 +44,7 @@ function TCare() {
     setVinInput(event.target.value);
     setWrongVin('')
   };
-  const [selectedMonth, setSelectedMonth] = useState(""); // State to store the selected month
+  const [selectedMonth, setSelectedMonth] = useState("");
 
   const [activeTab, setActiveTab] = useState(0);
   const [activeTab1, setActiveTab1] = useState(0);
@@ -53,7 +53,7 @@ function TCare() {
     setActiveTab(index);
   };
   const handleTabClick1 = (index) => {
-    setActiveTab1(index); // Set the active tab
+    setActiveTab1(index);
     if (index == 0) {
       setDownload(downloadCertificate);
       setType(1);
@@ -63,7 +63,6 @@ function TCare() {
       setType(2);
     }
   };
-  // Assuming you have a variable to track the active index like activeIndex
   const handleregister = (valueChannge) => {
     setsecondtab(valueChannge);
   };
@@ -97,16 +96,11 @@ function TCare() {
           },
         }
       );
-      // Handle response data here
-      console.log(response.data.data.color);
-      console.log(response.data.data.product);
       setcolor(response.data.data.color);
       setproduct(response.data.data.color);
       setImageUrl(response.data.imgUrl);
       settagline(response.data.tagline);
       setguideline(response.data.tagline);
-      console.log('cetificate',response.data.download_certificate)
-      console.log('cetificate',response.data.download_certificate)
       setDownloadCertificate(response.data.download_certificate);
       setDownloadWarranty(response.data.download_warranty);
       setDownload(response.data.download_certificate);
@@ -117,9 +111,7 @@ function TCare() {
       setLoading(false);
       setsecondtab(2);
       setregister(2);
-      // setActiveCircle(activeCircle + 1);
     } catch (error) {
-      // Handle error here
       setLoading(false);
       if (error.response) {
         if(error.response.data.message == 'Server Error')
@@ -137,26 +129,25 @@ function TCare() {
       {
         toastr.error('Not Found.')
       }
-      // setsecondtab(1);
       setregister(1);
     }
   };
   const handleMonthChange = (event) => {
-    setSelectedMonth(event.target.value); // Update selected month when the dropdown value changes
+    setSelectedMonth(event.target.value);
   };
-  const [selectedYear, setSelectedYear] = useState(""); // State to store the selected year
+  const [selectedYear, setSelectedYear] = useState("");
 
   useEffect(() => {
-    const currentYear = new Date().getFullYear(); // Get the current year
+    const currentYear = new Date().getFullYear();
     const years = Array.from(
       { length: currentYear - 1999 },
       (_, index) => 2000 + index
-    ); // Create an array of years from 2000 to the current year
-    setSelectedYear(currentYear.toString()); // Set the default selected year to the current year
-  }, []); // Run this effect only once when the component mounts
+    ); 
+    setSelectedYear(currentYear.toString());
+  }, []);
 
   const handleYearChange = (event) => {
-    setSelectedYear(event.target.value); // Update selected year when the dropdown value changes
+    setSelectedYear(event.target.value);
   };
   const monthMap = {
     Month: "",
@@ -211,7 +202,6 @@ function TCare() {
           },
         }
       );
-      console.log(response.data);
       setkendaraan(response.data.kendaraan);
       setName(response.data.name)
       setEmail(response.data.email)
@@ -227,7 +217,6 @@ function TCare() {
       if (error.response) {
         toastr.error(error.response.data.message);
       }
-      console.error("Error occurred:", error);
     }
   };
   const submitRegister = async () => {
@@ -257,7 +246,6 @@ function TCare() {
           },
         }
       );
-      console.log(response);
       setLoading(false);
       setsecondtab(5);
       setTimerValue(60);
@@ -267,7 +255,6 @@ function TCare() {
       if (error.response) {
         toastr.error(error.response.data.message);
       }
-      console.error("Error occurred:", error);
     }
   };
   const submitOtp = async () => {
@@ -289,11 +276,6 @@ function TCare() {
           },
         }
       );
-      // console.log(response);
-      // console.log(response.data.vin);
-      // console.log("download warrnety", response.data.download_warranty);
-      // console.log("Download certificate", response.data.download_certificate);
-      // Storing the values in state variables
       setDownloadWarranty(response.data.download_warranty);
       setDownloadCertificate(response.data.download_certificate);
       setDownload(response.data.download_certificate);
@@ -303,13 +285,12 @@ function TCare() {
       }
     } catch (error) {
       setLoading(false);
-      console.error("Error occurred:", error);
       toastr.error(error.response.data.message);
-      setOtp1(""); // Empty the value of otp1
-      setOtp2(""); // Empty the value of otp2
-      setOtp3(""); // Empty the value of otp3
-      setOtp4(""); // Empty the value of otp4
-      setOtp5(""); // Empty the value of otp5
+      setOtp1("");
+      setOtp2("");
+      setOtp3("");
+      setOtp4("");
+      setOtp5("");
       setOtp6("");
     }
   };
@@ -323,17 +304,14 @@ const countdown =() =>
       setTimerValue(prevTimerValue => {
         if (prevTimerValue === 0) {
           clearInterval(intervalId);
-          return 0; // Reset timer to 60 seconds
+          return 0;
         }
         return prevTimerValue - 1;
       });
     }, 1000);
   };
 
-  // Start the timer initially
   startTimer();
-
-  // Clean up the timer on component unmount
   return () => clearInterval(intervalId);
 }
  
@@ -355,11 +333,9 @@ const countdown =() =>
           },
         }
       );
-      console.log(response);
       toastr.success(response.data.message);
       setLoading(false);
     } catch (error) {
-      console.error("Error occurred:", error);
       setLoading(false);
       toastr.error(error.response.data.message);
     }
@@ -371,25 +347,18 @@ const countdown =() =>
       return;
     }
 
-    // Create a Blob from the PDF data
     const blob = new Blob([download], { type: "application/pdf" });
 
-    // Create a URL for the Blob
     const url = URL.createObjectURL(blob);
 
-    // Create a link element
     const link = document.createElement("a");
 
-    // Set the href attribute of the link to the URL of the Blob
     link.href = url;
 
-    // Set the download attribute to specify the filename
     link.download = "downloaded_file.pdf";
 
-    // Simulate a click on the link to trigger the download
     link.click();
 
-    // Clean up by revoking the URL object
     URL.revokeObjectURL(url);
   };
 
@@ -399,10 +368,8 @@ const countdown =() =>
       return;
     }
 
-    // Open a new window for printing
     const printWindow = window.open("", "_blank");
 
-    // Write the PDF content to the new window
     printWindow.document.write(`
       <html>
         <head>
@@ -422,10 +389,8 @@ const countdown =() =>
       </html>
     `);
 
-    // Close the document for printing
     printWindow.document.close();
 
-    // Print the document
     printWindow.print();
   };
   const [vinn, setVinn] = useState("");
@@ -452,17 +417,12 @@ const countdown =() =>
           },
         }
       );
-      console.log(response);
-      console.log(response.data.data);
       settableData(response.data.data);
-      console.log('table data is ',tableData)
       if (response.data.message == "success.") {
         setActive_tab1(3);
       }
-      // toastr.success(response.data.message);
       setLoading(false);
     } catch (error) {
-      console.error("Error occurred:", error);
       setLoading(false);
       setNodata(error.response.data.message);
       setActive_tab1(2);
@@ -525,7 +485,7 @@ const countdown =() =>
                 </div>
               </div>
               <div className="col-md-7">
-                <div className="section-content">
+                <div className="section-content-1">
                   <p className="text-start">
                   Toyota sangat peduli terhadap keamanan dan kenyamanan Anda saat berkendara<strong> T-Care</strong> memberikan Anda
                     <strong>
@@ -1111,7 +1071,6 @@ const countdown =() =>
                           value={otp1}
                           onChange={(e) => setOtp1(e.target.value)}
                           onKeyPress={(e) => {
-                            // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
                             const isMaxLengthReached =
                               e.target.value.length >= 1;
@@ -1129,7 +1088,6 @@ const countdown =() =>
                           value={otp2}
                           onChange={(e) => setOtp2(e.target.value)}
                           onKeyPress={(e) => {
-                            // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
                             const isMaxLengthReached =
                               e.target.value.length >= 1;
@@ -1147,7 +1105,6 @@ const countdown =() =>
                           value={otp3}
                           onChange={(e) => setOtp3(e.target.value)}
                           onKeyPress={(e) => {
-                            // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
                             const isMaxLengthReached =
                               e.target.value.length >= 1;
@@ -1165,7 +1122,6 @@ const countdown =() =>
                           value={otp4}
                           onChange={(e) => setOtp4(e.target.value)}
                           onKeyPress={(e) => {
-                            // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
                             const isMaxLengthReached =
                               e.target.value.length >= 1;
@@ -1183,7 +1139,6 @@ const countdown =() =>
                           value={otp5}
                           onChange={(e) => setOtp5(e.target.value)}
                           onKeyPress={(e) => {
-                            // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
                             const isMaxLengthReached =
                               e.target.value.length >= 1;
@@ -1201,7 +1156,6 @@ const countdown =() =>
                           value={otp6}
                           onChange={(e) => setOtp6(e.target.value)}
                           onKeyPress={(e) => {
-                            // Allow only numbers to be entered
                             const isValidInput = /^\d*$/.test(e.key);
                             const isMaxLengthReached =
                               e.target.value.length >= 1;

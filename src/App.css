@@ -641,7 +641,6 @@ border-radius: 30px !important;
 {
   margin-bottom: 150px !important;
 }
-<<<<<<< HEAD
 
 @media (max-width:991px) {
   .color_in_mobile{
@@ -690,10 +689,8 @@ border-radius: 30px !important;
     border: 0px !important;
   }
 }
-=======
 .active
 {
   background-color: #ffffff !important;
   color: #000 !important;
 }
->>>>>>> ffe55cae1ba25bbd4004ad6825624846b9887193
