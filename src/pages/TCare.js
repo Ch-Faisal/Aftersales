@@ -21,6 +21,7 @@ function TCare() {
   const [vin, setVinInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [message, setmessage] = useState("");
+  const [apiMessage, setApiMessage] = useState("");
   const [kendaraan, setkendaraan] = useState("");
   const [warna, setwarna] = useState("");
   const [hidebutton, sethidebutton] = useState(0);
@@ -112,6 +113,7 @@ function TCare() {
         setImageUrl(response.data.imgUrl);
         settagline(response.data.tagline);
         setguideline(response.data.tagline);
+        setApiMessage(response.data.message)
         setName(response.data.data.name);
         setEmail(response.data.data.email);
         setPhoneNumber(response.data.data.phone);
@@ -878,11 +880,7 @@ function TCare() {
                           Mobil Anda Sudah Terdaftar di Program T-Care!
                         </p>
                         <p className="tab-bold-p">
-                          {product}(GUN125R-DDTHXD)
-                          <span className="tab-light-bold-p">
-                            dengan warna kendaraan
-                          </span>
-                          {color}
+                          {apiMessage}
                         </p>
                         <p style={{ color: "#D71921" }} className="tab-bold-p">
                           Ingin ubah data diri anda?
