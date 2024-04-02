@@ -144,13 +144,13 @@ function LatestNewsEvents() {
                   style={{ position: "absolute", top: "0px",left: "-25px", }}
                 />
               </div>
-            <div className="d-flex justify-content-sm-center ">
+            <div className="custom-nav-tabs_1">
               <ul
                 className="nav nav-tabs d-flex justify-content-center mb-3 custom-nav-tabs"
                 id="ex1"
                 role="tablist"
               >
-                <li className="nav-item" role="presentation">
+                <li className="" role="presentation">
                   <a
                 onClick={() => handleTabClick('ex1-tabs-1')}
                 className={`nav-link ${activeTab === 'ex1-tabs-1' ? 'active' : ''}`}
@@ -160,7 +160,7 @@ function LatestNewsEvents() {
                     All
                   </a>
                 </li>
-                <li className="nav-item" role="presentation">
+                <li className="" role="presentation">
                   <a
                   onClick={() => handleTabClick('ex1-tabs-2')}
                   className={`nav-link ${activeTab === 'ex1-tabs-2' ? 'active' : ''}`}
@@ -170,7 +170,7 @@ function LatestNewsEvents() {
                     Aftersales
                   </a>
                 </li>
-                <li className="nav-item" role="presentation">
+                <li className="" role="presentation">
                   <a
                      onClick={() => handleTabClick('ex1-tabs-3')}
                      className={`nav-link text-nowrap ${activeTab === 'ex1-tabs-3' ? 'active' : ''}`}

@@ -79,3 +79,18 @@ margin-top: -12px;
     scrollbar-width: none !important; /* Hides the scrollbar for Firefox */
     -ms-overflow-style: none !important; /* Hides the scrollbar for IE and Edge */
   }
+  @media (min-width:440px) {
+    .custom-nav-tabs_1{
+        display: flex !important;
+        justify-content: center !important;
+    }
+  }
+  @media (max-width:440px) {
+    .custom-nav-tabs_1{
+        display: flex !important;
+        justify-content: left !important;
+    }
+    .custom-nav-tabs{
+        padding-left: 100px !important;
+    }
+  }

@@ -1150,7 +1150,13 @@ function TCare() {
                       : "none",
                   }}
                 >
-                  <div className="tabs-section">
+                  <div className="tabs-section"  style={{
+                      display: loading
+                        ? "none"
+                        : secondtab === 5
+                        ? "block"
+                        : "none",
+                    }}>
                     <div class="circle-tab pt-4">
                       <a
                         onClick={() => handleregister(0)}
