@@ -15,6 +15,21 @@ function LatestNewsEvents() {
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
+  const scrollLeft = () => {
+    const myTab1 = document.getElementById("ex1");
+    myTab1.scrollTo({
+      left: myTab1.scrollLeft - 100,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollRight = () => {
+    const myTab = document.getElementById("ex1");
+    myTab.scrollTo({
+      left: myTab.scrollLeft + 100,
+      behavior: "smooth",
+    });
+  };
   useEffect(() => {
     const fetchNewsData = async () => {
       setLoading(true);
@@ -109,9 +124,29 @@ function LatestNewsEvents() {
         <div className="container mt-5">
           <h1>Latest News & Events</h1>
           <div className="event-tabs ">
-            <div className="d-flex justify-content-center">
+          <div className="scroll-buttons d-lg-none d-sm-none d-md-none d-flex align-items-center" style={{ position: "relative" }}>
+                <img
+                  onClick={scrollRight}
+                  className="ms-1 me-1 pe-2  mt-5 pt-2"
+                  src="assets/Frameright.svg"
+                  alt=""
+                  style={{
+                    position: "absolute",
+                    right: "-25px",
+                    marginRight: "10px",
+                  }}
+                />
+                <img
+                  className="ms-2 me-1 mt-4"
+                  onClick={scrollLeft}
+                  src="assets/Frameleft.svg"
+                  alt=""
+                  style={{ position: "absolute", top: "0px",left: "-25px", }}
+                />
+              </div>
+            <div className="d-flex justify-content-sm-center ">
               <ul
-                className="nav nav-tabs d-flex justify-content-center mb-3"
+                className="nav nav-tabs d-flex justify-content-center mb-3 custom-nav-tabs"
                 id="ex1"
                 role="tablist"
               >
@@ -132,30 +167,30 @@ function LatestNewsEvents() {
                   role="tab"
                   aria-selected={activeTab === 'ex1-tabs-2' ? 'true' : 'false'}
                   >
-                    Gazoo Racing
+                    Aftersales
                   </a>
                 </li>
                 <li className="nav-item" role="presentation">
                   <a
                      onClick={() => handleTabClick('ex1-tabs-3')}
-                     className={`nav-link ${activeTab === 'ex1-tabs-3' ? 'active' : ''}`}
+                     className={`nav-link text-nowrap ${activeTab === 'ex1-tabs-3' ? 'active' : ''}`}
                      role="tab"
                      aria-selected={activeTab === 'ex1-tabs-3' ? 'true' : 'false'}
                   >
-                    Electrified
+                    T-CARE
                   </a>
                 </li>
-                <li className="nav-item d-none d-md-block" role="presentation">
+                <li className="nav-item" role="presentation">
                   <a
                      onClick={() => handleTabClick('ex1-tabs-4')}
-                     className={`nav-link ${activeTab === 'ex1-tabs-4' ? 'active' : ''}`}
+                     className={`nav-link text-nowrap ${activeTab === 'ex1-tabs-4' ? 'active' : ''}`}
                      role="tab"
                      aria-selected={activeTab === 'ex1-tabs-4' ? 'true' : 'false'}
                   >
-                    Press Release
+                    News and Event
                   </a>
                 </li>
-                <li className="nav-item d-none d-md-block" role="presentation">
+                {/* <li className="nav-item d-none d-md-block" role="presentation">
                   <a
                      onClick={() => handleTabClick('ex1-tabs-5')}
                      className={`nav-link ${activeTab === 'ex1-tabs-5' ? 'active' : ''}`}
@@ -164,7 +199,7 @@ function LatestNewsEvents() {
                   >
                     Event
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="tab-content" id="ex1-content">
@@ -174,7 +209,7 @@ function LatestNewsEvents() {
                 
                 <div className="row d-flex justify-content-center">
                 {Object.keys(newsData).map((id, index) => (
-                  <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-3 " style={{marginTop:'15px'}}>
+                  <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-3 " style={{marginTop:'15px',marginBottom:'20px'}}>
                     <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                       <img
                        src={newsData[id].desktop_banner} 
@@ -189,7 +224,7 @@ function LatestNewsEvents() {
                           </p>
                           <p className="text-start">{newsData[Object.keys(newsData)[id]].posted_at}</p>
                         </div>
-                        <p className="card-title fw-bold text-start mb-4">
+                        <p className="card-title fw-bold text-start mb-lg-4 mb-md-4 mb-0">
                           {newsData[id].title}
                         </p>
                 <NavLink
@@ -235,7 +270,7 @@ function LatestNewsEvents() {
  <div className="row mt-5 d-flex justify-content-center">
                 {Object.keys(newsData).map((id, index) => (
                   newsData[id].category.name === 'Aftersales' && (
-                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px'}} key={id}>
+                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px',marginBottom:'20px'}} key={id}>
                         <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                           <img
                             src={newsData[id].desktop_banner}
@@ -247,7 +282,7 @@ function LatestNewsEvents() {
                               <p className="text-start title-color">{newsData[id].category.name}</p>
                               <p className="text-start">{newsData[id].posted_at}</p>
                             </div>
-                            <p className="card-title fw-bold text-start mb-4">
+                            <p className="card-title fw-bold text-start mb-lg-4 mb-md-4 mb-0">
                             {newsData[id].title}
                             </p>
                             <NavLink
@@ -280,8 +315,8 @@ function LatestNewsEvents() {
               >
                  <div className="row mt-5 d-flex justify-content-center">
                 {Object.keys(newsData).map((id, index) => (
-                  newsData[id].category.name === 'T-Care' && (
-                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px'}} key={id}>
+                  newsData[id].category.name === 'T-CARE' && (
+                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px',marginBottom:'20px'}} key={id}>
                         <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                           <img
                             src={newsData[id].desktop_banner}
@@ -293,7 +328,7 @@ function LatestNewsEvents() {
                               <p className="text-start title-color">{newsData[id].category.name}</p>
                               <p className="text-start">{newsData[id].posted_at}</p>
                             </div>
-                            <p className="card-title fw-bold text-start mb-4">
+                            <p className="card-title fw-bold text-start mb-lg-4 mb-md-4 mb-0">
                             {newsData[id].title}
                             </p>
                             <NavLink
@@ -327,8 +362,8 @@ function LatestNewsEvents() {
                   <div className="row mt-5 d-flex justify-content-center">
                 {Object.keys(newsData).map((id, index) => (
                   newsData[id].category.name === 'News and Event' && (
-                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px'}} key={id}>
-                        <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
+                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px',marginBottom:'20px'}} key={id}>
+                        <div className="card custom_body_boder h-100 mt-4  mt-lg-0 h-100 ">
                           <img
                             src={newsData[id].desktop_banner}
                             className="fixed_height  rounded-0"
@@ -339,7 +374,7 @@ function LatestNewsEvents() {
                               <p className="text-start title-color">{newsData[id].category.name}</p>
                               <p className="text-start">{newsData[id].posted_at}</p>
                             </div>
-                            <p className="card-title fw-bold text-start mb-4">
+                            <p className="card-title fw-bold text-start mb-lg-4 mb-md-4 mb-0">
                             {newsData[id].title}
                             </p>
                             <NavLink
@@ -367,13 +402,13 @@ function LatestNewsEvents() {
                 ))}
               </div>
               </div>
-              <div
+              {/* <div
                 className={`tab-pane fade ${activeTab === 'ex1-tabs-5' ? 'show active' : ''}`} id="ex1-tabs-5"
               >
  <div className="row mt-5 d-flex justify-content-center">
                 {Object.keys(newsData).map((id, index) => (
                   newsData[id].category.name === 'Event' && (
-                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px'}} key={id}>
+                    <div className="col-sm-10 col-md-6 col-lg-4 col-12" style={{marginTop:'15px',marginBottom:'20px'}} key={id}>
                         <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                           <img
                             src={newsData[id].desktop_banner}
@@ -412,7 +447,7 @@ function LatestNewsEvents() {
                     )
                 ))}
               </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

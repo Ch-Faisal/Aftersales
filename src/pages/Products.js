@@ -43,11 +43,13 @@ function Products() {
 
   const toggleVisibility5 = () => {
     setIsVisible5(!isVisible5);
+        setIsVisible6(false); // Hide component 6
   };
   const [isVisible6, setIsVisible6] = useState(false);
 
   const toggleVisibility6 = () => {
     setIsVisible6(!isVisible6);
+    setIsVisible5(false); // Hide component 6
   };
   const value = useSelector((state) => state.value);
   const scrollLeft = () => {
@@ -175,7 +177,7 @@ function Products() {
                   onClick={scrollRight}
                   className="ms-1 me-1 pe-2  mt-5 pt-2"
                   src="assets/Frameright.svg"
-                  alt=""
+                  alt="sad"
                   style={{
                     position: "absolute",
                     right: "10px",
