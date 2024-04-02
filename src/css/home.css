@@ -60,8 +60,8 @@
 }
 .tab-content .servis-content .text {
     color: rgba(22, 26, 29, 1) !important; 
-   font-weight: 200 !important;
-    font-size: 14px !important;
+   font-weight: 400 !important;
+    font-size: 20px !important;
   }
   .wrapper-servis{
     border-radius: 20px;
@@ -110,6 +110,21 @@
 
   .cursor-pointer {
     cursor: pointer;
+}
+.active-tab{
+   background-color: rgba(215, 25, 33, 1);
+}
+.package-image {
+  width: 80px;
+  height: 40px;
+}
+.first-two-images {
+  width: 81px;
+  height: 41px;
+  /* You can also set height here if needed */
+}
+.service_card_title {
+  font-size: 24px !important;
 }
 .borderr{
   border-left: 0.5 solid rgba(227, 227, 228, 1) !important;
@@ -163,4 +178,8 @@
   }
   .custom_body_boder{
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2) !important;
+  }
+  .servis-desc{
+    font-size: 18px;
+    font-weight: 600;
   }

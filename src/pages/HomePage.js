@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Virtual, Navigation, Pagination, FreeMode } from "swiper/modules";
+
 import '../css/home.css';
 function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -104,6 +105,7 @@ function HomePage() {
       setCarVariant(response.data.data);
       const serviceDescriptionsArray = response.data.data.map(variant => variant.services.map(service => service.service_description));
       setServiceDescriptions(serviceDescriptionsArray.flat());
+
       const serviceCost = response.data.data.map(variant => variant.services.map(service => service.service_cost));
       setServiceCost(serviceCost);
     } catch (error) {
@@ -158,6 +160,7 @@ function HomePage() {
     
   const handleServiceTab = async (serviceNo) => {
     try {
+           // Remove active class from all nav links
            const navLinks = document.querySelectorAll('.custom-nav-link');
            navLinks.forEach(link => link.classList.remove('active'));
            const clickedNavLink = document.querySelector(`.custom-nav-link[data-service="${serviceNo}"]`);
@@ -749,9 +752,11 @@ function HomePage() {
                               280: {
                                 slidesPerView: 1,
                               },
+                              // When window width is >= 768px
                               768: {
                                 slidesPerView: 2,
                               },
+                              // When window width is >= 992px
                               992: {
                                 slidesPerView: 3,
                               },
@@ -939,13 +944,17 @@ function HomePage() {
                                     index % 2 === 0 && (
                                         <div key={index} className='d-flex justify-content-between mt-2 mt-md-4'>
                                             <div className='d-flex'>
+                                                {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
                                                 <img src={packageImages[index]} alt='' />
                                                 <p className='px-3 text-nowrap'>{packageName}</p>
+                                                {/* {errorMessage && <p>{errorMessage}</p>} */}
                                             </div>
                                             {index + 1 < packageNames.length && (
                                                 <div className='d-flex'>
+                                                    {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
                                                     <img src={packageImages[index]} alt='' />
                                                     <p className='px-3 text-nowrap'>{packageNames[index + 1]}</p>
+                                                    {/* {errorMessage && <p>{errorMessage}</p>} */}
                                                 </div>
                                             )}
                                         </div>
@@ -1077,6 +1086,7 @@ function HomePage() {
                                 <p className='text-start' dangerouslySetInnerHTML={{ __html: recommendationRemark }} />
                                 <div className='d-flex'>
                                 <img src={imageComparation} className='w-50' alt='brake' />
+                                {/* <img src="assets/tyre2.png" className='w-50' alt='brake' /> */}
                                 </div>
                               </div>
                               <h1 className='mt-4'>{OptionalsName[0]}</h1>
@@ -1086,6 +1096,11 @@ function HomePage() {
                          <img src={OptionalsImage[1]} className='w-25 mx-2' alt='OPTIONAL' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
                          <img src={OptionalsImage[2]} className='w-25 mx-2' alt='OPTIONAL' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
                          <img src={OptionalsImage[3]} className='w-25 mx-2' alt='OPTIONAL' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+
+                                {/* <img src="assets/tire-solution.png" className='mx-4 px-2 py-3' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tmo.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} />
+                                <img src="assets/tgb.png" className='mx-4 px-4 py-2' alt='' style={{ borderRadius: '10px', border: '2px solid rgba(215, 25, 33, 1)' }} /> */}
+
                             </div>
                             </div>}
                           </div>
