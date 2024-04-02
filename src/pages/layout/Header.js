@@ -1,23 +1,39 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 function Header() {
-  // const [isSticky, setIsSticky] = useState(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollPosition = window.scrollY;
-  //     if (scrollPosition > 150) {
-  //       setIsSticky(true);
-  //     } else {
-  //       setIsSticky(false);
-  //     }
-  //   };
+  useEffect(() => {
+    var nav_link_1 = document.querySelector(".nav_link_1");
+    var nav_link_2 = document.querySelector(".nav_link_2");
+    var nav_link_3 = document.querySelector(".nav_link_3");
+    var nav_link_4 = document.querySelector(".nav_link_4");
+    var nav_link_5 = document.querySelector(".nav_link_5");
+    var nav_link_6 = document.querySelector(".nav_link_6");
+ 
 
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+    if (nav_link_1.classList.contains("active")) {
+      nav_link_1.classList.add("custom_active_class");
+    }
+    if (nav_link_2.classList.contains("active")) {
+      nav_link_2.classList.add("custom_active_class");
+    }
+
+    if (nav_link_3.classList.contains("active")) {
+      nav_link_3.classList.add("custom_active_class");
+    }
+
+    if (nav_link_4.classList.contains("active")) {
+      nav_link_4.classList.add("custom_active_class");
+    }
+    
+    if (nav_link_5.classList.contains("active")) {
+      nav_link_5.classList.add("custom_active_class");
+    }
+    
+    if (nav_link_6.classList.contains("active")) {
+      nav_link_6.classList.add("custom_active_class");
+    }
+  }, []);
   return (
     <div className="custom_margin_header_bottom">
     <div className=" sticky">
@@ -259,7 +275,7 @@ function Header() {
                 <div className="d-flex justify-content-between justify-content-lg-start">
                 <NavLink
                   to="/services"
-                  className="nav-link active custom-border-radius text-white mx-lg-0 mx-3"
+                  className="nav-link nav_link_1 custom-border-radius  mx-lg-0 mx-3"
                   aria-current="page"
                 >
                   SERVICES
@@ -281,7 +297,7 @@ function Header() {
           <div className="collapse" id="navbarNav3">
   <ul className="navbar-nav">
     <li className="nav-item mx-3">
-      <NavLink to="" className="nav-link custom-border-radius text-white">
+      <NavLink to="" className="nav-link  custom-border-radius text-white">
       General Repair
       </NavLink>
     </li>
@@ -307,7 +323,7 @@ function Header() {
               <div className="d-flex justify-content-between justify-content-lg-start">
                 <NavLink
                   to="/products"
-                  className="nav-link custom-border-radius text-white mx-3"
+                  className="nav-link nav_link_2 custom-border-radius mx-3"
                 >
                   PRODUCTS
                 </NavLink>
@@ -353,7 +369,7 @@ function Header() {
               <li className="nav-item mx-0">
                 <NavLink
                   to="/warranty"
-                  className="nav-link custom-border-radius text-white mx-3"
+                  className="nav-link nav_link_3 custom-border-radius  mx-3"
                 >
                   WARRANTY
                 </NavLink>
@@ -361,7 +377,7 @@ function Header() {
               <li className="nav-item mx-0">
                 <NavLink
                   to="/t-care"
-                  className="nav-link custom-border-radius text-white mx-3"
+                  className="nav-link nav_link_4 custom-border-radius  mx-3"
                 >
                   T-CARE
                 </NavLink>
@@ -369,7 +385,7 @@ function Header() {
               <li className="nav-item mx-0">
                 <NavLink
                   to="/news-information"
-                  className="nav-link custom-border-radius text-white mx-3"
+                  className="nav-link nav_link_5 custom-border-radius  mx-3"
                   aria-disabled="true"
                 >
                   NEWS & EVENT
@@ -378,7 +394,7 @@ function Header() {
               <li className="nav-item mx-0">
                 <NavLink
                   to="/faq"
-                  className="nav-link custom-border-radius text-white mx-3"
+                  className="nav-link nav_link_6 custom-border-radius  mx-3"
                   aria-disabled="true"
                 >
                   FAQ

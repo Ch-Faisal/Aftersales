@@ -82,8 +82,6 @@
   .home-tab .nav-link {
     border-radius: 30px;
     color: #000;
-    padding-left: 7rem !important;
-    padding-right: 7rem !important;
     background-color: rgba(227, 227, 228, 1);
   }
   .home-tab .nav-link.active {
@@ -91,6 +89,14 @@
     border: 1px solid rgba(215, 25, 33, 1) !important;
     background-color: rgba(215, 25, 33, 1) !important;
     color: #fff !important;
+  }
+  .home-tab .nav-link.active a {
+    color: #fff !important;
+  }
+
+  .home-tab .nav-link a{
+    font-size: 16px;
+    font-weight: 300;
   }
   .servis-2-tab .text-red{
     color: rgba(215, 25, 33, 1) !important;
