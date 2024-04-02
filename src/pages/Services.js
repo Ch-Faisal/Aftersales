@@ -4,20 +4,19 @@ import Footer from "./layout/Footer";
 import "../css/services.css";
 import { NavLink } from 'react-router-dom';
 const Services = () => {
-  // Function to scroll left
   const scrollLeft = () => {
     const myTab = document.getElementById("myTab");
     myTab.scrollTo({
-      left: myTab.scrollLeft - 100, // Adjust scroll distance as needed
-      behavior: "smooth", // Smooth scrolling behavior
+      left: myTab.scrollLeft - 100,
+      behavior: "smooth",
     });
   };
 
   const scrollRight = () => {
     const myTab = document.getElementById("myTab");
     myTab.scrollTo({
-      left: myTab.scrollLeft + 100, // Adjust scroll distance as needed
-      behavior: "smooth", // Smooth scrolling behavior
+      left: myTab.scrollLeft + 100,
+      behavior: "smooth",
     });
   };
   return (

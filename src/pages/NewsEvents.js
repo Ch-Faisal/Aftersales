@@ -13,7 +13,6 @@ function NewsEvents() {
   const [loading, setLoading] = useState(true);
   const [content, setContent] =useState([])
   const queryParams = window.location.search;
-  console.log(queryParams)
   useEffect(() => {
     const fetchNewsData = async () => {
       setLoading(true);
@@ -24,13 +23,11 @@ function NewsEvents() {
           }
         };
         const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/news?slug=${slug}`, config);
-        console.log('Response data of news:', response.data.data);
         setNewsData(response.data.data);
         setContent(response.data.data[0].body.replace(/['"]+/g, ''));
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        console.error('Error fetching news data:', error);
       }
     };
     fetchNewsData();
@@ -38,7 +35,7 @@ function NewsEvents() {
     return (
         <div id="navbar_top">
             <Header></Header>
-            {loading ? ( // Display loader if loading state is true
+            {loading ? (
        <div className='spinner-overlay'>
 <Oval
    height="60"
@@ -52,7 +49,6 @@ function NewsEvents() {
      </div>
       ) : (
         <div>
-            {/* {newsData[Object.keys(newsData)[0]] && ( */}
             {Object.keys(newsData).length === 0 ? (
     <div className="mt-5 mb-5">
       <p>No content available</p></div>

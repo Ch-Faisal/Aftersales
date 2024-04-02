@@ -692,3 +692,16 @@ border-radius: 30px !important;
     border: 0px !important;
   }
 }
+.custom_active_class
+{
+  background-color: #ffffff !important;
+  color: #000 !important;
+}
+@media only screen and (min-width: 990px) {
+
+  .custom_active_class{
+
+    background-color: white !important;
+    color: #000 !important;
+  }
+}
