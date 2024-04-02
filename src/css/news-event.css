@@ -71,7 +71,8 @@ margin-top: -12px;
     }
   }
   .fixed_height{
-    height: 167px !important;
+    /* height: 167px !important; */
+    aspect-ratio: 16/9;
   }
   .custom-nav-tabs {
     overflow-x: auto !important;
