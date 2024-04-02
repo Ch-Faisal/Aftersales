@@ -126,6 +126,9 @@
 .service_card_title {
   font-size: 24px !important;
 }
+.pointer{
+  cursor: pointer;
+}
 .borderr{
   border-left: 0.5 solid rgba(227, 227, 228, 1) !important;
 }
