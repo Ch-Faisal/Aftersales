@@ -221,3 +221,15 @@ letter-spacing: -0.198px;
 font-weight: 300;
 line-height: 120%; /* 16.8px */
 }
+
+@media (min-width: 990px) and (max-width: 1200px) {
+  .custom_image_set
+  {
+    height: auto !important;
+  }
+  .custom_height_set{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}

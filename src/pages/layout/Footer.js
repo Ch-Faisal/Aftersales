@@ -43,7 +43,7 @@ function Footer() {
               </defs>
             </svg>
             </div>
-            <p className="sideoption ps-2 pt-1">Back To top</p>
+            <p className="sideoption ps-2 pt-1">Back to Top</p>
           </li>
         </ul>
       </div>
