@@ -40,7 +40,8 @@ function LatestNewsEvents() {
           }
         };
         const response = await axios.get('https://aftersales-toyota-revamp.thriveagency.id/api/news', config);
-        setNewsData(response.data.data);
+        const sortedNewsData = response.data.data.sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at));
+        setNewsData(sortedNewsData);
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -82,7 +83,7 @@ function LatestNewsEvents() {
                     className="carousel slide d-none d-lg-block"
                     data-bs-ride="carousel"
                   >
-                    <div className="carousel-inner">
+                    <div className="carousel-inner latest-news-wrapper">
                       <div className="carousel-item active">
                         <img src="assets/news-event-1.jpeg" className=" d-block img-fluid" />
                       </div>
@@ -215,7 +216,7 @@ function LatestNewsEvents() {
 
                           <div className="row d-flex justify-content-center">
                             {Object.keys(newsData).map((id, index) => (
-                              <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-3 " style={{ marginTop: '15px', marginBottom: '20px' }}>
+                              <div className="col-sm-10 col-md-6 col-lg-4 col-12 mt-3" style={{ marginTop: '15px', marginBottom: '20px' }}>
                                 <div className="card custom_body_boder h-100 mt-4 mt-lg-0 h-100 ">
                                   <img
                                     src={newsData[id].desktop_banner}

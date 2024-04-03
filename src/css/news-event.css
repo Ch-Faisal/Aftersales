@@ -96,3 +96,8 @@ margin-top: -12px;
         padding-left: 100px !important;
     }
   }
+  @media (min-width:1920px) {
+   .latest-news-wrapper .carousel-item img{
+    width: 100% !important;
+   }
+  }

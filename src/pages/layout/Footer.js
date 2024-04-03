@@ -11,7 +11,7 @@ function Footer() {
         <ul>
           <li class="whatsapp mt-3">
             <div className="fa">
-              <img src="assets/sideoption.png" alt="" />
+              <img src="/assets/sideoption.png" alt="" />
             </div>
             <p className="sideoption pt-1">Booking Service</p>
           </li>
@@ -52,7 +52,7 @@ function Footer() {
       <div className="back-to-top">
         <a onClick={scrollToTop}>Back to top </a>
         <span>
-          <img src="assets/SVG.png" alt="arrow" />
+          <img src="/assets/SVG.png" alt="arrow" />
         </span>
       </div>
       <hr />
@@ -282,27 +282,27 @@ function Footer() {
             <h5 className="fw-bold text-start px-2 mt-4 mt-md-0">Join us on</h5>
             <div className="d-flex text-start">
               <div className="mx-1">
-                <img src="assets/whatsapp.png" alt="logo" />
+                <img src="/assets/whatsapp.png" alt="logo" />
               </div>
               <div className="mx-1">
-                <img src="assets/Instagram.png" alt="logo" />
+                <img src="/assets/Instagram.png" alt="logo" />
               </div>
               <div className="mx-1">
-                <img src="assets/Facebook.png" alt="logo" />
+                <img src="/assets/Facebook.png" alt="logo" />
               </div>
               <div className="mx-1">
-                <img src="assets/Tiktok.png" alt="logo" />
+                <img src="/assets/Tiktok.png" alt="logo" />
               </div>
               <div className="mx-1">
-                <img src="assets/YouTube.png" alt="logo" />
+                <img src="/assets/YouTube.png" alt="logo" />
               </div>
               <div className="mx-1">
-                <img src="assets/Twitter.png" alt="logo" />
+                <img src="/assets/Twitter.png" alt="logo" />
               </div>
             </div>
             <div>
               <div className="mt-3 text-start">
-                <img src="assets/customer-care.png" alt="logo" />
+                <img src="/assets/customer-care.png" alt="logo" />
               </div>
             </div>
           </div>
@@ -316,27 +316,27 @@ function Footer() {
           </h5>
           <div className="d-flex text-start mb-4">
             <div className="mx-1">
-              <img src="assets/whatsapp.png" alt="logo" />
+              <img src="/assets/whatsapp.png" alt="logo" />
             </div>
             <div className="mx-1">
-              <img src="assets/Instagram.png" alt="logo" />
+              <img src="/assets/Instagram.png" alt="logo" />
             </div>
             <div className="mx-1">
-              <img src="assets/Facebook.png" alt="logo" />
+              <img src="/assets/Facebook.png" alt="logo" />
             </div>
             <div className="mx-1">
-              <img src="assets/Tiktok.png" alt="logo" />
+              <img src="/assets/Tiktok.png" alt="logo" />
             </div>
             <div className="mx-1">
-              <img src="assets/YouTube.png" alt="logo" />
+              <img src="/assets/YouTube.png" alt="logo" />
             </div>
             <div className="mx-1">
-              <img src="assets/Twitter.png" alt="logo" />
+              <img src="/assets/Twitter.png" alt="logo" />
             </div>
           </div>
           <div>
             <div className="mt-3 text-start">
-              <img src="assets/customer-care.png" alt="logo" />
+              <img src="/assets/customer-care.png" alt="logo" />
             </div>
           </div>
         </div>
