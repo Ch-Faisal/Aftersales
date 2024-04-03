@@ -1,5 +1,4 @@
 import React from "react";
-
 function Footer() {
   const scrollToTop = () => {
     const navbar = document.getElementById("navbar_top");
@@ -62,37 +61,37 @@ function Footer() {
             <h5 className="fw-bold text-start">Beyond Solution</h5>
             <ul class="list-unstyled text-dark text-start">
               <li class="mb-2">
-                <a href="https://www.toyota.astra.co.id/spektakuler" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/spektakuler" target="_blank" class="text-decoration-none text-dark">
                   Toyota Spektakuler
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://finance.toyota.astra.co.id/ezdeal" class="text-decoration-none text-dark">
+                <a href="https://finance.toyota.astra.co.id/ezdeal" target="_blank" class="text-decoration-none text-dark">
                   Toyota EZ Deal
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://www.toyota.astra.co.id/kinto" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/kinto" target="_blank" class="text-decoration-none text-dark">
                   Kinto
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://finance.toyota.astra.co.id/ezdeal" class="text-decoration-none text-dark">
+                <a href="https://finance.toyota.astra.co.id/ezdeal" target="_blank" class="text-decoration-none text-dark">
                   Toyota Financial Service
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://simulation.toyota.astra.co.id/" class="text-decoration-none text-dark">
+                <a href="https://simulation.toyota.astra.co.id/" target="_blank" class="text-decoration-none text-dark">
                   Get Your Offer
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://www.toyota.astra.co.id/shopping-tools/konsultasi-pembelian" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/konsultasi-pembelian" target="_blank" class="text-decoration-none text-dark">
                   Form Inquiry
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://www.toyota.astra.co.id/shopping-tools/pricelist" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/pricelist" target="_blank" class="text-decoration-none text-dark">
                   Pricelist
                 </a>
               </li>
@@ -102,62 +101,62 @@ function Footer() {
             <h5 className="fw-bold text-start">Beyond Experience</h5>
             <ul class="list-unstyled text-dark text-start">
               <li class="mb-2">
-                <a href="https://www.toyota.astra.co.id/shopping-tools/e-brochure" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/e-brochure" target="_blank" class="text-decoration-none text-dark">
                   E-brochure
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://liveshowroom.toyota.astra.co.id/showroom" class="text-decoration-none text-dark">
+                <a href="https://liveshowroom.toyota.astra.co.id/showroom" target="_blank" class="text-decoration-none text-dark">
                   Toyota Live Showroom
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://api.whatsapp.com/send/?phone=628111500315&text&type=phone_number&app_absent=0" class="text-decoration-none text-dark">
+                <a href="https://api.whatsapp.com/send/?phone=628111500315&text&type=phone_number&app_absent=0" target="_blank" class="text-decoration-none text-dark">
                   Toyota Interactive Virtual Assistant
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://toss.toyota.astra.co.id/" class="text-decoration-none text-dark">
+                <a href="https://toss.toyota.astra.co.id/" target="_blank" class="text-decoration-none text-dark">
                   Toyota Official Store Solution
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://www.toyota.astra.co.id/shopping-tools/dealer" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/dealer" target="_blank" class="text-decoration-none text-dark">
                   Find Dealer
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://www.toyota.astra.co.id/shopping-tools/booking-service" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/booking-service" target="_blank" class="text-decoration-none text-dark">
                   Booking Service
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://aftersales.toyota.astra.co.id/" class="text-decoration-none text-dark">
+                <a href="https://aftersales.toyota.astra.co.id/" target="_blank" class="text-decoration-none text-dark">
                   Aftersales
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://aftersales.toyota.astra.co.id/" class="text-decoration-none text-dark">
+                <a href="https://aftersales.toyota.astra.co.id/" target="_blank" class="text-decoration-none text-dark">
                   Toyota Mobile Service
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://aftersales.toyota.astra.co.id/t-care" class="text-decoration-none text-dark">
+                <a href="https://aftersales.toyota.astra.co.id/t-care" target="_blank" class="text-decoration-none text-dark">
                   T-Care
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://www.toyota.astra.co.id/mtoyota" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/mtoyota" target="_blank" class="text-decoration-none text-dark">
                   mToyota
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://www.toyota.astra.co.id/accessories" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/accessories" target="_blank" class="text-decoration-none text-dark">
                   Toyota Genuine Accessories
                 </a>
               </li>
               <li class="mb-2">
-                <a href="https://ssc.toyota.astra.co.id/" class="text-decoration-none text-dark">
+                <a href="https://ssc.toyota.astra.co.id/" target="_blank" class="text-decoration-none text-dark">
                   Special Service Campaign
                 </a>
               </li>
@@ -168,7 +167,7 @@ function Footer() {
             <ul class="list-unstyled text-dark text-start">
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="https://www.toyota.astra.co.id/tintouch"
                   class="text-decoration-none text-dark"
                   target="_blank"
                   rel="noopener"
@@ -178,7 +177,7 @@ function Footer() {
               </li>
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="https://www.toyota.astra.co.id/technology/engine"
                   class="text-decoration-none text-dark"
                   target="_blank"
                   rel="noopener"
@@ -188,7 +187,7 @@ function Footer() {
               </li>
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="https://www.toyota.astra.co.id/tnga"
                   class="text-decoration-none text-dark"
                   target="_blank"
                   rel="noopener"
@@ -198,7 +197,7 @@ function Footer() {
               </li>
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="https://www.toyota.astra.co.id/technology/safety"
                   class="text-decoration-none text-dark"
                   target="_blank"
                   rel="noopener"
@@ -208,7 +207,7 @@ function Footer() {
               </li>
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="https://www.toyota.astra.co.id/androidauto"
                   class="text-decoration-none text-dark"
                   target="_blank"
                   rel="noopener"
@@ -223,7 +222,7 @@ function Footer() {
             <ul class="list-unstyled text-dark text-start">
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="https://itstimeforeveryone.toyota.astra.co.id/"
                   class="text-decoration-none text-dark"
                   target="_blank"
                   rel="noopener"
@@ -233,7 +232,7 @@ function Footer() {
               </li>
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="https://www.toyota.co.id/sustainability/toyota-berbagi"
                   class="text-decoration-none text-dark"
                   target="_blank"
                   rel="noopener"
@@ -248,7 +247,7 @@ function Footer() {
             <ul class="list-unstyled text-dark text-start">
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="https://pressroom.toyota.astra.co.id/"
                   class="text-decoration-none text-dark"
                   target="_blank"
                   rel="noopener"
@@ -258,7 +257,7 @@ function Footer() {
               </li>
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="https://www.toyota.astra.co.id/ownership#downershipOwnerManual"
                   class="text-decoration-none text-dark"
                   target="_blank"
                   rel="noopener"
@@ -268,7 +267,7 @@ function Footer() {
               </li>
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="https://www.toyota.astra.co.id/corporate-information/news-promo"
                   class="text-decoration-none text-dark"
                   target="_blank"
                   rel="noopener"
@@ -282,27 +281,47 @@ function Footer() {
             <h5 className="fw-bold text-start px-2 mt-4 mt-md-0">Join us on</h5>
             <div className="d-flex text-start">
               <div className="mx-1">
+              <a
+               href="https://api.whatsapp.com/send/?phone=628111500315&text&type=phone_number&app_absent=0" target="_blank">
                 <img src="assets/whatsapp.png" alt="logo" />
+                </a>
               </div>
               <div className="mx-1">
+              <a
+               href="https://www.instagram.com/toyotaid/" target="_blank">
                 <img src="assets/Instagram.png" alt="logo" />
+                </a>
               </div>
               <div className="mx-1">
+              <a
+               href="https://www.facebook.com/ToyotaID" target="_blank">
                 <img src="assets/Facebook.png" alt="logo" />
+                </a>
               </div>
               <div className="mx-1">
+              <a
+               href="https://www.tiktok.com/@toyotaid" target="_blank">
                 <img src="assets/Tiktok.png" alt="logo" />
+                </a>
               </div>
               <div className="mx-1">
+              <a
+               href="https://www.youtube.com/channel/UCxVa64ZcWGi_VStlkfmoteQ" target="_blank">
                 <img src="assets/YouTube.png" alt="logo" />
+                </a>
               </div>
               <div className="mx-1">
+              <a
+               href="https://twitter.com/ToyotaID" target="_blank">
                 <img src="assets/Twitter.png" alt="logo" />
+                </a>
               </div>
             </div>
             <div>
               <div className="mt-3 text-start">
+                <a href="https://linktr.ee/toyotaastramotor?utm_source=linktree_profile_share&ltsid=81f3bbcd-6474-4017-a99f-58a9b675f5ce" target="_blank">
                 <img src="assets/customer-care.png" alt="logo" />
+                </a>
               </div>
             </div>
           </div>

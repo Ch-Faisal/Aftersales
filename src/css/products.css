@@ -421,8 +421,15 @@ height: 12px !important;
 }
 .card-img-top{
   height: 340px !important; 
+  cursor: pointer;
 }
-.custom_color_1{
+@media (max-width:1200px) {
+  .card-img-top{
+    height: 275px !important; 
+    cursor: pointer;
+  }
+}
+.custom_color_111{
   color: #D71921 !important; 
 }
 .card_heading_3{
@@ -1079,3 +1086,17 @@ flex: 1 0 0;
 position: relative !important;
 padding-top: 10% !important;
 }
+.popup-content{
+  background: transparent !important;
+  padding: 0px !important;
+  border: none !important;
+}
+.custom_pointer{
+  cursor: pointer !important;
+}
+  .swiper_slider_1 .swiper-wrapper{
+    height: 44rem !important;
+    }
+    .swiper_slider_1 .swiper-wrapper .swiper-slide .card{
+      height: 32rem !important;
+      } 

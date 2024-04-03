@@ -297,22 +297,22 @@ function Header() {
           <div className="collapse" id="navbarNav3">
   <ul className="navbar-nav">
     <li className="nav-item mx-3">
-      <NavLink to="" className="nav-link  custom-border-radius text-white">
+      <NavLink to="/services" className="nav-link  custom-border-radius text-white">
       General Repair
       </NavLink>
     </li>
     <li className="nav-item mx-3">
-      <NavLink to="" className="nav-link custom-border-radius text-white">
+      <NavLink to="/services" className="nav-link custom-border-radius text-white">
       Body & Paint
       </NavLink>
     </li>
     <li className="nav-item mx-3">
-      <NavLink to="" className="nav-link custom-border-radius text-white">
+      <NavLink to="/services" className="nav-link custom-border-radius text-white">
       Toyota Mobile Service
       </NavLink>
     </li>
     <li className="nav-item mx-3">
-      <NavLink to="" className="nav-link custom-border-radius text-white">
+      <NavLink to="/services" className="nav-link custom-border-radius text-white">
       Express Maintenance
       </NavLink>
     </li>
@@ -344,22 +344,22 @@ function Header() {
           <div className="collapse" id="navbarNav4">
   <ul className="navbar-nav">
     <li className="nav-item mx-3">
-      <NavLink to="" className="nav-link custom-border-radius text-white">
+      <NavLink to="/products" className="nav-link custom-border-radius text-white">
       Service Parts
       </NavLink>
     </li>
     <li className="nav-item mx-3">
-      <NavLink to="" className="nav-link custom-border-radius text-white">
+      <NavLink to="/products" className="nav-link custom-border-radius text-white">
       TMO
       </NavLink>
     </li>
     <li className="nav-item mx-3">
-      <NavLink to="" className="nav-link custom-border-radius text-white">
+      <NavLink to="/products" className="nav-link custom-border-radius text-white">
       TGB
       </NavLink>
     </li>
     <li className="nav-item mx-3">
-      <NavLink to="" className="nav-link custom-border-radius text-white">
+      <NavLink to="/products" className="nav-link custom-border-radius text-white">
       Tire Solution
       </NavLink>
     </li>
