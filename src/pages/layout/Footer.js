@@ -285,27 +285,47 @@ function Footer() {
             <h5 className="fw-bold text-start px-2 mt-4 mt-md-0">Join us on</h5>
             <div className="d-flex text-start">
               <div className="mx-1">
+              <a
+               href="https://api.whatsapp.com/send/?phone=628111500315&text&type=phone_number&app_absent=0" target="_blank">
                 <img src="assets/whatsapp.png" alt="logo" />
+                </a>
               </div>
               <div className="mx-1">
+              <a
+               href="https://www.instagram.com/toyotaid/" target="_blank">
                 <img src="assets/Instagram.png" alt="logo" />
+                </a>
               </div>
               <div className="mx-1">
+              <a
+               href="https://www.facebook.com/ToyotaID" target="_blank">
                 <img src="assets/Facebook.png" alt="logo" />
+                </a>
               </div>
               <div className="mx-1">
+              <a
+               href="https://www.tiktok.com/@toyotaid" target="_blank">
                 <img src="assets/Tiktok.png" alt="logo" />
+                </a>
               </div>
               <div className="mx-1">
+              <a
+               href="https://www.youtube.com/channel/UCxVa64ZcWGi_VStlkfmoteQ" target="_blank">
                 <img src="assets/YouTube.png" alt="logo" />
+                </a>
               </div>
               <div className="mx-1">
+              <a
+               href="https://twitter.com/ToyotaID" target="_blank">
                 <img src="assets/Twitter.png" alt="logo" />
+                </a>
               </div>
             </div>
             <div>
               <div className="mt-3 text-start">
+                <a href="https://linktr.ee/toyotaastramotor?utm_source=linktree_profile_share&ltsid=81f3bbcd-6474-4017-a99f-58a9b675f5ce" target="_blank">
                 <img src="assets/customer-care.png" alt="logo" />
+                </a>
               </div>
             </div>
           </div>
