@@ -49,15 +49,14 @@ function HomePage() {
   const [dataNull, setDataNull] = useState(false);
   const [variantIdParent, setVariantIdParent] = useState(0);
   const [filteredOptionalsItem, setFilteredOptionalsItem] = useState([]);
-
+  const [services, setServices] = useState([]);
 
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     fetchCarModels();
   }, []);
-
-
+ 
 
   useEffect(() => {
     if (carModels.length > 0) {
@@ -68,6 +67,12 @@ function HomePage() {
       fetchVarients(defaultCarModel.id);
     }
   }, [carModels]);
+
+  useEffect(() => {
+    if (selectedCarId && variantIdParent) {
+      handleTabClick(variantIdParent, activeTab);
+    }
+  }, [selectedCarId, variantIdParent, activeTab]);
 
   const fetchCarModels = async () => {
     try {
@@ -107,7 +112,7 @@ function HomePage() {
       console.error('Error fetching car models:', error);
     }
   }
-
+  
   const handleCarChange = (event) => {
     setLoading(true);
     const selectedCarName = event.target.value;
@@ -126,20 +131,36 @@ function HomePage() {
     setLoading(false);
   };
 
-
   const handleButtonClick = (event) => {
     handleCarChange(event);
     setShowAlphardWrapper(true);
   };
-  let globalVariantId;
 
   const handleTabClick = async (variantId, index) => {
-    setLoading2(true);
-    setActiveTab(index);
-    setVariantIdParent(variantId);
-    console.log("variantidahsan", variantIdParent);
-  };
+    try {
+      setLoading2(true);
+      const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/variant?car_id=${selectedCarId}&id=${variantId}`, {
+        headers: {
+          'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
+        }
+      });
+      console.log("serviscostusingvariant:", response.data.data);
 
+       const servicesData = response.data.data[0].services;
+       console.log("servicescostData:", servicesData);
+       setServices(servicesData);
+      // Handle the API response
+      setVariantIdParent(variantId);
+      console.log("variantidahsan", variantIdParent);
+      setLoading2(false);
+      setActiveTab(index);
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching service cost using variant:', error);
+      setLoading2(false); // Set loading state in case of error
+      throw error; // Throw the error to handle it in the calling function
+    }
+  };
   const handleServiceTab = async (serviceNo) => {
     try {
       const navLinks = document.querySelectorAll('.custom-nav-link');
@@ -150,8 +171,6 @@ function HomePage() {
       }
       setActiveServiceTab(serviceNo);
       setLoading2(true);
-      console.log('debug 2')
-      debugger
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
         params: {
           variant_id: variantIdParent,
@@ -230,8 +249,6 @@ function HomePage() {
   const handleVariantService = async (variantId, serviceNo) => {
     setLoading(true);
     try {
-      console.log('debug 3')
-      debugger
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/variantService`, {
         params: {
           variant_id: variantId,
@@ -266,8 +283,6 @@ function HomePage() {
   const handleOptionalTabs = async (variantId, serviceNo) => {
     try {
       // setvariantIdParent(variantId)
-      console.log('debug 1')
-      debugger
       setLoading3(true);
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
         params: {
@@ -490,10 +505,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(1)}
                                 data-service="1"
                               >
-                                <div className="d-flex flex-column servis-tabs py-1 ">
-                                  <span>Servis ke-1</span>
-                                  <span>FREE</span>
-                                </div>
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[0].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <span>Servis ke-1</span>
+                                <span>FREE</span>
+                              </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -503,10 +518,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(2)}
                                 data-service="2"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
-                                  <span>Servis ke-2</span>
-                                  <span>FREE</span>
-                                </div>
+                                <div className={`d-flex flex-column servis-tabs py-1 ${services[1].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                      <span>Servis ke-2</span>
+                                      <span>FREE</span>
+                                    </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -517,10 +532,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(3)}
                                 data-service="3"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
-                                  <span>Servis ke-3</span>
-                                  <span>FREE</span>
-                                </div>
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[2].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <span>Servis ke-3</span>
+                                <span>FREE</span>
+                              </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -531,10 +546,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(4)}
                                 data-service="4"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
-                                  <span>Servis ke-4</span>
-                                  <span>FREE</span>
-                                </div>
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[3].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <span>Servis ke-4</span>
+                                <span>FREE</span>
+                              </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -544,10 +559,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(5)}
                                 data-service="5"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
-                                  <span>Servis ke-5</span>
-                                  <span>FREE</span>
-                                </div>
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[4].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <span>Servis ke-5</span>
+                                <span>FREE</span>
+                              </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -557,10 +572,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(6)}
                                 data-service="6"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
-                                  <span>Servis ke-6</span>
-                                  <span>FREE</span>
-                                </div>
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[5].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <span>Servis ke-6</span>
+                                <span>FREE</span>
+                              </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -571,7 +586,7 @@ function HomePage() {
                                 onClick={() => handleServiceTab(7)}
                                 data-service="7"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[6].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-7</span>
                                   <span>FREE</span>
                                 </div>
@@ -585,9 +600,9 @@ function HomePage() {
                                 onClick={() => handleServiceTab(8)}
                                 data-service="8"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
+                               <div className={`d-flex flex-column py-1 servis-tabs ${services[7].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-8</span>
-                                  <span>FREE</span>
+                                  <span>{services[7].service_cost}</span>
                                 </div>
                               </button>
                             </li>
@@ -599,9 +614,9 @@ function HomePage() {
                                 onClick={() => handleServiceTab(9)}
                                 data-service="9"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
+                               <div className={`d-flex flex-column py-1 servis-tabs ${services[8].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-9</span>
-                                  <span>FREE</span>
+                                  <span>{services[8].service_cost}</span>
                                 </div>
                               </button>
                             </li>
@@ -613,10 +628,11 @@ function HomePage() {
                                 onClick={() => handleServiceTab(10)}
                                 data-service="10"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
+                                <div className={`d-flex flex-column py-1 servis-tabs ${services[9].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-10</span>
-                                  <span>FREE</span>
+                                  <span>{services[9].service_cost}</span>
                                 </div>
+
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -627,9 +643,9 @@ function HomePage() {
                                 onClick={() => handleServiceTab(11)}
                                 data-service="11"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
+                               <div className={`d-flex flex-column py-1 servis-tabs ${services[10].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-11</span>
-                                  <span>FREE</span>
+                                  <span>{services[10].service_cost}</span>
                                 </div>
                               </button>
                             </li>

@@ -202,4 +202,7 @@
     white-space: pre-wrap !important; /* Ensures lines break only at white spaces */
     font-family: inherit !important; /* Use the same font as the parent element */
 }
+.bg-gray{
+  background-color: rgba(115, 118, 119, 1);
+}
   
