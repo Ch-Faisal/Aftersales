@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import { NavLink } from "react-router-dom";
+import { useReactToPrint } from 'react-to-print';
+import { Document, Page, pdfjs } from 'react-pdf';
 import "../css/t-care.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/free-mode";
@@ -12,7 +14,20 @@ import axios from "axios";
 import "toastr/build/toastr.min.css"; // Import toastr CSS
 import toastr from "toastr";
 import { Oval } from "react-loader-spinner";
+
+// Set up PDF.js worker
+// Set up PDF.js worker
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
+const PDFViewer = React.forwardRef(({ pdfUrl }, ref) => (
+  <div ref={ref} style={{ display: 'none' }}>
+    <Document file={pdfUrl}>
+      <Page pageNumber={1} />
+    </Document>
+  </div>
+));
 function TCare() {
+  const pdfRef = useRef(null);
   const [downloadWarranty, setDownloadWarranty] = useState(null);
   const [loading, setLoading] = useState(false);
   const [downloadCertificate, setDownloadCertificate] = useState(null);
@@ -113,7 +128,7 @@ function TCare() {
         setImageUrl(response.data.imgUrl);
         settagline(response.data.tagline);
         setguideline(response.data.tagline);
-        setApiMessage(response.data.message)
+        setApiMessage(response.data.message);
         setName(response.data.data.name);
         setEmail(response.data.data.email);
         setPhoneNumber(response.data.data.phone);
@@ -405,14 +420,14 @@ function TCare() {
       // Replace 'path/to/your/pdf.pdf' with the path to your PDF file
 
       // Create a link element
-      var link = document.createElement('a');
+      var link = document.createElement("a");
 
       // Set the href attribute of the link to the PDF file URL
       link.href = download;
-      link.setAttribute('target', '_blank');
+      link.setAttribute("target", "_blank");
 
       // Set the download attribute to force download the PDF file
-      link.setAttribute('download', 'downloaded_file.pdf');
+      link.setAttribute("download", "downloaded_file.pdf");
 
       // Append the link to the body
       document.body.appendChild(link);
@@ -445,57 +460,23 @@ function TCare() {
       // link.click();
       // // Clean up by revoking the URL object
       // URL.revokeObjectURL(url);
-    } catch (error) { }
+    } catch (error) {}
   };
+
+
 
   const handlePrint = () => {
     if (!download) {
       toastr.error("No PDF URL available for printing");
       return;
     }
-
-    // Open a new window for printing
-    const printWindow = window.open("", "_blank");
-
-    if (!printWindow) {
-      toastr.error(
-        "Popup blocker may be preventing the print window from opening. Please disable it and try again."
-      );
-      return;
-    }
-
-    // Write the HTML content to the new window
-    printWindow.document.write(`
-      <html>
-        <head>
-          <title>Print PDF</title>
-          <style>
-            @media print {
-              body {
-                margin: 0;
-                padding: 0;
-              }
-              /* Adjust iframe size for printing */
-              iframe {
-                width: 100%;
-                height: 100%;
-                border: none;
-              }
-            }
-          </style>
-        </head>
-        <body>
-          <iframe src="${download}" frameborder="0"></iframe>
-        </body>
-      </html>
-    `);
-
-    // Close the document for printing
-    printWindow.document.close();
-
-    // Print the document
-    printWindow.print();
+    handlePrintPDF();
   };
+
+  const handlePrintPDF = useReactToPrint({
+    content: () => pdfRef.current,
+  });
+
 
   const [vinn, setVinn] = useState("");
   const [emaill, setEmaill] = useState("");
@@ -541,6 +522,12 @@ function TCare() {
     }
   };
 
+//this for the open the pdf file when useer click on the button
+
+const openLink = () => {
+  const url = "https://drive.google.com/file/d/10v6_oCSRhGgRe9eYeCatu2CLZkLrwZt2/view?usp=drive_link";
+  window.open(url, '_blank');
+};
   return (
     <div id="navbar_top">
       <Header></Header>
@@ -638,17 +625,16 @@ function TCare() {
                   <p className="text-start">
                     Toyota sangat peduli terhadap keamanan dan kenyamanan Anda
                     saat berkendara<strong> T-Care</strong> memberikan Anda
-                    <strong>
-                      Bebas Biaya Jasa Servis Berkala dan Suku Cadang*
+                    <strong>&nbsp;Bebas Biaya Jasa Servis Berkala dan Suku Cadang*&nbsp;
                     </strong>
                     sebanyak 7x servis selama 3 tahun.
                   </p>
-                  <p>
+                  <p className="text-start">
                     Dengan rutin servis berkala setiap 6 bulan, Anda juga dapat
                     menikmati reward berupa
-                    <strong>Extended Warranty 1 tahun/20.000 km!**</strong>
+                    <strong>&nbsp;Extended Warranty 1 tahun/20.000 km!**</strong>
                   </p>
-                  <p>
+                  <p className="text-start">
                     {" "}
                     *sesuai ketentuan yang tertera pada buku servis <br />{" "}
                     *khusus model LCGC hanya berlaku bebas biaya jasa servis
@@ -679,8 +665,9 @@ function TCare() {
                 <ul className="nav nav-pills nav-fill">
                   <li className="nav-item">
                     <a
-                      className={`tabs sertifikat nav-link py-3 li_text_1 ${activeTab === 0 ? "active" : ""
-                        }`}
+                      className={`tabs sertifikat nav-link py-3 li_text_1 ${
+                        activeTab === 0 ? "active" : ""
+                      }`}
                       href="javascript:void(0)"
                       onClick={() => handleTabClick(0)}
                     >
@@ -689,8 +676,9 @@ function TCare() {
                   </li>
                   <li className="nav-item">
                     <a
-                      className={`tabs cataten nav-link py-3 li_text_1 ${activeTab === 1 ? "active" : ""
-                        }`}
+                      className={`tabs cataten nav-link py-3 li_text_1 ${
+                        activeTab === 1 ? "active" : ""
+                      }`}
                       href="javascript:void(0)"
                       onClick={() => handleTabClick(1)}
                     >
@@ -703,8 +691,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                        ? "block"
-                        : "none",
+                      ? "block"
+                      : "none",
                   }}
                 >
                   <div
@@ -713,8 +701,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 0
-                          ? "block"
-                          : "none",
+                        ? "block"
+                        : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -769,8 +757,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                        ? "block"
-                        : "none",
+                      ? "block"
+                      : "none",
                   }}
                 >
                   <div
@@ -779,8 +767,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 1
-                          ? "block"
-                          : "none",
+                        ? "block"
+                        : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -831,8 +819,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                        ? "block"
-                        : "none",
+                      ? "block"
+                      : "none",
                   }}
                 >
                   <div
@@ -841,8 +829,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 2
-                          ? "block"
-                          : "none",
+                        ? "block"
+                        : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -879,9 +867,7 @@ function TCare() {
                         <p className="tab-bold-p">
                           Mobil Anda Sudah Terdaftar di Program T-Care!
                         </p>
-                        <p className="tab-bold-p">
-                          {apiMessage}
-                        </p>
+                        <p className="tab-bold-p">{apiMessage}</p>
                         <p style={{ color: "#D71921" }} className="tab-bold-p">
                           Ingin ubah data diri anda?
                         </p>
@@ -908,8 +894,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                        ? "block"
-                        : "none",
+                      ? "block"
+                      : "none",
                   }}
                 >
                   <div
@@ -918,8 +904,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 3
-                          ? "block"
-                          : "none",
+                        ? "block"
+                        : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -1055,8 +1041,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                        ? "block"
-                        : "none",
+                      ? "block"
+                      : "none",
                   }}
                 >
                   <div
@@ -1065,8 +1051,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 4
-                          ? "block"
-                          : "none",
+                        ? "block"
+                        : "none",
                     }}
                   >
                     <div>
@@ -1169,17 +1155,20 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                        ? "block"
-                        : "none",
+                      ? "block"
+                      : "none",
                   }}
                 >
-                  <div className="tabs-section" style={{
-                    display: loading
-                      ? "none"
-                      : secondtab === 5
+                  <div
+                    className="tabs-section"
+                    style={{
+                      display: loading
+                        ? "none"
+                        : secondtab === 5
                         ? "block"
                         : "none",
-                  }}>
+                    }}
+                  >
                     <div class="circle-tab pt-4">
                       <a
                         onClick={() => handleregister(0)}
@@ -1211,9 +1200,9 @@ function TCare() {
                           onChange={(e) => {
                             setOtp1(e.target.value);
                             if (e.target.value === "") {
-                              document.getElementById('otp1').focus();
+                              document.getElementById("otp1").focus();
                             } else if (e.target.value.length === 1) {
-                              document.getElementById('otp2').focus();
+                              document.getElementById("otp2").focus();
                             }
                           }}
                           onKeyPress={(e) => {
@@ -1236,9 +1225,9 @@ function TCare() {
                           onChange={(e) => {
                             setOtp2(e.target.value);
                             if (e.target.value === "") {
-                              document.getElementById('otp1').focus();
+                              document.getElementById("otp1").focus();
                             } else if (e.target.value.length === 1) {
-                              document.getElementById('otp3').focus();
+                              document.getElementById("otp3").focus();
                             }
                           }}
                           onKeyPress={(e) => {
@@ -1261,9 +1250,9 @@ function TCare() {
                           onChange={(e) => {
                             setOtp3(e.target.value);
                             if (e.target.value === "") {
-                              document.getElementById('otp2').focus();
+                              document.getElementById("otp2").focus();
                             } else if (e.target.value.length === 1) {
-                              document.getElementById('otp4').focus();
+                              document.getElementById("otp4").focus();
                             }
                           }}
                           onKeyPress={(e) => {
@@ -1286,9 +1275,9 @@ function TCare() {
                           onChange={(e) => {
                             setOtp4(e.target.value);
                             if (e.target.value === "") {
-                              document.getElementById('otp3').focus();
+                              document.getElementById("otp3").focus();
                             } else if (e.target.value.length === 1) {
-                              document.getElementById('otp5').focus();
+                              document.getElementById("otp5").focus();
                             }
                           }}
                           onKeyPress={(e) => {
@@ -1311,9 +1300,9 @@ function TCare() {
                           onChange={(e) => {
                             setOtp5(e.target.value);
                             if (e.target.value === "") {
-                              document.getElementById('otp4').focus();
+                              document.getElementById("otp4").focus();
                             } else if (e.target.value.length === 1) {
-                              document.getElementById('otp6').focus();
+                              document.getElementById("otp6").focus();
                             }
                           }}
                           onKeyPress={(e) => {
@@ -1336,7 +1325,7 @@ function TCare() {
                           onChange={(e) => {
                             setOtp6(e.target.value);
                             if (e.target.value === "") {
-                              document.getElementById('otp5').focus();
+                              document.getElementById("otp5").focus();
                             }
                           }}
                           onKeyPress={(e) => {
@@ -1395,8 +1384,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                        ? "block"
-                        : "none",
+                      ? "block"
+                      : "none",
                   }}
                 >
                   <div
@@ -1405,8 +1394,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 6
-                          ? "block"
-                          : "none",
+                        ? "block"
+                        : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -1450,8 +1439,9 @@ function TCare() {
                         <ul className="nav  nav-fill px-lg-5 px-3">
                           <li className="nav-item me-4 custom_border_radios_add">
                             <button
-                              className={`tabs nav-link py-3 li_text_1 ${activeTab1 === 0 ? "active1" : "non_active"
-                                }`}
+                              className={`tabs nav-link py-3 li_text_1 ${
+                                activeTab1 === 0 ? "active1" : "non_active"
+                              }`}
                               onClick={() => handleTabClick1(0)}
                             >
                               T-Care Certificate
@@ -1459,7 +1449,9 @@ function TCare() {
                           </li>
                           <li className="nav-item custom_border_radios_add">
                             <button
-                              className={`tabs nav-link py-3 li_text_1 ${activeTab1 === 1 ? "active1" : "non_active"}`}
+                              className={`tabs nav-link py-3 li_text_1 ${
+                                activeTab1 === 1 ? "active1" : "non_active"
+                              }`}
                               onClick={() => handleTabClick1(1)}
                             >
                               Extended Warranty
@@ -1479,14 +1471,16 @@ function TCare() {
                         <p className="tab-light-bold-p">
                           Untuk mendapatkan sertifikat
                           <span
-                            className={`tab-bold-p ${activeTab1 === 1 ? "d-none" : "d-inline"
-                              }`}
+                            className={`tab-bold-p ${
+                              activeTab1 === 1 ? "d-none" : "d-inline"
+                            }`}
                           >
                             “T-Care”
                           </span>{" "}
                           <span
-                            className={`tab-bold-p ${activeTab1 === 0 ? "d-none" : "d-inline"
-                              }`}
+                            className={`tab-bold-p ${
+                              activeTab1 === 0 ? "d-none" : "d-inline"
+                            }`}
                           >
                             “Extended Warranty”
                           </span>
@@ -1547,7 +1541,7 @@ function TCare() {
                         <div className="d-flex flex-column">
                           <button
                             className="download_pdf_buttons"
-                            onClick={handleDownload}
+                            onClick={handlePrint}
                           >
                             <svg
                               width="48"
@@ -1601,8 +1595,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 1
-                        ? "block"
-                        : "none",
+                      ? "block"
+                      : "none",
                   }}
                 >
                   <div
@@ -1611,8 +1605,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : Active_tab1 === 1
-                          ? "block"
-                          : "none",
+                        ? "block"
+                        : "none",
                     }}
                   >
                     <div>
@@ -1668,8 +1662,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : Active_tab1 === 2
-                          ? "block"
-                          : "none",
+                        ? "block"
+                        : "none",
                     }}
                   >
                     <div>
@@ -1696,13 +1690,15 @@ function TCare() {
                       display: loading
                         ? "none"
                         : Active_tab1 === 3
-                          ? "block"
-                          : "none",
+                        ? "block"
+                        : "none",
                     }}
                   >
                     <div>
                       <div className="text-start px-5 pt-4">
-                        <p className="tab-discription-p">Hai Bapak/Ibu {checkServiceNmae}</p>
+                        <p className="tab-discription-p">
+                          Hai Bapak/Ibu {checkServiceNmae}
+                        </p>
                         <p className="tab-discription-p">Pemilik Kendaraan:</p>
                       </div>
                       <div className="row">
@@ -1809,15 +1805,22 @@ function TCare() {
           </div>
         </div>
         <div className="container px-md-5 mt-5">
-          <iframe className="w-100 rounded-4" height="500" src="https://www.youtube.com/embed/30IGvG4oikU?si=e6VTnyoq8jLDbb8q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe
+            className="w-100 rounded-4"
+            height="500"
+            src="https://www.youtube.com/embed/30IGvG4oikU?si=e6VTnyoq8jLDbb8q"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
         <div className="container mt-5">
           <div className="row align-items-center">
             <div className="col-12 col-md-7 text-start d-block d-lg-none text-center">
               <h1>Extended Warranty</h1>
-              <b>
-                12 bulan (1 tahun) / 20.000 km
-              </b>
+              <b>12 bulan (1 tahun) / 20.000 km</b>
             </div>
             <div className="col-12 col-md-5">
               <img src="assets/twocars.png" className="w-100" />
@@ -1831,7 +1834,7 @@ function TCare() {
                 Berlaku untuk pelanggan yang melakukan servis ke-1 maksimum 1
                 bulan dari bulan penyerahan kendaraan dan selanjutnya servis
                 rutin pada servis ke-2 hingga ke-7 setiap maksimum 6 bulan
-                sekali.{" "}
+                sekali.
               </p>
             </div>
           </div>
@@ -1840,21 +1843,21 @@ function TCare() {
           <div className="row align-items-center">
             <div className="col-12 col-md-7 text-start">
               <p className="text-danger">Toyota SERVICE</p>
-              <h1>Manfaatkan T-Care dengan program Express Maintenance</h1>
-              <button
-                type="button"
-                class="btn custom-btn-dark express w-md-50 mt-4  d-lg-block d-none"
+              <h1>Manfaatkan T-CARE dengan program Express Maintenance</h1>
+              <NavLink
+                to="/services"
+                className="btn custom-btn-dark w-50 mt-4  d-lg-block d-none"
               >
                 Telurusi Express Maintenance
-              </button>
+              </NavLink>
             </div>
             <div className="col-12 col-md-5 text-center mt-lg-0 mt-4">
               <img src="assets/services.png" className="w-100" />
             </div>
             <div className="mt-4 mb-5">
-              <button className="btn custom-btn-dark me-3  d-lg-none">
+              <NavLink to="/services" className="btn custom-btn-dark me-3  d-lg-none">
                 Telurusi Express Maintenance
-              </button>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -1863,7 +1866,7 @@ function TCare() {
             Download Informasi GBSB atau lihat hal-hal yang sering ditanyakan
           </b>
           <div className="mt-5">
-            <button className="btn custom-btn-dark me-3">
+            <button className="btn custom-btn-dark me-3" onClick={openLink}>
               Download info GBSB
             </button>
             <NavLink to="/faq" className="btn custom-btn-dark">

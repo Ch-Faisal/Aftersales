@@ -141,7 +141,7 @@ const Services = () => {
                   aria-labelledby="faq_tab_1-tab"
                 >
                   <div className="container mt-5">
-                    <div className="row d-flex justify-content-center">
+                    <div className="row d-flex justify-content-center custom_height_set">
                       <div className="col-12 d-lg-none d-block">
                         <p className="paraTag1">
                           TOYOTA SERVICE - GENERAL REPAIR
@@ -154,7 +154,7 @@ const Services = () => {
                       <div className="col-lg-6 col-md-10 col-12 mt-lg-0 mt-3 ">
                         <img
                           src="assets/img.png"
-                          className="img-fluid w-100 h-100"
+                          className="img-fluid custom_image_set w-100 h-100"
                         />
                       </div>
                       <div className="col-lg-6 col-md-10 col-12 text-center text-lg-start">
@@ -403,7 +403,7 @@ const Services = () => {
                   aria-labelledby="faq_tab_3-tab"
                 >
                   <div className="container mt-5">
-                    <div className="row d-flex justify-content-center">
+                    <div className="row d-flex justify-content-center custom_height_set">
                       <div className="col-lg-6 col-md-10 col-12">
                         <div className="d-lg-none d-block pb-4">
                           <p className="paraTag1">
@@ -416,7 +416,7 @@ const Services = () => {
                         </div>
                         <img
                           src="assets/Rectangle12.jpg"
-                          className="img-fluid w-100 custom_height pb-4 pb-lg-0"
+                          className="img-fluid w-100 custom_height custom_image_set pb-4 pb-lg-0"
                         />
                       </div>
                       <div className="col-lg-6 col-md-10 col-12 text-lg-start">
