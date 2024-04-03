@@ -192,3 +192,14 @@
     font-size: 18px;
     font-weight: 600;
   }
+  @media screen and (min-width: 762px)
+  {
+    .wrapper-pink-bg{
+     margin-top: -6%;
+    }
+  }
+  .text {
+    white-space: pre-wrap !important; /* Ensures lines break only at white spaces */
+    font-family: inherit !important; /* Use the same font as the parent element */
+}
+  
