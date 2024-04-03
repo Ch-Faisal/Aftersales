@@ -722,3 +722,6 @@ border-radius: 30px !important;
     color: #000 !important;
   }
 }
+.list-unstyled li a:hover{
+  color: #D52027 !important;
+}

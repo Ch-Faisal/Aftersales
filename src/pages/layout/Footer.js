@@ -15,7 +15,7 @@ function Footer() {
         <ul onClick={BookingService}>
           <li class="whatsapp mt-3">
             <div className="fa">
-              <img src="assets/sideoption.png" alt="" />
+              <img src="/assets/sideoption.png" alt="" />
             </div>
             <p className="sideoption pt-1">Booking Service</p>
           </li>
@@ -56,7 +56,7 @@ function Footer() {
       <div className="back-to-top">
         <a onClick={scrollToTop}>Back to top </a>
         <span>
-          <img src="assets/SVG.png" alt="arrow" />
+          <img src="/assets/SVG.png" alt="arrow" />
         </span>
       </div>
       <hr />
@@ -66,37 +66,37 @@ function Footer() {
             <h5 className="fw-bold text-start">Beyond Solution</h5>
             <ul class="list-unstyled text-dark text-start">
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/spektakuler" class="text-decoration-none text-dark">
                   Toyota Spektakuler
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://finance.toyota.astra.co.id/ezdeal" class="text-decoration-none text-dark">
                   Toyota EZ Deal
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/kinto" class="text-decoration-none text-dark">
                   Kinto
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://finance.toyota.astra.co.id/ezdeal" class="text-decoration-none text-dark">
                   Toyota Financial Service
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://simulation.toyota.astra.co.id/" class="text-decoration-none text-dark">
                   Get Your Offer
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/konsultasi-pembelian" class="text-decoration-none text-dark">
                   Form Inquiry
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/pricelist" class="text-decoration-none text-dark">
                   Pricelist
                 </a>
               </li>
@@ -106,62 +106,62 @@ function Footer() {
             <h5 className="fw-bold text-start">Beyond Experience</h5>
             <ul class="list-unstyled text-dark text-start">
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/e-brochure" class="text-decoration-none text-dark">
                   E-brochure
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://liveshowroom.toyota.astra.co.id/showroom" class="text-decoration-none text-dark">
                   Toyota Live Showroom
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://api.whatsapp.com/send/?phone=628111500315&text&type=phone_number&app_absent=0" class="text-decoration-none text-dark">
                   Toyota Interactive Virtual Assistant
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://toss.toyota.astra.co.id/" class="text-decoration-none text-dark">
                   Toyota Official Store Solution
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/dealer" class="text-decoration-none text-dark">
                   Find Dealer
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/booking-service" class="text-decoration-none text-dark">
                   Booking Service
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://aftersales.toyota.astra.co.id/" class="text-decoration-none text-dark">
                   Aftersales
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://aftersales.toyota.astra.co.id/" class="text-decoration-none text-dark">
                   Toyota Mobile Service
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://aftersales.toyota.astra.co.id/t-care" class="text-decoration-none text-dark">
                   T-Care
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/mtoyota" class="text-decoration-none text-dark">
                   mToyota
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/accessories" class="text-decoration-none text-dark">
                   Toyota Genuine Accessories
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://ssc.toyota.astra.co.id/" class="text-decoration-none text-dark">
                   Special Service Campaign
                 </a>
               </li>
@@ -286,27 +286,27 @@ function Footer() {
             <h5 className="fw-bold text-start px-2 mt-4 mt-md-0">Join us on</h5>
             <div className="d-flex text-start">
               <div className="mx-1">
-                <img src="assets/whatsapp.png" alt="logo" />
+                <img src="/assets/whatsapp.png" alt="logo" />
               </div>
               <div className="mx-1">
-                <img src="assets/Instagram.png" alt="logo" />
+                <img src="/assets/Instagram.png" alt="logo" />
               </div>
               <div className="mx-1">
-                <img src="assets/Facebook.png" alt="logo" />
+                <img src="/assets/Facebook.png" alt="logo" />
               </div>
               <div className="mx-1">
-                <img src="assets/Tiktok.png" alt="logo" />
+                <img src="/assets/Tiktok.png" alt="logo" />
               </div>
               <div className="mx-1">
-                <img src="assets/YouTube.png" alt="logo" />
+                <img src="/assets/YouTube.png" alt="logo" />
               </div>
               <div className="mx-1">
-                <img src="assets/Twitter.png" alt="logo" />
+                <img src="/assets/Twitter.png" alt="logo" />
               </div>
             </div>
             <div>
               <div className="mt-3 text-start">
-                <img src="assets/customer-care.png" alt="logo" />
+                <img src="/assets/customer-care.png" alt="logo" />
               </div>
             </div>
           </div>
@@ -320,27 +320,27 @@ function Footer() {
           </h5>
           <div className="d-flex text-start mb-4">
             <div className="mx-1">
-              <img src="assets/whatsapp.png" alt="logo" />
+              <img src="/assets/whatsapp.png" alt="logo" />
             </div>
             <div className="mx-1">
-              <img src="assets/Instagram.png" alt="logo" />
+              <img src="/assets/Instagram.png" alt="logo" />
             </div>
             <div className="mx-1">
-              <img src="assets/Facebook.png" alt="logo" />
+              <img src="/assets/Facebook.png" alt="logo" />
             </div>
             <div className="mx-1">
-              <img src="assets/Tiktok.png" alt="logo" />
+              <img src="/assets/Tiktok.png" alt="logo" />
             </div>
             <div className="mx-1">
-              <img src="assets/YouTube.png" alt="logo" />
+              <img src="/assets/YouTube.png" alt="logo" />
             </div>
             <div className="mx-1">
-              <img src="assets/Twitter.png" alt="logo" />
+              <img src="/assets/Twitter.png" alt="logo" />
             </div>
           </div>
           <div>
             <div className="mt-3 text-start">
-              <img src="assets/customer-care.png" alt="logo" />
+              <img src="/assets/customer-care.png" alt="logo" />
             </div>
           </div>
         </div>
