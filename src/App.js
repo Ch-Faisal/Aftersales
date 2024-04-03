@@ -13,6 +13,7 @@ import NewsEvents from "./pages/NewsEvents";
 import LatestNewsEvents from "./pages/LatestNewsEvents";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import Print from "./pages/layout/print.js";
 function App() {
   useEffect(() => {
     const initialValue =
@@ -33,6 +34,7 @@ function App() {
             <Route path="/t-care" element={<TCare />} />
             <Route path="/news-information/read/:slug" element={<NewsEvents />} />
             <Route path="/news-information" element={<LatestNewsEvents />} />
+            <Route path="/Print" element={<Print />} />
           </Routes>
         </BrowserRouter>
       </div>

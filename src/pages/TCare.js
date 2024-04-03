@@ -1,9 +1,11 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import { NavLink } from "react-router-dom";
-import { useReactToPrint } from 'react-to-print';
-import { Document, Page, pdfjs } from 'react-pdf';
+import store from "../store/store";
+import print from "print-js";
+// import { useReactToPrint } from 'react-to-print';
+// import { Document, Page, pdfjs } from 'react-pdf';
 import "../css/t-care.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/free-mode";
@@ -16,16 +18,16 @@ import toastr from "toastr";
 import { Oval } from "react-loader-spinner";
 
 // Set up PDF.js worker
-// Set up PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const PDFViewer = React.forwardRef(({ pdfUrl }, ref) => (
-  <div ref={ref} style={{ display: 'none' }}>
-    <Document file={pdfUrl}>
-      <Page pageNumber={1} />
-    </Document>
-  </div>
-));
+// const PDFViewer = React.forwardRef(({ pdfUrl }, ref) => (
+//   <div ref={ref} style={{ display: 'none' }}>
+//     <Document file={pdfUrl}>
+//       <Page pageNumber={1} />
+//     </Document>
+//   </div>
+// ));
+
 function TCare() {
   const pdfRef = useRef(null);
   const [downloadWarranty, setDownloadWarranty] = useState(null);
@@ -59,6 +61,7 @@ function TCare() {
   const [otp5, setOtp5] = useState("");
   const [otp6, setOtp6] = useState("");
   const [WrongVin, setWrongVin] = useState("");
+  const [checkemptyfield, setcheckemptyfield] = useState(false);
   const handleInputChange = (event) => {
     setVinInput(event.target.value);
     setWrongVin("");
@@ -213,15 +216,29 @@ function TCare() {
   };
   const submitData = async () => {
     setLoading(true);
+    setcheckemptyfield(false);
     const selectedMonthValue = monthMap[selectedMonth];
-    if (
-      uname.length < 1 ||
-      uemail.length < 1 ||
-      phoneNumber.length < 1 ||
-      !monthMap[selectedMonth] ||
-      selectedYear.length < 1
-    ) {
-      toastr.success("Fill all Field");
+    if (uname.length < 1) {
+      toastr.error("Name is required");
+      setcheckemptyfield(true);
+    }
+    if (uemail.length < 1) {
+      toastr.error("Email is required");
+      setcheckemptyfield(true);
+    }
+    if (phoneNumber.length < 1) {
+      toastr.error("Phone Number is required");
+      setcheckemptyfield(true);
+    }
+    if (!monthMap[selectedMonth]) {
+      toastr.error("Month is required");
+      setcheckemptyfield(true);
+    }
+    if (selectedYear.length < 1) {
+      toastr.error("Year is required");
+      setcheckemptyfield(true);
+    }
+    if (checkemptyfield) {
       setLoading(false);
       return;
     }
@@ -416,7 +433,7 @@ function TCare() {
       return;
     }
     try {
-      console.log(download);
+      // console.log(download);
       // Replace 'path/to/your/pdf.pdf' with the path to your PDF file
 
       // Create a link element
@@ -463,20 +480,44 @@ function TCare() {
     } catch (error) {}
   };
 
-
-
   const handlePrint = () => {
-    if (!download) {
-      toastr.error("No PDF URL available for printing");
-      return;
+    // store.dispatch({ type: 'SET_PRINT_URL', payload: { download } });
+    localStorage.setItem('printUrl', download);
+
+    const newTab = window.open('/print', '_blank');
+    if (newTab) {
+      newTab.focus(); // Focus on the new tab
+    } else {
+      console.error('Popup blocked. Please allow popups for this site.'); // Handle popup blocked error
     }
-    handlePrintPDF();
+
   };
 
-  const handlePrintPDF = useReactToPrint({
-    content: () => pdfRef.current,
-  });
+  //   const handlePrint = (e: React.FormEvent) => {
+  //     // Check if a PDF URL is available
+  //     if (!download) {
+  //         toastr.error("No PDF URL available for printing");
+  //         return;
+  //     }
 
+  //     // Prevent the default form submission behavior
+  //     e.preventDefault();
+
+  //     // Open a new tab with the PDF URL
+  //     const win = window.open(download, '_blank');
+
+  //     // Wait for the new tab to load
+  //     if (win) {
+  //         win.onload = () => {
+  //             // Print the document
+  //             win.print();
+  //         };
+  //     }
+  // };
+
+  // const handlePrintPDF = useReactToPrint({
+  //   content: () => pdfRef.current,
+  // });
 
   const [vinn, setVinn] = useState("");
   const [emaill, setEmaill] = useState("");
@@ -522,16 +563,16 @@ function TCare() {
     }
   };
 
-//this for the open the pdf file when useer click on the button
+  //this for the open the pdf file when useer click on the button
 
-const openLink = () => {
-  const url = "https://drive.google.com/file/d/10v6_oCSRhGgRe9eYeCatu2CLZkLrwZt2/view?usp=drive_link";
-  window.open(url, '_blank');
-};
+  const openLink = () => {
+    const url =
+      "https://drive.google.com/file/d/10v6_oCSRhGgRe9eYeCatu2CLZkLrwZt2/view?usp=drive_link";
+    window.open(url, "_blank");
+  };
   return (
     <div id="navbar_top">
       <Header></Header>
-
       <div className="section-1 p-0 " id="section-1">
         <div
           id="carouselExample"
@@ -625,14 +666,18 @@ const openLink = () => {
                   <p className="text-start">
                     Toyota sangat peduli terhadap keamanan dan kenyamanan Anda
                     saat berkendara<strong> T-Care</strong> memberikan Anda
-                    <strong>&nbsp;Bebas Biaya Jasa Servis Berkala dan Suku Cadang*&nbsp;
+                    <strong>
+                      &nbsp;Bebas Biaya Jasa Servis Berkala dan Suku
+                      Cadang*&nbsp;
                     </strong>
                     sebanyak 7x servis selama 3 tahun.
                   </p>
                   <p className="text-start">
                     Dengan rutin servis berkala setiap 6 bulan, Anda juga dapat
                     menikmati reward berupa
-                    <strong>&nbsp;Extended Warranty 1 tahun/20.000 km!**</strong>
+                    <strong>
+                      &nbsp;Extended Warranty 1 tahun/20.000 km!**
+                    </strong>
                   </p>
                   <p className="text-start">
                     {" "}
@@ -1002,7 +1047,7 @@ const openLink = () => {
                           className="form-control Masukkan"
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
-                          placeholder="email@thrive.co.id"
+                          placeholder=""
                           value={uemail}
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -1014,7 +1059,7 @@ const openLink = () => {
                           className="form-control Masukkan"
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
-                          placeholder="6281234567890"
+                          placeholder=""
                           value={phoneNumber}
                           onChange={(e) => setPhoneNumber(e.target.value)}
                         />
@@ -1562,6 +1607,7 @@ const openLink = () => {
                           >
                             Print
                           </p>
+                          {/* <PDFViewer pdfUrl={download} ref={pdfRef} /> */}
                         </div>
                       </div>
                       <div className="mb-4">
@@ -1635,7 +1681,7 @@ const openLink = () => {
                           className="form-control Masukkan"
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
-                          placeholder="test@mail.com"
+                          placeholder=""
                           value={emaill}
                           onChange={(e) => setEmaill(e.target.value)}
                         />
@@ -1855,7 +1901,10 @@ const openLink = () => {
               <img src="assets/services.png" className="w-100" />
             </div>
             <div className="mt-4 mb-5">
-              <NavLink to="/services" className="btn custom-btn-dark me-3  d-lg-none">
+              <NavLink
+                to="/services"
+                className="btn custom-btn-dark me-3  d-lg-none"
+              >
                 Telurusi Express Maintenance
               </NavLink>
             </div>
