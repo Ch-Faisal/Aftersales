@@ -5,10 +5,14 @@ function Footer() {
     const navbar = document.getElementById("navbar_top");
     navbar.scrollIntoView({ behavior: "smooth" });
   };
+  const BookingService = () => {
+    window.location.href = "https://www.toyota.astra.co.id/shopping-tools/booking-service";
+  };
+
   return (
     <div>
        <div class="wrapper1 " id="wrapper1">
-        <ul>
+        <ul onClick={BookingService}>
           <li class="whatsapp mt-3">
             <div className="fa">
               <img src="assets/sideoption.png" alt="" />
@@ -17,7 +21,7 @@ function Footer() {
           </li>
         </ul>
       </div>
-       <div class="wrapper2" id="wrapper2">
+       <div class="wrapper2 d-none d-md-block" id="wrapper2">
         <ul onClick={scrollToTop}>
           <li class="whatsapp mt-3">
             <div className="fa d-flex"><svg
