@@ -43,7 +43,7 @@ function Footer() {
               </defs>
             </svg>
             </div>
-            <p className="sideoption ps-2 pt-1">Back To top</p>
+            <p className="sideoption ps-2 pt-1">Back to Top</p>
           </li>
         </ul>
       </div>
@@ -62,37 +62,37 @@ function Footer() {
             <h5 className="fw-bold text-start">Beyond Solution</h5>
             <ul class="list-unstyled text-dark text-start">
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/spektakuler" class="text-decoration-none text-dark">
                   Toyota Spektakuler
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://finance.toyota.astra.co.id/ezdeal" class="text-decoration-none text-dark">
                   Toyota EZ Deal
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/kinto" class="text-decoration-none text-dark">
                   Kinto
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://finance.toyota.astra.co.id/ezdeal" class="text-decoration-none text-dark">
                   Toyota Financial Service
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://simulation.toyota.astra.co.id/" class="text-decoration-none text-dark">
                   Get Your Offer
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/konsultasi-pembelian" class="text-decoration-none text-dark">
                   Form Inquiry
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/pricelist" class="text-decoration-none text-dark">
                   Pricelist
                 </a>
               </li>
@@ -102,62 +102,62 @@ function Footer() {
             <h5 className="fw-bold text-start">Beyond Experience</h5>
             <ul class="list-unstyled text-dark text-start">
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/e-brochure" class="text-decoration-none text-dark">
                   E-brochure
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://liveshowroom.toyota.astra.co.id/showroom" class="text-decoration-none text-dark">
                   Toyota Live Showroom
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://api.whatsapp.com/send/?phone=628111500315&text&type=phone_number&app_absent=0" class="text-decoration-none text-dark">
                   Toyota Interactive Virtual Assistant
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://toss.toyota.astra.co.id/" class="text-decoration-none text-dark">
                   Toyota Official Store Solution
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/dealer" class="text-decoration-none text-dark">
                   Find Dealer
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/shopping-tools/booking-service" class="text-decoration-none text-dark">
                   Booking Service
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://aftersales.toyota.astra.co.id/" class="text-decoration-none text-dark">
                   Aftersales
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://aftersales.toyota.astra.co.id/" class="text-decoration-none text-dark">
                   Toyota Mobile Service
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://aftersales.toyota.astra.co.id/t-care" class="text-decoration-none text-dark">
                   T-Care
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/mtoyota" class="text-decoration-none text-dark">
                   mToyota
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://www.toyota.astra.co.id/accessories" class="text-decoration-none text-dark">
                   Toyota Genuine Accessories
                 </a>
               </li>
               <li class="mb-2">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="https://ssc.toyota.astra.co.id/" class="text-decoration-none text-dark">
                   Special Service Campaign
                 </a>
               </li>
