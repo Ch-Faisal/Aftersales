@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import { Virtual, Navigation, Pagination, FreeMode } from "swiper/modules";
 
 import '../css/home.css';
+import { NavLink } from 'react-router-dom';
 function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
@@ -90,6 +91,7 @@ function HomePage() {
         }
       });
       setCarVariant(response.data.data);
+      setVariantIdParent(response.data.data[0].id)
       const serviceDescriptionsArray = response.data.data.map(variant => variant.services.map(service => service.service_description));
       console.log("Description:", serviceDescriptionsArray);
       setServiceDescriptions(serviceDescriptionsArray.flat());
@@ -170,15 +172,13 @@ function HomePage() {
       debugger
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
         params: {
-          variant_id: variantIdParent === 0 ? 2 : variantIdParent,
+          variant_id: variantIdParent,
           service_no: serviceNo
         },
         headers: {
           'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
         }
       });
-      console.log("variantidhamza:", variantIdParent);
-      console.log("response handleServiceTab  :", response.data.data)
 
       if (response.data && response.data.data && response.data.data.length > 0) {
         const disclaimerMolecule = response.data.data[0].disclaimer_molecule;
@@ -252,7 +252,7 @@ function HomePage() {
       debugger
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/variantService`, {
         params: {
-          variant_id: variantId === 0 ? 2 : variantId,
+          variant_id: variantId,
           service_no: serviceNo
         },
         headers: {
@@ -289,7 +289,7 @@ function HomePage() {
       setLoading3(true);
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
         params: {
-          variant_id: variantId === 0 ? 2 : variantId,
+          variant_id: variantId,
           service_no: serviceNo
         },
         headers: {
@@ -329,16 +329,16 @@ function HomePage() {
         <div id="carouselExample" className="carousel slide d-none d-lg-block" data-bs-ride="carousel">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 1" />
+              <img src="assets/home-page-slider.png" className="d-block w-100 h-100" alt="Slide 1" />
             </div>
             <div className="carousel-item">
-              <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 2" />
+              <img src="assets/home-page-slider.png" className="d-block w-100 h-100" alt="Slide 2" />
             </div>
             <div className="carousel-item">
-              <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 3" />
+              <img src="assets/home-page-slider.png" className="d-block w-100 h-100" alt="Slide 3" />
             </div>
             <div className="carousel-item">
-              <img src="assets/home-page-slider.png" className="d-block w-100" alt="Slide 3" />
+              <img src="assets/home-page-slider.png" className="d-block w-100 h-100" alt="Slide 3" />
             </div>
           </div>
 
@@ -373,7 +373,7 @@ function HomePage() {
               <h2 className='fw-bold'>Meningkatkan Kenyamanan Para Customer dengan Aftersales</h2>
             </div>
             <div className='section-text'>
-              <p>After Sales Service Toyota dengan kualitas servis terjamin karena kendaraan Anda akan ditangani oleh teknisi yang berpengalaman dan bersertifikat. Layanan di bengkel resmi Toyota menggunakan Toyota Genuine Parts yaitu suku cadang resmi dari Toyota dengan mengedepankan kualitas dan telah dirancang sesuai dengan spesifikasi dan kebutuhan kendaraan kesayangan Anda. Jaringan luas dengan 297 bengkel perawatan dan perbaikan serta 80 bengkel Body & Paint yang tersebar di seluruh penjuru Nusantara.</p>
+              <p>After Sales Service Toyota dengan kualitas servis terjamin karena kendaraan Anda akan ditangani oleh teknisi yang berpengalaman dan bersertifikat. Layanan di bengkel resmi Toyota menggunakan Toyota Genuine Parts yaitu suku cadang resmi dari Toyota dengan mengedepankan kualitas dan telah dirancang sesuai dengan spesifikasi dan kebutuhan kendaraan kesayangan Anda. Jaringan luas dengan 297 bengkel perawatan dan perbaikan serta 81 bengkel Body & Paint yang tersebar di seluruh penjuru Nusantara.</p>
             </div>
           </div>
           <div className='px-lg-5 justify-content-center justify-content-lg-start mx-auto'>
@@ -404,7 +404,7 @@ function HomePage() {
                     <img src="assets/location-icon.png" className='w-75' alt='' />
                   </div>
                   <div className='title mt-3 d-flex align-items-center'>
-                    <h4 className='fw-bold px-md-4 text-dark'>Jaringan yang luas</h4>
+                    <h4 className='fw-bold px-md-4 text-dark'>Jaringan yang Luas</h4>
                   </div>
                 </div>
               </div>
@@ -1481,7 +1481,10 @@ function HomePage() {
                 <img src="assets/services.png" className="rounded-0" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title service_card_title fw-bold">Services</h4>
-                  <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  <NavLink to="/services">
+                    <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  </NavLink>
+
                 </div>
               </div>
             </div>
@@ -1490,7 +1493,9 @@ function HomePage() {
                 <img src="assets/home-card-img2.png" className="rounded-0" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title service_card_title  fw-bold">Products</h4>
-                  <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  <NavLink to="/products">
+                    <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -1499,7 +1504,9 @@ function HomePage() {
                 <img src="assets/warrenty-img.png" className="rounded-0" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title service_card_title  fw-bold">Warranty</h4>
-                  <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  <NavLink to="/warranty">
+                    <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -1509,8 +1516,10 @@ function HomePage() {
               <div className="card custom_box_shadow mt-5 mt-lg-0">
                 <img src="assets/T-care.png" className="rounded-0" alt="t-care-img" />
                 <div className="card-body">
-                  <h5 className="card-title service_card_title  fw-bold">T-Care</h5>
-                  <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  <h5 className="card-title service_card_title  fw-bold">T-CARE</h5>
+                  <NavLink to="/t-care">
+                    <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -1518,8 +1527,10 @@ function HomePage() {
               <div className="card custom_box_shadow mt-5 mt-lg-0">
                 <img src="assets/News-event.png" className="rounded-0" alt="news-event-img" />
                 <div className="card-body">
-                  <h5 className="card-title service_card_title  fw-bold">News-Event</h5>
-                  <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  <h5 className="card-title service_card_title  fw-bold">News & Events</h5>
+                  <NavLink to="/news-information">
+                    <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -1528,7 +1539,9 @@ function HomePage() {
                 <img src="assets/home-card-img1.png" className="rounded-0" alt="faq-img" />
                 <div className="card-body">
                   <h5 className="card-title service_card_title fw-bold">FAQ</h5>
-                  <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  <NavLink to="/faq">
+                    <button type="button" class="btn btn-outline-dark w-100 py-1 mt-4">Telusuri Sekarang</button>
+                  </NavLink>
                 </div>
               </div>
             </div>

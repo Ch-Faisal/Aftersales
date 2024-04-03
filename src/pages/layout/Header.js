@@ -40,7 +40,7 @@ function Header() {
       <nav className="nav-1 navbar navbar-expand-lg pt-3" id="navbar">
         <div className="container">
           <a className="navbar-brand" href="#">
-            <img src="assets/logo.png" alt="logo" />
+            <img src="/assets/logo.png" alt="logo" />
           </a>
           <button
             className="navbar-toggler"
@@ -232,13 +232,13 @@ function Header() {
             <ul className="navbar-nav pt-1">
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  <img src="assets/Button.png" alt="logo" />
+                  <img src="/assets/Button.png" alt="logo" />
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
                   <img
-                    src="assets/Icon FInd Dealer 2.png"
+                    src="/assets/Icon FInd Dealer 2.png"
                     alt="logo"
                     style={{ margin: "-5px" }}
                   />
@@ -263,7 +263,7 @@ function Header() {
             aria-label="Toggle navigation"
           >
             <span>
-              <img src="assets/Down.png" />
+              <img src="/assets/Down.png" />
             </span>
           </button>
           <div
@@ -290,7 +290,7 @@ function Header() {
             aria-label="Toggle navigation"
           >
             <span>
-              <img src="assets/Down.png" />
+              <img src="/assets/Down.png" />
             </span>
           </button>
           </div>
@@ -337,7 +337,7 @@ function Header() {
             aria-label="Toggle navigation"
           >
             <span>
-              <img src="assets/Down.png" />
+              <img src="/assets/Down.png" />
             </span>
           </button>
           </div>
