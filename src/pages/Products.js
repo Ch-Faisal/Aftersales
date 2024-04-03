@@ -193,7 +193,7 @@ function Products() {
                 Layanan Servis berkualitas prima,{" "}
                 <span className="inner-text">
                   agar performa Toyota Anda selalu optimal
-                </span>
+                </span>.
               </p>
             </div>
           </div>
