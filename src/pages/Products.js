@@ -813,7 +813,7 @@ function Products() {
                           </div>
                         </div>
                         <div className="container">
-                          <div className="row custom_slide_design ms-4 me-4 ms-lg-0 me-lg-0 me-md-0 ms-md-0">
+                          <div className="row custom_slide_design custom_slide_design_1 ms-4 me-4 ms-lg-0 me-lg-0 me-md-0 ms-md-0">
                             <Swiper
                               modules={[Virtual, Navigation, Pagination]}
                               onSwiper={setSwiperRef}
@@ -823,10 +823,10 @@ function Products() {
                                   slidesPerView: 1,
                                 },
                                 768: {
-                                  slidesPerView: 1.5,
+                                  slidesPerView: 2,
                                 },
-                                1280: {
-                                  slidesPerView: 2.5,
+                                992:{
+                                  slidesPerView:2.5,
                                 },
                                 1400: {
                                   slidesPerView: 3,
@@ -841,7 +841,7 @@ function Products() {
                               {slideContents.map((slideContents, index) => (
                                 <SwiperSlide key={index} virtualIndex={index}>
                                   <div className="card">
-                                    <div className="custom_box_shadow">
+                                    <div className="">
                                       <img
                                         className="card-img-top img-fluid"
                                         src={slideContents.imageUrl}
@@ -890,10 +890,10 @@ function Products() {
                                 slidesPerView: 1,
                               },
                               768: {
-                                slidesPerView: 1.5,
+                                slidesPerView: 2,
                               },
-                              1280: {
-                                slidesPerView: 2.5,
+                              992:{
+                                slidesPerView:2.5,
                               },
                               1400: {
                                 slidesPerView: 3,
@@ -1304,9 +1304,9 @@ function Products() {
                               </h1>
                             </div>
                           </div>
-                          <div className="row justify-content-center pt-3">
-                            <div className="col-lg-2 col-md-4 col-6">
-                              <div className="card cards_custom_design align-items-center">
+                          <div className="row justify-content-lg-between pt-3">
+                            <div className="col-lg-2 col-md-4 col-6 cards_custom_design">
+                              <div className="card  align-items-center cards_custom_design_1">
                                 <img
                                   src="assets/card-icon-1.png"
                                   className="pt-2"
@@ -1320,8 +1320,8 @@ function Products() {
                                 </p>
                               </div>
                             </div>
-                            <div className=" col-lg-2 col-md-4 col-6">
-                              <div className="card cards_custom_design align-items-center">
+                            <div className=" col-lg-2 col-md-4 col-6 cards_custom_design">
+                              <div className="card align-items-center cards_custom_design_1">
                                 <img
                                   src="assets/card-icon-2.png"
                                   className="pt-2"
@@ -1335,8 +1335,8 @@ function Products() {
                                 </p>
                               </div>
                             </div>
-                            <div className="col-lg-2 col-md-4 col-6 pt-3 pt-lg-0 pt-md-0">
-                              <div className="card cards_custom_design align-items-center">
+                            <div className="col-lg-2 col-md-4 col-6 pt-3 pt-lg-0 pt-md-0 cards_custom_design">
+                              <div className="card align-items-center cards_custom_design_1">
                                 <img
                                   src="assets/card-icon-3.png"
                                   className="pt-2"
@@ -1351,8 +1351,8 @@ function Products() {
                                 </p>
                               </div>
                             </div>
-                            <div className="col-lg-2 col-md-4 col-6 pt-md-3 pt-lg-0 pt-3">
-                              <div className="card cards_custom_design align-items-center">
+                            <div className="col-lg-2 col-md-4 col-6 pt-md-3 pt-lg-0 pt-3 cards_custom_design">
+                              <div className="card  align-items-center cards_custom_design_1">
                                 <img
                                   src="assets/card-icon-4.png"
                                   className="pt-2"
@@ -1367,8 +1367,8 @@ function Products() {
                                 </p>
                               </div>
                             </div>
-                            <div className="col-lg-2 col-md-4 col-6 pt-md-3 pt-lg-0 pt-3">
-                              <div className="card cards_custom_design align-items-center">
+                            <div className="col-lg-2 col-md-4 col-6 pt-md-3 pt-lg-0 pt-3 cards_custom_design">
+                              <div className="card align-items-center cards_custom_design_1">
                                 <img
                                   src="assets/card-icon-5.png"
                                   className="pt-2"
@@ -1381,9 +1381,6 @@ function Products() {
                                   Tersedia berbagai macam merk & tipe
                                 </p>
                               </div>
-                              <p className="card_outer_text pt-2">
-                                *Syarat & Ketentuan Berlaku
-                              </p>
                             </div>
                           </div>
                         </div>
