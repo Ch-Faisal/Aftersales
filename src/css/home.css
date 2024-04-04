@@ -2,19 +2,25 @@
     background-color: #cfd4d8;
 }
 .new-alphard {
-  background-color: rgba(227, 227, 228, 1)  ;
+  /* background-color: rgba(227, 227, 228, 1)  ; */
   padding: 5px;
 }
+.new-alphard li{
+  border: 1.5px solid rgba(215, 25, 33, 1);
+  border-radius: 6px;
+}
 .new-alphard .nav-link{
-    color: rgba(22, 26, 29, 1);
+    color: rgba(215, 25, 33, 1) !important;
+    font-size: 14px;
+    text-align: center !important;
 }
 .nav-pills .nav-item .nav-link.active {
-    background-color: #fff;
-    color: #000;
+    background-color: rgba(215, 25, 33, 1);
+    color: #fff !important;
 }
 .new-alphard{
-    margin-left: 24%;
-    margin-right: 24%;
+    margin-left: 14%;
+    margin-right: 14%;
 }
 .all-new-alphard img{
   width: 30% !important;
@@ -34,6 +40,11 @@
     background-color: rgba(215, 25, 33, 1) ;
     border: none !important;
 }
+.custom-nav-link.active .bg-gray{
+  background-color: rgba(215, 25, 33, 1) ;
+  border: none !important;
+}
+
 .nav-tabs .nav-link.active{
     border-bottom: none !important;
 }
@@ -64,7 +75,7 @@
     font-size: 20px !important;
   }
   .wrapper-servis{
-    border-radius: 20px;
+    border-radius: 10px;
     border: 1px solid rgba(215, 25, 33, 1) !important;
   }
   .wrapper-servis p{
@@ -141,19 +152,48 @@
 .tmo-2 img{
   width: 202px !important;
 }
+
+@media screen and (max-width: 1024px) {
+  .service1-pakage .pakage-text{
+    text-wrap: wrap !important;
+  }
+  .nav-pills .nav-item .nav-link.active {
+    background-color: rgba(215, 25, 33, 1);
+    color: #fff !important;
+}
+  
+}
+.service1-pakage .isi-cairan-text{
+  margin-left: -3px !important;
+}
   @media screen and (max-width: 992px) {
     .tmo-oli{
       width: 750px !important;
       display: flex;
       /* justify-content: start !important; */
     }
+    .tyre-image{
+      width: 40% !important;
+      margin-top: 5% !important;
+    }
+    .tgb-free-img{
+      width: 40% !important;
+    }
     .tmo-ol .tmo-image img{
          width: 150px !important;
       }
 }
+@media screen and (max-width: 768px) {
+  .wrapper-servis .section-img img{
+    width: 100% !important;
+}
+}
   @media screen and (max-width: 768px) {
     .tmo-oli{
         width: 100% !important;
+      }
+      .recommendation-img{
+        width: 70% !important;
       }
     .new-alphard{
         margin-left: 0%;
@@ -166,7 +206,7 @@
       width: 100% !important;
     }
     .wrapper-servis .section-img img{
-        width: 70% !important;
+        width: 70%;
     }
     .tab-boxes{
         width:110px !important;
@@ -180,6 +220,27 @@
   }
   @media screen and (max-width: 620px)
   {
+    .service1-pakage .isi-cairan-text{
+      margin-left: 15px !important;
+    }
+    .recommendation-img{
+      width: 50% !important;
+    }
+    .dynamic-slide{
+      width: 50% !important;
+    }
+    .check-img{
+      margin-left: 18px !important;
+    }
+    .wrapper-servis .section-img img{
+      width: 70% !important;
+  }
+  .wrapper-servis{
+    border-radius: 10px !important;
+  }
+    .service1-pakage .text-ban{
+      margin-left: 4px !important;
+    }
     .cutom_heading_size{
       font-size: 16.378px;
       font-weight: 600;
