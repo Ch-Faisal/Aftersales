@@ -1114,13 +1114,13 @@ function HomePage() {
 
                                     <div className='container px-0'>
                                       <div className='d-flex justify-content-center'>
-                                        <div className='d-flex justify-content-center'>
-                                          <div className='row mt-5'>
+                                        <div className='d-flex justify-content-center w-100'>
+                                          <div className='row mt-5 w-100'>
                                             <div className={`col-12${activeServiceTab === 5 ? ' col-lg-8 mx-auto text-start' : ''}`}>
                                               {packageNames.map((packageName, index) => (
                                                 index % 2 === 0 && (
                                                   <div key={index} className='d-flex justify-content-between mt-2 mt-md-4'>
-                                                    <div className='d-flex align-items-center'>
+                                                    <div className='col-12 col-md-6 d-flex align-items-center'>
                                                       <img src={packageImages[index]} alt='' />
                                                       <div className="px-3 font-bold" style={{ fontWeight: 600 }}>
                                                         {packageName.split(',').map((item, i) => (
@@ -1131,7 +1131,8 @@ function HomePage() {
                                                       </div>
                                                     </div>
                                                     {index + 1 < packageNames.length && (
-                                                      <div className='d-flex align-items-center'>
+
+                                                      <div className=' col-12 col-md-4 d-flex justify-content-start align-items-center'>
                                                         <img src={packageImages[index + 1]} alt='' />
                                                         <div className="px-3" style={{ fontWeight: 600 }}>
                                                           {packageNames[index + 1].split(',').map((item, i) => (
@@ -1263,7 +1264,7 @@ function HomePage() {
                                                     </div>
                                                   </div>
                                                   <div><p className=' disclaimer mt-2 text-red d-none d-md-block text-wrap' style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '12px', fontWeight: '600' }}>
-                                                    <span dangerouslySetInnerHTML={{ __html: disclaimerMolecule }} />
+                                                    <span className='remove-margin-p' dangerouslySetInnerHTML={{ __html: disclaimerMolecule }} />
                                                   </p></div>
                                                 </div>
 

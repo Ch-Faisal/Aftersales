@@ -12,6 +12,9 @@
     background-color: #fff;
     color: #000;
 }
+.remove-margin-p p{
+  margin-bottom: 0px !important;
+}
 .new-alphard{
     margin-left: 24%;
     margin-right: 24%;
