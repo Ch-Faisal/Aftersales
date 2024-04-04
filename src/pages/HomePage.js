@@ -469,9 +469,9 @@ function HomePage() {
                 </ul>
               </div>
               <div>
-                <div className="container">
+                <div className="container px-0">
                   <div className="row d-flex justify-content-center mt-4">
-                    <div className="col-md-12">
+                    <div className="col-md-12 px-0">
                       <div className="bg-white">
                         <div className="container" style={{ position: "relative" }}>
                           <div className="scroll-buttons d-flex align-items-center">
@@ -657,7 +657,7 @@ function HomePage() {
                           className="tab-content container-fluid p-0"
                         >
                           <div
-                            className="tab-pane fade active show px-3 px-lg-0"
+                            className="tab-pane fade active show px-0  px-lg-0"
                           >
                             {activeServiceTab === 1 && (
                               <div className="container mt-5 " id='servis-1'>
@@ -1073,7 +1073,7 @@ function HomePage() {
                                       <p className='text mt-3'>{serviceDisclaimer}</p>
                                     </div>
 
-                                    <div className='container'>
+                                    <div className='container px-0'>
                                       <div className='d-flex justify-content-center'>
                                         <div className='d-flex justify-content-center'>
                                           <div className='row mt-5'>
@@ -1102,17 +1102,27 @@ function HomePage() {
                                           </div>
                                         </div>
                                       </div>
-                                      <div className='d-flex justify-content-center'>
-                                        <div className='row mt-5'>
-                                          <div className='col-lg-12'>
-                                            <ul className="nav nav-pills nav-fill home-tab d-flex">
-                                              <li className="nav-item mx-2">
-                                                <a className={`nav-link text-nowrap rounded py-3 text-nowrap px-5 ${activeTab2 === 0 ? 'active' : ''}`} href="javascript:void(0)" onClick={() => handleTab2Click(0)}>Opsi Upgrade TMO Oli Mesin</a>
-                                              </li>
-                                              <li className="nav-item">
-                                                <a className={`nav-link text-nowrap rounded py-3 text-nowrap px-5 ${activeTab2 === 1 ? 'active' : ''}`} href="javascript:void(0)" onClick={() => handleTab2Click(1)}>Opsi Tambah Produk Lain</a>
-                                              </li>
-                                            </ul>
+                                      <div className="mt-5">
+                                        <div className="row home-tab d-flex justify-content-center text-md-center" style={{ gap:'10px'}}>
+                                          <div
+                                            className={`nav-link col-5  rounded py-3 px-2 ${
+                                              activeTab2 === 0 ? "active" : ""
+                                            }`}
+                                            onClick={() => handleTab2Click(0)}
+                                          >
+                                            <a href="javascript:void(0)" className="text-center">
+                                              Opsi Upgrade TMO Oli Mesin
+                                            </a>
+                                          </div>
+                                          <div
+                                            className={`nav-link col-5 rounded py-3 px-2    ${
+                                              activeTab2 === 1 ? "active" : ""
+                                            }`}
+                                            onClick={() => handleTab2Click(1)}
+                                          >
+                                            <a href="javascript:void(0)" className="text-center ">
+                                              Opsi Tambah Produk Lain
+                                            </a>
                                           </div>
                                         </div>
                                       </div>

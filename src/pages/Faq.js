@@ -25,14 +25,6 @@ const Faq = () => {
         <h1>FAQs</h1>
       </div>
       <div className="container mb-5">
-        <div class="form-group has-search">
-          <span class="fa fa-search form-control-feedback pt-1"></span>
-          <input
-            type="text"
-            class="form-control form-controll"
-            placeholder="Type your questions"
-          />
-        </div>
       </div>
       <div className="bg-white">
         <div className="container mb-5" style={{ position: "relative" }}>

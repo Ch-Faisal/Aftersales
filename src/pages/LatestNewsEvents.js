@@ -153,7 +153,7 @@ function LatestNewsEvents() {
                       </div>
                       <div className="custom-nav-tabs_1">
                         <ul
-                          className="nav nav-tabs d-flex justify-content-center mb-3 custom-nav-tabs"
+                          className="nav nav-tabs d-flex justify-content-center mb-3 custom-nav-tabs custom-nav-tabss"
                           id="ex1"
                           role="tablist"
                         >
