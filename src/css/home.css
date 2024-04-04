@@ -184,6 +184,9 @@
       font-size: 16.378px;
       font-weight: 600;
     }
+    .slider-btn{
+      width: 100% !important;
+    }
   }
   .custom_body_boder{
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2) !important;
