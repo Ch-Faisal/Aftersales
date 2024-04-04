@@ -2,6 +2,8 @@ import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import React, { useState, useRef, useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "../css/products.css";
@@ -22,8 +24,24 @@ function Products() {
   const [isVisible1, setIsVisible1] = useState(false);
 
   const toggleVisibility1 = () => {
+    // const element = document.querySelector('.mySwiper');
+    // if (element) {
+    //     element.style.setProperty('height', '44rem', 'important');
+    // } else {
+    //     console.error("Element with class 'mySwiper' not found");
+    // }
+
+    // const element1 = document.querySelector('.mySwiper .card');
+    // if (element1) {
+    //     element1.style.setProperty('height', '32rem', 'important');
+    // } else {
+    //     console.error("Element with class 'card' inside '.mySwiper' not found");
+    // }
+
     setIsVisible1(!isVisible1);
   };
+
+
   const [isVisible2, setIsVisible2] = useState(false);
 
   const toggleVisibility2 = () => {
@@ -43,12 +61,32 @@ function Products() {
 
   const toggleVisibility5 = () => {
     setIsVisible5(!isVisible5);
+    const toggleVisibility6Element = document.getElementById('toggleVisibility5');
+    const isW100 = toggleVisibility6Element.classList.contains('w-100');
+    
+    if (isW100) {
+      toggleVisibility6Element.classList.remove('w-100');
+      toggleVisibility6Element.classList.add('w-75');
+    } else {
+      toggleVisibility6Element.classList.remove('w-75');
+      toggleVisibility6Element.classList.add('w-100');
+    }
     setIsVisible6(false); // Hide component 6
   };
   const [isVisible6, setIsVisible6] = useState(false);
 
   const toggleVisibility6 = () => {
     setIsVisible6(!isVisible6);
+    const toggleVisibility6Element = document.getElementById('toggleVisibility6');
+    const isW100 = toggleVisibility6Element.classList.contains('w-100');
+    
+    if (isW100) {
+      toggleVisibility6Element.classList.remove('w-100');
+      toggleVisibility6Element.classList.add('w-75');
+    } else {
+      toggleVisibility6Element.classList.remove('w-75');
+      toggleVisibility6Element.classList.add('w-100');
+    }
     setIsVisible5(false); // Hide component 6
   };
   const value = useSelector((state) => state.value);
@@ -75,6 +113,7 @@ function Products() {
       description:
         "TMO Evaporator Cleaner membersihkan kotoran ringan pada Evaporator AC kendaraan untuk menjaga sistem AC tetap bekerja optimal & menyegarkan udara keluar dari AC di dalam kabin. Pembersihan dilakukan sesuai dengan standar operasional Toyota.",
       imageUrl: "assets/Frame_874.png",
+      src: "https://www.youtube.com/embed/6iy1Apj8O44"
     },
     {
       title: "TMO Injector Cleaner",
@@ -82,6 +121,7 @@ function Products() {
       description:
         "Cairan yang diformulasi khusus yang dapat melindungi dan membersihkan ruang pembakaran, injector, katup pemasukan-pembuangan serta efektif mengembalikan proforma mesin serta menghemat konsumsi bahan bakar Toyota.",
       imageUrl: "assets/Frame_875.png",
+      src: "https://www.youtube.com/embed/DxPRwtUElR0"
     },
     {
       title: "TMO Brake Cleaner",
@@ -89,34 +129,35 @@ function Products() {
       description:
         "Aerosol untuk membersihkan komponen pengereman dari debu, grease, oli, pada saat periodic maintenance.",
       imageUrl: "assets/Frame 874_1.png",
+      src: "https://www.youtube.com/embed/myz1qo-MiIk"
     },
     {
       title: "TMO Engine Room Treatment",
       text: "3",
       description:
         "Produk berbahan dasar air yang didesain khusus dengan formula terbaru yang lebih optimal untuk membersihkan & mengkilapkan lebih efektif pada kompartemen ruang mesin mobil. Pembersihan dilakukan sesuai dengan standar operasional Toyota.",
-      imageUrl: "assets/Frame 874_2.png",
+      imageUrl: "assets/04-Engine Room Treatment.png",
     },
     {
       title: "TMO Glass Cleaner",
       text: "3",
       description:
         "Cairan untuk membersihkan kaca mobil dari kotoran dan jamur (waterspot). Membantu meningkatkan visibilitas saat berkendara.",
-      imageUrl: "assets/Frame 874_3.png",
+      imageUrl: "assets/4L 5W-30 Gasoline.png",
     },
     {
       title: "TMO Wiper Fluid",
       text: "3",
       description:
         "Cairan pembersih kaca mobil & pencegah jamur",
-      imageUrl: "assets/Frame 874_4.png",
+      imageUrl: "assets/06-Wiper Fluid.png",
     },
     {
       title: "TMO Cabin Disinfectant",
       text: "3",
       description:
         "Aerosol penghilang bakteri* hingga 99,99%* (teruji) dan penyegar kabin.",
-      imageUrl: "assets/Frame 874_5.png",
+      imageUrl: "assets/07-Cabin Disinfectant.png",
     },
   ]);
   const [slideContents, setSlidess] = useState([
@@ -125,6 +166,7 @@ function Products() {
       text: "1",
       description: " Pelumas oil gardan (differential) yang ditujukan untuk penggunaan kendaraan berpenggerak roda belakang (RWD).",
       imageUrl: "assets/Image12.png",
+      src: "https://www.youtube.com/embed/Yten5Nf0KW8"
     },
     {
       title: "TMO Transfer Gear Oil",
@@ -162,7 +204,7 @@ function Products() {
                 Layanan Servis berkualitas prima,{" "}
                 <span className="inner-text">
                   agar performa Toyota Anda selalu optimal
-                </span>
+                </span>.
               </p>
             </div>
           </div>
@@ -329,7 +371,7 @@ function Products() {
                             </p>
                           </div>
                         </div>
-                        <div className="container">
+                        <div className="container swiper_slider_1">
                           <Swiper
                             slidesPerView={3}
                             breakpoints={{
@@ -348,23 +390,31 @@ function Products() {
                             modules={[Navigation]}
                             className="mySwiper"
                           >
-                            <SwiperSlide>
+                            <SwiperSlide className="swiper-slide-fixed-height">
                               <div className="card">
                                 <div className="img">
-                                  <img
-                                    src="assets/Image.png"
-                                    alt="img"
-                                    className="img-fluid"
-                                    draggable="false"
-                                  />
+                                  <Popup
+                                    trigger={<img src="assets/Image.png" alt="img" className="img-fluid custom_pointer" draggable="false" />}
+                                    position="right center"
+                                    modal
+                                    closeOnDocumentClick
+                                  >
+                                    <iframe
+                                      className="w-100 rounded-4"
+                                      height="315"
+                                      src="https://www.youtube.com/embed/Yten5Nf0KW8"
+                                      title="YouTube video player"
+                                      frameborder="0"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                      referrerpolicy="strict-origin-when-cross-origin"
+                                      allowfullscreen
+                                    ></iframe>
+                                  </Popup>
                                 </div>
                                 <div className="text-start card_customm_padding">
                                   <h4 className="card_heading">Oil Filter</h4>
                                   <p className="card_paragraph">
-                                    Oil Filter, didesain khusus dengan harga yang kompetitif
-                                    namun memenuhi standar Toyota. Tersedia 3
-                                    line up untuk model Old Kijang, Avanza,
-                                    Rush, Agya, dan Calya.
+                                    Didesain khusus dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 3 line up untuk model Old Kijang, Avanza, Rush, Agya, dan Calya.
                                   </p>
                                   <div className="mt-5">
                                     <a onClick={toggleVisibility} className="card_link">
@@ -375,33 +425,41 @@ function Products() {
                                       />
                                     </a>
                                   </div>
-                                  {isVisible && (
-                                    <div className="card_background_image_1 mt-4 d-flex align-items-center">
-                                      <img src='assets/Vector.png' className="img-notepad_1" />
-                                      <p className="notePad_text me-3 mt-3 ps-3">Tahan terhadap tekanan tinggi</p>
-
-                                    </div>
-                                  )}
                                 </div>
                               </div>
+                              {isVisible && (
+                                <div className="card_background_image_1 mt-4 d-flex align-items-center">
+                                  <img src='assets/Vector.png' className="img-notepad_1" />
+                                  <p className="notePad_text me-3 mt-3 ps-3">Tahan terhadap tekanan tinggi</p>
+
+                                </div>
+                              )}
                             </SwiperSlide>
-                            <SwiperSlide>
+                            <SwiperSlide className="swiper-slide-fixed-height">
                               <div className="card">
                                 <div className="img">
-                                  <img
-                                    src="assets/Image-2.png"
-                                    className="img-fluid"
-                                    alt="img"
-                                    draggable="false"
-                                  />
+                                  <Popup
+                                    trigger={<img src="assets/Image-2.png" alt="img" className="img-fluid custom_pointer" draggable="false" />}
+                                    position="right center"
+                                    modal
+                                    closeOnDocumentClick
+                                  >
+                                    <iframe
+                                      className="w-100 rounded-4"
+                                      height="315"
+                                      src="https://www.youtube.com/embed/Yten5Nf0KW8"
+                                      title="YouTube video player"
+                                      frameborder="0"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                      referrerpolicy="strict-origin-when-cross-origin"
+                                      allowfullscreen
+                                    ></iframe>
+                                  </Popup>
                                 </div>
                                 <div className="text-start card_customm_padding">
                                   <h4 className="card_heading">Air Filter</h4>
                                   <p className="card_paragraph">
-                                    Air Filter, didesain khusus dengan harga yang kompetitif
-                                    namun memenuhi standar Toyota. Tersedia 6
-                                    line up untuk model Old Kijang, Innova,
-                                    Avanza, Agya dan Calya.
+                                    Didesain khusus dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 6 line up untuk model Old Kijang, Innova, Avanza, Agya dan Calya.
                                   </p>
                                   <div className="mt-5">
                                     <a onClick={toggleVisibility1} className="card_link">
@@ -412,35 +470,43 @@ function Products() {
                                       />
                                     </a>
                                   </div>
-                                  {isVisible1 && (
-                                    <div className="card_background_image_2 mt-4 d-flex align-items-center">
-                                      <img src='assets/Asset 2.svg' className="ms-3 margin_of_2" />
-                                      <p className="notePad_text me-3 mt-3 ps-3">Performa filtrasi yang tinggi dibanding kompetitor</p>
-
-                                    </div>
-                                  )}
                                 </div>
                               </div>
+                              {isVisible1 && (
+                                <div className="card_background_image_2 mt-4 d-flex align-items-center">
+                                  <img src='assets/Asset 2.svg' className="ms-3 margin_of_2" />
+                                  <p className="notePad_text me-3 mt-3 ps-3">Performa filtrasi yang tinggi dibanding kompetitor</p>
+
+                                </div>
+                              )}
                             </SwiperSlide>
-                            <SwiperSlide>
+                            <SwiperSlide className="swiper-slide-fixed-height">
                               <div className="card">
                                 <div className="img">
-                                  <img
-                                    src="assets/Image-3.png"
-                                    className="img-fluid"
-                                    alt="img"
-                                    draggable="false"
-                                  />
+                                  <Popup
+                                    trigger={<img src="assets/Image-3.png" alt="img" className="img-fluid custom_pointer" draggable="false" />}
+                                    position="right center"
+                                    modal
+                                    closeOnDocumentClick
+                                  >
+                                    <iframe
+                                      className="w-100 rounded-4"
+                                      height="315"
+                                      src="https://www.youtube.com/embed/Yten5Nf0KW8"
+                                      title="YouTube video player"
+                                      frameborder="0"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                      referrerpolicy="strict-origin-when-cross-origin"
+                                      allowfullscreen
+                                    ></iframe>
+                                  </Popup>
                                 </div>
                                 <div className="text-start card_customm_padding">
                                   <h4 className="card_heading">
                                     Brake Pad & Brake Shoe
                                   </h4>
                                   <p className="card_paragraph">
-                                    Brake pad & brake shoe, didesain khusus dengan harga yang kompetitif
-                                    namun memenuhi standar Toyota. Tersedia 13
-                                    line up untuk model Old Kijang, Innova,
-                                    Avanza, dan Calya.
+                                    Didesain khusus dengan harga yang kompetitif namun memenuhi standar Toyota. Tersedia 13 line up untuk model Old Kijang, Innova, Avanza, dan Calya.
                                   </p>
                                   <div className="mt-5">
                                     <a onClick={toggleVisibility2} className="card_link">
@@ -451,32 +517,43 @@ function Products() {
                                       />
                                     </a>
                                   </div>
-                                  {isVisible2 && (
-                                    <div className="card_background_image_3 mt-4 d-flex flex-column">
-                                      <div className="">
-                                        <div className="d-flex align-items-center"><img src='assets/Asset 2.svg' className="ms-3 third_double_image" />
-                                          <p className="notePad_text text_334 me-3 mt-3 ps-3">Durabilitas lebih tinggi dibanding kompetitor, dapat dipakai hingga 45.000 KM.</p>
-                                        </div>
-                                      </div>
-                                      <div className="d-flex align-items-center custom_border_23 double_color_image" >
-                                        <img src='assets/Layer 2.svg' className="ms-3 image_334" />
-                                        <p className="notePad_text me-3 mt-3 ps-3 text_336">Menggunakan material non asbestos yang ramah lingkungan.</p>
-                                      </div>
-
-                                    </div>
-                                  )}
                                 </div>
                               </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
+                              {isVisible2 && (
+                                <div className="card_background_image_3 mt-4 d-flex flex-column">
+                                  <div className="">
+                                    <div className="d-flex align-items-center"><img src='assets/Asset 2.svg' className="ms-3 third_double_image" />
+                                      <p className="notePad_text text_334 me-3 mt-3 ps-3">Durabilitas lebih tinggi dibanding kompetitor, dapat dipakai hingga 45.000 KM.</p>
+                                    </div>
+                                  </div>
+                                  <div className="d-flex align-items-center custom_border_23 double_color_image" >
+                                    <img src='assets/Layer 2.svg' className="ms-3 image_334" />
+                                    <p className="notePad_text me-3 mt-3 ps-3 text_336">Menggunakan material non asbestos yang ramah lingkungan.</p>
+                                  </div>
+
+                                </div>
+                              )}
+                            </SwiperSlide >
+                            <SwiperSlide className="swiper-slide-fixed-height">
                               <div className="card">
                                 <div className="img">
-                                  <img
-                                    src="assets/Image_card_4.png"
-                                    alt="img"
-                                    className="img-fluid"
-                                    draggable="false"
-                                  />
+                                  <Popup
+                                    trigger={<img src="assets/Image_card_4.png" alt="img" className="img-fluid custom_pointer" draggable="false" />}
+                                    position="right center"
+                                    modal
+                                    closeOnDocumentClick
+                                  >
+                                    <iframe
+                                      className="w-100 rounded-4"
+                                      height="315"
+                                      src="https://www.youtube.com/embed/Yten5Nf0KW8"
+                                      title="YouTube video player"
+                                      frameborder="0"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                      referrerpolicy="strict-origin-when-cross-origin"
+                                      allowfullscreen
+                                    ></iframe>
+                                  </Popup>
                                 </div>
                                 <div className="text-start card_customm_padding">
                                   <h4 className="card_heading">Disc Clutch</h4>
@@ -492,32 +569,43 @@ function Products() {
                                       />
                                     </a>
                                   </div>
-                                  {isVisible3 && (
-                                    <div className="card_background_image_3 mt-4">
-                                      <div className="custom_grey_background d-flex flex-column">
-                                        <div className="d-flex align-items-center"><img src='assets/Asset 5.svg' className="ms-3 image_338" />
-                                          <p className="notePad_text me-3 mt-3 ps-3 text_338">Fitur additional damper untuk mencegah noise.</p>
-                                        </div>
-                                        <div className="d-flex align-items-center custom_border_23 double_color_image_1">
-                                          <img src='assets/Layer 3.svg' className="ms-3" />
-                                          <p className="notePad_text me-3 mt-3 ps-3 text-339">Memiliki durabilitas yang tinggi, tahan kondisi ekstrem.</p>
-                                        </div>
-                                      </div>
-
-                                    </div>
-                                  )}
                                 </div>
                               </div>
+                              {isVisible3 && (
+                                <div className="card_background_image_3 mt-4">
+                                  <div className="custom_grey_background d-flex flex-column">
+                                    <div className="d-flex align-items-center"><img src='assets/Asset 5.svg' className="ms-3 image_338" />
+                                      <p className="notePad_text me-3 mt-3 ps-3 text_338">Fitur additional damper untuk mencegah noise.</p>
+                                    </div>
+                                    <div className="d-flex align-items-center custom_border_23 double_color_image_1">
+                                      <img src='assets/Layer 3.svg' className="ms-3" />
+                                      <p className="notePad_text me-3 mt-3 ps-3 text-339">Memiliki durabilitas yang tinggi, tahan kondisi ekstrem.</p>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              )}
                             </SwiperSlide>
-                            <SwiperSlide>
+                            <SwiperSlide className="swiper-slide-fixed-height">
                               <div className="card">
                                 <div className="img">
-                                  <img
-                                    src="assets/Image_card_5.png"
-                                    className="img-fluid"
-                                    alt="img"
-                                    draggable="false"
-                                  />
+                                  <Popup
+                                    trigger={<img src="assets/Image_card_5.png" alt="img" className="img-fluid custom_pointer" draggable="false" />}
+                                    position="right center"
+                                    modal
+                                    closeOnDocumentClick
+                                  >
+                                    <iframe
+                                      className="w-100 rounded-4"
+                                      height="315"
+                                      src="https://www.youtube.com/embed/Yten5Nf0KW8"
+                                      title="YouTube video player"
+                                      frameborder="0"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                      referrerpolicy="strict-origin-when-cross-origin"
+                                      allowfullscreen
+                                    ></iframe>
+                                  </Popup>
                                 </div>
                                 <div className="text-start card_customm_padding">
                                   <h4 className="card_heading">Rear Absorber</h4>
@@ -533,22 +621,22 @@ function Products() {
                                       />
                                     </a>
                                   </div>
-                                  {isVisible4 && (
-                                    <div className="card_background_image_3 mt-4">
-                                      <div className="custom_grey_background d-flex flex-column">
-                                        <div className="d-flex align-items-center"><img src='assets/Layer 5.svg' className="ms-3 image_338 image_340" />
-                                          <p className="notePad_text me-3 mt-3 ps-3 text_338 text_340">Damping force yang optimal sehingga stabil saat mengendara.</p>
-                                        </div>
-                                        <div className="d-flex align-items-center custom_border_23 double_color_image_1 double_color_image_2">
-                                          <img src='assets/Layer 3.svg' className="ms-3 image_341" />
-                                          <p className="notePad_text me-3 mt-3 ps-3 text-339 text_341">Durabilitas yang tinggi, lebih awet dan tahan lama.</p>
-                                        </div>
-                                      </div>
-
-                                    </div>
-                                  )}
                                 </div>
                               </div>
+                              {isVisible4 && (
+                                <div className="card_background_image_3 mt-4">
+                                  <div className="custom_grey_background d-flex flex-column">
+                                    <div className="d-flex align-items-center"><img src='assets/Layer 5.svg' className="ms-3 image_338 image_340" />
+                                      <p className="notePad_text me-3 mt-3 ps-3 text_338 text_340">Damping force yang optimal sehingga stabil saat mengendara.</p>
+                                    </div>
+                                    <div className="d-flex align-items-center custom_border_23 double_color_image_1 double_color_image_2">
+                                      <img src='assets/Layer 3.svg' className="ms-3 image_341" />
+                                      <p className="notePad_text me-3 mt-3 ps-3 text-339 text_341">Durabilitas yang tinggi, lebih awet dan tahan lama.</p>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              )}
                             </SwiperSlide>
                           </Swiper>
                         </div>
@@ -618,7 +706,8 @@ function Products() {
                                     <img
                                       src="assets/Image10.png"
                                       alt="img"
-                                      className="img-fluid"
+                                      id="toggleVisibility5"
+                                      className="img-fluid w-75"
                                       draggable="false"
                                     />
                                   </div>
@@ -646,7 +735,8 @@ function Products() {
                                   <div className="img">
                                     <img
                                       src="assets/Image11.png"
-                                      className="img-fluid"
+                                      className="img-fluid w-75"
+                                      id="toggleVisibility6"
                                       alt="img"
                                       draggable="false"
                                     />
@@ -666,6 +756,7 @@ function Products() {
                                         Cek Produk
                                         <img
                                           className="ps-2"
+                                          id="toggleVisibility6"
                                           src="assets/CROSS.svg"
                                         />
                                       </a>
@@ -825,8 +916,8 @@ function Products() {
                                 768: {
                                   slidesPerView: 2,
                                 },
-                                992:{
-                                  slidesPerView:2.5,
+                                992: {
+                                  slidesPerView: 2.5,
                                 },
                                 1400: {
                                   slidesPerView: 3,
@@ -871,12 +962,7 @@ function Products() {
                             <p className="product_title">Toyota PRODUCT -TMO</p>
                             <h1 className="product_heading">Chemical Care</h1>
                             <p className="product_paragraph">
-                              Hadirkan ketenangan dengan perbaikan Bodi TOYOTA
-                              di tangan yang paling berpengalaman Hadirkan
-                              ketenangan dengan perbaikan Bodi TOYOTA di tangan
-                              yang paling berpengalaman Hadirkan ketenangan
-                              dengan perbaikan Bodi TOYOTA di tangan yang paling
-                              berpengalaman
+                              Hadirkan ketenangan dengan perbaikan Bodi Toyota di tangan yang paling berpengalaman Hadirkan ketenangan dengan perbaikan Bodi Toyota di tangan yang paling berpengalaman Hadirkan ketenangan dengan perbaikan Bodi Toyota di tangan yang paling berpengalaman
                             </p>
                           </div>
                         </div>
@@ -892,8 +978,8 @@ function Products() {
                               768: {
                                 slidesPerView: 2,
                               },
-                              992:{
-                                slidesPerView:2.5,
+                              992: {
+                                slidesPerView: 2.5,
                               },
                               1400: {
                                 slidesPerView: 3,
@@ -909,11 +995,23 @@ function Products() {
                               <SwiperSlide key={index} virtualIndex={index}>
                                 <div className="card">
                                   <div className="custom_box_shadow_1">
-                                    <img
-                                      className="card-img-top img-fluid"
-                                      src={slideContent.imageUrl}
-                                      alt="Card image cap"
-                                    />
+                                    < Popup
+                                      trigger={<img src={slideContent.imageUrl} alt={slideContent.title} className="card-img-top img-fluid" draggable="false" />}
+                                      position="right center"
+                                      modal
+                                      closeOnDocumentClick
+                                    >
+                                      <iframe
+                                        className="w-100 rounded-4"
+                                        height="315"
+                                        src={slideContent.src}
+                                        title="YouTube video player"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allowfullscreen
+                                      ></iframe>
+                                    </Popup>
                                     <div className="card-body custom-color-body text-start">
                                       <div className="d-flex">
                                         <h3 className="card-title ps-3 card_custom_font_size">
@@ -937,12 +1035,7 @@ function Products() {
                             <p className="product_title">Toyota PRODUCT -TMO</p>
                             <h1 className="product_heading">TMO TGRI</h1>
                             <p className="product_paragraph">
-                              General Repair atau biasa di singkat GR adalah
-                              sebuah perbaikan kendaraan yang lebih
-                              memperhatikan tentang kesehatan mesin mobil,
-                              baterai mobil dan komponen - komponen didalam
-                              mobil itu sendiri agar tetap sehat dan aman
-                              digunakan.
+                              Produk After Sales Toyota untuk seluruh varian mobil Toyota Anda, terutama Toyota GR.
                             </p>
                           </div>
                         </div>
@@ -1168,12 +1261,12 @@ function Products() {
                             <p className="product_paragraph">
                               Layanan penggantian ban di outlet resmi Toyota
                               dengan keunggulan{" "}
-                              <span className="custom_color_1">
+                              <span className="custom_color_111">
                                 produk ban bervariasi
                               </span>{" "}
                               (tersedia berbagai macam merk & tipe) serta
                               memberikan{" "}
-                              <span className="custom_color_1">
+                              <span className="custom_color_111">
                                 kualitas ban terbaik
                               </span>{" "}
                               (usia produksi ban terbaru)

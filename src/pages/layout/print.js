@@ -1,8 +1,9 @@
-import React, { useEffect , useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import "toastr/build/toastr.min.css"; // Import toastr CSS
 import toastr from "toastr";
 function Print() {
+  
     // const printUrl = useSelector(state => state.printurl);
     const savedPrintUrl = localStorage.getItem('printUrl');
   // useEffect(() => {
@@ -15,6 +16,7 @@ function Print() {
   //   });
   //   window.print();
   // }, []);
+
 
   return (
     <embed id="pdfEmbed" src={savedPrintUrl} type="application/pdf" width="100%" height="600px" />

@@ -30,6 +30,7 @@ function HomePage() {
   const [serviceDescriptions, setServiceDescriptions] = useState([]);
   const [serviceDisclaimer, setServiceDisclaimer] = useState('');
   const [serviceCost, setServiceCost] = useState([]);
+  const [serviceCost2, setServiceCost2] = useState([]);
   const [packageNames, setPackageNames] = useState([]);
   const [packageImages, setPackageImages] = useState([]);
   const [moleculeImages, setMoleculeImages] = useState([]);
@@ -48,15 +49,14 @@ function HomePage() {
   const [dataNull, setDataNull] = useState(false);
   const [variantIdParent, setVariantIdParent] = useState(0);
   const [filteredOptionalsItem, setFilteredOptionalsItem] = useState([]);
-
+  const [services, setServices] = useState([]);
 
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     fetchCarModels();
   }, []);
-
-
+ 
 
   useEffect(() => {
     if (carModels.length > 0) {
@@ -67,6 +67,12 @@ function HomePage() {
       fetchVarients(defaultCarModel.id);
     }
   }, [carModels]);
+
+  useEffect(() => {
+    if (selectedCarId && variantIdParent) {
+      handleTabClick(variantIdParent, activeTab);
+    }
+  }, [selectedCarId, variantIdParent, activeTab]);
 
   const fetchCarModels = async () => {
     try {
@@ -90,6 +96,7 @@ function HomePage() {
           'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
         }
       });
+      console.log("response service cost first call:", response.data.data)
       setCarVariant(response.data.data);
       setVariantIdParent(response.data.data[0].id)
       const serviceDescriptionsArray = response.data.data.map(variant => variant.services.map(service => service.service_description));
@@ -98,14 +105,14 @@ function HomePage() {
 
       const serviceCost = response.data.data.map(variant => variant.services.map(service => service.service_cost));
       console.log("serviceCost2:", serviceCost)
-      // setServiceCost(serviceCost);
+      setServiceCost2(serviceCost);
       console.log("responseservicecost:", serviceCost)
       console.log("responsevarient:", response.data.data)
     } catch (error) {
       console.error('Error fetching car models:', error);
     }
   }
-
+  
   const handleCarChange = (event) => {
     setLoading(true);
     const selectedCarName = event.target.value;
@@ -124,38 +131,34 @@ function HomePage() {
     setLoading(false);
   };
 
-
   const handleButtonClick = (event) => {
     handleCarChange(event);
     setShowAlphardWrapper(true);
   };
-  let globalVariantId;
 
   const handleTabClick = async (variantId, index) => {
-    setLoading2(true);
-    setActiveTab(index);
-    setVariantIdParent(variantId);
-    console.log("variantidahsan", variantIdParent);
     try {
-      const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
-
+      setLoading2(true);
+      const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/variant?car_id=${selectedCarId}&id=${variantId}`, {
         headers: {
           'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
         }
       });
-      setLoading2(false);
-      if (response.data && response.data.data && response.data.data.length > 0) {
-        console.log("responsevariant:", response.data.data);
-      }
-      else {
-        setErrorMessage("No data found in the response.");
-        setLoading2(false);
-      }
-      await handleVariantService(variantId);
+      console.log("serviscostusingvariant:", response.data.data);
 
-    } catch (error) {
+       const servicesData = response.data.data[0].services;
+       console.log("servicescostData:", servicesData);
+       setServices(servicesData);
+      // Handle the API response
+      setVariantIdParent(variantId);
+      console.log("variantidahsan", variantIdParent);
       setLoading2(false);
-      console.error('Error fetching variant:', error);
+      setActiveTab(index);
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching service cost using variant:', error);
+      setLoading2(false); // Set loading state in case of error
+      throw error; // Throw the error to handle it in the calling function
     }
   };
   const handleServiceTab = async (serviceNo) => {
@@ -168,8 +171,6 @@ function HomePage() {
       }
       setActiveServiceTab(serviceNo);
       setLoading2(true);
-      console.log('debug 2')
-      debugger
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
         params: {
           variant_id: variantIdParent,
@@ -248,8 +249,6 @@ function HomePage() {
   const handleVariantService = async (variantId, serviceNo) => {
     setLoading(true);
     try {
-      console.log('debug 3')
-      debugger
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/variantService`, {
         params: {
           variant_id: variantId,
@@ -284,8 +283,6 @@ function HomePage() {
   const handleOptionalTabs = async (variantId, serviceNo) => {
     try {
       // setvariantIdParent(variantId)
-      console.log('debug 1')
-      debugger
       setLoading3(true);
       const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/combination`, {
         params: {
@@ -508,10 +505,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(1)}
                                 data-service="1"
                               >
-                                <div className="d-flex flex-column servis-tabs py-1 ">
-                                  <span>Servis ke-1</span>
-                                  <span>FREE</span>
-                                </div>
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[0].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <span>Servis ke-1</span>
+                                <span>FREE</span>
+                              </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -521,10 +518,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(2)}
                                 data-service="2"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
-                                  <span>Servis ke-2</span>
-                                  <span>FREE</span>
-                                </div>
+                                <div className={`d-flex flex-column servis-tabs py-1 ${services[1].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                      <span>Servis ke-2</span>
+                                      <span>FREE</span>
+                                    </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -535,10 +532,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(3)}
                                 data-service="3"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
-                                  <span>Servis ke-3</span>
-                                  <span>FREE</span>
-                                </div>
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[2].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <span>Servis ke-3</span>
+                                <span>FREE</span>
+                              </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -549,10 +546,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(4)}
                                 data-service="4"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
-                                  <span>Servis ke-4</span>
-                                  <span>FREE</span>
-                                </div>
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[3].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <span>Servis ke-4</span>
+                                <span>FREE</span>
+                              </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -562,10 +559,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(5)}
                                 data-service="5"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
-                                  <span>Servis ke-5</span>
-                                  <span>FREE</span>
-                                </div>
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[4].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <span>Servis ke-5</span>
+                                <span>FREE</span>
+                              </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -575,10 +572,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(6)}
                                 data-service="6"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
-                                  <span>Servis ke-6</span>
-                                  <span>FREE</span>
-                                </div>
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[5].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <span>Servis ke-6</span>
+                                <span>FREE</span>
+                              </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -589,7 +586,7 @@ function HomePage() {
                                 onClick={() => handleServiceTab(7)}
                                 data-service="7"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
+                               <div className={`d-flex flex-column servis-tabs py-1 ${services[6].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-7</span>
                                   <span>FREE</span>
                                 </div>
@@ -603,9 +600,9 @@ function HomePage() {
                                 onClick={() => handleServiceTab(8)}
                                 data-service="8"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
+                               <div className={`d-flex flex-column py-1 servis-tabs ${services[7].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-8</span>
-                                  <span>FREE</span>
+                                  <span>{services[7].service_cost}</span>
                                 </div>
                               </button>
                             </li>
@@ -617,9 +614,9 @@ function HomePage() {
                                 onClick={() => handleServiceTab(9)}
                                 data-service="9"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
+                               <div className={`d-flex flex-column py-1 servis-tabs ${services[8].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-9</span>
-                                  <span>FREE</span>
+                                  <span>{services[8].service_cost}</span>
                                 </div>
                               </button>
                             </li>
@@ -631,10 +628,11 @@ function HomePage() {
                                 onClick={() => handleServiceTab(10)}
                                 data-service="10"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
+                                <div className={`d-flex flex-column py-1 servis-tabs ${services[9].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-10</span>
-                                  <span>FREE</span>
+                                  <span>{services[9].service_cost}</span>
                                 </div>
+
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -645,9 +643,9 @@ function HomePage() {
                                 onClick={() => handleServiceTab(11)}
                                 data-service="11"
                               >
-                                <div className="d-flex flex-column py-1 servis-tabs">
+                               <div className={`d-flex flex-column py-1 servis-tabs ${services[10].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-11</span>
-                                  <span>FREE</span>
+                                  <span>{services[10].service_cost}</span>
                                 </div>
                               </button>
                             </li>
@@ -810,27 +808,7 @@ function HomePage() {
                                               </div>
                                             </div>
                                           </SwiperSlide>
-                                          <SwiperSlide>
-                                            <div className="card">
-                                              <div className="img">
-                                                <img
-                                                  src="assets/tyre2.png"
-                                                  className="img-fluid w-25"
-                                                  alt="img"
-                                                  draggable="false"
-                                                />
-                                              </div>
-                                              <div className="text-center card_customm_padding ms-5">
-                                                <h4 className="card_heading">TMO Cabin Disinfectant</h4>
-                                                <p className="card_paragraph">
-                                                  <span className="italic_text">
-                                                    Air Filter,
-                                                  </span>{" "}
-                                                  Aerosol penghilang bakteri dan penyegar kabin.
-                                                </p>
-                                              </div>
-                                            </div>
-                                          </SwiperSlide>
+                                        
                                         </Swiper>
                                         <button type="button" class="btn btn-outline-dark custom-btn w-25 mb-5">Learn  more</button>
                                       </div>
@@ -990,51 +968,7 @@ function HomePage() {
                                               </div>
                                             </div>
                                           </SwiperSlide>
-                                          <SwiperSlide>
-                                            <div className="card">
-                                              <div className="img">
-                                                <img
-                                                  src="assets/TGB-MF.png"
-                                                  className="img-fluid w-25"
-                                                  alt="img"
-                                                  draggable="false"
-                                                />
-                                              </div>
-                                              <div className="text-center card_customm_padding mt-5 ms-5">
-                                                <h4 className="card_heading">TMO Cabin Disinfectant</h4>
-                                                <p className="card_paragraph">
-                                                  <span className="italic_text">
-                                                    Air Filter,
-                                                  </span>{" "}
-                                                  Aerosol penghilang bakteri dan penyegar kabin.
-                                                </p>
-
-                                              </div>
-                                            </div>
-                                          </SwiperSlide>
-                                          <SwiperSlide>
-                                            <div className="card">
-                                              <div className="img">
-                                                <img
-                                                  src="assets/TGB-MF.png"
-                                                  className="img-fluid w-25"
-                                                  alt="img"
-                                                  draggable="false"
-                                                />
-                                              </div>
-                                              <div className="text-center card_customm_padding mt-5 ms-5">
-                                                <h4 className="card_heading mt-4">
-                                                  TMO Injector Cleaner
-                                                </h4>
-                                                <p className="card_paragraph">
-                                                  <span className="italic_text">
-                                                    Cairan pembersih injector & ruang bakar.
-                                                  </span>{" "}
-                                                </p>
-                                              </div>
-                                            </div>
-                                          </SwiperSlide>
-
+                                    
                                         </Swiper>
                                         <button type="button" class="btn btn-outline-dark custom-btn w-25 mb-3">Learn  more</button>
                                       </div>
@@ -1068,8 +1002,20 @@ function HomePage() {
                                         </h1>
                                       )}
                                       <h1>Servis berkala setelah <span className='inline-text' >{activeServiceTab >= 2 && activeServiceTab <= 11 && (activeServiceTab - 1) * 6} Bulan </span> </h1>
-                                      {activeServiceTab >= 8 && (
-                                        <p className='text mt-3'>{serviceDescriptions.length > 0 && serviceDescriptions[8] ? serviceDescriptions[8] : "No description available"}</p>)}
+                                      
+                              {activeServiceTab >= 8 && (
+                                  <div className='text text-start mt-3'>
+                                      {serviceDescriptions.length > 0 && serviceDescriptions[8] ? 
+                                          serviceDescriptions[8].match(/.{1,123}/g).map((substring, index) => (
+                                              <React.Fragment key={index}>
+                                                  {substring}
+                                                  <br /> {/* Add line break after every 123 characters */}
+                                              </React.Fragment>
+                                          )) : 
+                                          "No description available"
+                                      }
+                                  </div>
+                              )}
                                       <p className='text mt-3'>{serviceDisclaimer}</p>
                                     </div>
 
@@ -1077,29 +1023,40 @@ function HomePage() {
                                       <div className='d-flex justify-content-center'>
                                         <div className='d-flex justify-content-center'>
                                           <div className='row mt-5'>
-                                            <div className={`col-12${activeServiceTab === 5 ? ' col-lg-8 mx-auto text-start' : ''}`}>
-                                              {packageNames.map((packageName, index) => (
-                                                index % 2 === 0 && (
-                                                  <div key={index} className='d-flex justify-content-between mt-2 mt-md-4'>
+                                          <div className={`col-12${activeServiceTab === 5 ? ' col-lg-8 mx-auto text-start' : ''}`}>
+                                            {packageNames.map((packageName, index) => (
+                                              index % 2 === 0 && (
+                                                <div key={index} className='d-flex justify-content-between mt-2 mt-md-4'>
+                                                  <div className='d-flex'>
+                                                    {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
+                                                    <img src={packageImages[index]} alt='' style={activeServiceTab === 5 && index < 2 ? { width: '81px', height: '41px' } : {}} />
+                                                    <div className="px-3 font-bold" style={{ fontWeight: 600 }}>
+                                                      {packageName.split(',').map((item, i) => (
+                                                        <div key={i}>
+                                                          {i === 0 ? item : `\u2022 ${item}`} {/* First item without bullet, rest with bullet */}
+                                                        </div>
+                                                      ))}
+                                                    </div>
+                                                    {/* {errorMessage && <p>{errorMessage}</p>} */}
+                                                  </div>
+                                                  {index + 1 < packageNames.length && (
                                                     <div className='d-flex'>
                                                       {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
-                                                      <img src={packageImages[index]} alt='' style={activeServiceTab === 5 && index < 2 ? { width: '81px', height: '41px' } : {}} />
-                                                      <p className='px-3 font-bold' style={{ fontWeight: 600 }}>{packageName}</p>
-                                                      {/* {errorMessage && <p>{errorMessage}</p>} */}
-                                                    </div>
-                                                    {index + 1 < packageNames.length && (
-                                                      <div className='d-flex'>
-                                                        {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
-                                                        <img src={packageImages[index + 1]} alt='' style={activeServiceTab === 5 && index < 2 ? { width: '81px', height: '41px' } : {}} />
-                                                        <p className='px-3' style={{ fontWeight: 600 }}>{packageNames[index + 1]}</p>
-                                                        {/* {errorMessage && <p>{errorMessage}</p>} */}
+                                                      <img src={packageImages[index + 1]} alt='' style={activeServiceTab === 5 && index < 2 ? { width: '81px', height: '41px' } : {}} />
+                                                      <div className="px-3" style={{ fontWeight: 600 }}>
+                                                        {packageNames[index + 1].split(',').map((item, i) => (
+                                                          <div key={i}>
+                                                            {i === 0 ? item : `\u2022 ${item}`}
+                                                          </div>
+                                                        ))}
                                                       </div>
-                                                    )}
-                                                  </div>
-                                                )
-                                              ))}
-                                            </div>
+                                                    </div>
+                                                  )}
+                                                </div>
+                                              )
+                                            ))}
                                           </div>
+                                        </div>
                                         </div>
                                       </div>
                                       <div className="mt-5">
@@ -1123,6 +1080,7 @@ function HomePage() {
                                             <a href="javascript:void(0)" className="text-center ">
                                               Opsi Tambah Produk Lain
                                             </a>
+
                                           </div>
                                         </div>
                                       </div>
@@ -1131,7 +1089,6 @@ function HomePage() {
                                           <div id='hide-div'>
                                             <div className='d-flex justify-content-center servis-2-tab'>
                                               <div className='row mt-5'>
-                                                <p className='text px-md-5'>Pelanggan setia Toyota, untuk pengalaman berkendara lebih nyaman, Anda mungkin membutuhkan produk ini</p>
                                                 <h1>TMO Oli Mesin</h1>
                                                 <p className='text-red'>TINGKAT KEKENTALAN MOLEKUL</p>
                                               </div>
@@ -1140,7 +1097,7 @@ function HomePage() {
                                               <div className={'row justify-content-md-center tmo-oli'}>
                                                 <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column '>
                                                   <div className='col-12 order-1 order-md-0'>
-                                                    <p className='pt-3 d-none d-md-block'>Oli Standar</p>
+                                                    <p className='pt-3 d-none d-md-block'>Oli Basic</p>
                                                     <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                                                     <p className='pt-md-3 pt-0 text-center fw-bold'>10W-30</p>
                                                     <div className='tmo-image'>
@@ -1152,7 +1109,7 @@ function HomePage() {
                                                     </div>
                                                   </div>
                                                   <div className='col-12 order-0 order-md-1'>
-                                                    <p className='pt-3 d-block d-md-none'>Oli Standar</p>
+                                                    <p className='pt-3 d-block d-md-none'>Oli Basic</p>
                                                     <p className='pt-4 fw-bold standard d-none d-md-block mt-5'>
                                                       {moleculeTitles[0] ? (
                                                         <div dangerouslySetInnerHTML={{ __html: moleculeTitles[0] }} />
@@ -1169,13 +1126,16 @@ function HomePage() {
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div className='col-md-3 bg-pink text-center d-flex flex-md-column mt-2 mt-md-0'>
+                                                <div className='col-md-6 bg-pink'>
+                                                <p className='pt-3 text-center text-red'>Opsi Upgrade Oli</p>
+                                                <div className='d-flex wrapper-pink-bg'>
+                                                <div className='col-md-6 text-center d-flex flex-md-column mt-2 mt-md-0'>
                                                   <div className='col-12 order-1 order-md-0'>
                                                     <p className='pt-4'>
                                                       <span className="d-block d-md-none">+0.8%</span>
                                                       <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }}>{moleculeTitles[1]}</span>
                                                     </p>
-                                                    <p className='pt-4 text-center fw-bold'>SW-30</p>
+                                                    <p className='text-center fw-bold'>SW-30</p>
                                                     <div className='tmo-image'>
                                                       <img src={moleculeImages[1]} alt='' />
                                                     </div>
@@ -1192,13 +1152,13 @@ function HomePage() {
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div className='col-md-3 bg-pink text-center d-flex flex-md-column mt-2 mt-md-0'>
+                                                <div className='col-md-6 text-center d-flex flex-md-column mt-2 mt-md-0'>
                                                   <div className='col-12 order-1 order-md-0'>
                                                     <p className='pt-4'>
                                                       <span className="d-block d-md-none">+0.8%</span>
                                                       <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }}>{moleculeTitles[2]}</span>
                                                     </p>
-                                                    <p className='pt-4 text-center fw-bold'>0W-20</p>
+                                                    <p className='text-center fw-bold'>0W-20</p>
                                                     <div className='tmo-image'>
                                                       <img src={moleculeImages[2]} alt='' />
                                                     </div>
@@ -1211,11 +1171,14 @@ function HomePage() {
                                                     <div className='tmo-image tmo-2'>
                                                       <img src={moleculePhotos[2]} alt='' />
                                                     </div>
-                                                    <p className='mt-2 text-red d-none d-md-block text-wrap' style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '14px', fontWeight: '600' }}>
+                                                    <p className=' disclaimer mt-2 text-red d-none d-md-block text-wrap' style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '12px', fontWeight: '600' }}>
                                                       <span dangerouslySetInnerHTML={{ __html: disclaimerMolecule }} />
                                                     </p>
                                                   </div>
                                                 </div>
+                                                </div>
+                                                </div>
+                                              
                                               </div>
                                             </div>
                                           </div>
@@ -1230,19 +1193,19 @@ function HomePage() {
                                         </div>
                                         <div className='container'>
                                           <div className='row'>
-                                            <div className='col-md-4 mx-md-5 text-center d-flex justify-content-end'>
+                                            <div className='col-md-4 mx-md-5 text-center d-flex justify-content-center'>
                                               <img src={recommendationImage} className='w-100' alt='brake' />
                                             </div>
                                             <div className='col-md-6 mx-md-2'>
                                               <h1 className='text-start'>{recommendationsName}</h1>
                                               <p className='text-start' dangerouslySetInnerHTML={{ __html: recommendationRemark }} />
                                               <div className='d-flex'>
-                                                <img src={imageComparation} className='w-50' alt='brake' />
+                                                <img src={imageComparation} className='w-100' alt='brake' />
                                                 {/* <img src="assets/tyre2.png" className='w-50' alt='brake' /> */}
                                               </div>
                                             </div>
-                                            <h1 className='mt-4'>{OptionalsName[0]}</h1>
-                                            <p className='text-start' dangerouslySetInnerHTML={{ __html: OptionalsTagline }} />
+                                            <h1 className='mt-4 mb-5'>Opsi Produk Toyota Lainnya</h1>
+                                            {/* <p className='text-start' dangerouslySetInnerHTML={{ __html: OptionalsTagline }} /> */}
                                             <div className='col-6 col-md'>
                                               <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab4 === 1 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(1)}>
                                                 <div className='section-img d-flex pointer justify-content-center'>
@@ -1295,35 +1258,37 @@ function HomePage() {
                                                       },
                                                       // When window width is >= 992px
                                                       992: {
-                                                        slidesPerView: 1,
+                                                        slidesPerView: 3,
                                                       },
                                                     }}
                                                     spaceBetween={0}
                                                     navigation={true}
                                                     modules={[Navigation]}
                                                     className="mySwiper"
+                                                    centeredSlides={true}
                                                   >
                                                     {filteredOptionalsItem && filteredOptionalsItem.length > 0 ? (
                                                       filteredOptionalsItem.map((item, index) => (
                                                         item.product.product_category_id === 1 && (
                                                           <SwiperSlide key={index}>
-                                                            <div className="card">
-                                                              <div className="img">
-                                                                <img
-                                                                  src={item.product.image}
-                                                                  alt="img"
-                                                                  className="img-fluid w-25" // Assuming you want the image to take full width
-                                                                  draggable="false"
-                                                                />
-                                                              </div>
-                                                              <div className="text-center card_customm_padding ms-5">
-                                                                <h4 className="card_heading">{item.product.name}</h4>
-                                                                <p className="card_paragraph">
-                                                                  <span className="italic_text">{item.product.tagline}</span>
-                                                                </p>
-                                                              </div>
+                                                          <div className="card text-center">
+                                                            <div className="img">
+                                                              <img
+                                                                src={item.product.image}
+                                                                alt="img"
+                                                                className="img-fluid w-75" // Assuming you want the image to take full width
+                                                                draggable="false"
+                                                              />
                                                             </div>
-                                                          </SwiperSlide>
+                                                            <div className="text-center card_customm_padding ms-5">
+                                                              <h4 className="card_heading">{item.product.name}</h4>
+                                                              <p className="card_paragraph">
+                                                                <span className="italic_text">{item.product.tagline}</span>
+                                                              </p>
+                                                            </div>
+                                                          </div>
+                                                        </SwiperSlide>
+                                                        
                                                         )
                                                       ))
                                                     ) : null}
@@ -1359,7 +1324,7 @@ function HomePage() {
                                                       },
                                                       // When window width is >= 992px
                                                       992: {
-                                                        slidesPerView: 1,
+                                                        slidesPerView: 3,
                                                       },
                                                     }}
                                                     spaceBetween={0}
@@ -1376,7 +1341,7 @@ function HomePage() {
                                                                 <img
                                                                   src={item.product.image}
                                                                   alt="img"
-                                                                  className="img-fluid w-25" // Assuming you want the image to take full width
+                                                                  className="img-fluid w-75" // Assuming you want the image to take full width
                                                                   draggable="false"
                                                                 />
                                                               </div>
@@ -1430,6 +1395,7 @@ function HomePage() {
                                                     navigation={true}
                                                     modules={[Navigation]}
                                                     className="mySwiper"
+                                                    centeredSlides={true}
                                                   >
                                                     {filteredOptionalsItem && filteredOptionalsItem.length > 0 ? (
                                                       filteredOptionalsItem.map((item, index) => (

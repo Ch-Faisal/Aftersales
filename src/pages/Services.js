@@ -27,9 +27,9 @@ const Services = () => {
         <h1>Discover Our Service</h1>
         <div className="">
           <p className=" px-4 heading_discription">
-            Layanan Servis berkualitas prima ,&nbsp;
+            Layanan Servis berkualitas prima,&nbsp;
             <span className="text-danger">
-              agar performa Toyota Anda selalu optimal
+              agar performa Toyota Anda selalu optimal.
             </span>
           </p>
         </div>
@@ -185,12 +185,14 @@ const Services = () => {
                           dengan tepat dan akurat dengan jaminan hasil perbaikan
                           (warranty).
                         </p>
-                        <button
-                          type="button"
-                          class="btn custom-btn-dark px-5 mt-4"
-                        >
-                          Temukan Dealer Terdekat
-                        </button>
+                        <a target="_blank" href="https://www.toyota.astra.co.id/shopping-tools/dealer">
+                          <button
+                            type="button"
+                            class="btn custom-btn-dark px-5 mt-4"
+                          >
+                            Temukan Dealer Terdekat
+                          </button>
+                        </a>
                       </div>
                     </div>
                     <div className="logos d-flex justify-content-center mt-5 mb-4">
@@ -235,7 +237,7 @@ const Services = () => {
                       <div className="col-lg-7 text-lg-start">
                         <h1>
                           Dengan 81 cabang bengkel Bodi & Cat Toyota yang
-                          tersebar di seluruh Indonesia,
+                          tersebar di seluruh Indonesia
                         </h1>
                         <p className="d-lg-block d-none Services_paragraph">
                           Toyota siap memberikan pelayanan tertinggi seperti :
@@ -345,12 +347,14 @@ const Services = () => {
                           Anda memiliki asuransi, silahkan mengkonsultasikan
                           perbaikan pada call center dealer penjual Anda
                         </p>
-                        <button
-                          type="button"
-                          class="btn custom-btn-dark px-5 mt-4 d-lg-block d-none"
-                        >
-                          Temukan Dealer Terdekat
-                        </button>
+                        <a target="_blank" href="https://www.toyota.astra.co.id/shopping-tools/dealer">
+                          <button
+                            type="button"
+                            class="btn custom-btn-dark px-5 mt-4 d-lg-block d-none"
+                          >
+                            Temukan Dealer Terdekat
+                          </button>
+                        </a>
                       </div>
                       <div className="col-lg-5">
                         <img src="assets/img1.jpg" className="w-100" />
@@ -362,24 +366,26 @@ const Services = () => {
                           Anda memiliki asuransi, silahkan mengkonsultasikan
                           perbaikan pada call center dealer penjual Anda
                         </p>
-                        <button
-                          type="button"
-                          class="btn custom-btn-dark px-5 mt-4"
-                        >
-                          Temukan Dealer Terdekat
-                        </button>
+                        <a target="_blank" href="https://www.toyota.astra.co.id/shopping-tools/dealer">
+                          <button
+                            type="button"
+                            class="btn custom-btn-dark px-5 mt-4"
+                          >
+                            Temukan Dealer Terdekat
+                          </button>
+                        </a>
                       </div>
                     </div>
                   </div>
                   <div className="container p-lg-5">
                     <h1>Frequently Asked Question</h1>
                     <div className="">
-                        <NavLink to="/faq"
-                          className="btn custom-btn-dark mt-4 ms-2"
-                        >
-                          Go to FAQ Page
-                        </NavLink>
-                      </div>
+                      <NavLink to="/faq"
+                        className="btn custom-btn-dark mt-4 ms-2"
+                      >
+                        Go to FAQ Page
+                      </NavLink>
+                    </div>
                   </div>
                   <div className="logos d-flex justify-content-center mt-5 mb-4">
                     <div className="mx-2">
@@ -447,12 +453,14 @@ const Services = () => {
                           pengerjaan TMS terjamin sama baiknya dengan pengerjaan
                           di bengkel Toyota tanpa adanya biaya tambahan.
                         </p>
-                        <button
-                          type="button"
-                          class="btn custom-btn-dark px-5 mt-4"
-                        >
-                          Temukan Dealer Terdekat
-                        </button>
+                        <a target="_blank" href="https://www.toyota.astra.co.id/shopping-tools/dealer">
+                          <button
+                            type="button"
+                            class="btn custom-btn-dark px-5 mt-4"
+                          >
+                            Temukan Dealer Terdekat
+                          </button>
+                        </a>
                       </div>
                     </div>
                     <div className="logos d-flex justify-content-center mt-5 mb-4">

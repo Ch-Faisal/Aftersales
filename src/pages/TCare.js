@@ -213,32 +213,33 @@ function TCare() {
   };
   const submitData = async () => {
     setLoading(true);
-    setcheckemptyfield(false);
     const selectedMonthValue = monthMap[selectedMonth];
     if (uname.length < 1) {
       toastr.error("Name is required");
-      setcheckemptyfield(true);
-    }
-    if (uemail.length < 1) {
-      toastr.error("Email is required");
-      setcheckemptyfield(true);
-    }
-    if (phoneNumber.length < 1) {
-      toastr.error("Phone Number is required");
-      setcheckemptyfield(true);
-    }
-    if (!monthMap[selectedMonth]) {
-      toastr.error("Month is required");
-      setcheckemptyfield(true);
-    }
-    if (selectedYear.length < 1) {
-      toastr.error("Year is required");
-      setcheckemptyfield(true);
-    }
-    if (checkemptyfield) {
       setLoading(false);
       return;
     }
+    if (uemail.length < 1) {
+      toastr.error("Email is required");
+      setLoading(false);
+      return;
+    }
+    if (phoneNumber.length < 1) {
+      toastr.error("Phone Number is required");
+      setLoading(false);
+      return;
+    }
+    if (!monthMap[selectedMonth]) {
+      toastr.error("Month is required");
+      setLoading(false);
+      return;
+    }
+    if (selectedYear.length < 1) {
+      toastr.error("Year is required");
+      setLoading(false);
+      return;
+    }
+
     try {
       const name = uname;
       const email = uemail;
@@ -462,7 +463,7 @@ function TCare() {
       // link.click();
       // // Clean up by revoking the URL object
       // URL.revokeObjectURL(url);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const handlePrint = () => {
@@ -604,9 +605,8 @@ function TCare() {
                 <ul className="nav nav-pills nav-fill">
                   <li className="nav-item">
                     <a
-                      className={`tabs sertifikat nav-link py-3 li_text_1 ${
-                        activeTab === 0 ? "active" : ""
-                      }`}
+                      className={`tabs sertifikat nav-link py-3 li_text_1 ${activeTab === 0 ? "active" : ""
+                        }`}
                       href="javascript:void(0)"
                       onClick={() => handleTabClick(0)}
                     >
@@ -615,9 +615,8 @@ function TCare() {
                   </li>
                   <li className="nav-item">
                     <a
-                      className={`tabs cataten nav-link py-3 li_text_1 ${
-                        activeTab === 1 ? "active" : ""
-                      }`}
+                      className={`tabs cataten nav-link py-3 li_text_1 ${activeTab === 1 ? "active" : ""
+                        }`}
                       href="javascript:void(0)"
                       onClick={() => handleTabClick(1)}
                     >
@@ -630,8 +629,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                      ? "block"
-                      : "none",
+                        ? "block"
+                        : "none",
                   }}
                 >
                   <div
@@ -640,8 +639,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 0
-                        ? "block"
-                        : "none",
+                          ? "block"
+                          : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -696,8 +695,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                      ? "block"
-                      : "none",
+                        ? "block"
+                        : "none",
                   }}
                 >
                   <div
@@ -706,8 +705,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 1
-                        ? "block"
-                        : "none",
+                          ? "block"
+                          : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -758,8 +757,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                      ? "block"
-                      : "none",
+                        ? "block"
+                        : "none",
                   }}
                 >
                   <div
@@ -768,8 +767,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 2
-                        ? "block"
-                        : "none",
+                          ? "block"
+                          : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -834,8 +833,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                      ? "block"
-                      : "none",
+                        ? "block"
+                        : "none",
                   }}
                 >
                   <div
@@ -844,8 +843,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 3
-                        ? "block"
-                        : "none",
+                          ? "block"
+                          : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -981,8 +980,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                      ? "block"
-                      : "none",
+                        ? "block"
+                        : "none",
                   }}
                 >
                   <div
@@ -991,8 +990,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 4
-                        ? "block"
-                        : "none",
+                          ? "block"
+                          : "none",
                     }}
                   >
                     <div>
@@ -1095,8 +1094,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                      ? "block"
-                      : "none",
+                        ? "block"
+                        : "none",
                   }}
                 >
                   <div
@@ -1105,8 +1104,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 5
-                        ? "block"
-                        : "none",
+                          ? "block"
+                          : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -1324,8 +1323,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 0
-                      ? "block"
-                      : "none",
+                        ? "block"
+                        : "none",
                   }}
                 >
                   <div
@@ -1334,8 +1333,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : secondtab === 6
-                        ? "block"
-                        : "none",
+                          ? "block"
+                          : "none",
                     }}
                   >
                     <div class="circle-tab pt-4">
@@ -1379,9 +1378,8 @@ function TCare() {
                         <ul className="nav  nav-fill px-lg-5 px-3">
                           <li className="nav-item me-4 custom_border_radios_add">
                             <button
-                              className={`tabs nav-link py-3 li_text_1 ${
-                                activeTab1 === 0 ? "active1" : "non_active"
-                              }`}
+                              className={`tabs nav-link py-3 li_text_1 ${activeTab1 === 0 ? "active1" : "non_active"
+                                }`}
                               onClick={() => handleTabClick1(0)}
                             >
                               T-Care Certificate
@@ -1389,9 +1387,8 @@ function TCare() {
                           </li>
                           <li className="nav-item custom_border_radios_add">
                             <button
-                              className={`tabs nav-link py-3 li_text_1 ${
-                                activeTab1 === 1 ? "active1" : "non_active"
-                              }`}
+                              className={`tabs nav-link py-3 li_text_1 ${activeTab1 === 1 ? "active1" : "non_active"
+                                }`}
                               onClick={() => handleTabClick1(1)}
                             >
                               Extended Warranty
@@ -1411,16 +1408,14 @@ function TCare() {
                         <p className="tab-light-bold-p">
                           Untuk mendapatkan sertifikat
                           <span
-                            className={`tab-bold-p ${
-                              activeTab1 === 1 ? "d-none" : "d-inline"
-                            }`}
+                            className={`tab-bold-p ${activeTab1 === 1 ? "d-none" : "d-inline"
+                              }`}
                           >
                             “T-Care”
                           </span>{" "}
                           <span
-                            className={`tab-bold-p ${
-                              activeTab1 === 0 ? "d-none" : "d-inline"
-                            }`}
+                            className={`tab-bold-p ${activeTab1 === 0 ? "d-none" : "d-inline"
+                              }`}
                           >
                             “Extended Warranty”
                           </span>
@@ -1536,8 +1531,8 @@ function TCare() {
                     display: loading
                       ? "none"
                       : activeTab === 1
-                      ? "block"
-                      : "none",
+                        ? "block"
+                        : "none",
                   }}
                 >
                   <div
@@ -1546,8 +1541,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : Active_tab1 === 1
-                        ? "block"
-                        : "none",
+                          ? "block"
+                          : "none",
                     }}
                   >
                     <div>
@@ -1603,8 +1598,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : Active_tab1 === 2
-                        ? "block"
-                        : "none",
+                          ? "block"
+                          : "none",
                     }}
                   >
                     <div>
@@ -1631,8 +1626,8 @@ function TCare() {
                       display: loading
                         ? "none"
                         : Active_tab1 === 3
-                        ? "block"
-                        : "none",
+                          ? "block"
+                          : "none",
                     }}
                   >
                     <div>

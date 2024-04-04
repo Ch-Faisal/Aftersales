@@ -85,10 +85,10 @@ function LatestNewsEvents() {
                   >
                     <div className="carousel-inner latest-news-wrapper">
                       <div className="carousel-item active">
-                        <img src="assets/news-event-1.jpeg" className=" d-block img-fluid" />
+                        <img src="assets/news-event-1.jpeg" className=" d-block img-fluid w-100 h-100" />
                       </div>
                       <div className="carousel-item">
-                        <img src="assets/news-event-2.jpeg" className="d-block img-fluid" />
+                        <img src="assets/news-event-2.jpeg" className="d-block img-fluid w-100 h-100" />
                       </div>
                       {/* {Object.keys(newsData).map((id, index) => (
                         <div key={id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
