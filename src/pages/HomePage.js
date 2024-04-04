@@ -43,6 +43,7 @@ function HomePage() {
   const [recommendationRemark, setRecommendationsRemark] = useState([]);
   const [imageComparation, setImageComparation] = useState([]);
   const [recommendationImage, setRecommendationImage] = useState([]);
+  const [recommendationFromApi, setRecommendationFromApi] = useState([]);
   const [showAlphardWrapper, setShowAlphardWrapper] = useState(false);
   const [activeServiceTab, setActiveServiceTab] = useState(1);
   const [disclaimerMolecule, setDisclaimerMolecule] = useState('');
@@ -56,7 +57,7 @@ function HomePage() {
   useEffect(() => {
     fetchCarModels();
   }, []);
- 
+
 
   useEffect(() => {
     if (carModels.length > 0) {
@@ -112,7 +113,7 @@ function HomePage() {
       console.error('Error fetching car models:', error);
     }
   }
-  
+
   const handleCarChange = (event) => {
     setLoading(true);
     const selectedCarName = event.target.value;
@@ -146,9 +147,9 @@ function HomePage() {
       });
       console.log("serviscostusingvariant:", response.data.data);
 
-       const servicesData = response.data.data[0].services;
-       console.log("servicescostData:", servicesData);
-       setServices(servicesData);
+      const servicesData = response.data.data[0].services;
+      console.log("servicescostData:", servicesData);
+      setServices(servicesData);
       // Handle the API response
       setVariantIdParent(variantId);
       console.log("variantidahsan", variantIdParent);
@@ -204,6 +205,7 @@ function HomePage() {
         setMoleculeTitles(moleculeTitles);
 
         const recommendations = response.data.data[0].recommendations;
+        setRecommendationFromApi(response.data.data[0].recommendations);
         const recommendationsName = recommendations.map(recommendation => recommendation.product.name);
         setRecommendationsName(recommendationsName);
 
@@ -505,10 +507,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(1)}
                                 data-service="1"
                               >
-                               <div className={`d-flex flex-column servis-tabs py-1 ${services[0].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                <span>Servis ke-1</span>
-                                <span>FREE</span>
-                              </div>
+                                <div className={`d-flex flex-column servis-tabs py-1 ${services[0].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                  <span>Servis ke-1</span>
+                                  <span>FREE</span>
+                                </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -519,9 +521,9 @@ function HomePage() {
                                 data-service="2"
                               >
                                 <div className={`d-flex flex-column servis-tabs py-1 ${services[1].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                      <span>Servis ke-2</span>
-                                      <span>FREE</span>
-                                    </div>
+                                  <span>Servis ke-2</span>
+                                  <span>FREE</span>
+                                </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -532,10 +534,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(3)}
                                 data-service="3"
                               >
-                               <div className={`d-flex flex-column servis-tabs py-1 ${services[2].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                <span>Servis ke-3</span>
-                                <span>FREE</span>
-                              </div>
+                                <div className={`d-flex flex-column servis-tabs py-1 ${services[2].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                  <span>Servis ke-3</span>
+                                  <span>FREE</span>
+                                </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -546,10 +548,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(4)}
                                 data-service="4"
                               >
-                               <div className={`d-flex flex-column servis-tabs py-1 ${services[3].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                <span>Servis ke-4</span>
-                                <span>FREE</span>
-                              </div>
+                                <div className={`d-flex flex-column servis-tabs py-1 ${services[3].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                  <span>Servis ke-4</span>
+                                  <span>FREE</span>
+                                </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -559,10 +561,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(5)}
                                 data-service="5"
                               >
-                               <div className={`d-flex flex-column servis-tabs py-1 ${services[4].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                <span>Servis ke-5</span>
-                                <span>FREE</span>
-                              </div>
+                                <div className={`d-flex flex-column servis-tabs py-1 ${services[4].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                  <span>Servis ke-5</span>
+                                  <span>FREE</span>
+                                </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -572,10 +574,10 @@ function HomePage() {
                                 onClick={() => handleServiceTab(6)}
                                 data-service="6"
                               >
-                               <div className={`d-flex flex-column servis-tabs py-1 ${services[5].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                <span>Servis ke-6</span>
-                                <span>FREE</span>
-                              </div>
+                                <div className={`d-flex flex-column servis-tabs py-1 ${services[5].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                  <span>Servis ke-6</span>
+                                  <span>FREE</span>
+                                </div>
                               </button>
                             </li>
                             <li className="nav-item custom-nav-item" role="presentation">
@@ -586,7 +588,7 @@ function HomePage() {
                                 onClick={() => handleServiceTab(7)}
                                 data-service="7"
                               >
-                               <div className={`d-flex flex-column servis-tabs py-1 ${services[6].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <div className={`d-flex flex-column servis-tabs py-1 ${services[6].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-7</span>
                                   <span>FREE</span>
                                 </div>
@@ -600,7 +602,7 @@ function HomePage() {
                                 onClick={() => handleServiceTab(8)}
                                 data-service="8"
                               >
-                               <div className={`d-flex flex-column py-1 servis-tabs ${services[7].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <div className={`d-flex flex-column py-1 servis-tabs ${services[7].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-8</span>
                                   <span>{services[7].service_cost}</span>
                                 </div>
@@ -614,7 +616,7 @@ function HomePage() {
                                 onClick={() => handleServiceTab(9)}
                                 data-service="9"
                               >
-                               <div className={`d-flex flex-column py-1 servis-tabs ${services[8].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <div className={`d-flex flex-column py-1 servis-tabs ${services[8].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-9</span>
                                   <span>{services[8].service_cost}</span>
                                 </div>
@@ -643,7 +645,7 @@ function HomePage() {
                                 onClick={() => handleServiceTab(11)}
                                 data-service="11"
                               >
-                               <div className={`d-flex flex-column py-1 servis-tabs ${services[10].service_cost > 0 ? 'bg-gray' : ''}`}>
+                                <div className={`d-flex flex-column py-1 servis-tabs ${services[10].service_cost > 0 ? 'bg-gray' : ''}`}>
                                   <span>Servis ke-11</span>
                                   <span>{services[10].service_cost}</span>
                                 </div>
@@ -808,7 +810,7 @@ function HomePage() {
                                               </div>
                                             </div>
                                           </SwiperSlide>
-                                        
+
                                         </Swiper>
                                         <button type="button" class="btn btn-outline-dark custom-btn w-25 mb-5">Learn  more</button>
                                       </div>
@@ -909,7 +911,7 @@ function HomePage() {
                                               <div className="text-start card_customm_padding mt-5 ms-5">
                                                 <h4 className="card_heading mt-3">TMO Engine Room Treatment</h4>
                                                 <p className="card_paragraph">
-                                                Produk pembersih ruang mesin kendaraan.
+                                                  Produk pembersih ruang mesin kendaraan.
                                                 </p>
                                               </div>
                                             </div>
@@ -927,7 +929,7 @@ function HomePage() {
                                               <div className="text-start card_customm_padding mt-5 ms-5">
                                                 <h4 className="card_heading mt-3">TMO Brake Cleaner</h4>
                                                 <p className="card_paragraph">
-                                                Aerosol pembersih komponen pengereman.
+                                                  Aerosol pembersih komponen pengereman.
                                                 </p>
                                               </div>
                                             </div>
@@ -945,7 +947,7 @@ function HomePage() {
                                               <div className="text-start card_customm_padding mt-5 ms-5">
                                                 <h4 className="card_heading mt-3">TMO Evaporator Cleaner</h4>
                                                 <p className="card_paragraph">
-                                                Cairan pembersih evaporator AC kendaraan.
+                                                  Cairan pembersih evaporator AC kendaraan.
                                                 </p>
                                               </div>
                                             </div>
@@ -963,7 +965,7 @@ function HomePage() {
                                               <div className="text-start card_customm_padding mt-5 ms-5">
                                                 <h4 className="card_heading mt-3">TMO Evaporator Cleaner</h4>
                                                 <p className="card_paragraph">
-                                                Cairan pembersih evaporator AC kendaraan.
+                                                  Cairan pembersih evaporator AC kendaraan.
                                                 </p>
                                               </div>
                                             </div>
@@ -981,12 +983,12 @@ function HomePage() {
                                               <div className="text-start card_customm_padding mt-5 ms-5">
                                                 <h4 className="card_heading mt-3">TMO Glass Cleaner</h4>
                                                 <p className="card_paragraph">
-                                                Cairan pembersih kaca dari jamur (waterspot)
+                                                  Cairan pembersih kaca dari jamur (waterspot)
                                                 </p>
                                               </div>
                                             </div>
                                           </SwiperSlide>
-                                          
+
                                           <SwiperSlide>
                                             <div className="card">
                                               <div className="img mt-3">
@@ -1001,15 +1003,15 @@ function HomePage() {
                                                 <h4 className="card_heading mt-2">TMO Headlamp Cleaner</h4>
                                                 <p className="card_paragraph">
                                                   <span className="italic_text">
-                                                  Cairan pembersih kaca/mika lampu yang kusam
+                                                    Cairan pembersih kaca/mika lampu yang kusam
                                                   </span>
                                                 </p>
                                               </div>
                                             </div>
                                           </SwiperSlide>
-                                          
+
                                         </Swiper>
-                                      
+
                                         <button type="button" class="btn btn-outline-dark custom-btn w-25 py-2 mt-5">Learn  more</button>
 
                                       </div>
@@ -1056,7 +1058,7 @@ function HomePage() {
                                               </div>
                                             </div>
                                           </SwiperSlide>
-                                    
+
                                         </Swiper>
                                         <button type="button" class="btn btn-outline-dark custom-btn w-25 mb-3">Learn  more</button>
                                       </div>
@@ -1090,27 +1092,27 @@ function HomePage() {
                                         </h1>
                                       )}
                                       <h1>Servis berkala setelah <span className='inline-text' >{activeServiceTab >= 2 && activeServiceTab <= 11 && (activeServiceTab - 1) * 6} Bulan </span> </h1>
-                                      
-                              {activeServiceTab >= 8 && (
-                                  <div className='text text-start mt-3'>
-                                      {serviceDescriptions.length > 0 && serviceDescriptions[8] ? 
-                                          serviceDescriptions[8].match(/.{1,123}/g).map((substring, index) => (
+
+                                      {activeServiceTab >= 8 && (
+                                        <div className='text text-start mt-3'>
+                                          {serviceDescriptions.length > 0 && serviceDescriptions[8] ?
+                                            serviceDescriptions[8].match(/.{1,123}/g).map((substring, index) => (
                                               <React.Fragment key={index}>
-                                                  {substring}
-                                                  <br /> {/* Add line break after every 123 characters */}
+                                                {substring}
+                                                <br /> {/* Add line break after every 123 characters */}
                                               </React.Fragment>
-                                          )) : 
-                                          "No description available"
-                                      }
-                                  </div>
-                              )}
+                                            )) :
+                                            "No description available"
+                                          }
+                                        </div>
+                                      )}
                                       <p className='text mt-3'>{serviceDisclaimer}</p>
                                     </div>
 
                                     <div className='container px-0'>
                                       <div className='d-flex justify-content-center'>
                                         <div className='d-flex justify-content-center'>
-                                        <div className='row mt-5'>
+                                          <div className='row mt-5'>
                                             <div className={`col-12${activeServiceTab === 5 ? ' col-lg-8 mx-auto text-start' : ''}`}>
                                               {packageNames.map((packageName, index) => (
                                                 index % 2 === 0 && (
@@ -1146,11 +1148,10 @@ function HomePage() {
                                         </div>
                                       </div>
                                       <div className="mt-5">
-                                        <div className="row home-tab d-flex justify-content-center text-md-center" style={{ gap:'10px'}}>
+                                        <div className="row home-tab d-flex justify-content-center text-md-center" style={{ gap: '10px' }}>
                                           <div
-                                            className={`nav-link col-5  rounded py-3 px-2 ${
-                                              activeTab2 === 0 ? "active" : ""
-                                            }`}
+                                            className={`nav-link col-5  rounded py-3 px-2 ${activeTab2 === 0 ? "active" : ""
+                                              }`}
                                             onClick={() => handleTab2Click(0)}
                                           >
                                             <a href="javascript:void(0)" className="text-center">
@@ -1158,9 +1159,8 @@ function HomePage() {
                                             </a>
                                           </div>
                                           <div
-                                            className={`nav-link col-5 rounded py-3 px-2    ${
-                                              activeTab2 === 1 ? "active" : ""
-                                            }`}
+                                            className={`nav-link col-5 rounded py-3 px-2    ${activeTab2 === 1 ? "active" : ""
+                                              }`}
                                             onClick={() => handleTab2Click(1)}
                                           >
                                             <a href="javascript:void(0)" className="text-center ">
@@ -1213,56 +1213,56 @@ function HomePage() {
                                                   </div>
                                                 </div>
                                                 <div className='col-md-6 bg-pink'>
-                                                <p className='pt-3 text-center d-none d-md-block text-red'>Opsi Upgrade Oli</p>
-                                                <div className='d-md-flex wrapper-pink-bg'>
-                                                <div className='col-md-6 text-center d-flex flex-md-column mt-2 mt-md-0'>
-                                                  <div className='col-md-12 order-1 order-md-0'>
-                                                    <p className='pt-4'>
-                                                      <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }}>{moleculeTitles[1]}</span>
-                                                    </p>
-                                                    <p className='text-center fw-bold'>SW-30</p>
-                                                    <div className='tmo-image'>
-                                                      <img src={moleculeImages[1]} alt='' />
+                                                  <p className='pt-3 text-center d-none d-md-block text-red'>Opsi Upgrade Oli</p>
+                                                  <div className='d-md-flex wrapper-pink-bg'>
+                                                    <div className='col-md-6 text-center d-flex flex-md-column mt-2 mt-md-0'>
+                                                      <div className='col-md-12 order-1 order-md-0'>
+                                                        <p className='pt-4'>
+                                                          <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }}>{moleculeTitles[1]}</span>
+                                                        </p>
+                                                        <p className='text-center fw-bold'>SW-30</p>
+                                                        <div className='tmo-image'>
+                                                          <img src={moleculeImages[1]} alt='' />
+                                                        </div>
+                                                      </div>
+                                                      <div className='col-md-12 order-0 order-md-1'>
+                                                        <p className='pt-4'>
+                                                          <span className="d-block d-md-none" style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                                                          {moleculeTitles[1] ? (
+                                                            <span className="d-none d-md-block mt-2" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }} dangerouslySetInnerHTML={{ __html: moleculeTitles[1] }} />
+                                                          ) : null}
+                                                        </p>
+                                                        <div className='tmo-image molecule-photos pb-3 pb-md-0'>
+                                                          <img src={moleculePhotos[1]} alt='' />
+                                                        </div>
+                                                      </div>
                                                     </div>
-                                                  </div>
-                                                  <div className='col-md-12 order-0 order-md-1'>
-                                                    <p className='pt-4'>
-                                                      <span className="d-block d-md-none" style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
-                                                      {moleculeTitles[1] ? (
-                                                        <span className="d-none d-md-block mt-2" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }} dangerouslySetInnerHTML={{ __html: moleculeTitles[1] }} />
-                                                      ) : null}
-                                                    </p>
-                                                    <div className='tmo-image molecule-photos pb-3 pb-md-0'>
-                                                      <img src={moleculePhotos[1]} alt='' />
+                                                    <div className='col-md-6 text-center d-flex flex-md-column mt-2 mt-md-0'>
+                                                      <div className='col-md-12 order-1 order-md-0'>
+                                                        <p className='pt-4'>
+                                                          <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }}>{moleculeTitles[2]}</span>
+                                                        </p>
+                                                        <p className='text-center fw-bold'>0W-20</p>
+                                                        <div className='tmo-image'>
+                                                          <img src={moleculeImages[2]} alt='' />
+                                                        </div>
+                                                      </div>
+                                                      <div className='col-md-12 order-0 order-md-1'>
+                                                        <p className='pt-4 text-center'>
+                                                          <span className="d-block d-md-none" style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
+                                                          <span className="d-none d-md-block mt-2" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }} dangerouslySetInnerHTML={{ __html: moleculeTitles[2] }} />
+                                                        </p>
+                                                        <div className='tmo-image tmo-2'>
+                                                          <img src={moleculePhotos[2]} alt='' />
+                                                        </div>
+                                                        <p className=' disclaimer mt-2 text-red d-none d-md-block text-wrap' style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '12px', fontWeight: '600' }}>
+                                                          <span dangerouslySetInnerHTML={{ __html: disclaimerMolecule }} />
+                                                        </p>
+                                                      </div>
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div className='col-md-6 text-center d-flex flex-md-column mt-2 mt-md-0'>
-                                                  <div className='col-md-12 order-1 order-md-0'>
-                                                    <p className='pt-4'>
-                                                      <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }}>{moleculeTitles[2]}</span>
-                                                    </p>
-                                                    <p className='text-center fw-bold'>0W-20</p>
-                                                    <div className='tmo-image'>
-                                                      <img src={moleculeImages[2]} alt='' />
-                                                    </div>
-                                                  </div>
-                                                  <div className='col-md-12 order-0 order-md-1'>
-                                                    <p className='pt-4 text-center'>
-                                                      <span className="d-block d-md-none" style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
-                                                      <span className="d-none d-md-block mt-2" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }} dangerouslySetInnerHTML={{ __html: moleculeTitles[2] }} />
-                                                    </p>
-                                                    <div className='tmo-image tmo-2'>
-                                                      <img src={moleculePhotos[2]} alt='' />
-                                                    </div>
-                                                    <p className=' disclaimer mt-2 text-red d-none d-md-block text-wrap' style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '12px', fontWeight: '600' }}>
-                                                      <span dangerouslySetInnerHTML={{ __html: disclaimerMolecule }} />
-                                                    </p>
-                                                  </div>
-                                                </div>
-                                                </div>
-                                                </div>
-                                              
+
                                               </div>
                                             </div>
                                           </div>
@@ -1276,18 +1276,25 @@ function HomePage() {
                                           </div>
                                         </div>
                                         <div className='container'>
-                                          <div className='row'>
-                                            <div className='col-md-4 mx-md-5 text-center d-flex justify-content-center'>
-                                              <img src={recommendationImage} className='w-100' alt='brake' />
-                                            </div>
-                                            <div className='col-md-6 mx-md-2'>
-                                              <h1 className='text-start'>{recommendationsName}</h1>
-                                              <p className='text-start' dangerouslySetInnerHTML={{ __html: recommendationRemark }} />
-                                              <div className='d-flex'>
-                                                <img src={imageComparation} className='w-100' alt='brake' />
-                                                {/* <img src="assets/tyre2.png" className='w-50' alt='brake' /> */}
+                                          {recommendationFromApi.map((recommendation, index) => (
+                                            <div className='row'>
+                                              <div className='col-md-4 mx-md-5 text-center d-flex justify-content-center'>
+                                                <img src={recommendation.product.image} className='w-100' alt='brake' />
+                                              </div>
+                                              <div className='col-md-6 mx-md-2'>
+                                                <h1 className='text-start'>{recommendation.product.name}</h1>
+                                                <p className='text-start' dangerouslySetInnerHTML={{ __html: recommendation.product.remark }} />
+                                                {recommendation.product.image_comparation != null && (
+                                                  <div className='d-flex'>
+                                                    <img src={recommendation.product.image_comparation} className='w-100' alt='brake' />
+                                                    {/* <img src="assets/tyre2.png" className='w-50' alt='brake' /> */}
+                                                  </div>
+                                                )}
                                               </div>
                                             </div>
+                                          ))
+                                          }
+                                          <div className='row'>
                                             <h1 className='mt-4 mb-5'>Opsi Produk Toyota Lainnya</h1>
                                             {/* <p className='text-start' dangerouslySetInnerHTML={{ __html: OptionalsTagline }} /> */}
                                             <div className='col-6 col-md'>
@@ -1355,24 +1362,24 @@ function HomePage() {
                                                       filteredOptionalsItem.map((item, index) => (
                                                         item.product.product_category_id === 1 && (
                                                           <SwiperSlide key={index}>
-                                                          <div className="card text-center">
-                                                            <div className="img">
-                                                              <img
-                                                                src={item.product.image}
-                                                                alt="img"
-                                                                className="img-fluid w-75" // Assuming you want the image to take full width
-                                                                draggable="false"
-                                                              />
+                                                            <div className="card text-center">
+                                                              <div className="img">
+                                                                <img
+                                                                  src={item.product.image}
+                                                                  alt="img"
+                                                                  className="img-fluid w-75" // Assuming you want the image to take full width
+                                                                  draggable="false"
+                                                                />
+                                                              </div>
+                                                              <div className="text-center card_customm_padding ms-md-5">
+                                                                <h4 className="card_heading">{item.product.name}</h4>
+                                                                <p className="card_paragraph">
+                                                                  <span className="italic_text">{item.product.tagline}</span>
+                                                                </p>
+                                                              </div>
                                                             </div>
-                                                            <div className="text-center card_customm_padding ms-md-5">
-                                                              <h4 className="card_heading">{item.product.name}</h4>
-                                                              <p className="card_paragraph">
-                                                                <span className="italic_text">{item.product.tagline}</span>
-                                                              </p>
-                                                            </div>
-                                                          </div>
-                                                        </SwiperSlide>
-                                                        
+                                                          </SwiperSlide>
+
                                                         )
                                                       ))
                                                     ) : null}
