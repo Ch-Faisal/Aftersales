@@ -1283,7 +1283,7 @@ function HomePage() {
                                           {recommendationFromApi.map((recommendation, index) => (
                                             <div className='row'>
                                               <div className='col-md-4 mx-md-5 text-center d-flex justify-content-center'>
-                                                <img src={recommendation.product.image} className='w-100' alt='brake' />
+                                                <img src={recommendation.product.image} className='w-100 h-100 img-fluid' alt='brake' />
                                               </div>
                                               <div className='col-md-6 mx-md-2'>
                                                 <h1 className='text-start'>{recommendation.product.name}</h1>
