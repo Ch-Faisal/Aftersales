@@ -1100,3 +1100,9 @@ padding-top: 10% !important;
     .swiper_slider_1 .swiper-wrapper .swiper-slide .card{
       height: 32rem !important;
       } 
+        .swiper_slider_1 .swiper-button-prev{
+          top: 43% !important;
+          } 
+          .swiper_slider_1 .swiper-button-next{
+            top: 43% !important;
+            } 

@@ -674,7 +674,7 @@ function Products() {
                       role="tabpanel"
                       aria-labelledby="faq_tab_2-tab"
                     >
-                      <div className="container ps-5 pe-5 mt-5">
+                      <div className="container ps-lg-5 pe-lg-5 ps-md-5 pe-md-5 ps-2 pe-2 mt-5">
                         <div className="row">
                           <div className="col-12">
                             <p className="product_title">Toyota PRODUCT -TMO</p>
