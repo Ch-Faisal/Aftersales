@@ -148,8 +148,6 @@ function TCare() {
         setregister(2);
       } else {
         setLoading(false);
-        console.log("This is response of else api", response);
-        console.log("This is response of else api", response.data.imgUrl);
 
         setImageUrl(response.data.imgUrl);
         settagline(response.data.tagline);
@@ -164,7 +162,6 @@ function TCare() {
 
       // setActiveCircle(activeCircle + 1);
     } catch (error) {
-      console.log("error is ", error);
       // Handle error here
       setLoading(false);
       if (error.response) {
@@ -267,7 +264,6 @@ function TCare() {
           },
         }
       );
-      console.log(response.data);
       setkendaraan(response.data.kendaraan);
       setName(response.data.name);
       setEmail(response.data.email);
@@ -283,7 +279,6 @@ function TCare() {
       if (error.response) {
         toastr.error(error.response.data.message);
       }
-      console.error("Error occurred:", error);
     }
   };
   const submitRegister = async () => {
@@ -312,7 +307,6 @@ function TCare() {
           },
         }
       );
-      console.log(response);
       setLoading(false);
       setsecondtab(5);
       setTimerValue(60);
@@ -322,7 +316,6 @@ function TCare() {
       if (error.response) {
         toastr.error(error.response.data.message);
       }
-      console.error("Error occurred:", error);
     }
   };
   const submitOtp = async () => {
@@ -350,11 +343,7 @@ function TCare() {
           },
         }
       );
-      // console.log(response);
-      // console.log(response.data.vin);
-      // console.log("download warrnety", response.data.download_warranty);
-      // console.log("Download certificate", response.data.download_certificate);
-      // Storing the values in state variables
+      
       setDownloadWarranty(response.data.download_warranty);
       setDownloadCertificate(response.data.download_certificate);
       setDownload(response.data.download_certificate);
@@ -369,7 +358,6 @@ function TCare() {
       }
     } catch (error) {
       setLoading(false);
-      console.error("Error occurred:", error);
       toastr.error(error.response.data.message);
       setOtp1(""); // Empty the value of otp1
       setOtp2(""); // Empty the value of otp2
@@ -418,11 +406,9 @@ function TCare() {
           },
         }
       );
-      console.log(response);
       toastr.success(response.data.message);
       setLoading(false);
     } catch (error) {
-      console.error("Error occurred:", error);
       setLoading(false);
       toastr.error(error.response.data.message);
     }
@@ -434,7 +420,6 @@ function TCare() {
       return;
     }
     try {
-      // console.log(download);
       // Replace 'path/to/your/pdf.pdf' with the path to your PDF file
 
       // Create a link element
@@ -489,36 +474,11 @@ function TCare() {
     if (newTab) {
       newTab.focus(); // Focus on the new tab
     } else {
-      console.error('Popup blocked. Please allow popups for this site.'); // Handle popup blocked error
+      toastr.error('Try again later')
     }
 
   };
 
-  //   const handlePrint = (e: React.FormEvent) => {
-  //     // Check if a PDF URL is available
-  //     if (!download) {
-  //         toastr.error("No PDF URL available for printing");
-  //         return;
-  //     }
-
-  //     // Prevent the default form submission behavior
-  //     e.preventDefault();
-
-  //     // Open a new tab with the PDF URL
-  //     const win = window.open(download, '_blank');
-
-  //     // Wait for the new tab to load
-  //     if (win) {
-  //         win.onload = () => {
-  //             // Print the document
-  //             win.print();
-  //         };
-  //     }
-  // };
-
-  // const handlePrintPDF = useReactToPrint({
-  //   content: () => pdfRef.current,
-  // });
 
   const [vinn, setVinn] = useState("");
   const [emaill, setEmaill] = useState("");
@@ -544,19 +504,16 @@ function TCare() {
           },
         }
       );
-      console.log(response);
-      console.log(response.data.data);
+    
       settableData(response.data.data);
       setCheckServiceName(response.data.name);
       setCheckserviceModel(response.data.model);
-      console.log("table data is ", tableData);
       if (response.data.message == "success.") {
         setActive_tab1(3);
       }
       // toastr.success(response.data.message);
       setLoading(false);
     } catch (error) {
-      console.error("Error occurred:", error);
       setLoading(false);
       setNodata(error.response.data.message);
       setActive_tab1(2);
@@ -575,75 +532,12 @@ function TCare() {
     <div id="navbar_top">
       <Header></Header>
       <div className="section-1 p-0 " id="section-1">
-        <div
-          id="carouselExample"
-          className="carousel slide d-none d-lg-block"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
+        <div>
+        <img
                 src="assets/home-page-slider.png"
                 className="d-block w-100"
                 alt="Slide 1"
               />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="assets/home-page-slider.png"
-                className="d-block w-100"
-                alt="Slide 2"
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="assets/home-page-slider.png"
-                className="d-block w-100"
-                alt="Slide 3"
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="assets/home-page-slider.png"
-                className="d-block w-100"
-                alt="Slide 3"
-              />
-            </div>
-          </div>
-
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="prev"
-          >
-            <span aria-hidden="true">
-              <i className="fas fa-chevron-left"></i>
-            </span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="next"
-          >
-            <span aria-hidden="true">
-              <i className="fas fa-chevron-right"></i>
-            </span>
-            <span className="visually-hidden">Next</span>
-          </button>
-
-          <ol className="carousel-indicators">
-            <li
-              data-bs-target="#carouselExample"
-              data-bs-slide-to="0"
-              className="active"
-            ></li>
-            <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
-            <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
-            <li data-bs-target="#carouselExample" data-bs-slide-to="3"></li>
-          </ol>
         </div>
         <div className="d-block d-lg-none">
           <img
@@ -903,14 +797,15 @@ function TCare() {
                         <p className="tab-bold-p">{vin}</p>
                       </div>
                       <div className="text-start mx-4 mx-md-5">
-                        <p className="tab-bold-p">
+                        {/* <p className="tab-bold-p">
                           Hai!
                           <br />
                           Bapak/Ibu {uname}.
                         </p>
                         <p className="tab-bold-p">
                           Mobil Anda Sudah Terdaftar di Program T-Care!
-                        </p>
+                        </p> */}
+                          <p className="tab-bold-p" dangerouslySetInnerHTML={{ __html: tagline }} /> 
                         <p className="tab-bold-p">{apiMessage}</p>
                         <p style={{ color: "#D71921" }} className="tab-bold-p">
                           Ingin ubah data diri anda?
