@@ -1120,8 +1120,8 @@ function HomePage() {
                                               {packageNames.map((packageName, index) => (
                                                 index % 2 === 0 && (
                                                   <div key={index} className='d-flex justify-content-between mt-2 mt-md-4'>
-                                                    <div className='d-flex'>
-                                                      <img src={packageImages[index]} alt='' style={activeServiceTab === 5 && index < 2 ? { width: '81px', height: '41px' } : {}} />
+                                                    <div className='d-flex align-items-center'>
+                                                      <img src={packageImages[index]} alt='' />
                                                       <div className="px-3 font-bold" style={{ fontWeight: 600 }}>
                                                         {packageName.split(',').map((item, i) => (
                                                           <div key={i}>
@@ -1131,8 +1131,8 @@ function HomePage() {
                                                       </div>
                                                     </div>
                                                     {index + 1 < packageNames.length && (
-                                                      <div className='d-flex'>
-                                                        <img src={packageImages[index + 1]} alt='' style={activeServiceTab === 5 && index < 2 ? { width: '81px', height: '41px' } : {}} />
+                                                      <div className='d-flex align-items-center'>
+                                                        <img src={packageImages[index + 1]} alt='' />
                                                         <div className="px-3" style={{ fontWeight: 600 }}>
                                                           {packageNames[index + 1].split(',').map((item, i) => (
                                                             <div key={i}>
@@ -1258,12 +1258,13 @@ function HomePage() {
                                                         <div className='tmo-image tmo-2'>
                                                           <img src={moleculePhotos[2]} alt='' />
                                                         </div>
-                                                        <p className=' disclaimer mt-2 text-red d-none d-md-block text-wrap' style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '12px', fontWeight: '600' }}>
-                                                          <span dangerouslySetInnerHTML={{ __html: disclaimerMolecule }} />
-                                                        </p>
                                                       </div>
+
                                                     </div>
                                                   </div>
+                                                  <div><p className=' disclaimer mt-2 text-red d-none d-md-block text-wrap' style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '12px', fontWeight: '600' }}>
+                                                    <span dangerouslySetInnerHTML={{ __html: disclaimerMolecule }} />
+                                                  </p></div>
                                                 </div>
 
                                               </div>
@@ -1546,8 +1547,8 @@ function HomePage() {
           <h5 className='fw-bold'> kendaraan Toyota Anda  </h5>
           <p className='mb-5'>Telusuri penawaran terbaik di bengkel Resmi kami!</p>
           <div className="row">
-            <div className="col-sm-6 col-lg-4">
-              <div className="card custom_box_shadow mt-4 mt-lg-0">
+            <div className="col-sm-6 col-lg-4 mt-5 mt-lg-0">
+              <div className="card custom_box_shadow">
                 <img src="assets/services.png" className="rounded-0" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title service_card_title fw-bold">Services</h4>
@@ -1558,8 +1559,8 @@ function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-sm-6 col-lg-4">
-              <div className="card custom_box_shadow mt-5 mt-lg-0">
+            <div className="col-sm-6 col-lg-4 mt-5 mt-lg-0">
+              <div className="card custom_box_shadow">
                 <img src="assets/home-card-img2.png" className="rounded-0" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title service_card_title  fw-bold">Products</h4>
@@ -1569,8 +1570,8 @@ function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-sm-6 col-lg-4">
-              <div className="card custom_box_shadow mt-5 mt-lg-0">
+            <div className="col-sm-6 col-lg-4 mt-5 mt-lg-0">
+              <div className="card custom_box_shadow">
                 <img src="assets/warrenty-img.png" className="rounded-0" alt="..." />
                 <div className="card-body">
                   <h4 className="card-title service_card_title  fw-bold">Warranty</h4>
@@ -1580,10 +1581,8 @@ function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="row mt-5">
-            <div className="col-sm-6 col-lg-4">
-              <div className="card custom_box_shadow mt-5 mt-lg-0">
+            <div className="col-sm-6 col-lg-4 mt-5">
+              <div className="card custom_box_shadow">
                 <img src="assets/T-care.png" className="rounded-0" alt="t-care-img" />
                 <div className="card-body">
                   <h5 className="card-title service_card_title  fw-bold">T-CARE</h5>
@@ -1593,8 +1592,8 @@ function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-sm-6 col-lg-4">
-              <div className="card custom_box_shadow mt-5 mt-lg-0">
+            <div className="col-sm-6 col-lg-4 mt-5">
+              <div className="card custom_box_shadow">
                 <img src="assets/News-event.png" className="rounded-0" alt="news-event-img" />
                 <div className="card-body">
                   <h5 className="card-title service_card_title  fw-bold">News & Events</h5>
@@ -1604,8 +1603,8 @@ function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-sm-6 col-lg-4 mb-4 mb-md-0">
-              <div className="card custom_box_shadow mt-5  mt-lg-0">
+            <div className="col-sm-6 col-lg-4 mb-4 mb-md-0 mt-5">
+              <div className="card custom_box_shadow">
                 <img src="assets/home-card-img1.png" className="rounded-0" alt="faq-img" />
                 <div className="card-body">
                   <h5 className="card-title service_card_title fw-bold">FAQ</h5>
