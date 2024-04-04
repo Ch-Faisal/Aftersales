@@ -37,8 +37,8 @@ function Header() {
   return (
     <div className="custom_margin_header_bottom">
     <div className=" sticky">
-      <nav className="nav-1 navbar navbar-expand-lg pt-3" id="navbar">
-        <div className="container-fluid">
+      <nav className="nav-1 navbar navbar-expand-lg pt-0 py-0" id="navbar">
+        <div className="container">
           <a className="navbar-brand" href="#">
             <img src="/assets/logo.png" alt="logo" />
           </a>
@@ -249,7 +249,7 @@ function Header() {
         </div>
       </nav>
       <nav className="navbar navbar-expand-lg navbar_bottom_custom_padding">
-        <div className=" container-fluid px-0 px-lg-2">
+        <div className=" container-lg container-fluid px-0 px-lg-2">
           <NavLink to="/" className="navbar-brand mx-lg-0 mx-3 navbar_bottom_custom_padding_1">
             Toyota After Sales
           </NavLink>
