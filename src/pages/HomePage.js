@@ -1116,7 +1116,7 @@ function HomePage() {
                                       <div className='d-flex justify-content-center'>
                                         <div className='d-flex justify-content-center w-100'>
                                           <div className='row mt-5 w-100'>
-                                            <div className={`col-12${activeServiceTab === 5 ? ' col-lg-8 mx-auto text-start' : ''}`}>
+                                            <div className={'col-12 col-lg-8 mx-auto text-start'}>
                                               {packageNames.map((packageName, index) => (
                                                 index % 2 === 0 && (
                                                   <div key={index} className='d-flex justify-content-between mt-2 mt-md-4'>
