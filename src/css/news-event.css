@@ -75,7 +75,7 @@ margin-top: -12px;
     aspect-ratio: 16/9;
     object-fit: cover;
   }
-  .custom-nav-tabs {
+  .custom-nav-tabss {
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
     scrollbar-width: none !important; /* Hides the scrollbar for Firefox */
@@ -92,7 +92,7 @@ margin-top: -12px;
         display: flex !important;
         justify-content: left !important;
     }
-    .custom-nav-tabs{
+    .custom-nav-tabss{
         padding-left: 100px !important;
     }
   }
