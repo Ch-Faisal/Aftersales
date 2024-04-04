@@ -69,11 +69,11 @@ function HomePage() {
     }
   }, [carModels]);
 
-  useEffect(() => {
-    if (selectedCarId && variantIdParent) {
-      handleTabClick(variantIdParent, activeTab);
-    }
-  }, [selectedCarId, variantIdParent, activeTab]);
+  // useEffect(() => {
+  //   if (selectedCarId && variantIdParent) {
+  //     handleTabClick(variantIdParent, activeTab);
+  //   }
+  // }, [selectedCarId, variantIdParent, activeTab]);
 
   const fetchCarModels = async () => {
     try {
@@ -99,7 +99,10 @@ function HomePage() {
       });
       console.log("response service cost first call:", response.data.data)
       setCarVariant(response.data.data);
-      setVariantIdParent(response.data.data[0].id)
+      setVariantIdParent(response.data.data[0].id);
+      setSelectedCarId(carId);
+      console.log('selected car id is', carId)
+      handleTabClick(response.data.data[0].id, activeTab, carId);
       const serviceDescriptionsArray = response.data.data.map(variant => variant.services.map(service => service.service_description));
       console.log("Description:", serviceDescriptionsArray);
       setServiceDescriptions(serviceDescriptionsArray.flat());
@@ -137,10 +140,10 @@ function HomePage() {
     setShowAlphardWrapper(true);
   };
 
-  const handleTabClick = async (variantId, index) => {
+  const handleTabClick = async (variantId, index, carId) => {
     try {
       setLoading2(true);
-      const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/variant?car_id=${selectedCarId}&id=${variantId}`, {
+      const response = await axios.get(`https://aftersales-toyota-revamp.thriveagency.id/api/variant?car_id=${carId}&id=${variantId}`, {
         headers: {
           'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
         }
@@ -155,7 +158,7 @@ function HomePage() {
       console.log("variantidahsan", variantIdParent);
       setLoading2(false);
       setActiveTab(index);
-      return response.data.data;
+      // return response.data.data;
     } catch (error) {
       console.error('Error fetching service cost using variant:', error);
       setLoading2(false); // Set loading state in case of error
@@ -459,7 +462,7 @@ function HomePage() {
                     <li className="nav-item" key={index}>
                       <a
                         className={`nav-link text-nowrap ${activeTab === index ? 'active' : ''}`}
-                        onClick={() => handleTabClick(variant.id, index)}
+                        onClick={() => handleTabClick(variant.id, index, variant.car.id)}
                         href="javascript:void(0)">
                         {variant.name}
                       </a>
