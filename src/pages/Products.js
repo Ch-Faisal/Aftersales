@@ -61,21 +61,32 @@ function Products() {
 
   const toggleVisibility5 = () => {
     setIsVisible5(!isVisible5);
-    document.getElementById('toggleVisibility5').classList.remove('w-75')
-    document.getElementById('toggleVisibility6').classList.add('w-100')
-
-    document.getElementById('toggleVisibility6').classList.add('w-75')
-    document.getElementById('toggleVisibility6').classList.remove('w-100')
+    const toggleVisibility6Element = document.getElementById('toggleVisibility5');
+    const isW100 = toggleVisibility6Element.classList.contains('w-100');
+    
+    if (isW100) {
+      toggleVisibility6Element.classList.remove('w-100');
+      toggleVisibility6Element.classList.add('w-75');
+    } else {
+      toggleVisibility6Element.classList.remove('w-75');
+      toggleVisibility6Element.classList.add('w-100');
+    }
     setIsVisible6(false); // Hide component 6
   };
   const [isVisible6, setIsVisible6] = useState(false);
 
   const toggleVisibility6 = () => {
     setIsVisible6(!isVisible6);
-    document.getElementById('toggleVisibility5').classList.add('w-75')
-    document.getElementById('toggleVisibility6').classList.remove('w-100')
-    document.getElementById('toggleVisibility6').classList.remove('w-75')
-    document.getElementById('toggleVisibility6').classList.add('w-100')
+    const toggleVisibility6Element = document.getElementById('toggleVisibility6');
+    const isW100 = toggleVisibility6Element.classList.contains('w-100');
+    
+    if (isW100) {
+      toggleVisibility6Element.classList.remove('w-100');
+      toggleVisibility6Element.classList.add('w-75');
+    } else {
+      toggleVisibility6Element.classList.remove('w-75');
+      toggleVisibility6Element.classList.add('w-100');
+    }
     setIsVisible5(false); // Hide component 6
   };
   const value = useSelector((state) => state.value);
