@@ -18,6 +18,9 @@
     background-color: rgba(215, 25, 33, 1);
     color: #fff !important;
 }
+.remove-margin-p p{
+  margin-bottom: 0px !important;
+}
 .new-alphard{
     margin-left: 14%;
     margin-right: 14%;

@@ -32,6 +32,17 @@ font-style: normal !important;
 font-weight: 400 !important;
 line-height: 120% !important;
   }
+ 
+  @media (min-width:600px) {
+    .custom-h-YT-v{
+      height: 500px;
+    }
+  }
+  @media (max-width:600px) {
+    .custom-h-YT-v{
+    height: 200px;
+  }
+  }
   @media (max-width:768px) {
     .product_title{
       font-size: 12px !important; 

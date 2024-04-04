@@ -343,7 +343,7 @@ function TCare() {
           },
         }
       );
-      
+
       setDownloadWarranty(response.data.download_warranty);
       setDownloadCertificate(response.data.download_certificate);
       setDownload(response.data.download_certificate);
@@ -504,7 +504,7 @@ function TCare() {
           },
         }
       );
-    
+
       settableData(response.data.data);
       setCheckServiceName(response.data.name);
       setCheckserviceModel(response.data.model);
@@ -533,11 +533,11 @@ function TCare() {
       <Header></Header>
       <div className="section-1 p-0 " id="section-1">
         <div>
-        <img
-                src="assets/home-page-slider.png"
-                className="d-block w-100"
-                alt="Slide 1"
-              />
+          <img
+            src="assets/home-page-slider.png"
+            className="d-block w-100"
+            alt="Slide 1"
+          />
         </div>
         <div className="d-block d-lg-none">
           <img
@@ -553,7 +553,7 @@ function TCare() {
             <div className="row">
               <div class="col-md-5 d-flex">
                 <div class="section-image my-auto">
-                  <img src="assets/logo-tcare 1.png" alt="logo" />
+                  <img src="assets/logo-tcare 1.png" className="w-100" alt="logo" />
                 </div>
               </div>
               <div className="col-md-7">
@@ -805,7 +805,7 @@ function TCare() {
                         <p className="tab-bold-p">
                           Mobil Anda Sudah Terdaftar di Program T-Care!
                         </p> */}
-                          <p className="tab-bold-p" dangerouslySetInnerHTML={{ __html: tagline }} /> 
+                        <p className="tab-bold-p" dangerouslySetInnerHTML={{ __html: tagline }} />
                         <p className="tab-bold-p">{apiMessage}</p>
                         <p style={{ color: "#D71921" }} className="tab-bold-p">
                           Ingin ubah data diri anda?
