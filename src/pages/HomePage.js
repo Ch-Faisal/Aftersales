@@ -678,11 +678,11 @@ function HomePage() {
                                         <p class='px-3 mb-0 text-nowrap fw-bold'>Oli mesin</p>
                                       </div>
                                       <div class='col-6 d-flex align-items-center'>
-                                        <img src="assets/Check.png" class='ms-2 ms-md-0' alt='' />
-                                        <p class='px-3 mb-0 text-md-nowrap fw-bold'>Pipa gas buang</p>
+                                        <img src="assets/Check.png" class='me-1' alt='' />
+                                        <p class='px-1 px-md-3 mb-0 text-md-nowrap fw-bold'>Pipa gas buang</p>
                                       </div>
                                     </div>
-                                    <div class='row mt-3 ms-2'>
+                                    <div class='row mt-3 ms-md-2'>
                                       <div class='col-6 d-flex align-items-center'>
                                         <img src="assets/Check.png" alt='' />
                                         <p class='px-3 mb-0 text-nowrap fw-bold'>Sistem pendingin</p>
@@ -692,7 +692,7 @@ function HomePage() {
                                         <p class='px-3 mb-0 text-nowrap fw-bold'>Baterai 12 Volt</p>
                                       </div>
                                     </div>
-                                    <div class='row mt-3 ms-2'>
+                                    <div class='row mt-3 ms-md-2'>
                                       <div class='col-12 d-flex align-items-center'>
                                         <img src="assets/Check.png" alt='' />
                                         <p class='px-3 mb-0 text-nowrap fw-bold'>Cairan pendingin  mesin & power control unit</p>
@@ -711,7 +711,7 @@ function HomePage() {
                                         <img src="assets/Check.png" alt='' />
                                         <p className='px-3 mb-0 text-nowrap fw-bold'>Pedal rem</p>
                                       </div>
-                                      <div className='d-flex align-items-center mx-md-4'>
+                                      <div className='d-flex align-items-center mx-4'>
                                         <img src="assets/Check.png" className='ms-2 ms-md-2 mx-md-2' style={{ marginLeft: '13px !important' }} alt='' />
                                         <p className='px-3 mb-0 text-nowrap fw-bold'>Ban</p>
                                       </div>
@@ -731,7 +731,7 @@ function HomePage() {
                                         <img src="assets/Check.png" alt='' />
                                         <p className='px-3 mb-0 text-nowrap fw-bold'>Suspensi</p>
                                       </div>
-                                      <div className='d-flex align-items-center mx-md-5'>
+                                      <div className='d-flex align-items-center mx-4 mx-md-5'>
                                         <img src="assets/Check.png" className='ms-3 ms-md-0' alt='' />
                                         <p className='px-3 mb-0 text-nowrap fw-bold'>Isi cairan AC</p>
                                       </div>
@@ -799,9 +799,9 @@ function HomePage() {
                                                 />
                                               </div>
                                               <div className="text-center card_customm_padding ms-5">
-                                                <h4 className="card_heading">Tyre Solution.</h4>
+                                                <h4 className="card_heading me-5">Tire Solution.</h4>
                                                 <p className="card_paragraph">
-                                                  <span className="italic_text">
+                                                  <span className="italic_text me-5">
                                                     Layanan Ban dari Toyota,
                                                   </span>{" "}
                                                 </p>
@@ -848,9 +848,6 @@ function HomePage() {
                                               <div className="text-start card_customm_padding ms-5">
                                                 <h4 className="card_heading mt-5">TMO Wiper Fluid.</h4>
                                                 <p className="card_paragraph">
-                                                  <span className="italic_text">
-                                                    TMO Wiper Fluid,
-                                                  </span>{" "}
                                                   Cairan pembersih kaca mobil & pencegah jamur..
                                                 </p>
                                               </div>
@@ -899,7 +896,42 @@ function HomePage() {
                                               </div>
                                             </div>
                                           </SwiperSlide>
-
+                                          <SwiperSlide>
+                                            <div className="card">
+                                              <div className="img">
+                                                <img
+                                                  src="assets/04-Engine Room Treatment.png"
+                                                  className="img-fluid w-50 mt-4"
+                                                  alt="img"
+                                                  draggable="false"
+                                                />
+                                              </div>
+                                              <div className="text-start card_customm_padding mt-5 ms-5">
+                                                <h4 className="card_heading mt-3">TMO Engine Room Treatment</h4>
+                                                <p className="card_paragraph">
+                                                Produk pembersih ruang mesin kendaraan.
+                                                </p>
+                                              </div>
+                                            </div>
+                                          </SwiperSlide>
+                                          <SwiperSlide>
+                                            <div className="card">
+                                              <div className="img">
+                                                <img
+                                                  src="assets/timo-bottle-5.png"
+                                                  className="img-fluid w-50 mt-4"
+                                                  alt="img"
+                                                  draggable="false"
+                                                />
+                                              </div>
+                                              <div className="text-start card_customm_padding mt-5 ms-5">
+                                                <h4 className="card_heading mt-3">TMO Brake Cleaner</h4>
+                                                <p className="card_paragraph">
+                                                Aerosol pembersih komponen pengereman.
+                                                </p>
+                                              </div>
+                                            </div>
+                                          </SwiperSlide>
                                           <SwiperSlide>
                                             <div className="card">
                                               <div className="img">
@@ -911,17 +943,73 @@ function HomePage() {
                                                 />
                                               </div>
                                               <div className="text-start card_customm_padding mt-5 ms-5">
-                                                <h4 className="card_heading mt-3">Rear Absorber</h4>
+                                                <h4 className="card_heading mt-3">TMO Evaporator Cleaner</h4>
                                                 <p className="card_paragraph">
-                                                  <span className="italic_text">
-                                                    Didesain khusus
-                                                  </span>{" "}
-                                                  dengan harga yang kompetitif namun memenuhi  Avanza, Agya dan Calya.
+                                                Cairan pembersih evaporator AC kendaraan.
                                                 </p>
                                               </div>
                                             </div>
                                           </SwiperSlide>
+                                          <SwiperSlide>
+                                            <div className="card">
+                                              <div className="img">
+                                                <img
+                                                  src="assets/4L 5W-30 Gasoline.png"
+                                                  className="img-fluid w-50 mt-4"
+                                                  alt="img"
+                                                  draggable="false"
+                                                />
+                                              </div>
+                                              <div className="text-start card_customm_padding mt-5 ms-5">
+                                                <h4 className="card_heading mt-3">TMO Evaporator Cleaner</h4>
+                                                <p className="card_paragraph">
+                                                Cairan pembersih evaporator AC kendaraan.
+                                                </p>
+                                              </div>
+                                            </div>
+                                          </SwiperSlide>
+                                          <SwiperSlide>
+                                            <div className="card">
+                                              <div className="img">
+                                                <img
+                                                  src="assets/Rectangle 87.png"
+                                                  className="img-fluid w-50 mt-4"
+                                                  alt="img"
+                                                  draggable="false"
+                                                />
+                                              </div>
+                                              <div className="text-start card_customm_padding mt-5 ms-5">
+                                                <h4 className="card_heading mt-3">TMO Glass Cleaner</h4>
+                                                <p className="card_paragraph">
+                                                Cairan pembersih kaca dari jamur (waterspot)
+                                                </p>
+                                              </div>
+                                            </div>
+                                          </SwiperSlide>
+                                          
+                                          <SwiperSlide>
+                                            <div className="card">
+                                              <div className="img mt-3">
+                                                <img
+                                                  src="assets/Evaporator Cleaner.png"
+                                                  alt="img"
+                                                  className="img-fluid w-50"
+                                                  draggable="false"
+                                                />
+                                              </div>
+                                              <div className="text-center card_customm_padding mt-5 ms-5">
+                                                <h4 className="card_heading mt-2">TMO Headlamp Cleaner</h4>
+                                                <p className="card_paragraph">
+                                                  <span className="italic_text">
+                                                  Cairan pembersih kaca/mika lampu yang kusam
+                                                  </span>
+                                                </p>
+                                              </div>
+                                            </div>
+                                          </SwiperSlide>
+                                          
                                         </Swiper>
+                                      
                                         <button type="button" class="btn btn-outline-dark custom-btn w-25 py-2 mt-5">Learn  more</button>
 
                                       </div>
@@ -1022,41 +1110,39 @@ function HomePage() {
                                     <div className='container'>
                                       <div className='d-flex justify-content-center'>
                                         <div className='d-flex justify-content-center'>
-                                          <div className='row mt-5'>
-                                          <div className={`col-12${activeServiceTab === 5 ? ' col-lg-8 mx-auto text-start' : ''}`}>
-                                            {packageNames.map((packageName, index) => (
-                                              index % 2 === 0 && (
-                                                <div key={index} className='d-flex justify-content-between mt-2 mt-md-4'>
-                                                  <div className='d-flex'>
-                                                    {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
-                                                    <img src={packageImages[index]} alt='' style={activeServiceTab === 5 && index < 2 ? { width: '81px', height: '41px' } : {}} />
-                                                    <div className="px-3 font-bold" style={{ fontWeight: 600 }}>
-                                                      {packageName.split(',').map((item, i) => (
-                                                        <div key={i}>
-                                                          {i === 0 ? item : `\u2022 ${item}`} {/* First item without bullet, rest with bullet */}
-                                                        </div>
-                                                      ))}
-                                                    </div>
-                                                    {/* {errorMessage && <p>{errorMessage}</p>} */}
-                                                  </div>
-                                                  {index + 1 < packageNames.length && (
+                                        <div className='row mt-5'>
+                                            <div className={`col-12${activeServiceTab === 5 ? ' col-lg-8 mx-auto text-start' : ''}`}>
+                                              {packageNames.map((packageName, index) => (
+                                                index % 2 === 0 && (
+                                                  <div key={index} className='d-flex justify-content-between mt-2 mt-md-4'>
                                                     <div className='d-flex'>
-                                                      {/* <img src="assets/Komponen Mesin.png" alt='' /> */}
-                                                      <img src={packageImages[index + 1]} alt='' style={activeServiceTab === 5 && index < 2 ? { width: '81px', height: '41px' } : {}} />
-                                                      <div className="px-3" style={{ fontWeight: 600 }}>
-                                                        {packageNames[index + 1].split(',').map((item, i) => (
+                                                      <img src={packageImages[index]} alt='' style={activeServiceTab === 5 && index < 2 ? { width: '81px', height: '41px' } : {}} />
+                                                      <div className="px-3 font-bold" style={{ fontWeight: 600 }}>
+                                                        {packageName.split(',').map((item, i) => (
                                                           <div key={i}>
-                                                            {i === 0 ? item : `\u2022 ${item}`}
+                                                            {i === 0 ? (packageName.includes(',') ? `\u2022 ${item}` : item) : `\u2022 ${item}`}
                                                           </div>
                                                         ))}
                                                       </div>
                                                     </div>
-                                                  )}
-                                                </div>
-                                              )
-                                            ))}
+                                                    {index + 1 < packageNames.length && (
+                                                      <div className='d-flex'>
+                                                        <img src={packageImages[index + 1]} alt='' style={activeServiceTab === 5 && index < 2 ? { width: '81px', height: '41px' } : {}} />
+                                                        <div className="px-3" style={{ fontWeight: 600 }}>
+                                                          {packageNames[index + 1].split(',').map((item, i) => (
+                                                            <div key={i}>
+                                                              {i === 0 ? (packageNames[index + 1].includes(',') ? `\u2022 ${item}` : item) : `\u2022 ${item}`}
+                                                            </div>
+                                                          ))}
+                                                        </div>
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                )
+                                              ))}
+                                            </div>
                                           </div>
-                                        </div>
+
                                         </div>
                                       </div>
                                       <div className='d-flex justify-content-center'>
@@ -1085,7 +1171,7 @@ function HomePage() {
                                             <div className='container'>
                                               <div className={'row justify-content-md-center tmo-oli'}>
                                                 <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column '>
-                                                  <div className='col-12 order-1 order-md-0'>
+                                                  <div className='col-md-12 order-1 order-md-0'>
                                                     <p className='pt-3 d-none d-md-block'>Oli Basic</p>
                                                     <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
                                                     <p className='pt-md-3 pt-0 text-center fw-bold'>10W-30</p>
@@ -1097,7 +1183,7 @@ function HomePage() {
                                                       )}
                                                     </div>
                                                   </div>
-                                                  <div className='col-12 order-0 order-md-1'>
+                                                  <div className='col-md-12 order-0 order-md-1'>
                                                     <p className='pt-3 d-block d-md-none'>Oli Basic</p>
                                                     <p className='pt-4 fw-bold standard d-none d-md-block mt-5'>
                                                       {moleculeTitles[0] ? (
@@ -1116,12 +1202,11 @@ function HomePage() {
                                                   </div>
                                                 </div>
                                                 <div className='col-md-6 bg-pink'>
-                                                <p className='pt-3 text-center text-red'>Opsi Upgrade Oli</p>
-                                                <div className='d-flex wrapper-pink-bg'>
+                                                <p className='pt-3 text-center d-none d-md-block text-red'>Opsi Upgrade Oli</p>
+                                                <div className='d-md-flex wrapper-pink-bg'>
                                                 <div className='col-md-6 text-center d-flex flex-md-column mt-2 mt-md-0'>
-                                                  <div className='col-12 order-1 order-md-0'>
+                                                  <div className='col-md-12 order-1 order-md-0'>
                                                     <p className='pt-4'>
-                                                      <span className="d-block d-md-none">+0.8%</span>
                                                       <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }}>{moleculeTitles[1]}</span>
                                                     </p>
                                                     <p className='text-center fw-bold'>SW-30</p>
@@ -1129,7 +1214,7 @@ function HomePage() {
                                                       <img src={moleculeImages[1]} alt='' />
                                                     </div>
                                                   </div>
-                                                  <div className='col-12 order-0 order-md-1'>
+                                                  <div className='col-md-12 order-0 order-md-1'>
                                                     <p className='pt-4'>
                                                       <span className="d-block d-md-none" style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                                                       {moleculeTitles[1] ? (
@@ -1142,9 +1227,8 @@ function HomePage() {
                                                   </div>
                                                 </div>
                                                 <div className='col-md-6 text-center d-flex flex-md-column mt-2 mt-md-0'>
-                                                  <div className='col-12 order-1 order-md-0'>
+                                                  <div className='col-md-12 order-1 order-md-0'>
                                                     <p className='pt-4'>
-                                                      <span className="d-block d-md-none">+0.8%</span>
                                                       <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }}>{moleculeTitles[2]}</span>
                                                     </p>
                                                     <p className='text-center fw-bold'>0W-20</p>
@@ -1152,7 +1236,7 @@ function HomePage() {
                                                       <img src={moleculeImages[2]} alt='' />
                                                     </div>
                                                   </div>
-                                                  <div className='col-12 order-0 order-md-1'>
+                                                  <div className='col-md-12 order-0 order-md-1'>
                                                     <p className='pt-4 text-center'>
                                                       <span className="d-block d-md-none" style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '16px' }}>Opsi Upgrade Oli</span>
                                                       <span className="d-none d-md-block mt-2" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }} dangerouslySetInnerHTML={{ __html: moleculeTitles[2] }} />
@@ -1221,7 +1305,7 @@ function HomePage() {
                                             </div>
                                             {/* Content rendering based on active tab */}
                                             {activeTab4 === 1 && (
-                                              <div className="container mx-4">
+                                              <div className="container mx-md-4">
                                                 {loading3 ? ( // Conditionally render loader if loading3 state is true
                                                   <div className='spinner-overlay'>
                                                     <Oval
@@ -1269,7 +1353,7 @@ function HomePage() {
                                                                 draggable="false"
                                                               />
                                                             </div>
-                                                            <div className="text-center card_customm_padding ms-5">
+                                                            <div className="text-center card_customm_padding ms-md-5">
                                                               <h4 className="card_heading">{item.product.name}</h4>
                                                               <p className="card_paragraph">
                                                                 <span className="italic_text">{item.product.tagline}</span>
@@ -1283,11 +1367,11 @@ function HomePage() {
                                                     ) : null}
                                                   </Swiper>
                                                 )}
-                                                <button type="button" className="btn btn-outline-dark custom-btn w-25 mb-5">Learn more</button>
+                                                <button type="button" className="slider-btn btn btn-outline-dark custom-btn w-25 mb-5">Learn more</button>
                                               </div>
                                             )}
                                             {activeTab4 === 2 && (
-                                              <div className="container mt-5 mx-4">
+                                              <div className="container mt-5 mx-md-4">
                                                 {loading3 ? ( // Conditionally render loader if loading3 state is true
                                                   <div className='spinner-overlay'>
                                                     <Oval
@@ -1334,7 +1418,7 @@ function HomePage() {
                                                                   draggable="false"
                                                                 />
                                                               </div>
-                                                              <div className="text-center card_customm_padding ms-5">
+                                                              <div className="text-center card_customm_padding ms-md-5">
                                                                 <h4 className="card_heading">{item.product.name}</h4>
                                                                 <p className="card_paragraph">
                                                                   <span className="italic_text">{item.product.tagline}</span>
@@ -1347,11 +1431,11 @@ function HomePage() {
                                                     ) : null}
                                                   </Swiper>
                                                 )}
-                                                <button type="button" className="btn btn-outline-dark custom-btn w-25 py-2 mt-5">Learn more</button>
+                                                <button type="button" className="btn btn-outline-dark custom-btn slider-btn w-25 py-2 mt-5">Learn more</button>
                                               </div>
                                             )}
                                             {activeTab4 === 3 && (
-                                              <div className="container mx-4 mt-5">
+                                              <div className="container mx-md-4 mt-5">
                                                 {loading3 ? ( // Conditionally render loader if loading3 state is true
                                                   <div className='spinner-overlay'>
                                                     <Oval
@@ -1399,7 +1483,7 @@ function HomePage() {
                                                                   draggable="false"
                                                                 />
                                                               </div>
-                                                              <div className="text-center card_customm_padding ms-5">
+                                                              <div className="text-center card_customm_padding ms-md-5">
                                                                 <h4 className="card_heading">{item.product.name}</h4>
                                                                 <p className="card_paragraph">
                                                                   <span className="italic_text">{item.product.tagline}</span>
@@ -1412,7 +1496,7 @@ function HomePage() {
                                                     ) : null}
                                                   </Swiper>
                                                 )}
-                                                <button type="button" className="btn btn-outline-dark custom-btn w-25 mb-3">Learn more</button>
+                                                <button type="button" className="btn btn-outline-dark custom-btn slider-btn w-25 mb-3">Learn more</button>
                                               </div>
                                             )}
                                           </div>
