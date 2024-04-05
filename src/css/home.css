@@ -133,6 +133,7 @@
 }
 .active-tab{
    background-color: rgba(215, 25, 33, 1);
+   padding: 2px !important;
 }
 .package-image {
   width: 80px;
@@ -155,11 +156,24 @@
 .tmo-2 img{
   width: 202px !important;
 }
+.active-img {
+  height: 72px;
+  width: 200px;
+}
 
 @media screen and (max-width: 1024px) {
   .service1-pakage .pakage-text{
     text-wrap: wrap !important;
   }
+  .swiper-slide-custom {
+    display: flex;
+    align-items: center;
+  }
+  
+  .new-alphard{
+    margin-left: 0%;
+    margin-right: 0%;
+}
   .nav-pills .nav-item .nav-link.active {
     background-color: rgba(215, 25, 33, 1);
     color: #fff !important;
@@ -222,9 +236,22 @@
       }
   }
   @media screen and (max-width: 620px)
+  
   {
+    .dynamic-slide{
+      width: 50% !important;
+    }
+    .active-img {
+      width: 50px !important;
+    }
+    .active-img {
+      height: 52px !important;
+    }
     .service1-pakage .isi-cairan-text{
-      margin-left: 15px !important;
+      margin-left: 17px !important;
+    }
+    .tgb-mf-img{
+      width: 60%;
     }
     .recommendation-img{
       width: 50% !important;
@@ -237,10 +264,11 @@
     }
     .wrapper-servis .section-img img{
       width: 70% !important;
-  }
-  .wrapper-servis{
-    border-radius: 10px !important;
-  }
+    }
+    
+      .wrapper-servis{
+        border-radius: 10px !important;
+      }
     .service1-pakage .text-ban{
       margin-left: 4px !important;
     }

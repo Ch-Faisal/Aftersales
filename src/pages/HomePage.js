@@ -98,21 +98,14 @@ function HomePage() {
           'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
         }
       });
-      console.log("response service cost first call:", response.data.data)
       setCarVariant(response.data.data);
       setVariantIdParent(response.data.data[0].id);
       setSelectedCarId(carId);
-      console.log('selected car id is', carId)
       handleTabClick(response.data.data[0].id, activeTab, carId);
-      const serviceDescriptionsArray = response.data.data.map(variant => variant.services.map(service => service.service_description));
-      console.log("Description:", serviceDescriptionsArray);
-      setServiceDescriptions(serviceDescriptionsArray.flat());
+      
 
       const serviceCost = response.data.data.map(variant => variant.services.map(service => service.service_cost));
-      console.log("serviceCost2:", serviceCost)
       setServiceCost2(serviceCost);
-      console.log("responseservicecost:", serviceCost)
-      console.log("responsevarient:", response.data.data)
     } catch (error) {
       console.error('Error fetching car models:', error);
     }
@@ -123,13 +116,10 @@ function HomePage() {
     const selectedCarName = event.target.value;
     const selectedCarModel = carModels.find(carModel => carModel.name === selectedCarName);
     if (selectedCarModel) {
-      console.log("ssss", selectedCarModel)
       setSelectedCar(selectedCarModel.name);
       setSelectedCarImage(selectedCarModel.image);
-      console.log("carimage:", selectedCarModel.image)
       setSelectedCarId(selectedCarModel.id);
       fetchVarients(selectedCarModel.id);
-      console.log("selcted car id:", selectedCarModel.id)
     } else {
       console.error(`Car model with name '${selectedCarName}' not found.`);
     }
@@ -149,21 +139,19 @@ function HomePage() {
           'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
         }
       });
-      console.log("serviscostusingvariant:", response.data.data);
-
       const servicesData = response.data.data[0].services;
-      console.log("servicescostData:", servicesData);
+      const serviceDescriptionsArray = response.data.data.map(variant => variant.services.map(service => service.service_description));
+      console.log("Description:", serviceDescriptionsArray);
+      setServiceDescriptions(serviceDescriptionsArray.flat());
       setServices(servicesData);
-      // Handle the API response
       setVariantIdParent(variantId);
       console.log("variantidahsan", variantIdParent);
       setLoading2(false);
       setActiveTab(index);
       // return response.data.data;
     } catch (error) {
-      console.error('Error fetching service cost using variant:', error);
-      setLoading2(false); // Set loading state in case of error
-      throw error; // Throw the error to handle it in the calling function
+      setLoading2(false);
+      throw error; 
     }
   };
   const handleServiceTab = async (serviceNo) => {
@@ -239,7 +227,6 @@ function HomePage() {
 
       } else {
         setDataNull(true);
-        console.log("nulllllllllllllll")
         setServiceDisclaimer("");
         setPackageNames([]);
         setPackageImages([]);
@@ -265,15 +252,12 @@ function HomePage() {
           'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
         }
       });
-      console.log("variantttttttttttttt:", variantId)
-      console.log("responsevarientvariantservice:", response.data.data);
       const serviceCostMap = {};
       response.data.data.forEach(item => {
         serviceCostMap[item.service_no] = item.service_cost;
       });
       setServiceCost(serviceCostMap);
       handleOptionalTabs(variantId, serviceNo)
-      console.log("Service costs:", serviceCostMap);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching variant service:', error);
@@ -458,24 +442,25 @@ function HomePage() {
           </div>
           <div className='container-fluid'>
             <div className='container'>
-              <div className='new-alphard mt-5'>
-                <div className="row justify-content-center">
-                  {carVariant.map((variant, index) => (
-                    <div className="col-12 col-md-4 px-1 mt-2 mt-md-1 text-center" key={index}>
-                      <ul className="nav nav-pills nav-fill">
-                        <li className="nav-item mx-0">
-                          <a
-                            className={`nav-link text-center text-nowrap fw-bold py-3 px-2 ${activeTab === index ? 'active' : ''}`}
-                            onClick={() => handleTabClick(variant.id, index, variant.car.id)}
-                            href="javascript:void(0)">
-                            {variant.name}
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className='new-alphard mt-5'>
+  <div className="row justify-content-center">
+    {carVariant.map((variant, index) => (
+      <div className="col-12 col-md-5 col-lg-4 px-1 mt-2 mt-md-1 text-center" key={index}>
+        <ul className="nav nav-pills nav-fill">
+          <li className="nav-item">
+            <a
+              className={`nav-link text-center text-nowrap fw-bold py-3 px-2 ${activeTab === index ? 'active' : ''}`}
+              onClick={() => handleTabClick(variant.id, index, variant.car.id)}
+              href="javascript:void(0)">
+              {variant.name}
+            </a>
+          </li>
+        </ul>
+      </div>
+    ))}
+  </div>
+</div>
+
 
               <div>
                 <div className="container px-0">
@@ -1055,7 +1040,7 @@ function HomePage() {
                                                 <img
                                                   src="assets/TGB-MF.png"
                                                   alt="img"
-                                                  className="img-fluid w-25"
+                                                  className="img-fluid w-25 tgb-mf-img"
                                                   draggable="false"
                                                 />
                                               </div>
@@ -1109,17 +1094,18 @@ function HomePage() {
                                       <h1>Servis berkala setelah <span className='inline-text' >{activeServiceTab >= 2 && activeServiceTab <= 11 && (activeServiceTab - 1) * 6} Bulan </span> </h1>
 
                                       {activeServiceTab >= 8 && (
-                                        <div style={{ textAlign: 'left', marginTop: '1.5rem' }}>
-                                          {serviceDescriptions.length > 0 && serviceDescriptions[8] ?
-                                            serviceDescriptions[8].match(/.{1,123}/g).map((substring, index) => (
-                                              <React.Fragment key={index}>
-                                                {substring}
-                                                <br /> {/* Add line break after every 123 characters */}
-                                              </React.Fragment>
-                                            )) :
-                                            "No description available"
-                                          }
-                                        </div>
+                                   <div className='ms-lg-5' style={{ textAlign: 'left', marginTop: '1.5rem' }}>
+                                   {serviceDescriptions.length > 0 && serviceDescriptions[activeServiceTab - 1] ?
+                                     serviceDescriptions[activeServiceTab - 1].match(/(?:^|[^,]).{1,123}\b/g).map((substring, index) => (
+                                       <React.Fragment key={index}>
+                                         {substring}
+                                         <br /> 
+                                       </React.Fragment>
+                                     )) :
+                                     "No description available"
+                                   }
+                                 </div>                                 
+                                  
                                       )}
                                       <p className='text mt-3'>{serviceDisclaimer}</p>
                                     </div>
@@ -1127,7 +1113,7 @@ function HomePage() {
                                     <div className='container px-0'>
                                       <div className='d-flex justify-content-center'>
                                         <div className='d-flex justify-content-center w-100'>
-                                          <div className='row mt-5 w-100'>
+                                          <div className='row mt-5 w-100 d-none d-md-block'>
                                             <div className={'col-12 col-lg-8 mx-auto text-start'}>
                                               {packageNames.map((packageName, index) => (
                                                 index % 2 === 0 && (
@@ -1144,7 +1130,7 @@ function HomePage() {
                                                     </div>
                                                     {index + 1 < packageNames.length && (
 
-                                                      <div className=' col-12 col-md-4 d-flex justify-content-start align-items-center'>
+                                                      <div className=' col-12 col-lg-8 d-flex justify-content-start align-items-center'>
                                                         <img src={packageImages[index + 1]} alt='' />
                                                         <div className="px-3" style={{ fontWeight: 600 }}>
                                                           {packageNames[index + 1].split(',').map((item, i) => (
@@ -1160,7 +1146,42 @@ function HomePage() {
                                               ))}
                                             </div>
                                           </div>
-
+                                          <div className='row mt-5 w-100 d-block d-md-none mx-5'>
+                                          <div className={'col-12 col-lg-8 mx-auto text-start '}>
+                                            {packageNames.map((packageName, index) => (
+                                              index % 2 === 0 && (
+                                                <div key={index} className='mt-2 mt-md-4'>
+                                                  <div className='row'>
+                                                    <div className='col-12 col-md-6 d-flex align-items-center'>
+                                                      <img src={packageImages[index]} alt='' />
+                                                      <div className="px-3 font-bold" style={{ fontWeight: 600 }}>
+                                                        {packageName.split(',').map((item, i) => (
+                                                          <div key={i}>
+                                                            {i === 0 ? (packageName.includes(',') ? `\u2022 ${item}` : item) : `\u2022 ${item}`}
+                                                          </div>
+                                                        ))}
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  {index + 1 < packageNames.length && (
+                                                    <div className='row mt-2 mt-md-4'>
+                                                      <div className='col-12 col-md-6 d-flex align-items-center'>
+                                                        <img src={packageImages[index + 1]} alt='' />
+                                                        <div className="px-3" style={{ fontWeight: 600 }}>
+                                                          {packageNames[index + 1].split(',').map((item, i) => (
+                                                            <div key={i}>
+                                                              {i === 0 ? (packageNames[index + 1].includes(',') ? `\u2022 ${item}` : item) : `\u2022 ${item}`}
+                                                            </div>
+                                                          ))}
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  )}
+                                                </div>
+                                              )
+                                            ))}
+                                          </div>
+                                        </div>
                                         </div>
                                       </div>
                                       <div className="mt-5">
@@ -1186,8 +1207,7 @@ function HomePage() {
                                           </div>
                                         </div>
                                       </div>
-                                      <div className={`{dataNull ? 'd-none' : ''}`}>
-                                        {activeTab2 === 0 && (
+                                        {activeTab2 === 0 && !errorMessage && (
                                           <div id='hide-div'>
                                             <div className='d-flex justify-content-center servis-2-tab'>
                                               <div className='row mt-5'>
@@ -1200,7 +1220,7 @@ function HomePage() {
                                                 <div className='col-md-3 bg-grey mx-md-2 text-center d-flex flex-md-column '>
                                                   <div className='col-md-12 order-1 order-md-0'>
                                                     <p className='pt-3 d-none d-md-block'>Oli Basic</p>
-                                                    <p className='pt-3 fw-bold standard d-block d-md-none mb-4'>{moleculeTitles[0]}</p>
+                                                    <p className='pt-3 fw-bold standard d-block d-md-none mb-4' dangerouslySetInnerHTML={{ __html: moleculeTitles[0] }}></p>
                                                     <p className='pt-md-3 pt-0 text-center fw-bold'>10W-30</p>
                                                     <div className='tmo-image'>
                                                       {moleculeImages[0] ? (
@@ -1233,8 +1253,8 @@ function HomePage() {
                                                   <div className='d-md-flex wrapper-pink-bg'>
                                                     <div className='col-md-6 text-center d-flex flex-md-column mt-2 mt-md-0'>
                                                       <div className='col-md-12 order-1 order-md-0'>
-                                                        <p className='pt-4'>
-                                                          <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }}>{moleculeTitles[1]}</span>
+                                                      <p className='pt-4'>
+                                                          <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }} dangerouslySetInnerHTML={{ __html: moleculeTitles[1] }}></span>
                                                         </p>
                                                         <p className='text-center fw-bold'>SW-30</p>
                                                         <div className='tmo-image'>
@@ -1255,8 +1275,8 @@ function HomePage() {
                                                     </div>
                                                     <div className='col-md-6 text-center d-flex flex-md-column mt-2 mt-md-0'>
                                                       <div className='col-md-12 order-1 order-md-0'>
-                                                        <p className='pt-4'>
-                                                          <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }}>{moleculeTitles[2]}</span>
+                                                      <p className='pt-4'>
+                                                          <span className="d-block d-md-none mb-3" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }} dangerouslySetInnerHTML={{ __html: moleculeTitles[2] }}></span>
                                                         </p>
                                                         <p className='text-center fw-bold'>0W-20</p>
                                                         <div className='tmo-image'>
@@ -1284,9 +1304,9 @@ function HomePage() {
                                             </div>
                                           </div>
                                         )}
-                                      </div>
+                                    
 
-                                      {activeTab2 === 1 && <div>
+                                      {activeTab2 === 1 && !errorMessage &&(<div>
                                         <div className='d-flex justify-content-center servis-2-tab'>
                                           <div className='row mt-5'>
                                             <p className='text-red pb-4'>REKOMENDASI PRODUK</p>
@@ -1314,25 +1334,25 @@ function HomePage() {
                                           <div className='row'>
                                             <h1 className='mt-4 mb-5'>Opsi Produk Toyota Lainnya</h1>
                                             {/* <p className='text-start' dangerouslySetInnerHTML={{ __html: OptionalsTagline }} /> */}
-                                            <div className='col-6 col-md'>
-                                              <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab4 === 1 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(1)}>
+                                            <div className='col-8 col-md-4 mt-2 mt-md-0 mx-auto'>
+                                              <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-lg-3 py-2 py-md-1 d-flex align-items-center justify-content-center ${activeTab4 === 1 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(1)}>
                                                 <div className='section-img d-flex pointer justify-content-center'>
                                                   <img src="assets/tire-solution.png" className={activeTab4 === 1 ? 'd-none' : 'd-block'} alt='d-block' />
-                                                  <img src="assets/Tire Solution (1).png" className={activeTab4 === 1 ? 'd-block w-75' : 'd-none'} alt='' />
+                                                  <img src="assets/Tire Solution (1).png" className={`active-img ${activeTab4 === 1 ? 'd-block' : 'd-none'}`} alt='' />
                                                 </div>
                                               </div>
                                             </div>
-                                            <div className='col-6 col-md'>
-                                              <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab4 === 2 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(2)} >
-                                                <div className='section-img pointer' >
+                                            <div className='col-8 text-center col-md-4 mt-2 mt-md-0 mx-auto'>
+                                              <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-lg-3 py-1 d-flex align-items-center justify-content-center ${activeTab4 === 2 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(2)} >
+                                                <div className='section-img d-flex pointer justify-content-center' >
                                                   <img src="assets/tmo.png" className={activeTab4 === 2 ? 'd-none' : 'd-block'} alt='' />
                                                   <img src="assets/TMO-02.png" className={activeTab4 === 2 ? 'd-block' : 'd-none'} alt='' />
                                                 </div>
                                               </div>
                                             </div>
-                                            <div className='col-6 col-md'>
-                                              <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab4 === 3 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(3)}>
-                                                <div className='section-img pointer'>
+                                            <div className='col-8 text-center col-md-4 mt-2 mt-md-0 mx-auto'>
+                                              <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-lg-3 py-1 d-flex align-items-center justify-content-center ${activeTab4 === 3 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(3)}>
+                                                <div className='section-img d-flex pointer justify-content-center'>
                                                   <img src="assets/TGB.png" className={activeTab4 === 3 ? 'd-none' : 'd-block'} alt='' />
                                                   <img src="assets/TGB-3.png" className={activeTab4 === 3 ? 'd-block' : 'd-none'} alt='' />
                                                 </div>
@@ -1384,7 +1404,7 @@ function HomePage() {
                                                                 <img
                                                                   src={item.product.image}
                                                                   alt="img"
-                                                                  className="img-fluid w-75" // Assuming you want the image to take full width
+                                                                  className="img-fluid w-75 tyre-image" // Assuming you want the image to take full width
                                                                   draggable="false"
                                                                 />
                                                               </div>
@@ -1406,7 +1426,7 @@ function HomePage() {
                                               </div>
                                             )}
                                             {activeTab4 === 2 && (
-                                              <div className="container mt-5 mx-md-4">
+                                              <div className="container mt-5 mx-lg-4">
                                                 {loading3 ? ( // Conditionally render loader if loading3 state is true
                                                   <div className='spinner-overlay'>
                                                     <Oval
@@ -1416,7 +1436,7 @@ function HomePage() {
                                                       color="black"
                                                       ariaLabel="three-dots-loading"
                                                       secondaryColor="grey"
-                                                      wrapperStyle={{ marginTop: '10%', marginBottom: '10%' }}
+                                                      wrapperStyle={{ marginTop: '0%', marginBottom: '0%' }}
                                                     />
                                                   </div>
                                                 ) : (
@@ -1428,7 +1448,7 @@ function HomePage() {
                                                       },
                                                       // When window width is >= 768px
                                                       768: {
-                                                        slidesPerView: 1,
+                                                        slidesPerView: 3,
                                                       },
                                                       // When window width is >= 992px
                                                       992: {
@@ -1443,24 +1463,25 @@ function HomePage() {
                                                     {filteredOptionalsItem && filteredOptionalsItem.length > 0 ? (
                                                       filteredOptionalsItem.map((item, index) => (
                                                         item.product.product_category_id === 2 && (
-                                                          <SwiperSlide key={index}>
-                                                            <div className="card">
-                                                              <div className="img">
-                                                                <img
-                                                                  src={item.product.image}
-                                                                  alt="img"
-                                                                  className="img-fluid w-75" // Assuming you want the image to take full width
-                                                                  draggable="false"
-                                                                />
-                                                              </div>
-                                                              <div className="text-center card_customm_padding ms-md-5">
-                                                                <h4 className="card_heading">{item.product.name}</h4>
-                                                                <p className="card_paragraph">
-                                                                  <span className="italic_text">{item.product.tagline}</span>
-                                                                </p>
-                                                              </div>
+                                                          <SwiperSlide key={index} className="swiper-slide-custom">
+                                                          <div className="card">
+                                                            <div className="img">
+                                                              <img
+                                                                src={item.product.image}
+                                                                alt="img"
+                                                                className="img-fluid w-75 dynamic-slide" // Assuming you want the image to take full width
+                                                                draggable="false"
+                                                              />
                                                             </div>
-                                                          </SwiperSlide>
+                                                            <div className="text-center card_customm_padding ms-lg-5">
+                                                              <h4 className="card_heading">{item.product.name}</h4>
+                                                              <p className="card_paragraph">
+                                                                <span className="italic_text">{item.product.tagline}</span>
+                                                              </p>
+                                                            </div>
+                                                          </div>
+                                                        </SwiperSlide>
+                                                        
                                                         )
                                                       ))
                                                     ) : null}
@@ -1511,10 +1532,10 @@ function HomePage() {
                                                           <SwiperSlide key={index}>
                                                             <div className="card">
                                                               <div className="img">
-                                                                <img
+                                                              <img
                                                                   src={item.product.image}
                                                                   alt="img"
-                                                                  className="img-fluid w-25" // Assuming you want the image to take full width
+                                                                  className="img-fluid w-25 tgb-free-img" // Assuming you want the image to take full width
                                                                   draggable="false"
                                                                 />
                                                               </div>
@@ -1536,8 +1557,7 @@ function HomePage() {
                                             )}
                                           </div>
                                         </div>
-                                      </div>}
-                                      <p className='mt-2 d-block d-md-none' style={{ color: 'rgba(215, 25, 33, 1)' }}>*Power comparison merupakan perbandingan hp (Horse Power)</p>
+                                      </div>)}
                                     </div>
                                   </div>
                                 )}
