@@ -140,15 +140,13 @@ function HomePage() {
         }
       });
       const servicesData = response.data.data[0].services;
+      console.log("servicesData:", servicesData);
       const serviceDescriptionsArray = response.data.data.map(variant => variant.services.map(service => service.service_description));
-      console.log("Description:", serviceDescriptionsArray);
       setServiceDescriptions(serviceDescriptionsArray.flat());
       setServices(servicesData);
       setVariantIdParent(variantId);
-      console.log("variantidahsan", variantIdParent);
       setLoading2(false);
       setActiveTab(index);
-      // return response.data.data;
     } catch (error) {
       setLoading2(false);
       throw error; 
@@ -313,8 +311,9 @@ function HomePage() {
   return (
     <div id='navbar_top'>
       <Header></Header>
+      {/* for desktop */}
       <div className='section-1 p-0 ' id='section-1'>
-        <div id="carouselExample" className="carousel slide d-none d-lg-block" data-bs-ride="carousel">
+        <div id="carouselExample" className="carousel slide d-none d-md-block" data-bs-ride="carousel">
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img src="assets/home-page-slider.png" className="d-block w-100 h-100" alt="Slide 1" />
@@ -350,8 +349,38 @@ function HomePage() {
             <li data-bs-target="#carouselExample" data-bs-slide-to="3"></li>
           </ol>
         </div>
-        <div className='d-block d-lg-none'>
-          <img src='assets/showcase.png' alt='showcase' className='img-fluid w-100 ' />
+        {/* for mobile devices */}
+        <div id="carouselExample2" className="carousel slide d-block d-md-none" data-bs-ride="carousel">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img src="assets/showcase.png" className="d-block w-100 h-100" alt="Slide 1" />
+            </div>
+            <div className="carousel-item">
+              <img src="assets/showcase.png" className="d-block w-100 h-100" alt="Slide 2" />
+            </div>
+            <div className="carousel-item">
+              <img src="assets/showcase.png" className="d-block w-100 h-100" alt="Slide 3" />
+            </div>
+          </div>
+          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample2" data-bs-slide="prev">
+            <span aria-hidden="true">
+              <i className="fas fa-chevron-left"></i>
+            </span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" type="button" data-bs-target="#carouselExample2" data-bs-slide="next">
+            <span aria-hidden="true">
+              <i className="fas fa-chevron-right"></i>
+            </span>
+            <span className="visually-hidden">Next</span>
+          </button>
+
+          <ol className="carousel-indicators">
+            <li data-bs-target="#carouselExample2" data-bs-slide-to="0" className="active"></li>
+            <li data-bs-target="#carouselExample2" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselExample2" data-bs-slide-to="2"></li>
+            <li data-bs-target="#carouselExample2" data-bs-slide-to="3"></li>
+          </ol>
         </div>
       </div>
       <div className='section-2 mt-5'>
@@ -443,23 +472,23 @@ function HomePage() {
           <div className='container-fluid'>
             <div className='container'>
             <div className='new-alphard mt-5'>
-  <div className="row justify-content-center">
-    {carVariant.map((variant, index) => (
-      <div className="col-12 col-md-5 col-lg-4 px-1 mt-2 mt-md-1 text-center" key={index}>
-        <ul className="nav nav-pills nav-fill">
-          <li className="nav-item">
-            <a
-              className={`nav-link text-center text-nowrap fw-bold py-3 px-2 ${activeTab === index ? 'active' : ''}`}
-              onClick={() => handleTabClick(variant.id, index, variant.car.id)}
-              href="javascript:void(0)">
-              {variant.name}
-            </a>
-          </li>
-        </ul>
-      </div>
-    ))}
-  </div>
-</div>
+              <div className="row justify-content-center">
+                {carVariant.map((variant, index) => (
+                  <div className="col-12 col-md-5 col-lg-4 px-1 mt-2 mt-md-1 text-center" key={index}>
+                    <ul className="nav nav-pills nav-fill">
+                      <li className="nav-item">
+                        <a
+                          className={`nav-link text-center text-nowrap fw-bold py-3 px-2 ${activeTab === index ? 'active' : ''}`}
+                          onClick={() => handleTabClick(variant.id, index, variant.car.id)}
+                          href="javascript:void(0)">
+                          {variant.name}
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
 
 
               <div>
@@ -494,159 +523,21 @@ function HomePage() {
                             id="myTab"
                             style={{ borderBottom: "none !important", whiteSpace: "nowrap" }}
                           >
-                            <li className="nav-item  custom-nav-item" role="presentation">
-                              <button
-
-                                className="nav-link custom-nav-link active tab-boxes"
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "160px" }}
-                                onClick={() => handleServiceTab(1)}
-                                data-service="1"
-                              >
-                                <div className={`d-flex flex-column servis-tabs py-1 ${services[0].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-1</span>
-                                  <span>FREE</span>
+                               {services.map((service, index) => (
+                              <li key={index} className="nav-item custom-nav-item" role="presentation">
+                                <button
+                                  className="nav-link custom-nav-link tab-boxes"
+                                  style={{ margin: "0", padding: "2px", height: "60px", width: "160px" }}
+                                  onClick={() => handleServiceTab(service.service_no)}
+                                  data-service={service.service_no}
+                                >
+                                 <div className={`d-flex flex-column servis-tabs py-1 ${parseInt(service.service_cost.replace(/\D/g, ''), 10) > 0 ? 'bg-gray' : ''}`}>
+                                  <span>Servis ke-{service.service_no}</span>
+                                  <span>{parseInt(service.service_cost.replace(/\D/g, ''), 10) === 0 ? "FREE" : service.service_cost}</span>
                                 </div>
-                              </button>
-                            </li>
-                            <li className="nav-item custom-nav-item" role="presentation">
-                              <button
-                                className="nav-link custom-nav-link tab-boxes"
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "155px" }}
-                                onClick={() => handleServiceTab(2)}
-                                data-service="2"
-                              >
-                                <div className={`d-flex flex-column servis-tabs py-1 ${services[1].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-2</span>
-                                  <span>FREE</span>
-                                </div>
-                              </button>
-                            </li>
-                            <li className="nav-item custom-nav-item" role="presentation">
-                              <button
-                                className="nav-link custom-nav-link tab-boxes"
-
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "150px" }}
-                                onClick={() => handleServiceTab(3)}
-                                data-service="3"
-                              >
-                                <div className={`d-flex flex-column servis-tabs py-1 ${services[2].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-3</span>
-                                  <span>FREE</span>
-                                </div>
-                              </button>
-                            </li>
-                            <li className="nav-item custom-nav-item" role="presentation">
-                              <button
-                                className="nav-link custom-nav-link tab-boxes tab-boxes"
-
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "150px" }}
-                                onClick={() => handleServiceTab(4)}
-                                data-service="4"
-                              >
-                                <div className={`d-flex flex-column servis-tabs py-1 ${services[3].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-4</span>
-                                  <span>FREE</span>
-                                </div>
-                              </button>
-                            </li>
-                            <li className="nav-item custom-nav-item" role="presentation">
-                              <button
-                                className="nav-link custom-nav-link tab-boxes"
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "150px" }}
-                                onClick={() => handleServiceTab(5)}
-                                data-service="5"
-                              >
-                                <div className={`d-flex flex-column servis-tabs py-1 ${services[4].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-5</span>
-                                  <span>FREE</span>
-                                </div>
-                              </button>
-                            </li>
-                            <li className="nav-item custom-nav-item" role="presentation">
-                              <button
-                                className="nav-link custom-nav-link tab-boxes"
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "150px" }}
-                                onClick={() => handleServiceTab(6)}
-                                data-service="6"
-                              >
-                                <div className={`d-flex flex-column servis-tabs py-1 ${services[5].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-6</span>
-                                  <span>FREE</span>
-                                </div>
-                              </button>
-                            </li>
-                            <li className="nav-item custom-nav-item" role="presentation">
-                              <button
-                                className="nav-link custom-nav-link tab-boxes"
-
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "150px" }}
-                                onClick={() => handleServiceTab(7)}
-                                data-service="7"
-                              >
-                                <div className={`d-flex flex-column servis-tabs py-1 ${services[6].service_cost > 0 ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-7</span>
-                                  <span>FREE</span>
-                                </div>
-                              </button>
-                            </li>
-                            <li className="nav-item custom-nav-item" role="presentation">
-                              <button
-                                className="nav-link custom-nav-link tab-boxes"
-
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "150px" }}
-                                onClick={() => handleServiceTab(8)}
-                                data-service="8"
-                              >
-                                <div className={`d-flex flex-column py-1 servis-tabs ${services[7].service_cost !== null ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-8</span>
-                                  <span>{services[7].service_cost}</span>
-                                </div>
-                              </button>
-                            </li>
-                            <li className="nav-item custom-nav-item" role="presentation">
-                              <button
-                                className="nav-link custom-nav-link tab-boxes"
-
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "150px" }}
-                                onClick={() => handleServiceTab(9)}
-                                data-service="9"
-                              >
-                                <div className={`d-flex flex-column py-1 servis-tabs ${services[8].service_cost && services[8].service_cost.length > 0 ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-9</span>
-                                  <span>{services[8].service_cost}</span>
-                                </div>
-
-                              </button>
-                            </li>
-                            <li className="nav-item custom-nav-item" role="presentation">
-                              <button
-                                className="nav-link custom-nav-link tab-boxes"
-
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "150px" }}
-                                onClick={() => handleServiceTab(10)}
-                                data-service="10"
-                              >
-                                <div className={`d-flex flex-column py-1 servis-tabs ${services[9].service_cost !== 0 ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-10</span>
-                                  <span>{services[9].service_cost}</span>
-                                </div>
-
-                              </button>
-                            </li>
-                            <li className="nav-item custom-nav-item" role="presentation">
-                              <button
-                                className="nav-link custom-nav-link tab-boxes"
-
-                                style={{ margin: "0", padding: "2px", height: "60px", width: "150px" }}
-                                onClick={() => handleServiceTab(11)}
-                                data-service="11"
-                              >
-                                <div className={`d-flex flex-column py-1 servis-tabs ${services[10].service_cost !== null ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-11</span>
-                                  <span>{services[10].service_cost}</span>
-                                </div>
-                              </button>
-                            </li>
+                                </button>
+                              </li>
+                            ))}
                           </ul>
                         </div>
                         <div
@@ -697,7 +588,7 @@ function HomePage() {
                                       </div>
                                     </div>
                                   </div>
-                                  <div className='col-md-6 mt-5 mt-md-0'>
+                                  <div className='col-12 col-lg-6 mt-5 mt-md-0'>
                                     <div className='d-flex justify-content-center justify-content-md-start align-items-center'>
                                       <div>
                                         <img src="assets/Chasis Bodi.png" alt='' />
@@ -710,7 +601,7 @@ function HomePage() {
                                         <p className='px-3 mb-0 text-nowrap fw-bold'>Pedal rem</p>
                                       </div>
                                       <div className='d-flex align-items-center mx-4'>
-                                        <img src="assets/Check.png" className='ms-2 ms-md-2 mx-md-2' style={{ marginLeft: '13px !important' }} alt='' />
+                                        <img src="assets/Check.png" className='ms-2 ms-md-2 mx-md-2 pakage-img' style={{ marginLeft: '13px !important' }} alt='' />
                                         <p className='px-3 mb-0 text-nowrap fw-bold text-ban'>Ban</p>
                                       </div>
                                     </div>
@@ -742,16 +633,17 @@ function HomePage() {
                                     <div className='col-6 col-md'>
                                       <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab3 === 1 ? 'active-tab' : ''}`} onClick={() => handleTab3Click(1)}>
                                         <div className='section-img d-flex justify-content-center pointer'>
-                                          <img src="assets/tire-solution.png" className={activeTab3 === 1 ? 'd-none' : 'd-block'} alt='d-block' />
-                                          <img src="assets/Tire Solution (1).png" className={activeTab3 === 1 ? 'd-block w-75' : 'd-none'} alt='' />
+                                        <img src="assets/tire-solution.png" className={activeTab3 === 1 ? 'd-none' : 'd-block'} alt='d-block' />
+                                        <img src="assets/Tire Solution (1).png" className={`active-img ${activeTab3 === 1 ? 'd-block' : 'd-none'}`} alt='' />
                                         </div>
                                       </div>
                                     </div>
                                     <div className='col-6 col-md'>
+          
                                       <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab3 === 2 ? 'active-tab' : ''}`} onClick={() => handleTab3Click(2)} >
                                         <div className='section-img pointer' >
-                                          <img src="assets/tmo.png" className={activeTab3 === 2 ? 'd-none' : 'd-block'} alt='' />
-                                          <img src="assets/TMO-02.png" className={activeTab3 === 2 ? 'd-block' : 'd-none'} alt='' />
+                                        <img src="assets/TMO_1.png" className={activeTab3 === 2 ? 'd-none' : 'd-block'} alt='' />
+                                                  <img src="assets/TMO_2.png" className={activeTab3 === 2 ? 'd-block' : 'd-none'} alt='' />
                                         </div>
                                       </div>
                                     </div>
@@ -1297,7 +1189,7 @@ function HomePage() {
 
                                                     </div>
                                                   </div>
-                                                  <div><p className=' disclaimer mt-2 text-red d-none d-md-block text-wrap' style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '12px', fontWeight: '600' }}>
+                                                  <div><p className=' disclaimer mt-2 text-red d-block text-wrap' style={{ color: 'rgba(215, 25, 33, 1)', fontSize: '12px', fontWeight: '600' }}>
                                                     <span className='remove-margin-p' dangerouslySetInnerHTML={{ __html: disclaimerMolecule }} />
                                                   </p></div>
                                                 </div>
@@ -1316,7 +1208,7 @@ function HomePage() {
                                         </div>
                                         <div className='container'>
                                           {recommendationFromApi.map((recommendation, index) => (
-                                            <div className='row'>
+                                            <div className='row d-flex align-items-center'>
                                               <div className='col-md-4 mx-md-5 text-center d-flex justify-content-center'>
                                                 <img src={recommendation.product.image} className='w-100 h-100 img-fluid' alt='brake' />
                                               </div>
@@ -1336,7 +1228,7 @@ function HomePage() {
                                           <div className='row'>
                                             <h1 className='mt-4 mb-5'>Opsi Produk Toyota Lainnya</h1>
                                             {/* <p className='text-start' dangerouslySetInnerHTML={{ __html: OptionalsTagline }} /> */}
-                                            <div className='col-8 col-md-4 mt-2 mt-md-0 mx-auto'>
+                                            <div className='col-8 col-md-4  mt-md-0 mx-auto'>
                                               <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-lg-3 py-2 py-md-1 d-flex align-items-center justify-content-center ${activeTab4 === 1 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(1)}>
                                                 <div className='section-img d-flex pointer justify-content-center'>
                                                   <img src="assets/tire-solution.png" className={activeTab4 === 1 ? 'd-none' : 'd-block'} alt='d-block' />
@@ -1344,15 +1236,15 @@ function HomePage() {
                                                 </div>
                                               </div>
                                             </div>
-                                            <div className='col-8 text-center col-md-4 mt-2 mt-md-0 mx-auto'>
+                                            <div className='col-8 text-center col-md-4 mt-md-0 mx-auto'>
                                               <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-lg-3 py-1 d-flex align-items-center justify-content-center ${activeTab4 === 2 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(2)} >
                                                 <div className='section-img d-flex pointer justify-content-center' >
-                                                  <img src="assets/tmo.png" className={activeTab4 === 2 ? 'd-none' : 'd-block'} alt='' />
-                                                  <img src="assets/TMO-02.png" className={activeTab4 === 2 ? 'd-block' : 'd-none'} alt='' />
+                                                  <img src="assets/TMO_1.png" className={activeTab4 === 2 ? 'd-none' : 'd-block'} alt='' />
+                                                  <img src="assets/TMO_2.png" className={activeTab4 === 2 ? 'd-block' : 'd-none'} alt='' />
                                                 </div>
                                               </div>
                                             </div>
-                                            <div className='col-8 text-center col-md-4 mt-2 mt-md-0 mx-auto'>
+                                            <div className='col-8 text-center col-md-4  mt-md-0 mx-auto'>
                                               <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-lg-3 py-1 d-flex align-items-center justify-content-center ${activeTab4 === 3 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(3)}>
                                                 <div className='section-img d-flex pointer justify-content-center'>
                                                   <img src="assets/TGB.png" className={activeTab4 === 3 ? 'd-none' : 'd-block'} alt='' />
