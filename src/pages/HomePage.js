@@ -708,7 +708,7 @@ function HomePage() {
                                     <div class='row mt-3 ms-md-2'>
                                       <div class='col-12 d-flex align-items-center'>
                                         <img src="assets/Check.png" alt='' />
-                                        <p class='px-3 mb-0 text-nowrap fw-bold pakage-text'>Cairan pendingin  mesin & power control unit</p>
+                                        <p class='px-3 mb-0 text-nowrap fw-bold pakage-text text-start'>Cairan pendingin  mesin & power control unit</p>
                                       </div>
                                     </div>
                                   </div>
@@ -736,7 +736,7 @@ function HomePage() {
                                       </div>
                                       <div className='d-flex align-items-center mx-md-3'>
                                         <img src="assets/Check.png" className='ms-3 ms-md-1 check-img' alt='' />
-                                        <p className='px-3 mb-0 text-nowrap fw-bold'>Lampu, Klakson, Kaca Wiper</p>
+                                        <p className='px-3 mb-0 text-nowrap fw-bold pakage-text text-start'>Lampu, Klakson, Kaca Wiper</p>
                                       </div>
                                     </div>
                                     <div className='d-flex mt-3'>
@@ -1204,7 +1204,7 @@ function HomePage() {
                                                     <p className='pt-md-3 pt-0 text-center fw-bold'>10W-30</p>
                                                     <div className='tmo-image'>
                                                       {moleculeImages[0] ? (
-                                                        <img src={moleculeImages[0]} alt='' />
+                                                        <img src={moleculeImages[0]} alt='' className='w-75' />
                                                       ) : (
                                                         <p>{errorMessage}</p>
                                                       )}
@@ -1221,7 +1221,7 @@ function HomePage() {
                                                     </p>
                                                     <div className='tmo-image'>
                                                       {moleculeImages[0] ? (
-                                                        <img src={moleculePhotos[0]} alt='' />
+                                                        <img src={moleculePhotos[0]} alt='' className='w-75' />
                                                       ) : (
                                                         <p>{errorMessage}</p>
                                                       )}
@@ -1238,7 +1238,7 @@ function HomePage() {
                                                         </p>
                                                         <p className='text-center fw-bold'>SW-30</p>
                                                         <div className='tmo-image'>
-                                                          <img src={moleculeImages[1]} alt='' />
+                                                          <img src={moleculeImages[1]} alt='' className='w-75' />
                                                         </div>
                                                       </div>
                                                       <div className='col-md-12 order-0 order-md-1'>
@@ -1249,7 +1249,7 @@ function HomePage() {
                                                           ) : null}
                                                         </p>
                                                         <div className='tmo-image molecule-photos pb-3 pb-md-0'>
-                                                          <img src={moleculePhotos[1]} alt='' />
+                                                          <img src={moleculePhotos[1]} alt='' className='w-75' />
                                                         </div>
                                                       </div>
                                                     </div>
@@ -1260,7 +1260,7 @@ function HomePage() {
                                                         </p>
                                                         <p className='text-center fw-bold'>0W-20</p>
                                                         <div className='tmo-image'>
-                                                          <img src={moleculeImages[2]} alt='' />
+                                                          <img src={moleculeImages[2]} alt='' className='w-75' />
                                                         </div>
                                                       </div>
                                                       <div className='col-md-12 order-0 order-md-1'>
@@ -1269,7 +1269,7 @@ function HomePage() {
                                                           <span className="d-none d-md-block mt-2" style={{ color: 'rgba(22, 26, 29, 1)', fontSize: '16px' }} dangerouslySetInnerHTML={{ __html: moleculeTitles[2] }} />
                                                         </p>
                                                         <div className='tmo-image tmo-2'>
-                                                          <img src={moleculePhotos[2]} alt='' />
+                                                          <img src={moleculePhotos[2]} alt='' className='w-75' />
                                                         </div>
                                                       </div>
 
