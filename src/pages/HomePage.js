@@ -1184,6 +1184,7 @@ function HomePage() {
                                         </div>
                                         </div>
                                       </div>
+                                      {!errorMessage &&
                                       <div className="mt-5">
                                         <div className="row home-tab d-flex justify-content-center text-md-center" style={{ gap: '10px' }}>
                                           <div
@@ -1207,6 +1208,7 @@ function HomePage() {
                                           </div>
                                         </div>
                                       </div>
+                                      }
                                         {activeTab2 === 0 && !errorMessage && (
                                           <div id='hide-div'>
                                             <div className='d-flex justify-content-center servis-2-tab'>
