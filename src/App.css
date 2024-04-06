@@ -476,6 +476,9 @@ border-radius: 30px !important;
       right: 17%;
       height: 30%; 
   }
+  .carousel-indicators [data-bs-target] {
+    height: 7px !important;
+  }
 }
 @media screen and (min-width: 992px) {
  .home-tab a{

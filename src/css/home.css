@@ -166,16 +166,26 @@ border-left: 0.5 solid rgba(227, 227, 228, 1) !important;
 width: 202px !important;
 }
 
-@media screen and (min-width: 1024px) {
-
-.service1-pakage {
-margin-left: 10% !important;
-margin-right: 15% !important;
+@media screen and (min-width: 1193px) {
+    .service1-pakage {
+        margin-left: 12% !important;
+        margin-right: 15% !important;
+    }
 }
+
+@media screen and (min-width: 1022px) and (max-width: 1092px) {
+    .service1-pakage {
+        margin-left: 2% !important;
+        margin-right: 15% !important;
+    }
 }
 
-@media screen and (max-width: 1024px) {
 
+@media screen and (max-width: 1020px) {
+    .service1-pakage {
+        margin-left: 2% !important;
+        margin-right: 15% !important;
+    }
 .swiper-slide-custom {
 display: flex;
 align-items: center;

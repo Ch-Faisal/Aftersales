@@ -98,11 +98,12 @@ function HomePage() {
           'Authorization': 'Bearer OMN2FLG6hFY1QOUSB8WsEAl05JXV2XuZneARmOujoZsAq5wJO1qZ4rg4gTkE'
         }
       });
+      console.log("varianttest:",response.data.data);
       setCarVariant(response.data.data);
       setVariantIdParent(response.data.data[0].id);
       setSelectedCarId(carId);
       handleTabClick(response.data.data[0].id, activeTab, carId);
-      
+      // handleServiceTab(response.data.data[0].service_no);
 
       const serviceCost = response.data.data.map(variant => variant.services.map(service => service.service_cost));
       setServiceCost2(serviceCost);
@@ -147,6 +148,7 @@ function HomePage() {
       setVariantIdParent(variantId);
       setLoading2(false);
       setActiveTab(index);
+      handleServiceTab(servicesData[0].service_no);
     } catch (error) {
       setLoading2(false);
       throw error; 
@@ -486,7 +488,7 @@ function HomePage() {
                       </li>
                     </ul>
                   </div>
-                ))}
+                ))} 
               </div>
             </div>
 
@@ -523,18 +525,18 @@ function HomePage() {
                             id="myTab"
                             style={{ borderBottom: "none !important", whiteSpace: "nowrap" }}
                           >
-                               {services.map((service, index) => (
+                              {services.map((service, index) => (
                               <li key={index} className="nav-item custom-nav-item" role="presentation">
                                 <button
-                                  className="nav-link custom-nav-link tab-boxes"
+                                  className={`nav-link custom-nav-link tab-boxes ${index === 0 ? 'active' : ''}`}
                                   style={{ margin: "0", padding: "2px", height: "60px", width: "160px" }}
                                   onClick={() => handleServiceTab(service.service_no)}
                                   data-service={service.service_no}
                                 >
-                                 <div className={`d-flex flex-column servis-tabs py-1 ${parseInt(service.service_cost.replace(/\D/g, ''), 10) > 0 ? 'bg-gray' : ''}`}>
-                                  <span>Servis ke-{service.service_no}</span>
-                                  <span>{parseInt(service.service_cost.replace(/\D/g, ''), 10) === 0 ? "FREE" : service.service_cost}</span>
-                                </div>
+                                  <div className={`d-flex flex-column servis-tabs py-1 ${parseInt(service.service_cost.replace(/\D/g, ''), 10) > 0 ? 'bg-gray' : ''}`}>
+                                    <span>Servis ke-{service.service_no}</span>
+                                    <span>{parseInt(service.service_cost.replace(/\D/g, ''), 10) === 0 ? "FREE" : service.service_cost}</span>
+                                  </div>
                                 </button>
                               </li>
                             ))}
@@ -673,7 +675,6 @@ function HomePage() {
                                         </div>
                                       </div>
                                     </div>
-                                    {/* Content rendering based on active tab */}
                                     {activeTab3 === 1 && (
                                       <div className="container mx-4">
                                         <Swiper
@@ -993,17 +994,17 @@ function HomePage() {
                                     <div className='servis-content mx-md-5'>
                                       {serviceCost && (
                                         <>
-                                          {activeServiceTab >= 8 && (
-                                            <h1 className='servis-title'>{serviceCost[activeServiceTab]}</h1>
-                                          )}
-                                        </>
+                                       {activeServiceTab >= 2 && (
+                                        <h1 className='servis-title'>
+                                          {serviceCost[activeServiceTab] && parseInt(serviceCost[activeServiceTab].replace(/\D/g, ''), 10) > 0 ? serviceCost[activeServiceTab] : 'Gratis'}
+                                        </h1>
                                       )}
-                                      {!serviceCost && (
-                                        <h1 className='servis-title'>GRATIS</h1>
+                                  </>
                                       )}
+                                      
                                       <h1>Servis berkala setelah <span className='inline-text' >{activeServiceTab >= 2 && activeServiceTab <= 11 && (activeServiceTab - 1) * 6} Bulan </span> </h1>
 
-                                      {activeServiceTab >= 8 && (
+                                      {activeServiceTab >= 2 && (
                                    <div className='ms-lg-5' style={{ textAlign: 'left', marginTop: '1.5rem' }}>
                                    {serviceDescriptions.length > 0 && serviceDescriptions[activeServiceTab - 1] ?
                                      serviceDescriptions[activeServiceTab - 1].match(/(?:^|[^,]).{1,123}\b/g).map((substring, index) => (
@@ -1012,7 +1013,7 @@ function HomePage() {
                                          <br /> 
                                        </React.Fragment>
                                      )) :
-                                     "No description available"
+                                     ""
                                    }
                                  </div>                                 
                                   
