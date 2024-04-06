@@ -648,7 +648,7 @@ function HomePage() {
                                 <div className='d-none d-lg-block'>
                                   <div className='row mx-md-4'>
                                     <h1 className='fw-bold mt-5 mb-5'>Opsi Produk Toyota Lainnya</h1>
-                                    <div className='col-6 col-md'>
+                                    <div className='col-6 col-md-4'>
                                       <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab3 === 1 ? 'active-tab' : ''}`} onClick={() => handleTab3Click(1)}>
                                         <div className='section-img d-flex justify-content-center pointer'>
                                         <img src="assets/tire-solution.png" className={activeTab3 === 1 ? 'd-none' : 'd-block'} alt='d-block' />
@@ -656,7 +656,7 @@ function HomePage() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className='col-6 col-md'>
+                                    <div className='col-6 col-md-4'>
           
                                       <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab3 === 2 ? 'active-tab' : ''}`} onClick={() => handleTab3Click(2)} >
                                         <div className='section-img pointer' >
@@ -665,7 +665,7 @@ function HomePage() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className='col-6 col-md'>
+                                    <div className='col-6 col-md-4'>
                                       <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab3 === 3 ? 'active-tab' : ''}`} onClick={() => handleTab3Click(3)}>
                                         <div className='section-img pointer'>
                                           <img src="assets/TGB1.png" className={activeTab3 === 3 ? 'd-none' : 'd-block'} alt='' />
