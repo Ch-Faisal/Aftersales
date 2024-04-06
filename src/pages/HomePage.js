@@ -668,8 +668,8 @@ function HomePage() {
                                     <div className='col-6 col-md'>
                                       <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab3 === 3 ? 'active-tab' : ''}`} onClick={() => handleTab3Click(3)}>
                                         <div className='section-img pointer'>
-                                          <img src="assets/TGB.png" className={activeTab3 === 3 ? 'd-none' : 'd-block'} alt='' />
-                                          <img src="assets/TGB-3.png" className={activeTab3 === 3 ? 'd-block' : 'd-none'} alt='' />
+                                          <img src="assets/TGB1.png" className={activeTab3 === 3 ? 'd-none' : 'd-block'} alt='' />
+                                          <img src="assets/TGB2.png" className={activeTab3 === 3 ? 'd-block' : 'd-none'} alt='' />
                                         </div>
                                       </div>
                                     </div>
@@ -1265,8 +1265,8 @@ function HomePage() {
                                             <div className='col-8 text-center col-md-4  mt-md-0 mx-auto'>
                                               <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-lg-3 py-1 d-flex align-items-center justify-content-center ${activeTab4 === 3 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(3)}>
                                                 <div className='section-img d-flex pointer justify-content-center'>
-                                                  <img src="assets/TGB.png" className={activeTab4 === 3 ? 'd-none' : 'd-block'} alt='' />
-                                                  <img src="assets/TGB-3.png" className={activeTab4 === 3 ? 'd-block' : 'd-none'} alt='' />
+                                                  <img src="assets/TGB1.png" className={activeTab4 === 3 ? 'd-none' : 'd-block'} alt='' />
+                                                  <img src="assets/TGB2.png" className={activeTab4 === 3 ? 'd-block' : 'd-none'} alt='' />
                                                 </div>
                                               </div>
                                             </div>

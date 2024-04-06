@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.baf85acf.css",
-    "main.js": "/static/js/main.99088cdd.js",
+    "main.css": "/static/css/main.57271087.css",
+    "main.js": "/static/js/main.e74907f2.js",
     "static/js/511.b675b728.chunk.js": "/static/js/511.b675b728.chunk.js",
     "static/media/Rectangle4.png": "/static/media/Rectangle4.a243c4361b4fbb2a84db.png",
     "static/media/ToyotaType-Regular.ttf": "/static/media/ToyotaType-Regular.e91e6060b2f2192802d8.ttf",
@@ -9,12 +9,12 @@
     "index.html": "/index.html",
     "static/media/Vector1.svg": "/static/media/Vector1.0e4b9e524e42533b1e3f.svg",
     "static/media/Vector.svg": "/static/media/Vector.610dfc79c435ae66f95a.svg",
-    "main.baf85acf.css.map": "/static/css/main.baf85acf.css.map",
-    "main.99088cdd.js.map": "/static/js/main.99088cdd.js.map",
+    "main.57271087.css.map": "/static/css/main.57271087.css.map",
+    "main.e74907f2.js.map": "/static/js/main.e74907f2.js.map",
     "511.b675b728.chunk.js.map": "/static/js/511.b675b728.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.baf85acf.css",
-    "static/js/main.99088cdd.js"
+    "static/css/main.57271087.css",
+    "static/js/main.e74907f2.js"
   ]
 }
