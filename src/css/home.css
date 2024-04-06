@@ -1,315 +1,415 @@
+<div className='row mt-5 mx-lg-5 service1-pakage'>
+<div class='col-md-6 mt-5 mt-md-0'>
+  <div class='d-flex justify-content-center justify-content-md-center align-items-center'>
+    <div>
+      <img src="assets/Chasis Bodi.png" className='img-fluid' alt='' />
+    </div>
+    <p class='px-3 mb-0 text-lg-nowrap fw-bold'>Periksa Komponen Mesin</p>
+  </div>
+    <div className='col-md-12 mt-4'>
+      <div className='row justify-cotent'>
+          <div className='col-6 d-flex align-items-center  justify-content-start'>
+              <img src="assets/Check.png" className='img-fluid' alt='' />
+              <p class='px-3 mb-0 text-nowrap fw-bold'>Oli mesin</p>
+          </div>
+          <div className='col-6 d-flex align-items-center  justify-content-start pe-4'> 
+              <img src="assets/Check.png" className='img-fluid' class='me-1' alt='' />
+              <p class='px-1 px-md-3 mb-0 text-nowrap fw-bold'>Pipa gas buang</p>
+          </div>
+      </div>   
+  </div>
+  <div className='col-md-12 mt-3'>
+<div className='row'>
+    <div class='col-6 d-flex align-items-center  justify-content-start pr-3'>
+        <img src="assets/Check.png" className='img-fluid' alt='' />
+        <p class='px-3 mb-0 text-nowrap fw-bold'>Sistem pendingin</p>
+    </div>
+    <div className='col-6 d-flex align-items-center justify-content-start pl-3'>
+    <img src="assets/Check.png" className='img-fluid' alt='' />
+    <p className='px-3 mb-0 text-nowrap fw-bold'>Baterai 12 Volt</p>
+  </div>
+</div>
+</div>
+
+  <div className='col-md-12 mt-3'>
+    <div className='row'>
+      <div class='col-6 d-flex align-items-center  justify-content-start'>
+        <img src="assets/Check.png" alt='' />
+        <p class='px-3 mb-0 text-nowrap fw-bold'>Cairan pendingin mesin & power control unit</p>
+    </div>
+    </div>
+  </div>
+
+</div>
+<div class='col-md-6 mt-5 mt-md-0'>
+  <div class='d-flex justify-content-center justify-content-md-center align-items-center'>
+    <div>
+      <img src="assets/Chasis Bodi.png" alt='' />
+    </div>
+    <p class='px-3 mb-0 text-lg-nowrap fw-bold'>Periksa Chasis & Bodi</p>
+  </div>
+    <div className='col-md-12 mt-4'>
+      <div className='row justify-cotent'>
+          <div className='col-6 d-flex align-items-center  justify-content-start'>
+              <img src="assets/Check.png" alt='' />
+              <p class='px-3 mb-0 text-nowrap fw-bold'>Pedal rem</p>
+          </div>
+          <div className='col-6 d-flex align-items-center  justify-content-start pe-4'> 
+              <img src="assets/Check.png" class='me-1' alt='' />
+              <p class='px-1 px-md-3 mb-0 text-nowrap fw-bold'>Ban</p>
+          </div>
+      </div>   
+  </div>
+  <div className='col-md-12 mt-3'>
+<div className='row'>
+    <div class='col-6 d-flex align-items-center  justify-content-start pr-3'>
+        <img src="assets/Check.png" alt='' />
+        <p class='px-3 mb-0 text-nowrap fw-bold'>Minyak rem</p>
+    </div>
+    <div class='col-6 d-flex align-items-center  justify-content-start pl-3'>
+        <img src="assets/Check.png" alt='' />
+        <p class='px-3 mb-0 text-nowrap fw-bold'>Lampu, Klakson, Kaca Wiper</p>
+    </div>
+</div>
+</div>
+
+  <div className='col-md-12 mt-3'>
+    <div className='row'>
+      <div class='col-6 d-flex align-items-center  justify-content-start'>
+        <img src="assets/Check.png" alt='' />
+        <p class='px-3 mb-0 text-nowrap fw-bold'>Suspensi</p>
+    </div>
+    <div class='col-6 d-flex align-items-center  justify-content-start'>
+        <img src="assets/Check.png" alt='' />
+        <p class='px-3 mb-0 text-nowrap fw-bold'>Isi cairan AC</p>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+</div>  
+
+
+
 .all-new-alphard{
-    background-color: #cfd4d8;
+background-color: #cfd4d8;
 }
 .new-alphard {
-  /* background-color: rgba(227, 227, 228, 1)  ; */
-  padding: 5px;
+/* background-color: rgba(227, 227, 228, 1)  ; */
+padding: 5px;
 }
 .new-alphard li{
-  border: 1.5px solid rgba(215, 25, 33, 1);
-  border-radius: 6px;
+border: 1.5px solid rgba(215, 25, 33, 1);
+border-radius: 6px;
 }
 .new-alphard .nav-link{
-    color: rgba(215, 25, 33, 1) !important;
-    font-size: 14px;
-    text-align: center !important;
+color: rgba(215, 25, 33, 1) !important;
+font-size: 14px;
+text-align: center !important;
 }
 .nav-pills .nav-item .nav-link.active {
-    background-color: rgba(215, 25, 33, 1);
-    color: #fff !important;
+background-color: rgba(215, 25, 33, 1);
+color: #fff !important;
 }
 .remove-margin-p p{
-  margin-bottom: 0px !important;
+margin-bottom: 0px !important;
 }
 @media screen and (min-width: 1094px) {
-  .pakage-img{
-   margin-left: 10px !important;
-  }
- }
+.pakage-img{
+margin-left: 10px !important;
+}
+}
+@media screen and (max-width: 990px) {
+
+.service1-pakage {
+margin-left: -2% !important;
+margin-right: -8% !important;
+}
+}
 .new-alphard{
-    margin-left: 14%;
-    margin-right: 14%;
+margin-left: 14%;
+margin-right: 14%;
 }
 .all-new-alphard img{
-  width: 30% !important;
+width: 30% !important;
 }
 .molecule-photos img{
-  width: 200px !important;
+width: 200px !important;
 }
 .divider-links{
-        margin: 1% 5%; /* Adjust the spacing between the line and the tabs */
-        color: #000; 
+margin: 1% 5%; /* Adjust the spacing between the line and the tabs */
+color: #000; 
 }
 .servis-tabs{
-    background-color: #000;
-    color: #fff;
+background-color: #000;
+color: #fff;
 }
 .custom-nav-link.active .servis-tabs{
-    background-color: rgba(215, 25, 33, 1) ;
-    border: none !important;
+background-color: rgba(215, 25, 33, 1) ;
+border: none !important;
 }
 .custom-nav-link.active .bg-gray{
-  background-color: rgba(215, 25, 33, 1) ;
-  border: none !important;
+background-color: rgba(215, 25, 33, 1) ;
+border: none !important;
 }
 
 .nav-tabs .nav-link.active{
-    border-bottom: none !important;
+border-bottom: none !important;
 }
 .servis-tabs p{
-    font-size: 12px;
-    font-weight: lighter;
-    color: #fff;
+font-size: 12px;
+font-weight: lighter;
+color: #fff;
 }
 .custom-home-tabs{
-    border-bottom: none !important;
+border-bottom: none !important;
 }
 .custom-nav-item {
-    flex: 0 0 auto;
-  }
-  
-  .custom-nav-link {
-    white-space: nowrap; /* Prevents text wrapping */
-  }
+flex: 0 0 auto;
+}
+
+.custom-nav-link {
+white-space: nowrap; /* Prevents text wrapping */
+}
 .servis-title{
-    color: rgba(215, 25, 33, 1) !important;
+color: rgba(215, 25, 33, 1) !important;
 }
 .inline-text{
-    color: rgba(215, 25, 33, 1);
+color: rgba(215, 25, 33, 1);
 }
 .tab-content .servis-content .text {
-    color: rgba(22, 26, 29, 1) !important; 
-   font-weight: 400 !important;
-    font-size: 20px !important;
-  }
-  /* .wrapper-servis{
-    border-radius: 10px;
-    border: 1px solid rgba(215, 25, 33, 1) !important;
-  } */
-  .wrapper-servis p{
-    color: rgba(22, 26, 29, 1);
-    font-weight: 500;
-  }
-  .custom-btn {
-    border-radius: 10px !important;
-    border: 2px solid rgba(0, 0, 0, 1);
-  }
-  .mx-10{
-    margin-left: 12rem !important;
-    margin-right: 12rem !important;
-  }
-  .home-tab .nav-link {
-    border-radius: 30px;
-    color: #000;
-    background-color: rgba(227, 227, 228, 1);
-  }
-  .home-tab .nav-link.active {
-    border-radius: 30px;
-    /* border: 1px solid rgba(215, 25, 33, 1) !important; */
-    background-color: rgba(215, 25, 33, 1) !important;
-    color: #fff !important;
-  }
-  .home-tab .nav-link.active a {
-    color: #fff !important;
-  }
+color: rgba(22, 26, 29, 1) !important; 
+font-weight: 400 !important;
+font-size: 20px !important;
+}
+/* .wrapper-servis{
+border-radius: 10px;
+border: 1px solid rgba(215, 25, 33, 1) !important;
+} */
+.wrapper-servis p{
+color: rgba(22, 26, 29, 1);
+font-weight: 500;
+}
+.custom-btn {
+border-radius: 10px !important;
+border: 2px solid rgba(0, 0, 0, 1);
+}
+.mx-10{
+margin-left: 12rem !important;
+margin-right: 12rem !important;
+}
+.home-tab .nav-link {
+border-radius: 30px;
+color: #000;
+background-color: rgba(227, 227, 228, 1);
+}
+.home-tab .nav-link.active {
+border-radius: 30px;
+/* border: 1px solid rgba(215, 25, 33, 1) !important; */
+background-color: rgba(215, 25, 33, 1) !important;
+color: #fff !important;
+}
+.home-tab .nav-link.active a {
+color: #fff !important;
+}
 
-  .home-tab .nav-link a{
-    font-size: 16px;
-    font-weight: 300;
-  }
-  .servis-2-tab .text-red{
-    color: rgba(215, 25, 33, 1) !important;
-    font-weight: 200 !important;
-    font-size: 16px !important;
-  }
-  .text-red{
-    color: rgba(215, 25, 33, 1) !important;
-  }
-  
-  .bg-grey{
-    background-color: rgba(227, 227, 228, 1);
-  }
-  .bg-pink{
-    background-color: rgba(253, 243, 243, 1) !important;
-  }
+.home-tab .nav-link a{
+font-size: 16px;
+font-weight: 300;
+}
+.servis-2-tab .text-red{
+color: rgba(215, 25, 33, 1) !important;
+font-weight: 200 !important;
+font-size: 16px !important;
+}
+.text-red{
+color: rgba(215, 25, 33, 1) !important;
+}
 
-  .cursor-pointer {
-    cursor: pointer;
+.bg-grey{
+background-color: rgba(227, 227, 228, 1);
+}
+.bg-pink{
+background-color: rgba(253, 243, 243, 1) !important;
+}
+
+.cursor-pointer {
+cursor: pointer;
 }
 /* .active-tab{
-   background-color: rgba(215, 25, 33, 1);
-   padding: 2px !important;
+background-color: rgba(215, 25, 33, 1);
+padding: 2px !important;
 } */
 .package-image {
-  width: 80px;
-  height: 40px;
+width: 80px;
+height: 40px;
 }
 .first-two-images {
-  width: 81px;
-  height: 41px;
-  /* You can also set height here if needed */
+width: 81px;
+height: 41px;
+/* You can also set height here if needed */
 }
 .service_card_title {
-  font-size: 24px !important;
+font-size: 24px !important;
 }
 .pointer{
-  cursor: pointer;
+cursor: pointer;
 }
 .borderr{
-  border-left: 0.5 solid rgba(227, 227, 228, 1) !important;
+border-left: 0.5 solid rgba(227, 227, 228, 1) !important;
 }
 .tmo-2 img{
-  width: 202px !important;
+width: 202px !important;
 }
 
+@media screen and (min-width: 1024px) {
+
+.service1-pakage {
+margin-left: 15% !important;
+margin-right: 15% !important;
+}
+}
 
 @media screen and (max-width: 1024px) {
-  .service1-pakage .pakage-text{
-    text-wrap: wrap !important;
-  }
-  .swiper-slide-custom {
-    display: flex;
-    align-items: center;
-  }
-  
-  .new-alphard{
-    margin-left: 0%;
-    margin-right: 0%;
+
+.swiper-slide-custom {
+display: flex;
+align-items: center;
 }
-  .nav-pills .nav-item .nav-link.active {
-    background-color: rgba(215, 25, 33, 1);
-    color: #fff !important;
+
+.new-alphard{
+margin-left: 0%;
+margin-right: 0%;
 }
-  
+.nav-pills .nav-item .nav-link.active {
+background-color: rgba(215, 25, 33, 1);
+color: #fff !important;
 }
-.service1-pakage .isi-cairan-text{
-  margin-left: -3px !important;
-}
-  @media screen and (max-width: 992px) {
-    .tmo-oli{
-      width: 750px !important;
-      display: flex;
-      /* justify-content: start !important; */
-    }
-    .tyre-image{
-      width: 40% !important;
-      margin-top: 5% !important;
-    }
-    .tgb-free-img{
-      width: 40% !important;
-    }
-    .tmo-ol .tmo-image img{
-         width: 150px !important;
-      }
+
 }
 
 @media screen and (max-width: 992px) {
-  .wrapper-servis .section-img img{
-    width: 100% !important;
+.tmo-oli{
+width: 750px !important;
+display: flex;
+/* justify-content: start !important; */
+}
+.tyre-image{
+width: 40% !important;
+margin-top: 5% !important;
+}
+.tgb-free-img{
+width: 40% !important;
+}
+.tmo-ol .tmo-image img{
+width: 150px !important;
 }
 }
-@media screen and (max-width: 558px) {
-  .wrapper-servis .section-img img{
-    width: 95% !important;
-}
-}
-  @media screen and (max-width: 768px) {
-    .tmo-oli{
-        width: 100% !important;
-      }
-      .recommendation-img{
-        width: 70% !important;
-      }
-    .new-alphard{
-        margin-left: 0%;
-        margin-right: 0%;
-    }
-    .standard{
-        font-size: 12px !important;
-    }
-    .tmo-image img{
-      width: 100% !important;
-    }
-    .wrapper-servis .section-img img{
-        width: 70%;
-    }
-    .tab-boxes{
-        width:110px !important;
-    }
-    .new-alphard .nav-link{
-        font-size: 12px !important;
-    }
-    .section-3 h5{
-        font-size: 24px !important;
-      }
-  }
-  @media (max-width: 767.98px) {
-    .overflow-auto {
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-  
-    .overflow-auto::-webkit-scrollbar {
-      display: none; /* Hide scrollbar */
-    }
-  }
-  
-  @media screen and (max-width: 620px)
-  
-  {
-    .dynamic-slide{
-      width: 50% !important;
-    }
 
-    .service1-pakage .isi-cairan-text{
-      margin-left: 17px !important;
-    }
-    .tgb-mf-img{
-      width: 60%;
-    }
-    .recommendation-img{
-      width: 50% !important;
-    }
-    .dynamic-slide{
-      width: 50% !important;
-    }
-    .check-img{
-      margin-left: 18px !important;
-    }
-  
-    
-      .wrapper-servis{
-        border-radius: 10px !important;
-      }
-    .service1-pakage .text-ban{
-      margin-left: 4px !important;
-    }
-    .cutom_heading_size{
-      font-size: 16.378px;
-      font-weight: 600;
-    }
-    .slider-btn{
-      width: 100% !important;
-    }
-  }
-  .custom_body_boder{
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2) !important;
-  }
-  .servis-desc{
-    font-size: 18px;
-    font-weight: 600;
-  }
-  @media screen and (min-width: 762px)
-  {
-    .wrapper-pink-bg{
-     margin-top: -6%;
-    }
-  }
-  .text {
-    white-space: pre-wrap !important; /* Ensures lines break only at white spaces */
-    font-family: inherit !important; /* Use the same font as the parent element */
+@media screen and (max-width: 992px) {
+.wrapper-servis .section-img img{
+width: 100% !important;
+}
+}
+
+@media screen and (max-width: 558px) {
+.wrapper-servis .section-img img{
+width: 95% !important;
+}
+}
+@media screen and (max-width: 768px) {
+.tmo-oli{
+width: 100% !important;
+}
+.recommendation-img{
+width: 70% !important;
+}
+.new-alphard{
+margin-left: 0%;
+margin-right: 0%;
+}
+.standard{
+font-size: 12px !important;
+}
+.tmo-image img{
+width: 100% !important;
+}
+.wrapper-servis .section-img img{
+width: 70%;
+}
+.tab-boxes{
+width:110px !important;
+}
+.new-alphard .nav-link{
+font-size: 12px !important;
+}
+.section-3 h5{
+font-size: 24px !important;
+}
+}
+@media (max-width: 767.98px) {
+.overflow-auto {
+overflow-x: auto;
+white-space: nowrap;
+}
+
+.overflow-auto::-webkit-scrollbar {
+display: none; /* Hide scrollbar */
+}
+}
+
+@media screen and (max-width: 620px)
+
+{
+.dynamic-slide{
+width: 50% !important;
+}
+
+
+.tgb-mf-img{
+width: 60%;
+}
+.recommendation-img{
+width: 50% !important;
+}
+.dynamic-slide{
+width: 50% !important;
+}
+.check-img{
+margin-left: 18px !important;
+}
+
+
+.wrapper-servis{
+border-radius: 10px !important;
+}
+
+.cutom_heading_size{
+font-size: 16.378px;
+font-weight: 600;
+}
+.slider-btn{
+width: 100% !important;
+}
+}
+.custom_body_boder{
+box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2) !important;
+}
+.servis-desc{
+font-size: 18px;
+font-weight: 600;
+}
+@media screen and (min-width: 762px)
+{
+.wrapper-pink-bg{
+margin-top: -6%;
+}
+}
+.text {
+white-space: pre-wrap !important; /* Ensures lines break only at white spaces */
+font-family: inherit !important; /* Use the same font as the parent element */
 }
 .bg-gray{
-  background-color: rgba(115, 118, 119, 1);
+background-color: rgba(115, 118, 119, 1);
 }
-  

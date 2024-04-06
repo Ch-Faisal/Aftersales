@@ -557,76 +557,94 @@ function HomePage() {
                                   <div class='col-md-6 mt-5 mt-md-0'>
                                     <div class='d-flex justify-content-center justify-content-md-center align-items-center'>
                                       <div>
-                                        <img src="assets/Chasis Bodi.png" alt='' />
+                                        <img src="assets/Chasis Bodi.png" className='img-fluid' alt='' />
                                       </div>
                                       <p class='px-3 mb-0 text-lg-nowrap fw-bold'>Periksa Komponen Mesin</p>
                                     </div>
-                                    <div class='row mt-3 ms-md-2'>
-                                      <div class='col-6 d-flex align-items-center'>
-                                        <img src="assets/Check.png" alt='' />
-                                        <p class='px-3 mb-0 text-lg-nowrap fw-bold'>Oli mesin</p>
-                                      </div>
-                                      <div class='col-6 d-flex align-items-center'>
-                                        <img src="assets/Check.png" class='me-1' alt='' />
-                                        <p class='px-1 px-md-3 mb-0 text-nowrap fw-bold'>Pipa gas buang</p>
-                                      </div>
+                                      <div className='col-md-12 mt-4'>
+                                        <div className='row justify-cotent'>
+                                            <div className='col-6 d-flex align-items-center  justify-content-start'>
+                                                <img src="assets/Check.png" className='img-fluid' alt='' />
+                                                <p class='px-3 mb-0 text-nowrap fw-bold'>Oli mesin</p>
+                                            </div>
+                                            <div className='col-6 d-flex align-items-center  justify-content-start pe-4'> 
+                                                <img src="assets/Check.png" className='img-fluid' class='me-1' alt='' />
+                                                <p class='px-1 px-md-3 mb-0 text-nowrap fw-bold'>Pipa gas buang</p>
+                                            </div>
+                                        </div>   
                                     </div>
-                                    <div class='row mt-3 ms-md-2'>
-                                      <div class='col-6 d-flex align-items-center'>
-                                        <img src="assets/Check.png" alt='' />
-                                        <p class='px-3 mb-0 text-nowrap fw-bold'>Sistem pendingin</p>
+                                    <div className='col-md-12 mt-3'>
+                                  <div className='row'>
+                                      <div class='col-6 d-flex align-items-center  justify-content-start pr-3'>
+                                          <img src="assets/Check.png" className='img-fluid' alt='' />
+                                          <p class='px-3 mb-0 text-nowrap fw-bold'>Sistem pendingin</p>
                                       </div>
-                                      <div class='col-6 d-flex align-items-center'>
-                                        <img src="assets/Check.png" alt='' />
-                                        <p class='px-3 mb-0 text-nowrap fw-bold'>Baterai 12 Volt</p>
-                                      </div>
-                                    </div>
-                                    <div class='row mt-3 ms-md-2'>
-                                      <div class='col-12 d-flex align-items-center'>
-                                        <img src="assets/Check.png" alt='' />
-                                        <p class='px-3 mb-0 text-nowrap fw-bold pakage-text text-start'>Cairan pendingin  mesin & power control unit</p>
-                                      </div>
+                                      <div className='col-6 d-flex align-items-center justify-content-start pl-3'>
+                                      <img src="assets/Check.png" className='img-fluid' alt='' />
+                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Baterai 12 Volt</p>
                                     </div>
                                   </div>
-                                  <div className='col-12 col-lg-6 mt-5 mt-md-0'>
-                                    <div className='d-flex justify-content-center justify-content-md-start align-items-center'>
+                              </div>
+
+                                    <div className='col-md-12 mt-3'>
+                                      <div className='row'>
+                                        <div class='col-6 d-flex align-items-center  justify-content-start'>
+                                          <img src="assets/Check.png" alt='' />
+                                          <p class='px-3 mb-0 text-nowrap fw-bold'>Cairan pendingin mesin & power control unit</p>
+                                      </div>
+                                      </div>
+                                    </div>
+                                
+                                  </div>
+                                  <div class='col-md-6 mt-5 mt-md-0'>
+                                    <div class='d-flex justify-content-center justify-content-md-center align-items-center'>
                                       <div>
                                         <img src="assets/Chasis Bodi.png" alt='' />
                                       </div>
-                                      <p className='px-3 mb-0 text-nowrap fw-bold'>Periksa Chasis & Bodi</p>
+                                      <p class='px-3 mb-0 text-lg-nowrap fw-bold'>Periksa Chasis & Bodi</p>
                                     </div>
-                                    <div className='d-flex mt-3'>
-                                      <div className='d-flex align-items-center'>
-                                        <img src="assets/Check.png" alt='' />
-                                        <p className='px-3 mb-0 text-nowrap fw-bold'>Pedal rem</p>
-                                      </div>
-                                      <div className='d-flex align-items-center mx-4'>
-                                        <img src="assets/Check.png" className='ms-2 ms-md-2 mx-md-2 pakage-img' style={{ marginLeft: '13px !important' }} alt='' />
-                                        <p className='px-3 mb-0 text-nowrap fw-bold text-ban'>Ban</p>
-                                      </div>
+                                      <div className='col-md-12 mt-4'>
+                                        <div className='row justify-cotent'>
+                                            <div className='col-6 d-flex align-items-center  justify-content-start'>
+                                                <img src="assets/Check.png" alt='' />
+                                                <p class='px-3 mb-0 text-nowrap fw-bold'>Pedal rem</p>
+                                            </div>
+                                            <div className='col-6 d-flex align-items-center  justify-content-start pe-4'> 
+                                                <img src="assets/Check.png" class='me-1' alt='' />
+                                                <p class='px-1 px-md-3 mb-0 text-nowrap fw-bold'>Ban</p>
+                                            </div>
+                                        </div>   
                                     </div>
-                                    <div className='d-flex  mt-3'>
-                                      <div className='d-flex align-items-center'>
-                                        <img src="assets/Check.png" alt='' />
-                                        <p className='px-3 mb-0 text-nowrap fw-bold'>Minyak rem</p>
+                                    <div className='col-md-12 mt-3'>
+                                  <div className='row'>
+                                      <div class='col-6 d-flex align-items-center  justify-content-start pr-3'>
+                                          <img src="assets/Check.png" alt='' />
+                                          <p class='px-3 mb-0 text-nowrap fw-bold'>Minyak rem</p>
                                       </div>
-                                      <div className='d-flex align-items-center mx-md-3'>
-                                        <img src="assets/Check.png" className='ms-3 ms-md-1 check-img' alt='' />
-                                        <p className='px-3 mb-0 text-nowrap fw-bold pakage-text text-start'>Lampu, Klakson, Kaca Wiper</p>
+                                      <div class='col-6 d-flex align-items-center  justify-content-start pl-3'>
+                                          <img src="assets/Check.png" alt='' />
+                                          <p class='px-3 mb-0 text-nowrap fw-bold'>Lampu, Klakson, Kaca Wiper</p>
                                       </div>
-                                    </div>
-                                    <div className='d-flex mt-3'>
-                                      <div className='d-flex align-items-center'>
-                                        <img src="assets/Check.png" alt='' />
-                                        <p className='px-3 mb-0 text-nowrap fw-bold'>Suspensi</p>
-                                      </div>
-                                      <div className='d-flex align-items-center mx-4 mx-md-5'>
-                                        <img src="assets/Check.png" className='ms-3 ms-md-0 isi-cairan-text' alt='' />
-                                        <p className='px-3 mb-0 text-nowrap fw-bold '>Isi cairan AC</p>
-                                      </div>
-                                    </div>
                                   </div>
-                                </div>
+                              </div>
+
+                                    <div className='col-md-12 mt-3'>
+                                      <div className='row'>
+                                        <div class='col-6 d-flex align-items-center  justify-content-start'>
+                                          <img src="assets/Check.png" alt='' />
+                                          <p class='px-3 mb-0 text-nowrap fw-bold'>Suspensi</p>
+                                      </div>
+                                      <div class='col-6 d-flex align-items-center  justify-content-start'>
+                                          <img src="assets/Check.png" alt='' />
+                                          <p class='px-3 mb-0 text-nowrap fw-bold'>Isi cairan AC</p>
+                                      </div>
+                                      </div>
+                                    </div>
+                                
+                                  </div>
+                               
+                                </div>  
+
                                 <div className='d-none d-lg-block'>
                                   <div className='row mx-md-4'>
                                     <h1 className='fw-bold mt-5 mb-5'>Opsi Produk Toyota Lainnya</h1>
@@ -634,7 +652,7 @@ function HomePage() {
                                       <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-md-3 py-1 d-flex align-items-center justify-content-center ${activeTab3 === 1 ? 'active-tab' : ''}`} onClick={() => handleTab3Click(1)}>
                                         <div className='section-img d-flex justify-content-center pointer'>
                                         <img src="assets/tire-solution.png" className={activeTab3 === 1 ? 'd-none' : 'd-block'} alt='d-block' />
-                                        <img src="assets/Tire Solution (1).png" className={`active-img ${activeTab3 === 1 ? 'd-block' : 'd-none'}`} alt='' />
+                                        <img src="assets/Tire-Solution (1).png" className={`active-img ${activeTab3 === 1 ? 'd-block' : 'd-none'}`} alt='' />
                                         </div>
                                       </div>
                                     </div>
@@ -1232,7 +1250,7 @@ function HomePage() {
                                               <div className={`wrapper-servis px-4 border-0 mb-4 mb-md-3 h-100 mx-lg-3 py-2 py-md-1 d-flex align-items-center justify-content-center ${activeTab4 === 1 ? 'active-tab' : ''}`} onClick={() => handleTab4Click(1)}>
                                                 <div className='section-img d-flex pointer justify-content-center'>
                                                   <img src="assets/tire-solution.png" className={activeTab4 === 1 ? 'd-none' : 'd-block'} alt='d-block' />
-                                                  <img src="assets/Tire Solution (1).png" className={`active-img ${activeTab4 === 1 ? 'd-block' : 'd-none'}`} alt='' />
+                                                  <img src="assets/Tire-Solution (1).png" className={`active-img ${activeTab4 === 1 ? 'd-block' : 'd-none'}`} alt='' />
                                                 </div>
                                               </div>
                                             </div>
